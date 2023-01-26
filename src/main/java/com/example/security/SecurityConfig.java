@@ -12,6 +12,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorize -> authorize
+                        .antMatchers("/").permitAll()
                         .anyRequest().authenticated()
                 );
 
