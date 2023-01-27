@@ -14,12 +14,17 @@ public class TestController {
     @RequestMapping("/logintest")
     public String loginTest() {
         return "login";
-    }
+    } // 로그인 테스트
+
+    @RequestMapping("/logintest_ok")
+    public String loginTestOk() {
+        return "redirect:/";
+    } // 로그인 테스트
 
     @RequestMapping("/registertest")
     public String registerTest() {
         return "register";
-    }
+    } // 회원가입 테스트
 
     @RequestMapping("/registertest_ok")
     public String registerTest(MemberTO to) {

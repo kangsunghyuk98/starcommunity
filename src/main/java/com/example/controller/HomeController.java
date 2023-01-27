@@ -13,8 +13,7 @@ public class HomeController {
     private HomeService homeService;
 
     @RequestMapping("/")
-    @ResponseBody
-    public String nowTime() {
-        return homeService.selectNow();
+    public String showMain() {
+        return "index";
     }
 }

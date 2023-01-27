@@ -24,6 +24,7 @@ public class TestService {
         to.setRole(MemberRole.USER.getRole()); // 일반 유저 적용
 
         int result = mapperInter.save(to);
+
         int flag = 1;
 
         if (result == 1) {
