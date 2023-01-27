@@ -13,6 +13,6 @@ public interface MapperInter {
     @Select("select now() as now")
     String selectNow();
 
-    @Insert("insert into member values (0, #{id}, 'USER',#{password}, #{nickname}, #{name}, #{email})")
+    @Insert("insert into member values (0, #{id}, #{role},#{password}, #{nickname}, #{name}, #{email})")
     int save(MemberTO to);
 }
