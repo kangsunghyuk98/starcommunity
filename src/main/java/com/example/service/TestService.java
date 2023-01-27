@@ -21,7 +21,7 @@ public class TestService {
         String encodePassword = passwordEncoder.encode(to.getPassword());
         to.setPassword(encodePassword); // 암호화한 비밀번호로 set
 
-        to.setRole(MemberRole.USER.getKoRole()); // 일반 유저 적용
+        to.setRole(MemberRole.USER.getRole()); // 일반 유저 적용
 
         int result = mapperInter.save(to);
         int flag = 1;
