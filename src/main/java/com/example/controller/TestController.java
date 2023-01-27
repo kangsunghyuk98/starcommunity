@@ -16,4 +16,9 @@ public class TestController {
         return "register";
     }
 
+    @RequestMapping("/registertest_ok")
+    public String registerTestOk() {
+        return "register_ok";
+    }
+
 }
