@@ -6,13 +6,13 @@
 <body>
 
   <h3>회원가입</h3>
-  <form action="/register" method="post">
+  <form action="/registertest_ok" method="post">
 
       아이디<input type="text" name="id"/>
       비밀번호<input type="password" name="password"/>
       닉네임<input type="text" name="nickname"/>
       이름<input type="text" name="name"/>
-      이메일<input type="email" name="email1"/>
+      이메일<input type="email" name="email"/>
 
       <input type="submit" value="가입"/>
 

@@ -12,7 +12,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorize -> authorize
-                        .antMatchers("/","/registertest","/registertest_ok").permitAll() // 인증없이 들어갈 수 있는 주소 설정
+                        .antMatchers("/","/registertest", "/registertest_ok").permitAll() // 인증없이 들어갈 수 있는 주소 설정
                         .anyRequest().authenticated() // 그외 나머지 주소는 인증 필요
                 );
 
@@ -21,8 +21,9 @@ public class SecurityConfig {
                         .loginPage("/logintest")
                         .permitAll()
                 );
-        //.formLogin(withDefaults())
-        //.httpBasic(withDefaults());
+
+        http.csrf().disable();
+
         return http.build();
     }
 }
