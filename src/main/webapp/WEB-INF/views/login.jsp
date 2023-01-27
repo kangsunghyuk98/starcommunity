@@ -12,6 +12,7 @@
         PW <input type="password" name="password" />
         <input type="submit" value="로그인" />
     </form>
+    <a href="/registertest">회원가입</a>
 
 </body>
 </html>

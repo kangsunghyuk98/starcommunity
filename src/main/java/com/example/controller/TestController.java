@@ -10,4 +10,10 @@ public class TestController {
     public String loginTest() {
         return "login";
     }
+
+    @RequestMapping("/registertest")
+    public String registerTest() {
+        return "register";
+    }
+
 }
