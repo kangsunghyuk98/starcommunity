@@ -11,4 +11,5 @@ public class MemberTO {
     private String name;
     private String email;
 
+
 }
