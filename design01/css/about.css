@@ -1,0 +1,28 @@
+
+.About-contents{
+    font-family: BMJUA;
+    text-align: center;
+    width: 940px;
+}
+
+.about-txt{
+    height: 100px;
+    line-height: 100px;
+    font-size: x-large;
+}
+
+.team-name{
+    height: 100px;
+    line-height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-size: x-large;
+}
+
+.team-image{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;;
+}
+
