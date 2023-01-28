@@ -11,4 +11,5 @@ public class AdminController {
     public String showAdminPage() {
         return "admin";
     }
+    // 관리자 페이지 매핑
 }
