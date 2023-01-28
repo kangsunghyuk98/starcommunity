@@ -20,7 +20,7 @@ public class SecurityMember implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return this.authorities;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SecurityMember implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return this.id;
     }
 
     @Override
