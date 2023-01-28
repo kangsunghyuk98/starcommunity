@@ -24,6 +24,9 @@ public class MemberUserDetailsService implements UserDetailsService {
         if (securityMember == null) throw new UsernameNotFoundException("해당하는 유저가 없습니다.");
 
         securityMember.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(securityMember.getRole())));
+//        System.out.println(securityMember.getId());
+//        System.out.println(securityMember.getPassword());
+//        System.out.println(securityMember.getAuthorities());
 
         return new MemberUser(securityMember);
     }

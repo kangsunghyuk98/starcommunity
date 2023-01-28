@@ -25,6 +25,7 @@ public class SecurityConfig {
                         .usernameParameter("id") // 로그인 시 입력한 id
                         .passwordParameter("password") // 로그인 시 입력한 pw
                         .loginProcessingUrl("/guest/logintest_ok") // 로그인 처리 url (post)
+                        .defaultSuccessUrl("/")
                         .permitAll()
                 );
 

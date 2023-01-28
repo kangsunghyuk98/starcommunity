@@ -17,6 +17,6 @@ public interface MapperInter {
     @Insert("insert into member values (0, #{id}, #{role},#{password}, #{nickname}, #{name}, #{email})")
     int save(MemberTO to);
 
-    @Select("select memberkey, password, role, nickname from member where id = #{id}")
+    @Select("select id, password, role, nickname from member where id = #{id}")
     SecurityMember selectMemberKeyById(String id); // MemberUserDetailsService에서 회원정보 가져오기 위한 메서드
 }
