@@ -7,12 +7,12 @@
 
     <h3>로그인 테스트</h3>
 
-    <form action="/logintest_ok" method="post">
+    <form action="/guest/logintest_ok" method="post">
         ID <input type="text" name="id" />
         PW <input type="password" name="password" />
         <input type="submit" value="로그인" />
     </form>
-    <a href="/registertest">회원가입</a>
+    <a href="/guest/registertest">회원가입</a>
 
 </body>
 </html>

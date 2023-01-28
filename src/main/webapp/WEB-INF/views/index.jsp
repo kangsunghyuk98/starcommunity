@@ -6,6 +6,6 @@
 <body>
 
     인덱스 입니다.
-  <a href="/logintest">로그인</a> <a href="/logouttest">로그아웃</a>
+  <a href="/guest/logintest">로그인</a> <a href="/logouttest">로그아웃</a>
 </body>
 </html>
