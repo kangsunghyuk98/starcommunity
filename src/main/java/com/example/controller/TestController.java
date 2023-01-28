@@ -33,4 +33,9 @@ public class TestController {
         return "login";
     }
 
+    @RequestMapping("/logouttest")
+    public String logoutTest() {
+        return "redirect:/";
+    }
+
 }

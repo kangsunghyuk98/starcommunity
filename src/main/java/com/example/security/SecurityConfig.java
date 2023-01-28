@@ -28,6 +28,10 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/")
                         .permitAll()
                 );
+        http.logout()
+                .logoutUrl("/guest/logouttest")
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID");
 
        http.csrf().disable();
 
