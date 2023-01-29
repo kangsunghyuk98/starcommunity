@@ -21,15 +21,15 @@ public class SecurityConfig {
 
         http
                 .formLogin(login -> login
-                        .loginPage("/guest/logintest")
+                        .loginPage("/guest/login")
                         .usernameParameter("id") // 로그인 시 입력한 id
                         .passwordParameter("password") // 로그인 시 입력한 pw
-                        .loginProcessingUrl("/guest/logintest_ok") // 로그인 처리 url (post)
+                        .loginProcessingUrl("/guest/login_ok") // 로그인 처리 url (post)
                         .defaultSuccessUrl("/")
                         .permitAll()
                 );
         http.logout()
-                .logoutUrl("/guest/logouttest")
+                .logoutUrl("/guest/logout")
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID");
 

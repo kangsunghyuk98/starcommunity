@@ -8,32 +8,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/guest")
-public class TestController {
+public class MemberController {
     @Autowired
     private TestService testService;
 
-    @RequestMapping("/logintest")
+    @RequestMapping("/login")
     public String loginTest() {
         return "login";
     } // 로그인 테스트
 
-    @RequestMapping("/logintest_ok")
+    @RequestMapping("/login_ok")
     public String loginTestOk() {
         return "redirect:/";
     } // 로그인 테스트
 
-    @RequestMapping("/registertest")
+    @RequestMapping("/register")
     public String registerTest() {
         return "register";
     } // 회원가입 테스트
 
-    @RequestMapping("/registertest_ok")
+    @RequestMapping("/register_ok")
     public String registerTest(MemberTO to) {
         testService.save(to);
         return "login";
     }
 
-    @RequestMapping("/logouttest")
+    @RequestMapping("/logout")
     public String logoutTest() {
         return "redirect:/";
     }
