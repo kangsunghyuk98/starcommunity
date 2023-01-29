@@ -15,7 +15,7 @@
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">
-        <b><sec:authentication property="principal.nickname"/></b>>(<sec:authentication property="principal.id"/>) 안녕하세요 <br><br>
+        <b><sec:authentication property="principal.nickname"/></b>(<sec:authentication property="principal.id"/>) 안녕하세요 <br><br>
         <a href="/guest/logouttest">로그아웃</a>
     </sec:authorize>
 </body>
