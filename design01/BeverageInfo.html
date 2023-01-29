@@ -18,6 +18,63 @@
             font-size: 40px;
             font-family: 'BMJUA';
         }
+
+        .container {
+            width: 940px;
+            margin-bottom: 40px;
+            /* background-color:beige; */
+        }
+
+        .contentheader {
+            font-size: 40px;
+            font-family: 'BMJUA';
+        }
+
+        .label {
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+
+        .view_content_info {
+            font-size: smaller;
+        }
+
+        .image {
+            display: block;
+        }
+
+        .view_content {
+            margin-top: 25px;
+            margin-bottom: 35px;
+        }
+
+        .ws-grey {
+            background-color: rgb(245, 245, 245) !important;
+            color: black !important;
+        }
+
+        .w3-border {
+            border: 1px solid #ccc !important;
+
+        }
+
+        .w3-round,
+        .w3-round-medium {
+            border-radius: 4px;
+        }
+
+        .coment_re_txt {
+            font-size: small;
+        }
+
+        .coment_re.coment_re_view {
+            font-size: small;
+        }
+
+        .coment_re_view {
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -93,9 +150,63 @@
 
     <br>
     <br>
-    <div>Index 콘텐츠 영역입니다.</div>
-    <div class="contentheader mt-auto ">음료</div>
+    <div class="container">
+        <div class="content_header mt-auto ">음료 메뉴 이름</div>
 
+        <!-- 음료 정보 -->
+        <div>사진</div>
+        <div>정보</div>
+
+        <!-- 댓글 -->
+        <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
+            <form action="" method="post">
+                <div class="write_comment">
+                    <div class="mb-3 mt-3 ">
+                        <label for="comment">Comments:</label>
+                        <textarea class="form-control mt-3" rows="2" id="comment" name="text"></textarea>
+                    </div>
+                    <button type="button" href="#" class="btn btn-primary float-end btn-sm mb-4">댓글 등록</button>
+                </div>
+            </form>
+
+            <!-- 댓글 리스트 -->
+            <div class="comment">
+                <table class="container-fluid">
+                    <tr class="clearfix border-top comment_tr">
+                        <td class="coment_re_txt float-start">
+                            <div class="mt-2 mb-2">
+                                <strong>글쓴이1</strong>(2023.09.19 02:00)
+                            </div>
+                            <div class="coment_re_txt mb-2">
+                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
+                            </div>
+                        </td>
+                        <td class="coment_re_btn float-end">
+                            <button type="button"
+                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
+                        </td>
+                    </tr>
+                    <tr class="clearfix border-top comment_tr">
+                        <td class="coment_re_txt float-start">
+                            <div class="mt-2 mb-2">
+                                <strong>글쓴이1</strong>(2023.09.19 02:00)
+                            </div>
+                            <div class="coment_re_txt mb-2">
+                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
+                            </div>
+                        </td>
+                        <td class="coment_re_btn float-end">
+                            <button type="button"
+                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
+                        </td>
+                    </tr>
+                </table>
+                <div class="coment_re_view">
+                    <button type="button" class="btn btn-sm ">댓글 더보기</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 풋터 영역 -->
     <footer></footer>
