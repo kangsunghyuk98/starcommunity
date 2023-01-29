@@ -10,7 +10,7 @@ smartEditor = function () {
         sSkinURI: "./static/smarteditor/SmartEditor2Skin.html",
         fCreator: "createSEditor2"
     })
-}
+} 
 
 $(document).ready(function () {
     smartEditor()
