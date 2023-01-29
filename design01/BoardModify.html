@@ -22,24 +22,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
-    <!-- 스마트에디터 설정입니다. -->
-    <script>
-        let oEditors = []
-
-        smartEditor = function () {
-            nhn.husky.EZCreator.createInIFrame({
-                oAppRef: oEditors,
-                elPlaceHolder: "editorTxt",
-                sSkinURI: "./static/smarteditor/SmartEditor2Skin.html",
-                fCreator: "createSEditor2"
-            });
-        }
-
-        $(document).ready(function () {
-            smartEditor()
-        });
-
-    </script>
+    <script src="./js/boardmodify.js"></script>
 
 </head>
 
@@ -125,8 +108,8 @@
         <form action="" method="post">
             <textarea name="editorTxt" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요"
                 style="width: 913px"></textarea>
-            <button type="button" id="m-btn" href="#" style="float: right;" class="btn btn-outline-secondary ">글수정</button>
-            <button type="button" href="#" style="float: right;" class="btn btn-outline-secondary ">취소</button>
+            <button type="button" id="m-btn" style="float: right;" class="btn btn-outline-secondary ">글수정</button>
+            <button type="button" onclick="location.href=''" style="float: right;" class="btn btn-outline-secondary ">취소</button>
         </form>
     </div>
     <!-- 풋터 영역 -->
