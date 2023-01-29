@@ -8,7 +8,7 @@
     <h3>로그인 테스트</h3>
 
     <form action="/guest/login_ok" method="post">
-        ID <input type="text" name="username" />
+        ID <input type="text" name="id" />
         PW <input type="password" name="password" />
         <input type="submit" value="로그인" />
     </form>
