@@ -1,0 +1,84 @@
+.content_header {
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Noto Sans KR';
+}
+
+.container {
+    width: 940px;
+    margin-bottom: 40px;
+    /* background-color:beige; */
+}
+
+.contentheader {
+    font-size: 40px;
+    font-family: 'BMJUA';
+}
+
+.label {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.view_content_info {
+    font-size: smaller;
+}
+
+img {
+    /* width: 340px; */
+    height: 340px;
+}
+
+.Beverage_info {
+    margin-bottom: 40px;
+}
+
+.Beverage_txt {
+    /* background-color: antiquewhite; */
+    width: 580px;
+}
+
+.Beverage_img {
+    margin-right: 45px;
+}
+
+.txt_align_r {
+    text-align: right;
+}
+
+.view_content {
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+.ws-grey {
+    background-color: rgb(245, 245, 245) !important;
+    color: black !important;
+}
+
+.w3-border {
+    border: 1px solid  rgb(245, 245, 245) !important;
+
+}
+
+.w3-round,
+.w3-round-medium {
+    border-radius: 4px;
+}
+
+.coment_re_txt {
+    font-size: small;
+}
+
+.coment_re.coment_re_view {
+    font-size: small;
+}
+
+.coment_re_view {
+    margin-top: 20px;
+    text-align: center;
+}
+.l_btn{
+    margin-top: 15px;
+}
