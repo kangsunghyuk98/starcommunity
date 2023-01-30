@@ -1,8 +1,7 @@
 .content_header {
     margin-bottom: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: 'Noto Sans KR';
+    font-size: 40px;
+    font-family: 'BMJUA';
 }
 
 .container {
@@ -34,13 +33,30 @@ img {
     margin-bottom: 40px;
 }
 
-.Beverage_txt {
+.Beverage_name{
+    font-family: Noto Sans KR; 
+    font-size: x-large;
+    font-weight: bold;
+
+}
+
+.Beverage_E_name{
+    font-family: Noto Sans KR; 
+    font-size: small;
+    padding-left: 3px;
+}
+
+.Beverage_info_table {
     /* background-color: antiquewhite; */
     width: 580px;
 }
 
 .Beverage_img {
     margin-right: 45px;
+}
+.Beverage_txt{
+    margin-top: 30px;
+    font-size:small;
 }
 
 .txt_align_r {

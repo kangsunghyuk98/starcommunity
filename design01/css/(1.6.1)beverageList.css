@@ -21,8 +21,8 @@ tr {
 
 .w_search {
     height: 38px;
-
     width: 180px;
+    margin-right: 5px;
 }
 
 .w_search_text {
