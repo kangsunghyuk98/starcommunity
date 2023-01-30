@@ -91,6 +91,17 @@ body {
     margin-left: 160px;
     margin-bottom: 20px;
 }
+
+#kakao{
+    margin-left: 90px;
+    margin-bottom: 20px;
+}
+#google{
+    margin-left: 0px;
+    margin-bottom: 20px;
+}
+
+
 #btn2 {
     width: 220px;
     padding: 5px;
@@ -100,6 +111,18 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    margin-left: 160px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+#btn3 {
+    width: 220px;
+    padding: 5px;
+    background-color: #f7e031;
+    color: rgb(70, 69, 69);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
     margin-bottom: 20px;
 }
