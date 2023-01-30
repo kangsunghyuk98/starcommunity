@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- 폰트는 따로 css파일을 만들었습니다 -->
+    <link rel="stylesheet" href="./font/font.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/(1.8.1)custom2.css">
+    <title>커스텀 레시피</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</head>
+<body>
+   <!-- 헤더 영역 -->
+   <div id="header">
+    <div class="memberShip text-end">
+        <button type="button" class="login_btn btn ">Login</button>
+        <button type="button" class="signup_btn btn ">Sign-up</button>
+    </div>
+
+    <nav class="navbar navbar-expand-lg  border-bottom">
+        <div class="container-fluid">
+            <a href="#" class="d-flex Logo">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- 메뉴 -->
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                <ul class="nav col-12 col-md-auto mb-2 ">
+                    <li><a href="#1" class="nav-link px-4 link-dark btn">About</a></li>
+                    <li><a href="#2" class="nav-link px-4 link-dark btn">Beverage</a></li>
+                    <li><a href="#3" class="nav-link px-4 link-dark btn">Recommend</a></li>
+                    <li><a href="#4" class="nav-link px-4 link-dark btn">Custom Recipe</a></li>
+                    <li class="nav-item dropdown"><a href="#5" class="nav-link dropdown-toggle px-4 link-dark btn"
+                            role="button" data-bs-toggle="dropdown">Community</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">일상게시판</a></li>
+                            <li><a class="dropdown-item" href="#">음료게시판</a></li>
+                            <li><a class="dropdown-item" href="#">매장 방문 후기게시판</a></li>
+                            <li><a class="dropdown-item" href="#">MD게시판</a></li>
+                            <li><a class="dropdown-item" href="#">프리퀀시 게시판</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown"><a href="#5" class="nav-link dropdown-toggle px-4 link-dark btn"
+                            role="button" data-bs-toggle="dropdown">Mypage</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">개인 정보 보기</a></li>
+                            <li><a class="dropdown-item" href="#">내가 쓴 글 목록</a></li>
+                            <li><a class="dropdown-item" href="#">나만의 레시피</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!-- 콘텐츠 영역 -->
+
+<br>
+<br>
+<div class="content">
+    <div class="container-sm custom_container">
+        <div class="content_header">커스텀 레시피</div>
+        <hr>
+        <img id="beverage_img" src="./img/(1.8.1).PNG">
+        <div class="custom">
+            <br>
+            <h3 id="menu_name">그린티프라푸치노</h3>
+            <form id="custom_form">
+                <ul id="custom_ul">
+                    <li id="size_li">
+                        <label for="size" class="li_label">사이즈</label>
+                        <select id="select_value" name="select_value" onchange="handleOnChange0(this)">
+                            <option value="tall" selected>톨 사이즈</option>
+							<option value="grande">그란데 사이즈</option>
+							<option value="venti">벤티 사이즈</option>
+                        </select>
+                    </li>
+                    <li id="shot_li">
+                        <label for="shot" class="li_label">샷 추가</label>
+                        <select id="shot" onchange="handleOnChange1(this)">
+                            <option value="1">샷 추가 없음</option>
+                            <option value="1">1샷 추가</option>
+							<option value="2">2샷 추가</option>
+							<option value="4">3샷 추가</option>
+                            <option value="5">4샷 추가</option>
+                            <option value="6">5샷 추가</option>
+                        </select>
+                    </li>
+                    <li id="syrup_li">
+                        <label for="syrup" class="li_label">시럽</label>
+                        <select id="syrup" onchange="handleOnChange2(this)">
+                            <option id="syrup" value="none">시럽 없이</option>
+                            <option id="syrup" value="vanilla">바닐라시럽 변경</option>
+							<option id="syrup" value="hazelnut">헤이즐넛시럽 변경</option>
+							<option id="syrup" value="caramel">카라멜시럽 변경</option>
+                        </select>
+                    </li>
+                    <li id="milk_li">
+                        <label for="milk" class="li_label">우유</label>
+                        <select id="milk" onchange="handleOnChange3(this)">
+                            <option id="milk" value="basic">우유 변경 없음</option>
+							<option id="milk" value="less">저지방우유로 변경</option>
+                            <option id="milk" value="none">무지방우유로 변경</option>
+							<option id="milk" value="oats">귀리우유로 변경</option>
+                            <option id="milk" value="soy">두유로 변경</option>
+                        </select>
+                    </li>
+                    <li id="ice_li">
+                        <label for="ice" class="li_label">얼음</label>
+                        <select id="ice" onchange="handleOnChange4(this)">
+                            <option id="ice" value="less">얼음 적게</option>
+							<option id="ice" value="regular">얼음 보통</option>
+							<option id="ice" value="extra">얼음 많이</option>
+                        </select>
+                    </li>
+                    <li id="whippedcream_li">
+                        <label for="whippedcream" class="li_label">휘핑크림</label>
+                        <select id="whippedcream" onchange="handleOnChange5(this)">
+                            <option id="whippedcream" value="none">휘핑크림 없이</option>
+                            <option id="whippedcream" value="less">휘핑크림 적게</option>
+							<option id="whippedcream" value="regular">휘핑크림 보통</option>
+							<option id="whippedcream" value="extra">휘핑크림 많이</option>
+                        </select>
+                    </li>
+                </ul>
+            </form>
+            <div class="text_result">
+                <div id="result0"></div>
+                <div id="result1"></div>
+                <div id="result2"></div>
+                <div id="result3"></div>
+                <div id="result4"></div>
+                <div id="result5"></div>
+            </div>
+            <button id="recipe_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="">나만의 레시피 저장</button>
+        </div>
+    </div>
+    <script src="./js/(1.8.1)custom_2.js"></script>
+</div>
+
+<!-- 풋터 영역 -->
+<footer></footer>
+
+</body>
+</html>

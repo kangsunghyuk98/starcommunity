@@ -1,0 +1,47 @@
+.content{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.content_header{
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-family: 'BMJUA';
+}
+
+.mypage_table{
+  width: 940px;
+}
+
+.table_margin{
+  margin-top: -15px;
+}
+
+#custom_btn{
+  float: right;
+  font-size: 15px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.page-link {
+    color: #000; 
+    background-color: #fff;
+    border: 1px solid #ccc; 
+}
+  
+.page-item.active .page-link {
+   z-index: 1;
+   color: #555;
+   font-weight:bold;
+   background-color: #f1f1f1;
+   border-color: #ccc;
+   
+}
+  
+.page-link:focus, .page-link:hover {
+    color: #000;
+    background-color: #fafafa; 
+    border-color: #ccc;
+}
+
+

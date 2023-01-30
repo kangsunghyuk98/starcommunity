@@ -1,0 +1,18 @@
+.content{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.content_header{
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-family: 'BMJUA';
+}
+
+.custom_table{
+  width : 940px;
+}
+
+.check_recipe{
+  border-spacing: 10px;
+  
+}
