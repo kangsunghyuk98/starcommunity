@@ -1,5 +1,6 @@
 <%@ page import="com.example.security.MemberUser" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 
@@ -16,7 +17,8 @@
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">
-        안녕하세요 <br><br>
+        <p><sec:authentication property="principal.to.nickname" />님 안녕하세요 </p>
+        <br><br>
         <a href="/guest/logout">로그아웃</a>
     </sec:authorize>
 </body>
