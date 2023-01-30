@@ -42,7 +42,7 @@ public class MemberController {
 
     @RequestMapping("/logout")
     public String logoutTest() {
-        return "redirect:/";
+        return "redirect:/home/index";
     }
 
     @RequestMapping("/test/login")
