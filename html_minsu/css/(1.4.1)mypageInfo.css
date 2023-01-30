@@ -1,0 +1,22 @@
+.content{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.content_header{
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-family: 'BMJUA';
+}
+
+.mypage_table{
+  width: 700px;
+}
+
+.table_margin{
+  margin-top: -15px;
+}
+
+#m_btn{
+  float: right;
+  font-size: 15px;
+}
