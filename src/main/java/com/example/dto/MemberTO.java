@@ -1,13 +1,27 @@
 package com.example.dto;
 
 import com.example.security.MemberRole;
-import lombok.Data;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@Getter
+@Setter
 public class MemberTO {
+
+    public MemberTO(String id, String role, String password, String nickname, String name, String email, String provider, String providerId) {
+        this.id = id;
+        this.role = role;
+        this.password = password;
+        this.nickname = nickname;
+        this.name = name;
+        this.email = email;
+        this.provider = provider;
+        this.providerId = providerId;
+    }
+
     private int memberKey;
     private String id;
     private String role;
@@ -15,5 +29,7 @@ public class MemberTO {
     private String nickname;
     private String name;
     private String email;
+    private String provider;
+    private String providerId;
 
 }

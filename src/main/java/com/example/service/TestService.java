@@ -3,6 +3,7 @@ package com.example.service;
 import com.example.dto.MemberTO;
 import com.example.mapper.MapperInter;
 import com.example.security.MemberRole;
+import com.example.security.SecurityMember;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,6 @@ public class TestService {
         }
         return flag;
     }
-
 
 
 }

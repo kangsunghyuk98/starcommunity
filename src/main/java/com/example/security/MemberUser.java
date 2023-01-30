@@ -10,9 +10,9 @@ public class MemberUser extends User {
     private String id;
 
     public MemberUser(SecurityMember securityMember) {
-        super(securityMember.getId(), securityMember.getPassword(), securityMember.getAuthorities());
+        super(securityMember.getUsername(), securityMember.getPassword(), securityMember.getAuthorities());
 
-        nickname = securityMember.getNickname();
-        id = securityMember.getId();
+        nickname = securityMember.getTo().getNickname();
+        id = securityMember.getUsername();
     }
 } // MemberUserDetailsService의 loadUserByUsername에서 요구하는 타입을 맞추기 위해 생성한 클래스
