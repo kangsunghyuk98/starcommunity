@@ -6,7 +6,7 @@
 <body>
 
   <h3>회원가입</h3>
-  <form action="/guest/registertest_ok" method="post">
+  <form action="/guest/register_ok" method="post">
 
       아이디<input type="text" name="id"/>
       비밀번호<input type="password" name="password"/>

@@ -1,5 +1,7 @@
 package com.example.security;
 
+import com.example.googleoauth.PrincipalOauth2UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -7,6 +9,9 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Autowired
+    private PrincipalOauth2UserService principalOauth2UserService;
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -20,16 +25,27 @@ public class SecurityConfig {
                 );
 
         http
-                .formLogin(login -> login
-                        .loginPage("/guest/logintest")
-                        .usernameParameter("id") // 로그인 시 입력한 id
-                        .passwordParameter("password") // 로그인 시 입력한 pw
-                        .loginProcessingUrl("/guest/logintest_ok") // 로그인 처리 url (post)
-                        .defaultSuccessUrl("/")
-                        .permitAll()
+                .formLogin(login -> {
+                            try {
+                                login
+                                        .loginPage("/guest/login")
+                                        .usernameParameter("username") // 로그인 시 입력한 id
+                                        .passwordParameter("password") // 로그인 시 입력한 pw
+                                        .loginProcessingUrl("/guest/login_ok") // 로그인 처리 url (post)
+                                        .defaultSuccessUrl("/")
+                                        .permitAll()
+                                        .and()
+                                        .oauth2Login()
+                                        .loginPage("/guest/login")
+                                        .userInfoEndpoint()
+                                        .userService(principalOauth2UserService);
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
                 );
         http.logout()
-                .logoutUrl("/guest/logouttest")
+                .logoutUrl("/guest/logout")
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID");
 
