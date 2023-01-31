@@ -22,15 +22,6 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests(authorize -> authorize
-                        // .antMatchers("/","/guest/**").permitAll() // 인증없이 들어갈 수 있는 주소 설정
-                        .antMatchers("/member/**").authenticated()
-                        .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                        .anyRequest().permitAll()
-                       // .anyRequest().authenticated() // 그외 나머지 주소는 인증 필요
-                );
-
-        http
                 .formLogin(login -> {
                             try {
                                 login
@@ -49,6 +40,15 @@ public class SecurityConfig {
                                 throw new RuntimeException(e);
                             }
                         }
+                );
+
+        http
+                .authorizeRequests(authorize -> authorize
+                        // .antMatchers("/","/guest/**").permitAll() // 인증없이 들어갈 수 있는 주소 설정
+                        .antMatchers("/member/**").authenticated()
+                        .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                        .anyRequest().permitAll()
+                       // .anyRequest().authenticated() // 그외 나머지 주소는 인증 필요
                 );
         http.logout()
                 .logoutUrl("/guest/logout")

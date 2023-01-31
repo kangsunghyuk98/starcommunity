@@ -1,0 +1,66 @@
+.content{
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+.custom_container{
+    width : 940px;
+}
+
+.content_header{
+    margin-bottom: 10px;
+    font-size: 40px;
+    font-family: 'BMJUA';
+ }
+
+#beverage_img{
+    float: left;
+    margin-right: 100px;
+    width: 35%;
+}
+
+#size_li{
+    margin-top: 20px;
+}
+
+#shot_li{
+    margin-top: 10px;
+}
+
+#syrup_li{
+    margin-top: 10px;
+}
+
+#milk_li{
+    margin-top: 10px;
+}
+
+#ice_li{
+    margin-top: 10px;
+}
+
+#whippedcream_li{
+    margin-top: 10px;
+}
+
+.li_label{
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.text_result{
+    width: 600px;
+    height: 230px;
+    border-style: solid;
+    border-color: gray;
+    margin-top: 70px;
+    margin-left: 150px;
+    font-size: 23px;
+    text-align : center;
+}
+
+#recipe_btn{
+    float: right;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-right: 10px;
+}

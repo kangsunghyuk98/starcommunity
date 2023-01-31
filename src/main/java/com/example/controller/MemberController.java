@@ -43,6 +43,20 @@ public class MemberController {
         return "okaction/regist_ok";
     }
 
+    @RequestMapping("/idcheck")
+    public String isDuplicateId (@RequestParam("id") String id, Model model) {
+        int result = memberService.isDuplicateId(id);
+        model.addAttribute("result",result);
+        return "okaction/idcheck";
+    }
+
+    @RequestMapping("/nickcheck")
+    public String isDuplicateNick (@RequestParam("nickname") String nickname, Model model) {
+        int result = memberService.isDuplicateNick(nickname);
+        model.addAttribute("result",result);
+        return "okaction/nickcheck";
+    }
+
     @RequestMapping("/logout")
     public String logoutTest() {
         return "redirect:/home/index";
@@ -62,9 +76,17 @@ public class MemberController {
         return "okaction/findid_ok";
     } // 아이디 찾기 처리완료
 
+    @RequestMapping("/findpw")
+    public String findPwView() {
+        return "minsu/(1.1.3)findPW_form";
+    }
 
-
-
+    @RequestMapping("/findpw_ok")
+    public String findPwOk (MemberTO to, Model model) {
+        int flag = memberService.findPw(to);
+        model.addAttribute("flag",flag);
+        return "okaction/findpw_ok";
+    }
 
 
     // 하위 코드는 소셜 로그인 테스트용

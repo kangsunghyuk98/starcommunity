@@ -1,0 +1,137 @@
+#main, #qna, #result{
+    font-family: 'Nanum Pen Script', cursive;
+}
+/* 추천 페이지는 콘텐츠 헤더 글자 넣지 않음
+.content_header{ 
+    font-size: 40px;
+    font-family: 'BMJUA';
+}*/
+/* 모바일 적용을 위해 px로 넣지 않고 %로 넣음 
+.content_container{     
+    width: 700px;
+}*/
+
+
+/* animation 관련 css -----------------------------------*/
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+/* chrome용 이벤트 */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fadeIn{
+    animation: fadeIn;
+    animation-duration: 0.25s;
+}
+.fadeOut{
+    animation: fadeOut;
+    animation-duration: 0.25s;
+}
+
+
+/* main 영역에 들어갈 css -----------------------------------*/
+#main{
+    background-color: antiquewhite;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+}
+p{
+    font-size: 20px;
+}
+
+
+/* qna 영역에 들어갈 css -----------------------------------*/
+#qna{
+    display: none;
+}
+
+.q_OutLine{
+    display: table;
+    height: 250px;
+    width: 80%;
+}
+.qBox{
+    background-color: antiquewhite;
+    border-radius: 20px;
+    font-size: 35px;
+    /*height: 200px;*/
+    /*line-height: 180px;*/
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.answerList{
+    background-color: antiquewhite;
+    border-radius: 20px;
+    display: block;
+    width: 50%;
+    border: 0px;
+    font-size: 20px;
+}
+.answerList:hover, .answerList:focus{
+    background-color: brown;
+    color: white;
+}
+
+.status{
+    height: 20px;
+    width: 80%;
+    background-color: white;
+    border-radius: 20px;
+}
+.statusBar{
+    height: 100%;
+    background-color: green;
+    border-radius: 20px;
+    /* 프로그레스 바 색상 커스텀 링크 : https://www.colorzilla.com/gradient-editor/ */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00772f+1,005412+40,003508+99&0.73+2,1+100 */
+    background: -moz-linear-gradient(top,  rgba(0,119,47,0.73) 1%, rgba(0,118,46,0.73) 2%, rgba(0,84,18,0.83) 40%, rgba(0,53,8,1) 99%, rgba(0,53,8,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,119,47,0.73) 1%,rgba(0,118,46,0.73) 2%,rgba(0,84,18,0.83) 40%,rgba(0,53,8,1) 99%,rgba(0,53,8,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,119,47,0.73) 1%,rgba(0,118,46,0.73) 2%,rgba(0,84,18,0.83) 40%,rgba(0,53,8,1) 99%,rgba(0,53,8,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ba00772f', endColorstr='#003508',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+/* result 영역에 들어갈 css -----------------------------------*/
+#result{
+    display: none;
+    background-color: antiquewhite;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+}
+  
+.resultName{
+    font-size: 40px;
+}
+.resultDesc{
+    font-size: 20px;
+}
+/* 결과 공유 부분을 만들게 될 경우 사용
+.kakao{
+    color: white;
+    background-color: #FEE500;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 20px;
+}  
+.kakao:hover, .kakao:focus {
+    background-color: whitesmoke;
+    color: #FEE500;
+}
+*/ 
