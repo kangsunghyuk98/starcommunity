@@ -95,7 +95,7 @@ public class MemberService {
                 mailSender.send(message);
 
             } catch (MessagingException e) {
-                throw new RuntimeException(e); // 에러처리
+                throw new RuntimeException(e);
             }
         } else {
             flag = 1;
