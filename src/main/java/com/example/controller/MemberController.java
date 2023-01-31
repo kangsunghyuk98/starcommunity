@@ -3,47 +3,71 @@ package com.example.controller;
 import com.example.dto.MemberTO;
 import com.example.security.MemberUser;
 import com.example.security.SecurityMember;
-import com.example.service.TestService;
+import com.example.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/guest")
 public class MemberController {
     @Autowired
-    private TestService testService;
+    private MemberService memberService;
 
     @RequestMapping("/login")
     public String loginTest() {
-        return "login";
-    } // 로그인 테스트
+        return "minsu/(1.1)login_form";
+    }
 
     @RequestMapping("/login_ok")
-    public String loginTestOk() {
+    public String loginOk() {
         return "redirect:/";
-    } // 로그인 테스트
+    }
 
     @RequestMapping("/register")
     public String registerTest() {
-        return "register";
-    } // 회원가입 테스트
+        return "minsu/(1.1.1)signup_form";
+    } // 회원가입 중복확인 요청 받아야함
 
     @RequestMapping("/register_ok")
-    public String registerTest(MemberTO to) {
-        testService.save(to);
-        return "login";
+    public String registerTest(MemberTO to, Model model) {
+        int flag = memberService.save(to);
+        model.addAttribute("flag",flag);
+        return "okaction/regist_ok";
     }
 
     @RequestMapping("/logout")
     public String logoutTest() {
         return "redirect:/home/index";
     }
+
+    @RequestMapping("/findid")
+    public String findIdView() {
+        return "minsu/(1.1.2)findID_form";
+    }
+
+    @RequestMapping("/findid_ok")
+    public String findIdOk(@RequestParam("name") String name, @RequestParam("email") String email, Model model) {
+
+        String id = memberService.findId(name,email);
+        model.addAttribute("id",id);
+
+        return "okaction/findid_ok";
+    } // 아이디 찾기 처리완료
+
+
+
+
+
+
+    // 하위 코드는 소셜 로그인 테스트용
 
     @RequestMapping("/test/login")
     public @ResponseBody String LoginTest(Authentication authentication, @AuthenticationPrincipal UserDetails userDetails) { // @AuthenticationPrincipal를 통해 세션정보 접근 가능
