@@ -1,0 +1,31 @@
+.contents {
+    /* width: 70%; */
+    /* background-color: antiquewhite; */
+}
+ 
+.content_header {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    font-family: 'BMJUA';
+}
+
+.beverage_name {
+    margin-top: 15px;
+    height: 30px;
+}
+
+tr {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.w_search {
+    height: 38px;
+    width: 180px;
+    margin-right: 5px;
+}
+
+.w_search_text {
+    margin-right: 5px;
+    width: 180px;
+}

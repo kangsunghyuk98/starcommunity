@@ -1,0 +1,87 @@
+.custom__table{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+body{
+	margin-left: 10px;
+	margin-right: 10px;
+	
+}
+.content{
+	background-color: #F8F4EA;
+    border-radius: 20px;
+}
+.content_header{
+    margin-bottom: 10px;
+    font-size: 2.25rem;
+    font-weight: bold;
+    font-family: 'Bareun_hipi';
+    text-align: center;
+ }
+.list-group-item{
+	background-color: #F8F4EA;
+}
+.Beverage_name{
+    font-family: Bareun_hipi; 
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#beverage_img{
+/*     float: left; */
+    /* margin-right: 100px; */
+    /* width: 35%; */
+    
+}
+
+.custom_text{
+/* 	float: right; */
+}
+
+/* #size_li{
+    margin-top: 20px;
+}
+
+#shot_li{
+    margin-top: 10px;
+}
+
+#syrup_li{
+    margin-top: 10px;
+}
+
+#milk_li{
+    margin-top: 10px;
+}
+
+#ice_li{
+    margin-top: 10px;
+}
+
+#whippedcream_li{
+    margin-top: 10px;
+} */
+
+.li_label{
+    font-size: 1rem;
+    /* margin-right: 5px; */
+}
+
+.text_result{
+
+    width: 100%;
+    /* height: 50%;  */
+    border-style: solid;
+    border-radius: 8px;
+    /* border-color: gray; */
+    font-size: 2rem;
+    text-align : center;
+    font-family : Bareun_hipi;
+
+}
+
+.recipe_btn{
+    float: right;
+    margin-top: 10px;
+}

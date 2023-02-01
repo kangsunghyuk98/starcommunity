@@ -1,0 +1,28 @@
+.content_header{
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-family: 'Bareun_hipi';
+}
+body{
+	margin-left: 10px;
+	margin-right: 10px;
+	
+}
+.content{
+	background-color: #F8F4EA;
+    border-radius: 20px;
+}
+.content_header{
+    margin-bottom: 10px;
+    font-size: 2.25rem;
+    font-weight: bold;
+    font-family: 'Bareun_hipi';
+    text-align: center;
+ }
+.custom_subject_txt {
+	text-align: center;
+}
+.custom_table{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
