@@ -8,9 +8,13 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface MapperInter {
+    
+    // 여기서 부터 회원가입과 로그인에 관련된 쿼리임
 
     @Insert("insert into member values (0, #{id}, #{role},#{password}, #{nickname}, #{name}, #{email},'','')")
     int save(MemberTO to);
@@ -35,5 +39,13 @@ public interface MapperInter {
 
     @Update("update member set password = #{encodeUUIDPassword} where id = #{id} and name = #{name} and email = #{email}")
     int updateRawpasswordToUUID (String encodeUUIDPassword, String id, String name, String email); // 임시비밀번호 발급을 위한 쿼리
+
+
+
+    // 여기서 부터는 관리자가 회원을 관리하기 위한 쿼리임
+
+    @Select("select * from member where role = 'ROLE_USER'")
+    List<MemberTO> selectAllMember(); // 관리자 페이지에서 모든 멤버를 뽑아오는 쿼리
+
 
 }
