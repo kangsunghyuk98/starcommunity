@@ -83,10 +83,15 @@ public class MemberController {
 
     @RequestMapping("/findpw_ok")
     public String findPwOk (MemberTO to, Model model) {
+
         int flag = memberService.findPw(to);
         model.addAttribute("flag",flag);
+
         return "okaction/findpw_ok";
     }
+
+
+
 
 
     // 하위 코드는 소셜 로그인 테스트용

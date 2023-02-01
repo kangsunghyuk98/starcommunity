@@ -12,9 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MapperInter {
 
-    @Select("select now() as now")
-    String selectNow();
-
     @Insert("insert into member values (0, #{id}, #{role},#{password}, #{nickname}, #{name}, #{email},'','')")
     int save(MemberTO to);
 
@@ -36,10 +33,7 @@ public interface MapperInter {
     @Select("select id from member where name = #{name} and email = #{email}")
     String findId(String name, String email); // 아이디 찾기 쿼리
 
-    @Select("select count(*) from member where id = #{id} and name = #{name} and email = #{email}")
-    int findPw(MemberTO to); // 비밀번호 찾기 쿼리
-
     @Update("update member set password = #{encodeUUIDPassword} where id = #{id} and name = #{name} and email = #{email}")
-    int updateRawpasswordToUUID (String encodeUUIDPassword, String id, String name, String email);
+    int updateRawpasswordToUUID (String encodeUUIDPassword, String id, String name, String email); // 임시비밀번호 발급을 위한 쿼리
 
 }
