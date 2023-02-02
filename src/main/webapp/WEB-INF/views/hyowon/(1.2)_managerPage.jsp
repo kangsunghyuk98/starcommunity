@@ -5,10 +5,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
-    List<MemberTO> allMember = (List<MemberTO>) request.getAttribute("allMember");
+    List<MemberTO> memberList = (List<MemberTO>) request.getAttribute("memberList");
     StringBuilder sb = new StringBuilder();
 
-    for (MemberTO to:allMember) {
+    for (MemberTO to:memberList) {
         sb.append("    <tr>");
         sb.append("         <td>"+to.getMemberKey()+"</td>");
         sb.append("         <td>"+to.getId()+"</td>");
@@ -55,6 +55,11 @@
 				}  
 	       });
 	   });
+
+       function fn_paging(currentPage) {
+           location.href = '/admin/main?currentPage='+currentPage;
+       }
+
 	</script>
 </head>
 
@@ -107,19 +112,42 @@
 
     </div>
 </div>
-<br><br>
+<br>
 
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
             <div class="col-md-3" style="float: none; margin: 0 auto;">
 
                 <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">previous</a></li>
-                <c:forEach var="i" begin="1" end="${totalPage}">
-                    <li class="page-item"><a class="page-link" href="#">${i}</a></li>
-                </c:forEach>
-                    <li class="page-item"><a class="page-link" href="#">next</a></li>
-                </ul> //sdfsdfsdf
+
+                    <c:if test="${pagination.curRange ne 1 }">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging(1)">처음</a></li>
+                    </c:if>
+
+                    <c:if test="${pagination.curPage ne 1}">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pagination.prevPage }')">이전</a></li>
+                    </c:if>
+
+                    <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
+                        <c:choose>
+                            <c:when test="${pageNum eq pagination.curPage}">
+                                <span style="font-weight: bold;"><li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li></span>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                    <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.nextPage }')" class="page-link">다음</a></li>
+                    </c:if>
+
+                    <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.pageCnt }')" class="page-link">끝</a></li>
+                    </c:if>
+
+                </ul>
 
             </div>
         </div>

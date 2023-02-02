@@ -50,4 +50,7 @@ public interface MapperInter {
     @Select("select count(*) from member where role = 'ROLE_USER'")
     int selectAllMemberCount(); // 모든 유저권한 가진 멤버를 select하는 쿼리
 
+    @Select("select * from member where role = 'ROLE_USER' limit #{startNo},10")
+    List<MemberTO> selectAllMemberTen(int startNo); // 관리자 페이지에서 10명씩 페이징 처리 쿼리
+
 }

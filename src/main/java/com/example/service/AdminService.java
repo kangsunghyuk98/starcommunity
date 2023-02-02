@@ -23,4 +23,9 @@ public class AdminService {
         return memberCount;
     }
 
+    public List<MemberTO> selectAllMemberTen(int startNo) {
+        List<MemberTO> allTenMember = mapperInter.selectAllMemberTen(startNo);
+        return allTenMember;
+    }
+
 }
