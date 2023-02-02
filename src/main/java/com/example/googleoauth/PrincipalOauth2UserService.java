@@ -1,10 +1,13 @@
 package com.example.googleoauth;
 
 import com.example.dto.MemberTO;
+import com.example.googleoauth.userInfo.GoogleUserInfo;
+import com.example.googleoauth.userInfo.KakaoUserInfo;
+import com.example.googleoauth.userInfo.NaverUserInfo;
+import com.example.googleoauth.userInfo.OAuth2UserInfo;
 import com.example.mapper.MapperInter;
 import com.example.security.SecurityMember;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -30,13 +33,27 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         System.out.println("getAttributes : " + oAuth2User.getAttributes());
 
-        String provider = userRequest.getClientRegistration().getRegistrationId(); // google
-        String provideId = oAuth2User.getAttribute("sub");
+        // 구글 , 카카오 에 따라 다름
+        OAuth2UserInfo oAuth2UserInfo = null;
+
+        String provider = userRequest.getClientRegistration().getRegistrationId(); // google, naver
+        // provider에 따라 변경
+        if(provider.equals("google")){
+            oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
+        }
+        else if(provider.equals("naver")){
+            oAuth2UserInfo = new NaverUserInfo(oAuth2User.getAttributes());
+        }
+        else if(provider.equals("kakao")){
+            oAuth2UserInfo = new KakaoUserInfo(oAuth2User.getAttributes());
+        }
+
+        String provideId = oAuth2UserInfo.getProviderId();
         String id = provider+"_"+provideId;
-        String name = oAuth2User.getAttribute("name");
-        String nickname = oAuth2User.getAttribute("name");
+        String name = oAuth2UserInfo.getName();
+        String nickname = oAuth2UserInfo.getName();
         String password = passwordEncoder.encode("구글로그인");
-        String email = oAuth2User.getAttribute("email");
+        String email = oAuth2UserInfo.getEmail();
         String role = "ROLE_USER";
 
         MemberTO to = mapperInter.oauthSelectMemberKeyById(id);
@@ -47,6 +64,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             mapperInter.oauthSave(to);
         }
 
-        return new SecurityMember(to, oAuth2User.getAttributes());
+        return new SecurityMember(to, oAuth2UserInfo);
     } // 구글로 부터 받은 userRequest 데이터에 대한 후처리되는 함수임
 }
