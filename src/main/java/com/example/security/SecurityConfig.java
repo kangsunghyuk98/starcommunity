@@ -56,7 +56,10 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID");
 
        http.csrf().disable();
-
+       
+       // 스마트에디터에서 iframe을 사용하는데 스프링시큐리티에서 X-Frame-Options Click jacking 공격 막기 설정이 되어 있습니다. 그 설정을 조정하는 코드입니다.
+       http.headers().frameOptions().sameOrigin();
+       
         return http.build();
     }
 }

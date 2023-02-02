@@ -24,23 +24,7 @@
     <script type="text/javascript" src="/js/(1.3.1.2)boardWrite.js"></script>
     <script type="text/javascript" src="/js/(1)header.js"></script>
     
-    <!-- <script type="text/javascript" src="smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script> -->
-    <script type="text/javascript">
-	    let oEditors = []
-	
-	    smartEditor = function () {
-	        nhn.husky.EZCreator.createInIFrame({
-	            oAppRef: oEditors,
-	            elPlaceHolder: "editorTxt",
-	            sSkinURI: "/smarteditor/SmartEditor2Skin.html",
-	            fCreator: "createSEditor2"
-	        });
-	    } 
-	
-	    $(document).ready(function () { 
-	        smartEditor();
-	    });
-    </script>
+    <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -62,7 +46,7 @@
             <input class="form-control" type="file" id="" multiple>
         </div>
         <form action="" method="post">
-            <textarea name="editorTxt" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요"
+            <textarea name="editorTxt" id="editorTxt" rows="10" cols="10" placeholder="내용을 입력해주세요"
                 style="width: 100%"></textarea>
             <div>
 	            <button type="button" id="w_btn" style="float: right;" class="btn btn-outline-secondary ">글쓰기</button>
