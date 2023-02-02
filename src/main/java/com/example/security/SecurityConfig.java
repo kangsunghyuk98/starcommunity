@@ -45,7 +45,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests(authorize -> authorize
                         // .antMatchers("/","/guest/**").permitAll() // 인증없이 들어갈 수 있는 주소 설정
-                        .antMatchers("/member/**").authenticated()
+                        .antMatchers("/member/**", "/board/**").authenticated()
                         .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                         .anyRequest().permitAll()
                        // .anyRequest().authenticated() // 그외 나머지 주소는 인증 필요

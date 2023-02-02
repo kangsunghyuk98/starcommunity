@@ -57,14 +57,16 @@
                             <li><a class="dropdown-item" href="./FrequencyBoardList">프리퀀시 게시판</a></li>
                         </ul>
                     </li>
+                    <sec:authorize access="isAuthenticated()">
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"
                             role="button" data-bs-toggle="dropdown">Mypage</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./MypageInfo">개인 정보 보기</a></li>
+                            <li><a class="dropdown-item" href="/member/myinfo">개인 정보 보기</a></li>
                             <li><a class="dropdown-item" href="./MypageWriteList">내가 쓴 글 목록</a></li>
                             <li><a class="dropdown-item" href="./MypageCustom">나만의 레시피</a></li>
                         </ul>
                     </li>
+                    </sec:authorize>
                 </ul>
             </div>
         </div>
