@@ -24,7 +24,6 @@
     			let searchReq = "";
     			
     			$("#button-addon2").on("click", function(searchReq){
-    				console.log("button click");
     				
     				searchReq = $("#select_box option:selected").val();
     				console.log(searchReq);
