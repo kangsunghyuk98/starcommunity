@@ -15,6 +15,12 @@ public class AdminController {
 
     @RequestMapping("/main")
     public String showAdminPage(Model model) {
+
+        int memberCount = adminService.selectAllMemberCount();
+        int totalPage = (int) Math.ceil((double) memberCount/10);
+
+        model.addAttribute("memberCount", memberCount);
+        model.addAttribute("totalPage", totalPage);
         model.addAttribute("allMember",adminService.selectAllMember());
         return "hyowon/(1.2)_managerPage";
     }

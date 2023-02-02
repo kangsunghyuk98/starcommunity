@@ -47,5 +47,7 @@ public interface MapperInter {
     @Select("select * from member where role = 'ROLE_USER'")
     List<MemberTO> selectAllMember(); // 관리자 페이지에서 모든 멤버를 뽑아오는 쿼리
 
+    @Select("select count(*) from member where role = 'ROLE_USER'")
+    int selectAllMemberCount(); // 모든 유저권한 가진 멤버를 select하는 쿼리
 
 }

@@ -18,4 +18,9 @@ public class AdminService {
         return allMember;
     }
 
+    public int selectAllMemberCount() {
+        int memberCount = mapperInter.selectAllMemberCount();
+        return memberCount;
+    }
+
 }

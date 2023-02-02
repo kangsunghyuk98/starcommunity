@@ -2,6 +2,7 @@
 <%@ page import="com.example.dto.MemberTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
     List<MemberTO> allMember = (List<MemberTO>) request.getAttribute("allMember");
@@ -74,11 +75,11 @@
             <form class="d-inline-flex">
                 <select class="form-select for_search">
                     <option selected disabled>검색조건</option>
-                    <option value="">ID</option>
-                    <option value="">닉네임</option>
-                    <option value="">이름</option>
+                    <option value="id">ID</option>
+                    <option value="nickname">닉네임</option>
+                    <option value="name">이름</option>
                 </select>
-                <input class="form-control for_search" type="text" placeholder="Search">
+                <input class="form-control for_search" name="keyword" type="text" placeholder="Search">
                 <button class="btn btn-primary" type="button">Search</button>
             </form>
         </div>   
@@ -106,6 +107,23 @@
 
     </div>
 </div>
+<br><br>
+
+    <div class="container-sm">
+        <div class="container row" style="float: none; margin: 100 auto;">
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="#">previous</a></li>
+                <c:forEach var="i" begin="1" end="${totalPage}">
+                    <li class="page-item"><a class="page-link" href="#">${i}</a></li>
+                </c:forEach>
+                    <li class="page-item"><a class="page-link" href="#">next</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
 
 
 <!-- 풋터 영역 -->
