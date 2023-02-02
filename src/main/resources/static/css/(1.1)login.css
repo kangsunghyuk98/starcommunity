@@ -15,7 +15,6 @@ body {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-50%) /*자식요소에 translate 값 주기*/
-
 }
 
 .logo{	
@@ -37,6 +36,7 @@ body {
     display: block;
     margin-top: 20px;
 }
+
 .login input[type=text],
 .login input[type=password] {
     width: 100%;

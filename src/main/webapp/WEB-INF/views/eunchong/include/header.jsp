@@ -45,7 +45,7 @@
                             <li><a class="dropdown-item" href="#">스타벅스 주스(병음료)</a></li>
                         </ul>
                     </li>
-                    <li><a href="./Recommend" class="nav-link px-4 link-dark btn">Recommend</a></li>
+                    <li><a href="/home/recommend" class="nav-link px-4 link-dark btn">Recommend</a></li>
                     <li><a href="./Custom1" class="nav-link px-4 link-dark btn">Custom Recipe</a></li>
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"
                             role="button" data-bs-toggle="dropdown">Community</a>
