@@ -1,25 +1,5 @@
-<%@ page import="java.util.List" %>
-<%@ page import="com.example.dto.MemberTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-
-    List<MemberTO> allMember = (List<MemberTO>) request.getAttribute("allMember");
-    StringBuilder sb = new StringBuilder();
-
-    for (MemberTO to:allMember) {
-        sb.append("    <tr>");
-        sb.append("         <td>"+to.getMemberKey()+"</td>");
-        sb.append("         <td>"+to.getId()+"</td>");
-        sb.append("         <td>"+to.getNickname()+"</td>");
-        sb.append("         <td>"+to.getName()+"</td>");
-        sb.append("         <td>"+to.getEmail()+"</td>");
-        sb.append("         <td class=\"text-center\"><button type=\"button\" class=\"btn btn-outline-danger btn-sm d_btn\">삭제</button></td>");
-        sb.append("    </tr>");
-    }
-
-%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- 폰트는 따로 css파일을 만들었습니다 -->
-    <link rel="stylesheet" href="/font/font.css">
-    <link rel="stylesheet" href="/css/(1)header.css">
-    <link rel="stylesheet" href="/css/(1.2)_managerPage.css">
+    <link rel="stylesheet" href="font/font.css">
+    <link rel="stylesheet" href="css/(1)header.css">  
+    <link rel="stylesheet" href="css/(1.2)_managerPage.css">  
     <title>관리자 페이지</title>
  	<script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
@@ -75,11 +55,11 @@
             <form class="d-inline-flex">
                 <select class="form-select for_search">
                     <option selected disabled>검색조건</option>
-                    <option value="id">ID</option>
-                    <option value="nickname">닉네임</option>
-                    <option value="name">이름</option>
+                    <option value="">ID</option>
+                    <option value="">닉네임</option>
+                    <option value="">이름</option>
                 </select>
-                <input class="form-control for_search" name="keyword" type="text" placeholder="Search">
+                <input class="form-control for_search" type="text" placeholder="Search">
                 <button class="btn btn-primary" type="button">Search</button>
             </form>
         </div>   
@@ -99,31 +79,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 회원 정보 다 들어가는 곳-->
-                    <%= sb.toString() %>
+                    <tr>
+                        <td>1</td>
+                        <td>사용자 아이디11===============================</td>
+                        <td>닉네임11</td>
+                        <td>이름11</td>
+                        <td>이메일11</td>
+                        <td class="text-center"><button type="button" class="btn btn-outline-danger btn-sm d_btn">삭제</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>사용자 아이디22</td>
+                        <td>닉네임22</td>
+                        <td>이름22</td>
+                        <td>이메일22</td>
+                        <td class="text-center"><button type="button" class="btn btn-outline-danger btn-sm d_btn">삭제</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>사용자 아이디33</td>
+                        <td>닉네임33</td>
+                        <td>이름33</td>
+                        <td>이메일33</td>
+                        <td class="text-center"><button type="button" class="btn btn-outline-danger btn-sm d_btn">삭제</button></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
 
     </div>
 </div>
-<br><br>
-
-    <div class="container-sm">
-        <div class="container row" style="float: none; margin: 100 auto;">
-            <div class="col-md-3" style="float: none; margin: 0 auto;">
-
-                <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">previous</a></li>
-                <c:forEach var="i" begin="1" end="${totalPage}">
-                    <li class="page-item"><a class="page-link" href="#">${i}</a></li>
-                </c:forEach>
-                    <li class="page-item"><a class="page-link" href="#">next</a></li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
 
 
 <!-- 풋터 영역 -->
