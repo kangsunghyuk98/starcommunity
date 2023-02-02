@@ -18,7 +18,7 @@ function setResult(){
   
     let resultImg = document.createElement( 'img' );
     const imgDiv = document.querySelector( '#resultImg' );
-    let imgURL = 'img/(1.7)_image_' + point + '.jpg';
+    let imgURL = '/img/(1.7)_image_' + point + '.jpg';
     resultImg.src = imgURL;
     resultImg.alt = point;
     resultImg.classList.add( 'img-fluid' );

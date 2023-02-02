@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- 폰트는 따로 css파일을 만들었습니다 -->
-    <link rel="stylesheet" href="css/(1)header.css">
-    <link rel="stylesheet" href="css/(1)contents.css">
-    <link rel="stylesheet" href="font/font.css">
-    <link rel="stylesheet" href="css/(1.3.3)reviewList.css">
+    <link rel="stylesheet" href="/css/(1)header.css">
+    <link rel="stylesheet" href="/css/(1)contents.css">
+    <link rel="stylesheet" href="/font/font.css">
+    <link rel="stylesheet" href="/css/(1.3.3)reviewList.css">
     
     <title>매장방문 후기게시판</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
 </head>
+
 <body>
 <!-- 헤더 영역 -->
 <jsp:include page="./include/header.jsp"/>
@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </div>

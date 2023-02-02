@@ -9,10 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- 폰트는 따로 css파일을 만들었습니다 -->
     
-    <link rel="stylesheet" href="css/(1)header.css">
-    <link rel="stylesheet" href="css/(1)contents.css">
-    <link rel="stylesheet" href="font/font.css">
-    <link rel="stylesheet" href="css/(1.3.2)beverageList.css">
+    <link rel="stylesheet" href="/css/(1)header.css">
+    <link rel="stylesheet" href="/css/(1)contents.css">
+    <link rel="stylesheet" href="/font/font.css">
+    <link rel="stylesheet" href="/css/(1.3.2)beverageList.css">
     
     <title>음료게시판</title>
 
@@ -105,7 +105,7 @@
             </div>
         </div>
     </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </div>

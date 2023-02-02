@@ -12,9 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="font/font.css">
-    <link rel="stylesheet" href="css/(1)header.css">
-    <link rel="stylesheet" href="css/(1.7)_recommend.css">   
+    <link rel="stylesheet" href="/font/font.css">
+    <link rel="stylesheet" href="/css/(1)header.css">
+    <link rel="stylesheet" href="/css/(1.7)_recommend.css">   
     <title>Recommend</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -28,10 +28,10 @@
 <br>
 <br>
 <div class="container col-lg-6 col-md-8 col-sm-10">
-    <section id="main" class="mx-auto mt-3 mb-5 px-3 py-5">
+    <section id="main" class="mx-auto mb-5 px-3 py-5">
         <h1>Can I recommend something to you?</h1>
         <div class="col-lg-6 col-md-8 col-sm-10 mx-auto my-5">
-            <img src="img/(1.7)_main.jpg" alt="mainImage" class="img-fluid">
+            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid">
         </div>
         <p>
             오늘은 뭘 마실까 고민이 되시나요?<br />
@@ -70,8 +70,8 @@
         <!-- <button type="button" class="btn btn-primary kakao mt-3 py-2 px-3" onclick="">공유하기</button> -->
     </section>
     <!-- 객체를 먼저 만들어야 함수를 사용할 수 있으므로 (1.7)_recommendQnaObjects.js를 먼저 선언해줌 -->
-    <script src="js/(1.7)_recommendQnaObject.js" charset="utf-8"></script>
-    <script src="js/(1.7)_recommendLogics.js" charset="utf-8"></script>
+    <script src="/js/(1.7)_recommendQnaObject.js" charset="utf-8"></script>
+    <script src="/js/(1.7)_recommendLogics.js" charset="utf-8"></script>
 </div>
 
 

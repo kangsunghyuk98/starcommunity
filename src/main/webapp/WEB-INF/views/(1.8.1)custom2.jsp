@@ -3,38 +3,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
-<!-- 폰트는 따로 css파일을 만들었습니다 -->
-<link rel="stylesheet" href="font/font.css">
-<link rel="stylesheet" href="css/(1)header.css">
-<link rel="stylesheet" href="css/(1)contents.css">
-<link rel="stylesheet" href="css/(1.8.1)custom2.css">
-<title>커스텀 레시피</title>
-
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.3.js"
-        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-
-<script>
-	$(document).ready(function() {
-		$("#return_menu").on("click", function(){
-			recipe_txt_func();
-			console.log(recipe_txt);
-			alert("나만의 레시피가 저장되었습니다.");
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+		crossorigin="anonymous">
+	<!-- 폰트는 따로 css파일을 만들었습니다 -->
+	<link rel="stylesheet" href="/font/font.css">
+	<link rel="stylesheet" href="/css/(1)header.css">
+	<link rel="stylesheet" href="/css/(1)contents.css">
+	<link rel="stylesheet" href="/css/(1.8.1)custom2.css">
+	<title>커스텀 레시피</title>
+	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.3.js"
+	        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$("#return_menu").on("click", function(){
+				recipe_txt_func();
+				console.log(recipe_txt);
+				alert("나만의 레시피가 저장되었습니다.");
+			});
 		});
-	});
-</script>
+	</script>
 </head>
+
 <body>
 	<!-- 헤더 영역 -->
 	<jsp:include page="./include/header.jsp" />
@@ -42,12 +43,11 @@
 	<!-- 콘텐츠 영역 -->
 	<br>
 	<br>
-
 	<div class="container content col-lg-6 col-md-8 col-sm-10 px-5 py-5 ">
 		<div class="content_header">My Custom Recipe</div>
 		<dlv class="row mt-5 justify-content-center">
 			<div class="col-sm-6" >
-				<img id="beverage_img" src="img/(1.8.1).PNG" class="img-fluid img-thumbnail mt-2">
+				<img id="beverage_img" src="/img/(1.8.1).PNG" class="img-fluid img-thumbnail mt-2">
 				<div class=" mt-2 mb-4 Beverage_name ">그린티 프라푸치노</div>
 			</div>
 			<div class="custom_text col-sm-6" >
@@ -131,7 +131,7 @@
 			</form>
 		</div>
 	</div>
-	<script src="js/(1.8.1)custom_2.js"></script>
+	<script src="/js/(1.8.1)custom_2.js"></script>
 
 	<!-- 풋터 영역 -->
 	<footer></footer>

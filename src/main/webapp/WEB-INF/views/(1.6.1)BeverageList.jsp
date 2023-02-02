@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- 폰트는 따로 css파일을 만들었습니다 -->
-    <link rel="stylesheet" href="font/font.css">
-    <link rel="stylesheet" href="css/(1)header.css">
-    <link rel="stylesheet" href="css/(1)contents.css">
-    <link rel="stylesheet" href="css/(1.6.1)beverageList.css">
+    <link rel="stylesheet" href="/font/font.css">
+    <link rel="stylesheet" href="/css/(1)header.css">
+    <link rel="stylesheet" href="/css/(1)contents.css">
+    <link rel="stylesheet" href="/css/(1.6.1)beverageList.css">
     <title>Beverage</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -22,7 +21,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="js/(1)header.js"></script>
+    <script type="text/javascript" src="/js/(1)header.js"></script>
 </head>
 
 <body>
@@ -61,14 +60,16 @@
             <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
                 <div class="col">
                     <div class="row">
-                        <a href="./BeverageInfo"><img src="img/(1.6.1.1)스타벅스콜드브루.jpg" class="img-thumbnail img-fluid" alt=""></a> 
+                        <a href="./BeverageInfo"><img 
+                        		src="/img/(1.6.1.1)스타벅스콜드브루.jpg" 
+                        		class="img-thumbnail img-fluid" alt=""></a> 
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
                 </div>
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
@@ -76,7 +77,7 @@
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
@@ -84,7 +85,7 @@
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
@@ -92,7 +93,7 @@
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
@@ -100,7 +101,7 @@
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
@@ -108,7 +109,7 @@
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
@@ -116,7 +117,7 @@
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
-                                src="img/(1.6.1.1)스타벅스콜드브루.jpg"
+                                src="/img/(1.6.1.1)스타벅스콜드브루.jpg"
                                 class="img-thumbnail img-fluid" alt=""></a>
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
