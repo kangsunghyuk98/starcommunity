@@ -19,7 +19,7 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping("/main")
-    public String showAdminPageTest(Model model, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage) {
+    public String showAdminPage(Model model, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage) {
 
         int allMember = adminService.selectAllMemberCount();
 
@@ -32,5 +32,19 @@ public class AdminController {
         model.addAttribute("pagination",pagination);
 
         return "hyowon/(1.2)_managerPage";
+    }
+
+    @RequestMapping("/main_search")
+    public String showSearchPage (@RequestParam(value = "selectCondition", defaultValue = "") String selectCondition,
+                                  @RequestParam(value = "keyword", defaultValue = "") String keyword, Model model){
+
+        List<MemberTO> memberList = adminService.selectUseCondition(selectCondition,keyword);
+
+        if (selectCondition.equals("") || keyword.equals("")) {
+            return "/okaction/adminredirect";
+        } else {
+            model.addAttribute("memberList",memberList);
+            return "hyowon/(1.2)_managerPage";
+        }
     }
 }

@@ -74,18 +74,18 @@
     <div class="container col-lg-6 col-md-8 col-sm-10">
 
         <div class="content_header">회원 관리</div>
-        <p>회원의 정보로 검색하여 관리할 수 있습니다.</p>
+        <p>회원의 정보로 검색하여 관리할 수 있습니다. (리스트 초기화 하려면 아무것도 입력하지 않은 상태에서 search)</p>
         
         <div class="dropdown">
-            <form class="d-inline-flex">
-                <select class="form-select for_search">
+            <form action="/admin/main_search" method="get" class="d-inline-flex">
+                <select name="selectCondition" class="form-select for_search">
                     <option selected disabled>검색조건</option>
-                    <option value="id">ID</option>
-                    <option value="nickname">닉네임</option>
-                    <option value="name">이름</option>
+                    <option name="id" value="id">ID</option>
+                    <option name="nickname" value="nickname">닉네임</option>
+                    <option name="name" value="name">이름</option>
                 </select>
                 <input class="form-control for_search" name="keyword" type="text" placeholder="Search">
-                <button class="btn btn-primary" type="button">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>   
 

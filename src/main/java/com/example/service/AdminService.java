@@ -28,4 +28,21 @@ public class AdminService {
         return allTenMember;
     }
 
+    public List<MemberTO> selectUseCondition(String selectCondition , String keyword) {
+        keyword = "%"+keyword+"%";
+        List<MemberTO> conMemberList;
+
+        if (selectCondition.equals("id")) {
+           conMemberList = mapperInter.selectUseConditionId(keyword);
+        } else if (selectCondition.equals("nickname")) {
+            conMemberList = mapperInter.selectUseConditionNickname(keyword);
+        } else if (selectCondition.equals("name")) {
+            conMemberList = mapperInter.selectUseConditionName(keyword);
+        } else {
+            conMemberList = mapperInter.selectAllMemberTen(0);
+        }
+
+        return conMemberList;
+    }
+
 }
