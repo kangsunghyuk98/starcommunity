@@ -37,29 +37,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
  
 	<script>
-	   $(document).ready(function () {
-	       $(".d_btn").on("click", function () {
-				let result = confirm("회원을 삭제하시겠습니까?");
-				if(result == true ){
-				    let inputPassword = prompt("비밀번호를 입력하세요");
-				    let password = '12345';
-				    if (inputPassword != null || '') {
-				        if (inputPassword == password) {
-				            console.log("비밀번호는" + inputPassword);
-				            alert("회원이 삭제되었습니다");
-				        } else {
-				            alert("비밀번호가 틀렸습니다");
-				        }
-				    }
-				} else {
-				}  
-	       });
-	   });
-
        function fn_paging(currentPage) {
            location.href = '/admin/main?currentPage='+currentPage;
        }
-
 	</script>
 </head>
 

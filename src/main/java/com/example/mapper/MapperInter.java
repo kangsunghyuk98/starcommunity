@@ -43,7 +43,6 @@ public interface MapperInter {
 
 
     // 여기서 부터는 관리자가 회원을 관리하기 위한 쿼리임
-
     @Select("select * from member where role = 'ROLE_USER'")
     List<MemberTO> selectAllMember(); // 관리자 페이지에서 모든 멤버를 뽑아오는 쿼리
 
