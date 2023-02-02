@@ -14,6 +14,8 @@
     <sec:authorize access="isAnonymous()">
         <a href="/guest/login">로그인</a>
         <a href="/oauth2/authorization/google">구글 로그인</a>
+    	<a href="/oauth2/authorization/kakao">카카오 로그인</a>
+        <a href="/oauth2/authorization/naver">네이버 로그인</a>
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated()">

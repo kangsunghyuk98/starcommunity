@@ -48,7 +48,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         else if(provider.equals("kakao")){	
             oAuth2UserInfo = new KakaoUserInfo(oAuth2User.getAttributes());
         }
-        
+         
         String provideId = oAuth2UserInfo.getProviderId();
         String id = provider+"_"+provideId;
         String name = oAuth2UserInfo.getName();

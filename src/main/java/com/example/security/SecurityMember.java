@@ -1,6 +1,8 @@
 package com.example.security;
 
 import com.example.dto.MemberTO;
+import com.example.googleoauth.userInfo.OAuth2UserInfo;
+
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,8 @@ import java.util.Map;
 public class SecurityMember implements UserDetails, OAuth2User {
 
     private MemberTO to;
+    //카카오 로그인을 위해 추가 
+    private OAuth2UserInfo oAuth2UserInfo;
 
     private Collection<? extends GrantedAuthority> authorities;
     private Map<String,Object> attributes;
@@ -22,19 +26,20 @@ public class SecurityMember implements UserDetails, OAuth2User {
         this.to = to;
     }
 
-    public SecurityMember(MemberTO to, Map<String,Object> attributes) {
+  //Map<String,Object> attributes -> OAuth2UserInfo oAuth2UserInfo
+    public SecurityMember(MemberTO to, OAuth2UserInfo oAuth2UserInfo) {
         this.to = to;
-        this.attributes = attributes;
-    } // oauth login
-
+        this.oAuth2UserInfo = oAuth2UserInfo;
+    }// oauth login
+ 
     @Override
     public Map<String, Object> getAttributes() {
-        return attributes;
+        return oAuth2UserInfo.getAttributes();
     }
 
     @Override
     public String getName() {
-        return null;
+    	return oAuth2UserInfo.getProviderId();
     }
 
     @Override
