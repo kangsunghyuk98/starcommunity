@@ -23,30 +23,32 @@
  
     			let searchReq = "";
     			
-    			$("#select_box").change(function(){
-    				searchReq = $("#select_box option:selected").val();
-    				console.log(searchReq);
-    			});
-
     			$("#button-addon2").on("click", function(searchReq){
     				console.log("button click");
-    				showBoardList();
+    				
+    				searchReq = $("#select_box option:selected").val();
+    				console.log(searchReq);
+    				searchBoardList(searchReq); 
     			});
     		});
     		
-    		const showBoardList = function(){
+    		const searchBoardList = function(searchReq){
 	    			$.ajax({
-	    				url: '/send',
-	    				type: 'get',
+	    				url: '/searchBoardList',
+	    				type: 'post',
+	    				data: { searchReq: searchReq },
 	    				dataType: 'json',
 	    				success: function(jsonData){
+	    					console.log("searchBoardList")
+	    					console.log(jsonData);
+	    					
 	    					$("#tbody").empty();	
 	    					
 	    					let html = '';
 	    					$.each(jsonData.data, function(index, item){
 	    						html += '<tr>';
-	    						html += '    <td>seq</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView">난 제목입니다</a></td>';
+	    						html += '    <td>seq'+ item.seq +'</td>';
+	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
 	    						html += '    <td>2xxx.xx.xx</td>';
 	    						html += '    <td>xx</td>';
 	    						html += '    <td>xx</td>';
@@ -54,7 +56,38 @@
 	    						html += '</tr>';	
 	    					});
 	    					
-	    					$("tbody").append(html);
+	    					$("#tbody").append(html);
+	    				},
+	    				error: function(err){
+	    					alert('error : ' + err.status);
+	    				} 
+				});
+    		}
+    		
+    		const showBoardList = function(){
+	    			$.ajax({
+	    				url: '/showBoardList',
+	    				type: 'get',
+	    				dataType: 'json',
+	    				success: function(jsonData){
+	    					console.log("showBoardList")
+	    					console.log(jsonData);
+	    					
+	    					$("#tbody").empty();	
+	    					
+	    					let html = '';
+	    					$.each(jsonData.data, function(index, item){
+	    						html += '<tr>';
+	    						html += '    <td>seq'+ item.seq +'</td>';
+	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
+	    						html += '    <td>2xxx.xx.xx</td>';
+	    						html += '    <td>xx</td>';
+	    						html += '    <td>xx</td>';
+	    						html += '    <td>i</td>';
+	    						html += '</tr>';	
+	    					});
+	    					
+	    					$("#tbody").append(html);
 	    				},
 	    				error: function(err){
 	    					alert('error : ' + err.status);
@@ -75,7 +108,7 @@
     <div class="container board_table">
         <div class="content_header">일상 게시판</div>
         <div>
-            <select class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
+            <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">
                 <option value="title">제목+내용</option>
                 <option value="content">글쓴이</option>
             </select>
@@ -97,7 +130,7 @@
 	                    <th>img</th>
 	                </tr>
 	            </thead>
-	            <tbody>
+	            <tbody id="tbody">
 	                <tr>
 	                    <td>seq</td>
 	                    <td><a class="view_btn" href="./BoardView">subject</a></td>

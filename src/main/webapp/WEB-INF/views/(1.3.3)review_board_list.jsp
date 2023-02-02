@@ -16,6 +16,84 @@
     <title>매장방문 후기게시판</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+    		$(document).ready(function() {   			
+    			showBoardList();
+ 
+    			let searchReq = "";
+    			
+    			$("#button-addon2").on("click", function(searchReq){
+    				console.log("button click");
+    				
+    				searchReq = $("#select_box option:selected").val();
+    				console.log(searchReq);
+    				searchBoardList(searchReq); 
+    			});
+    		});
+    		
+    		const searchBoardList = function(searchReq){
+	    			$.ajax({
+	    				url: '/searchBoardList',
+	    				type: 'post',
+	    				data: { searchReq: searchReq },
+	    				dataType: 'json',
+	    				success: function(jsonData){
+	    					console.log("searchBoardList")
+	    					console.log(jsonData);
+	    					
+	    					$("#tbody").empty();	
+	    					
+	    					let html = '';
+	    					$.each(jsonData.data, function(index, item){
+	    						html += '<tr>';
+	    						html += '    <td>seq'+ item.seq +'</td>';
+	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
+	    						html += '    <td>2xxx.xx.xx</td>';
+	    						html += '    <td>xx</td>';
+	    						html += '    <td>xx</td>';
+	    						html += '    <td>i</td>';
+	    						html += '</tr>';	
+	    					});
+	    					
+	    					$("#tbody").append(html);
+	    				},
+	    				error: function(err){
+	    					alert('error : ' + err.status);
+	    				} 
+				});
+    		}
+    		
+    		const showBoardList = function(){
+	    			$.ajax({
+	    				url: '/showBoardList',
+	    				type: 'get',
+	    				dataType: 'json',
+	    				success: function(jsonData){
+	    					console.log("showBoardList")
+	    					console.log(jsonData);
+	    					
+	    					$("#tbody").empty();	
+	    					
+	    					let html = '';
+	    					$.each(jsonData.data, function(index, item){
+	    						html += '<tr>';
+	    						html += '    <td>seq'+ item.seq +'</td>';
+	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
+	    						html += '    <td>2xxx.xx.xx</td>';
+	    						html += '    <td>xx</td>';
+	    						html += '    <td>xx</td>';
+	    						html += '    <td>i</td>';
+	    						html += '</tr>';	
+	    					});
+	    					
+	    					$("#tbody").append(html);
+	    				},
+	    				error: function(err){
+	    					alert('error : ' + err.status);
+	    				} 
+				});
+    		}
+    </script>
 </head>
 
 <body>
@@ -51,7 +129,7 @@
 	                    <th>img</th>
 	                </tr>
 	            </thead>
-	            <tbody>
+	            <tbody id="tbody">
 	                <tr>
 	                    <td>seq</td>
 	                    <td><a class="view_btn" href="./BoardView">subject</a></td>

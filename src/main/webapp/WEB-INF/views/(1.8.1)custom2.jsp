@@ -30,7 +30,13 @@
 			$("#return_menu").on("click", function(){
 				recipe_txt_func();
 				console.log(recipe_txt);
-				alert("나만의 레시피가 저장되었습니다.");
+				
+				if(recipe_txt != '     ' || null ){
+					alert("나만의 레시피가 저장되었습니다");	
+				} else {
+					alert("레시피를 선택해 주세요")
+				}
+				
 			});
 		});
 	</script>
@@ -126,7 +132,7 @@
 		</div>
 		<div class="mb-4">
 			<form>
-				<button id="return_menu" type="submit" class="btn btn-outline-secondary recipe_btn">나만의 레시피 저장</button>
+				<button id="return_menu" type="button" class="btn btn-outline-secondary recipe_btn">나만의 레시피 저장</button>
 				<button type="button" class="btn btn-outline-secondary recipe_btn mx-1 " onclick="location.href='./Custom1'">메뉴</button>
 			</form>
 		</div>
