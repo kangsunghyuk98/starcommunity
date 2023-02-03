@@ -15,7 +15,7 @@
         sb.append("         <td>"+to.getNickname()+"</td>");
         sb.append("         <td>"+to.getName()+"</td>");
         sb.append("         <td>"+to.getEmail()+"</td>");
-        sb.append("         <td class=\"text-center\"><button type=\"button\" class=\"btn btn-outline-danger btn-sm d_btn\">삭제</button></td>");
+        sb.append("         <td class=\"text-center\"><button type=\"button\" class=\"btn btn-outline-danger btn-sm d_btn\" value='"+to.getMemberKey()+"'>삭제</button></td>");
         sb.append("    </tr>");
     }
 
@@ -88,6 +88,32 @@
                     <%= sb.toString() %>
                 </tbody>
             </table>
+
+            <script>
+
+                $('.d_btn').click(function(){
+                    let memberkey = $(this).attr('value');
+                    $.ajax({
+                        type: 'GET',
+                        url: '/admin/member_delete',
+                        data: 'memberkey=' + memberkey,
+                        dataType: 'text',
+                        success: function (result) {
+                            if (result == 0) {
+                                alert('삭제 성공');
+                                location.href = '/admin/main';
+                            }else{
+                                alert('삭제 실패하였습니다. (유효하지 않은 memberkey)');
+                            }
+                        },
+                        error: function () {
+                            alert('삭제 실패')
+                        }
+
+                    });
+                });
+            </script>
+
         </div>
 
     </div>

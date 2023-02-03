@@ -2,10 +2,7 @@ package com.example.mapper;
 
 import com.example.dto.MemberTO;
 import com.example.security.SecurityMember;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -60,5 +57,8 @@ public interface MapperInter {
 
     @Select("select * from member where name like #{keyword}")
     List<MemberTO> selectUseConditionName(String keyword);
+
+    @Delete("delete from member where memberkey = #{memberKey}")
+    int memberDelete(int memberKey);
 
 }

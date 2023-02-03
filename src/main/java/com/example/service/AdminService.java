@@ -45,4 +45,16 @@ public class AdminService {
         return conMemberList;
     }
 
+    public int memberDelete(int memberKey) {
+        int result = mapperInter.memberDelete(memberKey);
+        int flag = 1;
+
+        if (result == 1) {
+            flag = 0;
+        }else {
+            flag = 1;
+        }
+        return flag;
+    }
+
 }
