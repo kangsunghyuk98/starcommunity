@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<!DOCTYPE html>
 <html lang="ko">
 
 <head>
@@ -13,36 +14,27 @@
     <link rel="stylesheet" href="/font/font.css">
     <link rel="stylesheet" href="/css/(1)header.css">
     <link rel="stylesheet" href="/css/(1)contents.css">
-    <link rel="stylesheet" href="/css/(1.5)about.css">
-    <title>About</title>
+    <title>Index</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.js"
-            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
-
 </head>
 
 <body>
 <!-- 헤더 영역 -->
-<jsp:include page="../include/header.jsp"/>
+    <jsp:include page="../include/header.jsp"/>
 
-    <!-- 콘텐츠 영역 -->
-    <div class="container-fluid About-contents">
-        <div class="about-txt">About</div>
-        <div class="about-img">
-            <image src="/img/(1.5)스타벅스 커뮤니티.png" alt="커뮤니티 이미지"> </image>
-        </div>
-        <div class="team-name">Team 별 다섯</div>
-        <div class="team-image">
-            <image src="/img/(1.5)MemberImage.PNG" alt="별다섯 이미지"></image>
-        </div>
-    </div>
+<!-- 콘텐츠 영역 -->
+<br>
+<br>
+<div>Index 콘텐츠 영역입니다.</div>
 
-    <!-- 풋터 영역 -->
-    <footer></footer>
+<!-- 풋터 영역 -->
+<footer></footer>
 </body>
 </html>
