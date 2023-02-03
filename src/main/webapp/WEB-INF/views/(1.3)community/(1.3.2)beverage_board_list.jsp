@@ -8,14 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!-- 폰트는 따로 css파일을 만들었습니다 -->
+    
     <link rel="stylesheet" href="/css/(1)header.css">
     <link rel="stylesheet" href="/css/(1)contents.css">
     <link rel="stylesheet" href="/font/font.css">
-    <link rel="stylesheet" href="/css/(1.3.3)reviewList.css">
+    <link rel="stylesheet" href="/css/(1.3.2)beverageList.css">
     
-    <title>매장방문 후기게시판</title>
+    <title>음료게시판</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	
 	<script type="text/javascript">
     		$(document).ready(function() {   			
     			showBoardList();
@@ -95,17 +97,16 @@
     		}
     </script>
 </head>
-
 <body>
 <!-- 헤더 영역 -->
-<jsp:include page="./include/header.jsp"/>
+<jsp:include page="../include/header.jsp"/>
 
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
-<div class="content container col-lg-6 col-md-8 col-sm-10">
+<div class="content container col-lg-6 col-md-8 col-sm-10" >
     <div class="container board_table">
-        <div class="content_header">매장방문 후기게시판</div>
+        <div class="content_header">음료 게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
                 <option value="title">제목+내용</option>
@@ -164,7 +165,7 @@
 	                </tr>
 	            </tbody>
 	        </table>
-	    <div>
+        <div>
         <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='./BoardWrite'">글쓰기</button>
     </div>
     <div class="container-sm">
