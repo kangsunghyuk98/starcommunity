@@ -14,7 +14,7 @@ public class HomeController {
 
     @RequestMapping("/index")
     public String showIndex() {
-        return "eunchong/(1)Index";
+        return "(1)mainpage/(1)Index";
     }
 
     @RequestMapping("/about")
