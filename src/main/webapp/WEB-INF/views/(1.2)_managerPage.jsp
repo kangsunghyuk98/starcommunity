@@ -88,24 +88,6 @@
                     <%= sb.toString() %>
                 </tbody>
             </table>
-            <script>
-                $('.d_btn').click(function(){
-                    $.ajax({
-                        type: 'post',
-                        url: '/admin/member_delete',
-                        data:  $("#memberKey"),
-                        dataType: 'text',
-                        success: function () {
-                            console.log('삭제 성공')
-                            location.href = '/ManagerPage'
-                        },
-                        error: function () {
-                            alert('삭제 실패')
-                        }
-    
-                    });
-                });
-                </script>  
         </div>
 
     </div>
