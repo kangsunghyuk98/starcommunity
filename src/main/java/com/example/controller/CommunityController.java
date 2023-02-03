@@ -23,7 +23,7 @@ public class CommunityController {
 		System.out.println(boardLists);
 		
 		modelAndView.addObject("boardLists", boardLists);
-		modelAndView.setViewName("(1.3.1)daily_board_list");
+		modelAndView.setViewName("(1.3)community/(1.3.1)daily_board_list");
 		return modelAndView;
 	}
 	
