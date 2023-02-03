@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
@@ -14,84 +14,86 @@
 <body>
 <div class="p_div">
     <div class="container col-lg-4 col-md-6 col-sm-8 my-auto c_div">
-    <form action="/guest/register_ok" method="post" class="signup">
-        <div class="logo mb-5">
-            <a href="/home/index">Logo</a>
-        </div>
-        <span>아이디</span>
-        <input class="text_area" type="text" id="txtid" placeholder="ID" name="id">
-        <span id="result_id" class="css_result"></span>
-        <button type="button" id="idcheck_btn">중복확인</button>
-        <script type="text/javascript">
-            $('#idcheck_btn').click(function(){
-                if ($('#txtid').val() != '') {
-                    // 아이디를 서버로 전송 > DB 유효성 검사 > 결과 반환받기
-                    $.ajax({
-                        type: 'POST',
-                        url: '/guest/idcheck',
-                        data: 'id=' + $('#txtid').val(),
-                        dataType: 'text',
-                        success: function(result) {
-                            if (result == 0) {
-                                $('#result_id').text('사용 가능한 아이디입니다.');
-                            } else {
-                                $('#result_id').text('이미 사용중인 아이디입니다.');
+        <form action="/guest/register_ok" method="post" class="signup">
+            <div class="logo mb-5">
+                <a href="/home/index">Logo</a>
+            </div>
+            <span>아이디</span>
+            <input class="text_area" type="text" id="txtid" placeholder="ID" name="id">
+            <span id="result_id" class="css_result"></span>
+            <button type="button" id="idcheck_btn">중복확인</button>
+            <script type="text/javascript">
+                $('#idcheck_btn').click(function(){
+                    if ($('#txtid').val() != '') {
+                        // 아이디를 서버로 전송 > DB 유효성 검사 > 결과 반환받기
+                        $.ajax({
+                            type: 'POST',
+                            url: '/guest/idcheck',
+                            data: 'id=' + $('#txtid').val(),
+                            dataType: 'text',
+                            success: function(result) {
+                                if (result == 0) {
+                                    $('#result_id').text('사용 가능한 아이디입니다.');
+                                } else {
+                                    $('#result_id').text('이미 사용중인 아이디입니다.');
+                                }
+                            },
+                            error: function(a, b, c) {
+                                console.log(a, b, c);
                             }
-                        },
-                        error: function(a, b, c) {
-                            console.log(a, b, c);
-                        }
-                    });
-                } else {
-                    alert('아이디를 입력하세요.');
-                    $('#txtid').focus();
-                }
-            });
-        </script>
+                        });
+                    } else {
+                        alert('아이디를 입력하세요.');
+                        $('#txtid').focus();
+                    }
+                });
+            </script>
 
-        <span>비밀번호</span>
-        <input type="password" placeholder="Password" name="password">
+            <span>비밀번호</span>
+            <input type="password" placeholder="Password" name="password">
 
-        <span>비밀번호 확인</span>
-        <input type="password" placeholder="Password">
+            <span>비밀번호 확인</span>
+            <input type="password" placeholder="Password">
 
-        <span>닉네임</span>
-        <input class="text_area" type="text" id="txtnick" placeholder="Nickname" name="nickname">
-        <span id="result_nick" class="css_result"></span>
-        <button type="button" id="nickcheck_btn">중복확인</button>
-        <script type="text/javascript">
-            $('#nickcheck_btn').click(function(){
-                if ($('#txtnick').val() != '') {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/guest/nickcheck',
-                        data: 'nickname=' + $('#txtnick').val(),
-                        dataType: 'text',
-                        success: function(result) {
-                            if (result == 0) {
-                                $('#result_nick').text('사용 가능한 닉네임입니다.');
-                            } else {
-                                $('#result_nick').text('이미 사용중인 닉네임입니다.');
+            <span>닉네임</span>
+            <input class="text_area" type="text" id="txtnick" placeholder="Nickname" name="nickname">
+            <span id="result_nick" class="css_result"></span>
+            <button type="button" id="nickcheck_btn">중복확인</button>
+            <script type="text/javascript">
+                $('#nickcheck_btn').click(function(){
+                    if ($('#txtnick').val() != '') {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/guest/nickcheck',
+                            data: 'nickname=' + $('#txtnick').val(),
+                            dataType: 'text',
+                            success: function(result) {
+                                if (result == 0) {
+                                    $('#result_nick').text('사용 가능한 닉네임입니다.');
+                                } else {
+                                    $('#result_nick').text('이미 사용중인 닉네임입니다.');
+                                }
+                            },
+                            error: function(a, b, c) {
+                                console.log(a, b, c);
                             }
-                        },
-                        error: function(a, b, c) {
-                            console.log(a, b, c);
-                        }
-                    });
-                } else {
-                    alert('닉네임을 입력하세요.');
-                    $('#txtnick').focus();
-                }
-            });
-        </script>
+                        });
+                    } else {
+                        alert('닉네임을 입력하세요.');
+                        $('#txtnick').focus();
+                    }
+                });
+            </script>
 
-        <span>이름</span>
-        <input type="text" placeholder="Name" name="name">
-        
-        <span>이메일</span>
-        <input type="email" placeholder="Email" name="email">
+            <span>이름</span>
+            <input type="text" placeholder="Name" name="name">
 
-        <button type="submit" id="sign_btn">회원가입</button>
+            <span>이메일</span>
+            <input type="email" placeholder="Email" name="email">
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" id="sign_btn">회원가입</button>
+            </div>
 
         </form>
     </div>
