@@ -45,7 +45,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests(authorize -> authorize
                         // .antMatchers("/","/guest/**").permitAll() // 인증없이 들어갈 수 있는 주소 설정
-                        .antMatchers("/member/**").authenticated()
+                        .antMatchers("/member/**", "/board/**").authenticated()
                         .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                         .anyRequest().permitAll()
                        // .anyRequest().authenticated() // 그외 나머지 주소는 인증 필요
@@ -56,10 +56,8 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID");
 
        http.csrf().disable();
-       
-       // 스마트에디터에서 iframe을 사용하는데 스프링시큐리티에서 X-Frame-Options Click jacking 공격 막기 설정이 되어 있습니다. 그 설정을 조정하는 코드입니다.
        http.headers().frameOptions().sameOrigin();
-       
+
         return http.build();
     }
 }

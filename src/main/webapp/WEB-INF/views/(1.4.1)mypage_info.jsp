@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,23 +33,23 @@
             <thead>
                 <tr>
                     <th>이름</th>
-                    <td>name</td>
+                    <td><sec:authentication property="principal.to.name" /></td>
                 </tr>
                 <tr>
                     <th>아이디</th>
-                    <td>ID</td>
+                    <td><sec:authentication property="principal.to.id" /></td>
                 </tr>
                 <tr>
                     <th>닉네임</th>
-                    <td>nickname</td>
+                    <td><sec:authentication property="principal.to.nickname" /></td>
                 </tr>
                 <tr>
                     <th>이메일</th>
-                    <td>email</td>
+                    <td><sec:authentication property="principal.to.email" /></td>
                 </tr>
             </thead>
         </table>
-        <button id="m_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/MypageInfoModify'">내 정보 수정</button>
+        <button id="m_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='#'">내 정보 수정</button>
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

@@ -1,10 +1,6 @@
 package com.example.dto;
 
-import com.example.security.MemberRole;
 import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Getter
