@@ -31,7 +31,7 @@ public class AdminController {
 
         model.addAttribute("pagination",pagination);
 
-        return "hyowon/(1.2)_managerPage";
+        return "(1.2)managerPage/(1.2)_managerPage";
     }
 
     @RequestMapping("/main_search")
@@ -44,7 +44,7 @@ public class AdminController {
             return "/okaction/adminredirect";
         } else {
             model.addAttribute("memberList",memberList);
-            return "hyowon/(1.2)_managerPage";
+            return "(1.2)managerPage/(1.2)_managerPage";
         }
     }
 

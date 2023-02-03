@@ -96,7 +96,7 @@
                     let memberkey = $(this).attr('value');
 
                     $.ajax({
-                        type: 'GET',
+                        type: 'POST',
                         url: '/admin/member_delete',
                         data: 'memberkey=' + memberkey,
                         dataType: 'text',

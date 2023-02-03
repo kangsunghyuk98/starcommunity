@@ -19,11 +19,11 @@ public class HomeController {
 
     @RequestMapping("/about")
     public String showAbout() {
-        return "eunchong/(1.5)About";
+        return "(1.5)about/(1.5)About";
     }
 
     @RequestMapping("/recommend")
     public String showRecommendPage () {
-        return "hyowon/(1.7)_recommend";
+        return "(1.7)recommend/(1.7)_recommend";
     }
 }

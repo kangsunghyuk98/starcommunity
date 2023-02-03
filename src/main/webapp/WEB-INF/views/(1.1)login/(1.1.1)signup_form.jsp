@@ -12,8 +12,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+<div class="p_div">
+    <div class="container col-lg-4 col-md-6 col-sm-8 my-auto c_div">
     <form action="/guest/register_ok" method="post" class="signup">
-        <div class="logo">
+        <div class="logo mb-5">
             <a href="/home/index">Logo</a>
         </div>
         <span>아이디</span>
@@ -91,5 +93,7 @@
 
         <button type="submit" id="sign_btn">회원가입</button>
 
-    </form>
+        </form>
+    </div>
+</div>
 </body>

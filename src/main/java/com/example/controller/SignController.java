@@ -23,7 +23,7 @@ public class SignController {
 
     @RequestMapping("/login")
     public String loginTest() {
-        return "minsu/(1.1)login_form";
+        return "(1.1)login/(1.1)login_form";
     }
 
     @RequestMapping("/login_ok")
@@ -33,7 +33,7 @@ public class SignController {
 
     @RequestMapping("/register")
     public String registerTest() {
-        return "minsu/(1.1.1)signup_form";
+        return "(1.1)login/(1.1.1)signup_form";
     } // 회원가입 중복확인 요청 받아야함
 
     @RequestMapping("/register_ok")
@@ -64,7 +64,7 @@ public class SignController {
 
     @RequestMapping("/findid")
     public String findIdView() {
-        return "minsu/(1.1.2)findID_form";
+        return "(1.1)login/(1.1.2)findID_form";
     }
 
     @RequestMapping("/findid_ok")
@@ -78,7 +78,7 @@ public class SignController {
 
     @RequestMapping("/findpw")
     public String findPwView() {
-        return "minsu/(1.1.3)findPW_form";
+        return "(1.1)login/(1.1.3)findPW_form";
     }
 
     @RequestMapping("/findpw_ok")

@@ -29,7 +29,7 @@
         </div>
 
         <div class="row justify-content-center social_login">
-            <div class="col-sm-6 mx-auto my-2"><a href="#"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
+            <div class="col-sm-6 mx-auto my-2"><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
             <div class="col-sm-6 mx-auto my-2"> <a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div>
         </div>
             <div class="row justify-content-center mt-2">

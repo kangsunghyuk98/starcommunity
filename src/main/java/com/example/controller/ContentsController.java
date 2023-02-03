@@ -9,6 +9,6 @@ public class ContentsController {
 
     @RequestMapping("/myinfo")
     public String showMyinfo() {
-        return "minsu/(1.4.1)mypage_info";
+        return "(1.4)myPage/(1.4.1)mypage_info";
     }
 }
