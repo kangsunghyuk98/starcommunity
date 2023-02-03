@@ -92,7 +92,9 @@
             <script>
 
                 $('.d_btn').click(function(){
+
                     let memberkey = $(this).attr('value');
+
                     $.ajax({
                         type: 'GET',
                         url: '/admin/member_delete',
@@ -112,6 +114,7 @@
 
                     });
                 });
+
             </script>
 
         </div>
