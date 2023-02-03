@@ -27,8 +27,9 @@ public class SearchController {
 	}
 	
 	@RequestMapping("/searchBoardList")
-	public Object searchBoardList(@RequestBody String searchReq ) {
+	public Object searchBoardList(@RequestBody String searchReq, String boardName ) {
 		System.out.println(searchReq);
+		System.out.println(boardName);
 		
 		JSONObject obj = new JSONObject();
 		obj.put("seq", "2");

@@ -16,26 +16,28 @@
     <title>매장방문 후기게시판</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript">
     		$(document).ready(function() {   			
     			showBoardList();
  
     			let searchReq = "";
-    			
+    			let boardName = $("#boardName").text();
     			$("#button-addon2").on("click", function(searchReq){
-    				console.log("button click");
-    				
+    				console.log(boardName);	
     				searchReq = $("#select_box option:selected").val();
     				console.log(searchReq);
-    				searchBoardList(searchReq); 
+    				searchBoardList(searchReq, boardName); 
     			});
     		});
     		
-    		const searchBoardList = function(searchReq){
+    		const searchBoardList = function(searchReq, boardName){
 	    			$.ajax({
 	    				url: '/searchBoardList',
 	    				type: 'post',
-	    				data: { searchReq: searchReq },
+	    				data: { searchReq: searchReq,
+	    						boardName: boardName
+	    					},
 	    				dataType: 'json',
 	    				success: function(jsonData){
 	    					console.log("searchBoardList")
@@ -105,9 +107,9 @@
 <br>
 <div class="content container col-lg-6 col-md-8 col-sm-10">
     <div class="container board_table">
-        <div class="content_header">매장방문 후기게시판</div>
+        <div class="content_header" id="boardName">매장방문 후기게시판</div>
         <div>
-            <select class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
+            <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">
                 <option value="title">제목+내용</option>
                 <option value="content">글쓴이</option>
             </select>
