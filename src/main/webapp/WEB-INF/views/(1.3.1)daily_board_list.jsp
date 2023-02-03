@@ -22,22 +22,21 @@
     			showBoardList();
  
     			let searchReq = "";
-    			let boardName = $("#boardName").text();
+    			
     			$("#button-addon2").on("click", function(searchReq){
-    				console.log(boardName);	
+    				console.log("button click");
+    				
     				searchReq = $("#select_box option:selected").val();
     				console.log(searchReq);
-    				searchBoardList(searchReq, boardName); 
+    				searchBoardList(searchReq); 
     			});
     		});
     		
-    		const searchBoardList = function(searchReq, boardName){
+    		const searchBoardList = function(searchReq){
 	    			$.ajax({
 	    				url: '/searchBoardList',
 	    				type: 'post',
-	    				data: { searchReq: searchReq,
-	    						boardName: boardName
-	    					},
+	    				data: { searchReq: searchReq },
 	    				dataType: 'json',
 	    				success: function(jsonData){
 	    					console.log("searchBoardList")
@@ -107,7 +106,7 @@
 <br>
 <div class="content container col-lg-6 col-md-8 col-sm-10">
     <div class="container board_table">
-        <div class="content_header" id="boardName" >일상 게시판</div>
+        <div class="content_header">일상 게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">
                 <option value="title">제목+내용</option>
