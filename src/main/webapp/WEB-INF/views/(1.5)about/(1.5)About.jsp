@@ -34,7 +34,7 @@
     <div class="container-fluid About-contents">
         <div class="about-txt">About</div>
         <div class="about-img">
-            <image src="/img/(1.5)스타벅스 커뮤니티.png" alt="커뮤니티 이미지"> </image>
+            <image src="/img/(1.5)스타벅스 커뮤니티.png" class="img-fluid" alt="커뮤니티 이미지"> </image>
         </div>
         <div class="team-name">Team 별 다섯</div>
         <div class="team-image">
