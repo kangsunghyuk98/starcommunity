@@ -104,8 +104,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
-<div class="content container col-lg-6 col-md-8 col-sm-10" >
-    <div class="container board_table">
+	<div class="content container col-lg-6 col-md-8 col-sm-10" >
         <div class="content_header">음료 게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
@@ -141,7 +140,7 @@
 	                </tr>
 	                <tr>
 	                   <td>seq</td>
-	                    <td><a class="view_btn" href="./BoardView">난 제목입니다</a></td>
+	                    <td><a class="view_btn" href="./BoardView">난 제목입니다=========================================</a></td>
 	                    <td>2xxx.xx.xx</td>
 	                    <td>xx</td>
 	                    <td>xx</td>
@@ -163,10 +162,11 @@
 	                    <td>xx</td>
 	                    <td>i</td>
 	                </tr>
-	            </tbody>
-	        </table>
-        <div>
-        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='./BoardWrite'">글쓰기</button>
+				</tbody>
+			</table>
+    	</div>
+	<div>
+    	<button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='./BoardWrite'">글쓰기</button>
     </div>
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
