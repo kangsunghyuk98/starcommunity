@@ -20,7 +20,6 @@ public class CommunityController {
 	@RequestMapping("/DailyBoardList")
 	public ModelAndView showDailyBoardList(ModelAndView modelAndView) {
 		List<BoardTO> boardLists = mapper.boardList();
-		System.out.println(boardLists);
 		
 		modelAndView.addObject("boardLists", boardLists);
 		modelAndView.setViewName("(1.3)community/(1.3.1)daily_board_list");

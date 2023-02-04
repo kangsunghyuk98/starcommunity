@@ -1,5 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.example.dto.BoardTO"%>
+<%@ page import="java.util.ArrayList"%>    
+<%
+	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
+	
+	StringBuilder sbHtml = new StringBuilder(); 	
+
+	for(BoardTO to : boardLists){
+		int dlifeseq = to.getDlifeseq();
+		String subject = to.getSubject();
+		String content = to.getContent();
+		String wdate = to.getWdate();
+		int hit = to.getHit();
+		String imgname = to.getImgname();
+		String imgformat = to.getImgformat();
+		int recommend = to.getRecommend();
+		int memberkey = to.getMemberkey();
+				
+		sbHtml.append("<tr>");
+		sbHtml.append("    <td>"+ dlifeseq +"</td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView'>"+ subject +"</a></td>");
+		sbHtml.append("    <td>"+ wdate +"</td>");
+		sbHtml.append("    <td>"+ hit +"</td>");
+		sbHtml.append("    <td>"+ recommend +"</td>");
+		sbHtml.append("    <td>");
+		if( imgname != "" ){
+			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
+		} else if( imgname != null) {
+			sbHtml.append("<img src='/img/icon/icon_file.gif'>");
+		} else {
+		}
+		sbHtml.append("    </td>");
+		sbHtml.append("</tr>");
+	}
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,27 +55,33 @@
     
     <script type="text/javascript">
     		$(document).ready(function() {   			
-    			showBoardList();
+    			// showBoardList();
  
     			let searchReq = "";
     			
     			$("#button-addon2").on("click", function(searchReq){
-    				console.log("button click");
     				
-    				searchReq = $("#select_box option:selected").val();
-    				console.log(searchReq);
+    				
+    				searchReq = $(".form-control").val();
+    				searchOption = $("#select_box option:selected").val();
+    				
+    				console.log("searchReq : " + searchReq);
+    				console.log("searchOption : " + searchOption);
+    				
     				searchBoardList(searchReq); 
     			});
     		});
     		
     		const searchBoardList = function(searchReq){
+ 
 	    			$.ajax({
 	    				url: '/searchBoardList',
 	    				type: 'post',
-	    				data: { searchReq: searchReq },
+	    				data: { searchReq: searchReq,
+	    					 searchOption: searchOption
+	    					},
 	    				dataType: 'json',
 	    				success: function(jsonData){
-	    					console.log("searchBoardList")
 	    					console.log(jsonData);
 	    					
 	    					$("#tbody").empty();	
@@ -47,12 +89,19 @@
 	    					let html = '';
 	    					$.each(jsonData.data, function(index, item){
 	    						html += '<tr>';
-	    						html += '    <td>seq'+ item.seq +'</td>';
+	    						html += '    <td>'+ item.dlifeseq +'</td>';
 	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
-	    						html += '    <td>2xxx.xx.xx</td>';
-	    						html += '    <td>xx</td>';
-	    						html += '    <td>xx</td>';
-	    						html += '    <td>i</td>';
+	    						html += '    <td>'+ item.wdate +'</td>';
+	    						html += '    <td>'+ item.hit +'</td>';
+	    						html += '    <td>'+ item.recommend +'</td>';
+	    						html += '	 <td>';
+	    						if( item.imgname != "" ){
+	    							html += '<img src="/img/icon/icon_file.gif">';	
+	    						} else if( item.imgname != null) {
+	    							html += '<img src="/img/icon/icon_file.gif">';
+	    						} else {
+	    						}
+	    						html += '	 </td>';
 	    						html += '</tr>';	
 	    					});
 	    					
@@ -64,7 +113,7 @@
 				});
     		}
     		
-    		const showBoardList = function(){
+    		/* const showBoardList = function(){
 	    			$.ajax({
 	    				url: '/showBoardList',
 	    				type: 'get',
@@ -93,7 +142,7 @@
 	    					alert('error : ' + err.status);
 	    				} 
 				});
-    		}
+    		} */
     </script>
 </head>
 
@@ -109,8 +158,8 @@
         <div class="content_header">일상 게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">
-                <option value="title">제목+내용</option>
-                <option value="content">글쓴이</option>
+                <option value="subject">제목</option>
+                <option value="seq">번호</option>
             </select>
             <div class="input-group mb-3 w_search_text">
                 <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -130,39 +179,10 @@
 	                    <th>img</th>
 	                </tr>
 	            </thead>
+	            
+	            <!-- 글 목록 -->
 	            <tbody id="tbody">
-	                <tr>
-	                    <td>seq</td>
-	                    <td><a class="view_btn" href="./BoardView">subject</a></td>
-	                    <td>wdate</td>
-	                    <td>hit</td>
-	                    <td>recommend</td>
-	                    <td>i</td>
-	                </tr>
-	                <tr>
-	                   <td>seq</td>
-	                    <td><a class="view_btn" href="./BoardView">난 제목입니다</a></td>
-	                    <td>2xxx.xx.xx</td>
-	                    <td>xx</td>
-	                    <td>xx</td>
-	                    <td>i</td>
-	                </tr>
-	                <tr>
-	                    <td>seq</td>
-	                    <td><a class="view_btn" href="./BoardView">subject</a></td>
-	                    <td>wdate</td>
-	                    <td>hit</td>
-	                    <td>recommend</td>
-	                    <td>i</td>
-	                </tr>
-	                <tr>
-	                   <td>seq</td>
-	                    <td><a class="view_btn" href="./BoardView">난 제목입니다</a></td>
-	                    <td>2xxx.xx.xx</td>
-	                    <td>xx</td>
-	                    <td>xx</td>
-	                    <td>i</td>
-	                </tr>
+	                <%=sbHtml.toString()%>
 	            </tbody>
 	        </table>
         </div>

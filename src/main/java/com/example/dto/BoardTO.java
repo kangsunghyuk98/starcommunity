@@ -1,10 +1,15 @@
 package com.example.dto;
 
+import org.springframework.stereotype.Repository;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
+@Repository
 public class BoardTO {
 	private int dlifeseq;
 	private String subject;

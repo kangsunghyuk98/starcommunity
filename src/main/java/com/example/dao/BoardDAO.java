@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.annotation.MapperScan;
@@ -15,8 +16,23 @@ public class BoardDAO {
 	@Autowired
 	private BoardMapperInter mapper;
 	
-	public List<BoardTO> boardList(){
-		List<BoardTO> boardLists = mapper.boardList();
+	public ArrayList<BoardTO> boardList(){
+		ArrayList<BoardTO> boardLists = mapper.boardList();
+		return boardLists;
+	}
+	
+	public ArrayList<BoardTO> boardSearchWriter(String searchReq) {
+		System.out.println("dao Writer() searchReq: " + searchReq);
+		ArrayList<BoardTO> boardLists = mapper.boardSearchWriter(searchReq);
+		System.out.println(boardLists.toString());
+		return boardLists;
+	}
+	
+	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq) {
+		System.out.println("dao Sub_Con() searchReq: " + searchReq);
+		
+		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_Con(searchReq);
+		System.out.println(boardLists.toString());
 		return boardLists;
 	}
 	
