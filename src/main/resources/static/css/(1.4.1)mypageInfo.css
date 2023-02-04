@@ -17,3 +17,8 @@ font-family: 'Noto Sans KR', sans-serif;
   float: right;
   font-size: 0.8rem;
 }
+
+#q_btn{
+  float: left;
+  font-size: 0.8rem;
+}

@@ -50,6 +50,45 @@
             </thead>
         </table>
         <button id="m_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='#'">내 정보 수정</button>
+        <button id="q_btn" type="button" class="btn btn-outline-secondary btn-lg px-4">회원탈퇴</button>
+        <script>
+		$('#q_btn').click(function(){
+			var inputPass1 = prompt("비밀번호를 입력해주세요.");
+			 
+		    if(inputPass1 != null) {
+		        var trimPass1 = inputPass1.trim();
+		 
+		        if(trimPass1 != "" && trimPass1 != undefined) {            
+		            var inputPass2 = prompt("비밀번호를 다시 입력해주세요.");
+		            var trimPass2 = inputPass2.trim();
+		            
+		            if(trimPass1 == trimPass2) {
+		                
+		                var memberId = $("#id").val();
+		                var param = {"id":memberId, "password":trimPass1}
+		            
+		                $.ajax({
+		                    type: 'POST',
+		                    data: JSON.stringify(param),
+		                    url: "/memberDelete",
+		                    dataType: "text",
+		                    contentType: "application/json; charset=UTF-8",
+		                    success: function(data) {                    
+		                        alert("탈퇴가 처리되었습니다.");
+		                        location.href="/index";
+		                    },
+		                    error: function(jqXHR, textStatus, errorThrown) {
+		                        alert("ERROR : " + textStatus + " : " + errorThrown);
+		                    }            
+		                })    
+		            } else alert("비밀번호가 일치하지 않습니다.");    
+		        } else {
+		            alert("비밀번호를 제대로 입력해주세요.");
+		        }
+		    } 
+
+       		});
+        </script>
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
