@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Repository
 public class BoardTO {
+	// dlife_board
 	private int dlifeseq;
 	private String subject;
 	private String content;
@@ -20,4 +21,14 @@ public class BoardTO {
 	private String imgformat;
 	private int recommend;
 	private int memberkey;
+	
+	// member
+    private String id;
+    private String role;
+    private String password;
+    private String nickname;
+    private String name;
+    private String email;
+    private String provider;
+    private String providerId;
 }

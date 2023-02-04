@@ -10,13 +10,16 @@ import com.example.dto.BoardTO;
 
 @Mapper
 public interface BoardMapperInter {
-	@Select("select dlifeseq, subject, content, wdate, hit, imgname, imgformat, recommend, memberkey from dlife_board")
+	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey")
 	public ArrayList<BoardTO> boardList();
 	
 	// 게시판 검색 쿼리
-	@Select("select * from dlife_board where dlifeseq like #{searchReq}")
+	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey where nickname like #{searchReq}")
 	public ArrayList<BoardTO> boardSearchWriter(String searchReq);
 	
-	@Select("select * from dlife_board where subject like CONCAT('%',#{searchReq},'%')")
+	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey "
+			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%')")
 	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq);
+	
+	  
 }
