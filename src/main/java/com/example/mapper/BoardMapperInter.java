@@ -21,5 +21,4 @@ public interface BoardMapperInter {
 			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%')")
 	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq);
 	
-	  
 }

@@ -52,9 +52,10 @@ public class SearchController {
 		JSONObject jsonData = new JSONObject();
 		
 		if( searchOption.equals(option1) ) {
-			ArrayList<BoardTO> boardLists = dao.boardSearchWriter(searchReq);
+			ArrayList<BoardTO> boardLists = dao.boardSearchWriter(searchReq); 
 			
-			for(BoardTO to : boardLists) {
+			for( BoardTO to : boardLists) {
+				
 				obj.put("dlifeseq", to.getDlifeseq() );
 				obj.put("subject", to.getSubject() );
 				obj.put("content", to.getContent() );
@@ -66,8 +67,7 @@ public class SearchController {
 				obj.put("memberkey", to.getMemberkey() );
 				obj.put("nickname", to.getNickname() );
 				
-				System.out.println( to.getSubject() );
-				arr.add(obj);
+				arr.add(obj);	
 				System.out.println(arr);
 				
 			}
@@ -77,8 +77,8 @@ public class SearchController {
 			
 		} else if( searchOption.equals(option2) ) {
 			ArrayList<BoardTO> boardLists = dao.boardSearchSub_Con(searchReq);
-			
-			for(BoardTO to : boardLists) {
+
+			for( BoardTO to : boardLists) {
 				obj.put("dlifeseq", to.getDlifeseq() );
 				obj.put("subject", to.getSubject() );
 				obj.put("content", to.getContent() );
@@ -90,7 +90,6 @@ public class SearchController {
 				obj.put("memberkey", to.getMemberkey() );
 				obj.put("nickname", to.getNickname() );
 				
-				System.out.println( to.getSubject() );
 				arr.add(obj);
 				System.out.println(arr);
 

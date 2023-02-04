@@ -182,7 +182,7 @@
 	            
 	            <!-- 글 목록 -->
 	            <tbody id="tbody">
-	                <%=sbHtml.toString()%>
+	                <%=sbHtml.toString()%> 
 	            </tbody>
 	        </table>
         </div>
