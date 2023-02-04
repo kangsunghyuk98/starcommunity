@@ -44,8 +44,8 @@ public class SearchController {
 		System.out.println(searchReq);
 		System.out.println(searchOption);
 		
-		String option1 = "seq";
-		String option2 = "subject";
+		String option1 = "nickname";
+		String option2 = "subject_content";
 		
 		JSONObject obj = new JSONObject();
 		JSONArray arr = new JSONArray();
@@ -64,6 +64,7 @@ public class SearchController {
 				obj.put("imgformat", to.getImgformat() );
 				obj.put("recommend", to.getRecommend() );
 				obj.put("memberkey", to.getMemberkey() );
+				obj.put("nickname", to.getNickname() );
 				
 				System.out.println( to.getSubject() );
 				arr.add(obj);
@@ -87,6 +88,7 @@ public class SearchController {
 				obj.put("imgformat", to.getImgformat() );
 				obj.put("recommend", to.getRecommend() );
 				obj.put("memberkey", to.getMemberkey() );
+				obj.put("nickname", to.getNickname() );
 				
 				System.out.println( to.getSubject() );
 				arr.add(obj);

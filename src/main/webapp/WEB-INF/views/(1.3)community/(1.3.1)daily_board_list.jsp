@@ -6,7 +6,7 @@
 	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
 	
 	StringBuilder sbHtml = new StringBuilder(); 	
-
+	
 	for(BoardTO to : boardLists){
 		int dlifeseq = to.getDlifeseq();
 		String subject = to.getSubject();
@@ -17,10 +17,12 @@
 		String imgformat = to.getImgformat();
 		int recommend = to.getRecommend();
 		int memberkey = to.getMemberkey();
+		String nickname = to.getNickname();
 				
 		sbHtml.append("<tr>");
 		sbHtml.append("    <td>"+ dlifeseq +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView'>"+ subject +"</a></td>");
+		sbHtml.append("    <td>"+ nickname +"</td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView?Dlifeseq="+ dlifeseq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
@@ -34,7 +36,6 @@
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");
 	}
-	
 %>
 <!DOCTYPE html>
 <html>
@@ -55,13 +56,10 @@
     
     <script type="text/javascript">
     		$(document).ready(function() {   			
-    			// showBoardList();
  
     			let searchReq = "";
     			
     			$("#button-addon2").on("click", function(searchReq){
-    				
-    				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
     				
@@ -90,7 +88,8 @@
 	    					$.each(jsonData.data, function(index, item){
 	    						html += '<tr>';
 	    						html += '    <td>'+ item.dlifeseq +'</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
+	    						html += '    <td>'+ item.nickname +'</td>';
+	    						html += '    <td><a class="view_btn" href="./BoardView?'+ item.dlifeseq +'">'+ item.subject+'</a></td>';
 	    						html += '    <td>'+ item.wdate +'</td>';
 	    						html += '    <td>'+ item.hit +'</td>';
 	    						html += '    <td>'+ item.recommend +'</td>';
@@ -158,8 +157,8 @@
         <div class="content_header">일상 게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">
-                <option value="subject">제목</option>
-                <option value="seq">번호</option>
+                <option value="subject_content">제목 + 내용</option>
+                <option value="nickname">닉네임</option>
             </select>
             <div class="input-group mb-3 w_search_text">
                 <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -172,6 +171,7 @@
 	            <thead>
 	                <tr>
 	                    <th>번호</th>
+	                    <th>닉네임</th>
 	                    <th>제목</th>
 	                    <th>작성일자</th>
 	                    <th>조회수</th>
