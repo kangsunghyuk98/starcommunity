@@ -93,26 +93,31 @@
 
                 $('.d_btn').click(function(){
 
-                    let memberkey = $(this).attr('value');
+                    if(confirm('해당 회원을 삭제하시겠습니까?')){
 
-                    $.ajax({
-                        type: 'POST',
-                        url: '/admin/member_delete',
-                        data: 'memberkey=' + memberkey,
-                        dataType: 'text',
-                        success: function (result) {
-                            if (result == 0) {
-                                alert('삭제 성공');
-                                location.href = '/admin/main';
-                            }else{
-                                alert('삭제 실패하였습니다. (유효하지 않은 memberkey)');
+                        let memberkey = $(this).attr('value');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/admin/member_delete',
+                            data: 'memberkey=' + memberkey,
+                            dataType: 'text',
+                            success: function (result) {
+                                if (result == 0) {
+                                    alert('삭제 성공');
+                                    location.href = '/admin/main';
+                                }else{
+                                    alert('삭제 실패하였습니다. (유효하지 않은 memberkey)');
+                                }
+                            },
+                            error: function () {
+                                alert('삭제 실패')
+                                return;
                             }
-                        },
-                        error: function () {
-                            alert('삭제 실패')
-                        }
-
-                    });
+                        });
+                    } else {
+                        return false;
+                    }
                 });
 
             </script>
