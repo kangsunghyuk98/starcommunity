@@ -62,10 +62,6 @@
     			$("#button-addon2").on("click", function(searchReq){
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				
-    				console.log("searchReq : " + searchReq);
-    				console.log("searchOption : " + searchOption);
-    				
     				searchBoardList(searchReq); 
     			});
     		});
@@ -80,7 +76,6 @@
 	    					},
 	    				dataType: 'json',
 	    				success: function(jsonData){
-	    					console.log(jsonData);
 	    					
 	    					$("#tbody").empty();	
 	    					

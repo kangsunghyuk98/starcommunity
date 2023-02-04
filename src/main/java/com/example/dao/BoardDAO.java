@@ -22,17 +22,14 @@ public class BoardDAO {
 	}
 	
 	public ArrayList<BoardTO> boardSearchWriter(String searchReq) {
-		System.out.println("dao Writer() searchReq: " + searchReq);
 		ArrayList<BoardTO> boardLists = mapper.boardSearchWriter(searchReq);
-		System.out.println(boardLists.toString());
+		
 		return boardLists;
 	}
 	
 	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq) {
-		System.out.println("dao Sub_Con() searchReq: " + searchReq);
-		
 		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_Con(searchReq);
-		System.out.println(boardLists.toString());
+		
 		return boardLists;
 	}
 	
