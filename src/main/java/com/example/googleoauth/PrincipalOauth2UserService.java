@@ -64,6 +64,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             mapperInter.oauthSave(to);
         }
 
+        MemberTO tempTO = mapperInter.selectAllInfo(id);
+        to.setMemberKey(tempTO.getMemberKey());
+
         return new SecurityMember(to, oAuth2UserInfo);
     } // 구글로 부터 받은 userRequest 데이터에 대한 후처리되는 함수임
 }

@@ -52,7 +52,7 @@ public class SecurityConfig {
                 );
         http.logout()
                 .logoutUrl("/guest/logout")
-                .logoutSuccessUrl("/home/index")
+                .logoutSuccessUrl("/guest/login")
                 .deleteCookies("JSESSIONID");
 
        http.csrf().disable();
