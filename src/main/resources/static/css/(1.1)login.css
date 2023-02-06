@@ -85,12 +85,13 @@ body {
 }
 
 #btn1 {
+	width: 40%;
     padding: 8px;
     background-color: #646768;
     color: #fff;
     border-radius: 5px;
     border: none;
-    font-size: 1.0rem;
+    font-size: 1.1rem;
     cursor: pointer;
     float: center;
 }
@@ -103,5 +104,5 @@ body {
     text-align: center;
     display: table-cell;
     margin: auto;
-    width: 70%;
+    width: 40%;
 }
