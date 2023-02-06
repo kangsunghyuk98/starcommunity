@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.example.dto.BeverageTO"%>
+
+<%
+	BeverageTO to = (BeverageTO)request.getAttribute( "to" );
+	
+	String category = to.getCategory();
+	String name = to.getName();
+	String engName = to.getEngName();
+	String image = to.getImage();
+	String productInfo = to.getProductInfo();
+	String kcal = to.getKcal();
+	String sat_fat = to.getSat_fat();
+	String protein = to.getProtein();
+	String sodium = to.getSodium();
+	String sugars = to.getSugars();
+	String caffeine = to.getCaffeine();
+	String drinkInfo = to.getDrinkInfo();
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head> 
@@ -55,51 +74,44 @@
     <div class="container col-lg-6 col-md-8 col-sm-10">
         <!-- 음료 정보 -->
         <div class="row Beverage_info  ">
-            <div class="content_header mt-auto mb-4 ">콜드 브루</div>
+            <div class="content_header mt-auto mb-4 "><%=category %></div>
             <div class="col-8 col-md-4 Beverage_img mt-2 " style="float: left;">
-                <img src="/img/(1.6.1.1)스타벅스콜드브루.jpg" class="img-fluid" alt="">
+                <img src="<%=image %>" class="img-fluid" alt="">
             </div>
             <div class="col-sm-4 col-md-8 Beverage_info_table " style="float: right;">
-                <div class=" mt-auto mb-4 Beverage_name ">돌체 콜드 브루
-                    <div class="Beverage_E_name">Dolce Cold Brew</div>
+                <div class=" mt-auto mb-4 Beverage_name "><%=name %>
+                    <div class="Beverage_E_name"><%=engName %></div>
                     <hr style="border:0; height:3px; background: #000; ">
                 </div>
                 <table class="table">
                     <tr scope="row">
                         <th colspan="2" style="font-weight: bold; font-size: medium;">제품 영양 정보</td>
-                        <th colspan="2" style="font-weight: bold; font-size: medium;" class="txt_align_r">Tall(톨) /
-                            355ml (12 fl oz)</td>
+                        <th colspan="2" style="font-weight: bold; font-size: medium;" class="txt_align_r"><%=productInfo %></td>
                     </tr>
                     <tr scope="row">
                         <td scope="col">1회 제공량 (kcal)</td>
-                        <td scope="col" class="kcal txt_align_r">265</td>
-                        <td scope="col">포화지방 (g)</td>
-                        <td scope="col" class="sat_FAT txt_align_r">9</td>
-                    </tr>
-                    <tr scope="row">
-                        <td>단백질 (g)</td>
-                        <td class="protein txt_align_r">8</td>
-                        <td>지방 (g)</td>
-                        <td class="fat txt_align_r">12</td>
-                    </tr>
-                    <tr scope="row">
-                        <td>트랜스지방 (kcal)</td>
-                        <td class="trans_FAT txt_align_r">0</td>
+                        <td scope="col" class="kcal txt_align_r"><%=kcal %></td>
                         <td>나트륨 (mg)</td>
-                        <td class="sodium txt_align_r">130</td>
+                        <td class="sodium txt_align_r"><%=sodium %></td>                        
                     </tr>
-                    <tr>
+                    <tr scope="row">
+                    	<td scope="col">포화지방 (g)</td>
+                        <td scope="col" class="sat_FAT txt_align_r"><%=sat_fat %></td>
                         <td>당류 (g)</td>
-                        <td class="sugars txt_align_r">29</td>
-                        <td>카페인 (mg)</td>
-                        <td class="caffeine last txt_align_r">155</td>
+                        <td class="sugars txt_align_r"><%=sugars %></td>                       
                     </tr>
+                    <tr scope="row">
+                   		<td>단백질 (g)</td>
+                        <td class="protein txt_align_r"><%=protein %></td>
+                        <td>카페인 (mg)</td>
+                        <td class="caffeine last txt_align_r"><%=caffeine %></td>                        
+                    </tr>                   
                 </table>
                 <div class="product_factor">
                     <p style="text-align: right; font-size: small;">알레르기 유발요인 : 우유</p>
                 </div>
             </div>
-                <div class="Beverage_txt">무더운 여름철, 동남아 휴가지에서 즐기는 커피를 떠오르게 하는 스타벅스 음료의 베스트조합인 돌체 콜드 브루를 만나보세요! 무더운 여름철, 동남아 휴가지에서 즐기는 커피를 떠오르게 하는 스타벅스 음료의 베스트조합인 돌체 콜드 브루를 만나보세요!</div>
+                <div class="Beverage_txt"><%=drinkInfo %></div>
                 <div>
                     <button type="button" onclick="location.href='./BeverageList'"
                         class=" btn btn-outline-secondary l_btn style float-end" >목록</button>

@@ -1,5 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.example.dto.BeverageTO" %>
+<%@ page import="java.util.ArrayList" %>
+
+<%	
+
+	ArrayList<BeverageTO> beverageLists = (ArrayList<BeverageTO>)request.getAttribute("beverageLists");
+
+	StringBuilder sbHtml = new StringBuilder();
+	
+	for(BeverageTO to : beverageLists){
+		String image = to.getImage();
+		String name = to.getName();
+		
+		sbHtml.append("<div class='col'>");
+		sbHtml.append("		<div class='row'>");
+		sbHtml.append("			<a href='./BeverageInfo?name=" + name +"'>"  );
+		sbHtml.append("				<img src='" + image + "'" + "class='img-thumbnail img-fluid' alt=''></a>" );
+		sbHtml.append("				<p class='beverage_name text-center'>" + name + "</p>");
+		sbHtml.append("		</div>");
+		sbHtml.append("</div>");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +44,7 @@
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
+   
 </head>
 
 <body>
@@ -39,33 +62,29 @@
             <div class="">
                 <select class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
                     <option value="all" selected>전체 선택</option>
-                    <option value="calorie_des">칼로리 높은 순</option>
-                    <option value="calorie_acs">칼로리 낮은 순</option>
-                    <option value="calorie_acs">카페인 높은 순</option>
-                    <option value="calorie_acs">카페인 낮은 순</option>
-                    <option value="calorie_acs">지방 높은 순</option>
-                    <option value="calorie_acs">지방 낮은 순</option>
-                    <option value="calorie_acs">당 높은 순</option>
-                    <option value="calorie_acs">당 낮은 순</option>
+                    <option value="kcal_desc">칼로리 높은 순</option>
+                    <option value="kcal_asc">칼로리 낮은 순</option>
+                    <option value="caffiene_desc">카페인 높은 순</option>
+                    <option value="caffiene_asc">카페인 낮은 순</option>
+                    <option value="sat_fat_desc">지방 높은 순</option>
+                    <option value="sat_fat_asc">지방 낮은 순</option>
+                    <option value="sugars_desc">당 높은 순</option>
+                    <option value="sugars_asc">당 낮은 순</option>
                 </select>
             </div>
+            
             <div class=" input-group mb-3 w_search_text  ">
                 <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username"
                     aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
             </div>
+            
         </div>
 
         <div class="container">
             <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-                <div class="col">
-                    <div class="row">
-                        <a href="./BeverageInfo"><img 
-                        		src="/img/(1.6.1.1)스타벅스콜드브루.jpg" 
-                        		class="img-thumbnail img-fluid" alt=""></a> 
-                        <p class="beverage_name text-center">나이트로 바닐라 크림</p>
-                    </div>
-                </div>
+                <%=sbHtml.toString() %>
+                <!-- 
                 <div class="col">
                     <div class="row">
                         <a href="./BeverageInfo"><img
@@ -122,6 +141,7 @@
                         <p class="beverage_name text-center">나이트로 바닐라 크림</p>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </div>

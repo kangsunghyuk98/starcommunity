@@ -33,16 +33,16 @@
                             role="button" data-bs-toggle="dropdown">Beverage</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/BeverageList">음료 전체 보기</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">콜드브루</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">브루드 커피</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">에스프레소</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">프라푸치노</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">블렌디드</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">스타벅스 리프레셔</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">스타벅스 피지오</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">티(티바나)</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">기타 음료 제조</a></li>
-                            <li><a class="dropdown-item" href="/BeverageList">스타벅스 주스(병음료)</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=콜드 브루">콜드브루</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=브루드 커피">브루드 커피</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=에스프레소">에스프레소</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=프라푸치노">프라푸치노</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=블렌디드">블렌디드</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=스타벅스 리프레셔">스타벅스 리프레셔</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=스타벅스 피지오">스타벅스 피지오</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=티">티</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=기타 제조 음료">기타 제조 음료</a></li>
+                            <li><a class="dropdown-item" href="/BeverageList?category=스타벅스 주스(병음료)">스타벅스 주스(병음료)</a></li>
                         </ul>
                     </li>
                     <li><a href="/home/recommend" class="nav-link px-4 link-dark btn">Recommend</a></li>
