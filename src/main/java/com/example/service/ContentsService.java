@@ -29,4 +29,30 @@ public class ContentsService {
         }
         return flag;
     }
+
+    public int deleteMemberInfo(String id, String password) {
+
+        String encPassword = mapperInter.selectPasswordById(id);
+        boolean matchPass = passwordEncoder.matches(password,encPassword);
+
+        int result = 0;
+        int flag = 1;
+
+        if (matchPass) {
+
+            result = mapperInter.deleteMemberInfo(id, encPassword);
+
+            if (result == 1) {
+                flag = 0;
+            }else {
+                flag = 1;
+            }
+
+        }else {
+            flag = 1;
+        }
+
+        return flag;
+    }
+
 }
