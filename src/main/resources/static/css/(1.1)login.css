@@ -85,13 +85,12 @@ body {
 }
 
 #btn1 {
-    width: 220px;
-    padding: 5px;
+    padding: 8px;
     background-color: #646768;
     color: #fff;
     border-radius: 5px;
     border: none;
-    font-size: 24px;
+    font-size: 1.0rem;
     cursor: pointer;
     float: center;
 }
@@ -100,8 +99,9 @@ body {
 	display: table;
 }
 
-#kakao, #google{
+#kakao, #google, #naver{
     text-align: center;
     display: table-cell;
     margin: auto;
+    width: 70%;
 }

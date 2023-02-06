@@ -61,4 +61,8 @@ public interface MapperInter {
     @Delete("delete from member where memberkey = #{memberKey}")
     int memberDelete(int memberKey);
 
+    //여기서 부터는 멤버의 컨텐츠 관련 쿼리임
+    @Update("update member set nickname = #{nickname}, email = #{email}, password = #{password} where memberkey = #{memberKey}")
+    int modifyMemberInfo(MemberTO to); // 내정보 수정 쿼리
+
 }

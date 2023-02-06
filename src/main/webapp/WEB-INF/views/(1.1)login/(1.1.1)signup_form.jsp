@@ -20,8 +20,8 @@
         </div>
         <span>아이디</span>
         <input class="text_area" type="text" id="txtid" placeholder="ID" name="id">
-        <span id="result_id" class="css_result"></span>
         <button type="button" id="idcheck_btn">중복확인</button>
+        <span id="result_id" class="css_result"></span>
         <script type="text/javascript">
             $('#idcheck_btn').click(function(){
                 if ($('#txtid').val() != '') {
@@ -99,3 +99,4 @@
     </div>
 </div>
 </body>
+</html>

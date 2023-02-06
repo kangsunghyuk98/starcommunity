@@ -68,7 +68,10 @@ body {
     border: none;
     font-size: 0.8rem;
     cursor: pointer;
-    margin-left: 25px;
+    margin-right: 40px;
+    margin-bottom: 9px;
+    float: right;
+    
 }
 
 #nickcheck_btn {
@@ -79,8 +82,21 @@ body {
     border: none;
     font-size: 0.8rem;
     cursor: pointer;
-    margin-left: 25px;
+    margin-right: 40px;
+	margin-top: 5px;
+    float: right;
 }
+
+#result_id{
+	margin-top: -6px;
+	color: red;
+}
+
+#result_nick{
+	margin-top: -6px;
+	color: red;
+}
+
 
 #sign_btn{
     width: 40%;
