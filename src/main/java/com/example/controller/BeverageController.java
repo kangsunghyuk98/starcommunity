@@ -21,8 +21,7 @@ public class BeverageController {
 	@Autowired
 	private BeverageService bs;
 	
-	@Autowired
-	private BeverageTO to;
+	
 
 	
     // 베버리지 탭 mapping-----------------------------------------------------------
