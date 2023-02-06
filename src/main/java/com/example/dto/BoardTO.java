@@ -9,6 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Repository
 public class BoardTO {
 	// dlife_board
 	private int dlifeseq;
