@@ -46,7 +46,7 @@
             <input class="form-control" type="file" id="" multiple>
         </div>
         <form action="" method="post">
-            <textarea name="editorTxt" id="editorTxt" rows="10" cols="10" placeholder="내용을 입력해주세요"
+            <textarea name="editorTxt" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요"
                 style="width: 100%"></textarea>
             <div>
 	            <button type="button" id="w_btn" style="float: right;" class="btn btn-outline-secondary ">글쓰기</button>

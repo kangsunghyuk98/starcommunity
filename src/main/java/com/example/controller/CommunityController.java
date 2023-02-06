@@ -54,4 +54,5 @@ public class CommunityController {
     public String showBoardModify() {
         return "(1.3)community/(1.3.1.3)BoardModify";
     }
+    
 }
