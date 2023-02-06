@@ -28,10 +28,10 @@
             <button type="submit" id="btn1" class="col-4 my-2" onclick="">로그인</button>
         </div>
 
-        <div class="rowsocial_login">
-            <div class="col-sm-6 mx-auto my-2"><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
-            <div class="col-sm-6 mx-auto my-2"><a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div>
-            <div class="col-sm-6 mx-auto my-2"><a href="/oauth2/authorization/naver"><img id="naver" src="/img/(1.1)naver.png"></a></div>
+        <div class="social_login">
+            <div class=""><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
+            <div class="my-1"><a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div>
+            <div class="my-1"><a href="/oauth2/authorization/naver"><img id="naver" src="/img/(1.1)naver.png"></a></div>
         </div>
             <div class="row justify-content-center mt-2">
                 <div id="d1" class="col-sm-4">
