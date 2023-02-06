@@ -9,8 +9,7 @@ import com.example.dto.BeverageTO;
 import com.example.mapper.BeverageMapperInter;
 @Service
 public class BeverageService {
-	@Autowired
-	private BeverageTO to;
+	
 	@Autowired
 	private BeverageMapperInter mapper;
 	
