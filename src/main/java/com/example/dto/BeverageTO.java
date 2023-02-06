@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Repository
+
 public class BeverageTO {   
 	private String seq;
     private String category;
