@@ -71,4 +71,10 @@ public interface MapperInter {
     @Update("update member set nickname = #{nickname}, email = #{email}, password = #{password} where memberkey = #{memberKey}")
     int modifyMemberInfo(MemberTO to); // 내정보 수정 쿼리
 
+    @Delete("delete from member where id = #{id} and password = #{password}")
+    int deleteMemberInfo(String id, String password);
+
+    @Select("select password from member where id = #{id}")
+    String selectPasswordById(String id); // 비밀번호를 비교하기 위해 인코딩된 비번 뽑아오기
+
 }
