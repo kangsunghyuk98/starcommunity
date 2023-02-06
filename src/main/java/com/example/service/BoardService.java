@@ -1,18 +1,16 @@
-package com.example.dao;
+package com.example.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.example.dto.BoardTO;
 import com.example.mapper.BoardMapperInter;
 
-@Repository
-@MapperScan("com.exam.mapper")
-public class BoardDAO {
+@Service
+public class BoardService {
+	
 	@Autowired
 	private BoardMapperInter mapper;
 	
@@ -21,6 +19,7 @@ public class BoardDAO {
 		return boardLists;
 	}
 	
+	// 게시판 검색 
 	public ArrayList<BoardTO> boardSearchWriter(String searchReq) {
 		ArrayList<BoardTO> boardLists = mapper.boardSearchWriter(searchReq);
 		
@@ -32,5 +31,4 @@ public class BoardDAO {
 		
 		return boardLists;
 	}
-	
 }

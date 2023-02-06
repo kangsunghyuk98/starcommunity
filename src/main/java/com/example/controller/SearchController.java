@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.dao.BoardDAO;
 import com.example.dto.BoardTO;
+import com.example.service.BoardService;
 
 @RestController
 public class SearchController {
 	@Autowired
-	private BoardDAO dao;
+	private BoardService service;
 	@Autowired
 	private BoardTO to;
 	
@@ -30,7 +30,7 @@ public class SearchController {
 		JSONObject jsonData = new JSONObject();
 		
 		if( searchOption.equals(option1) ) {
-			ArrayList<BoardTO> boardLists = dao.boardSearchWriter(searchReq); 
+			ArrayList<BoardTO> boardLists = service.boardSearchWriter(searchReq); 
 
 			for( BoardTO to : boardLists) {
 				JSONObject obj = new JSONObject();
@@ -52,7 +52,7 @@ public class SearchController {
 			jsonData.put("data", arr);
 			
 		} else if( searchOption.equals(option2) ) {
-			ArrayList<BoardTO> boardLists = dao.boardSearchSub_Con(searchReq);
+			ArrayList<BoardTO> boardLists = service.boardSearchSub_Con(searchReq);
 
 			for( BoardTO to : boardLists) {
 				JSONObject obj = new JSONObject();

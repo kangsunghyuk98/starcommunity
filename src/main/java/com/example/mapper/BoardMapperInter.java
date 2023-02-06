@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import com.example.dto.BoardTO;
 
 @Mapper
+@Repository
 public interface BoardMapperInter {
 	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey")
 	public ArrayList<BoardTO> boardList();
