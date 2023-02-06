@@ -19,8 +19,8 @@
             <a href="/home/index">Logo</a>
         </div>
         <p>
-        	<span>아이디</span>
-        	<input class="text_area" type="text" id="txtid" placeholder="ID" name="id">
+        	<label for=userid>아이디</label>
+        	<input type="text" class="form-control"  id="txtid" placeholder="ID" name="id" required>
         	<button type="button" id="idcheck_btn">중복확인</button>
         	<span id="result_id" class="css_result"></span>
         </p>
@@ -51,14 +51,14 @@
             });
         </script>
 		<p>
-        	<span>비밀번호</span>
-        	<input type="password" placeholder="Password" id="txtpw" name="password">
+        	<label for="userpass">비밀번호</label>
+        	<input type="password" class="form-control" placeholder="Password" id="txtpw" name="password" required>
 		<p>
         <p>
-        	<span>비밀번호 확인</span>
-        	<input type="password" placeholder="Password" id="txtpwchk">
-        	<span class="point successPWChk"></span>
-		<input type="hidden" id="pwDoubleChk"/>
+        	<label for="passchk">비밀번호 확인</label>
+        	<input type="password" class="form-control" placeholder="Password" id="txtpwchk" required>
+        	<label class="point successPWChk"></label>
+			<input type="hidden" id="pwDoubleChk"/>
 		</p>
 		<script type="text/javascript">
 		$("#txtpwchk").blur(function(){
@@ -74,9 +74,9 @@
 		});
 		</script>
         <p>
-        	<span>닉네임</span>
-        	<input class="text_area" type="text" id="txtnick" placeholder="Nickname" name="nickname">
-        	<span id="result_nick" class="css_result"></span>
+        	<label>닉네임</label>
+        	<input type="text" class="form-control" id="txtnick" placeholder="Nickname" name="nickname" required>
+        	<label id="result_nick" class="css_result"></label>
         	<button type="button" id="nickcheck_btn">중복확인</button>
         </p>
         <script type="text/javascript">
@@ -105,28 +105,28 @@
             });
         </script>
 		<p>
-        	<span>이름</span>
-        	<input type="text" placeholder="Name" id="txtname" name="name">
+        	<label for="username">이름</label>
+        	<input type="text" class="form-control" placeholder="Name" id="txtname" name="name" required>
         </p>
         <p>
-        	<span>이메일</span>
-        	<input type="email" placeholder="Email" id="txtem" name="email">
+        	<label>이메일</label>
+        	<input type="email" class="form-control" placeholder="Email" id="txtem" name="email" required>
         </p>
         <fieldset class="fieldarea f2">
-		<span>이용약관</span>
+		<label>이용약관</label>
 		<p class="agreeText">
-			<label for="agreement1">아래 사항에 동의 합니다.</label>
-			<input id="agreement1" type="checkbox" name="agreement1"/>
+			<input id="agreement1" class="agchk" type="checkbox" name="agreement1"/>
+			<label for="agreement1" class="agreement">아래 사항에 동의 합니다.</label>
 			<textarea id="text1" readonly>
 				이용약관
 			</textarea>
 		</p>
 		</fieldset>
 		<fieldset class="fieldarea f3">
-		<span>개인정보취급방침</span>
+		<label>개인정보취급방침</label>
 		<p class="agreeText">
-			<label for="agreement2">아래 사항에 동의 합니다.</label>
-			<input id="agreement2" type="checkbox" name="agreement2"/>
+			<input id="agreement2" class="agchk" type="checkbox" name="agreement2"/>
+			<label for="agreement2" class="agreement">아래 사항에 동의 합니다.</label>
 			<textarea id="text2" readonly>
 				개인정보 방침 및 안내
 			</textarea>
@@ -150,9 +150,6 @@
         	<button type="submit" id="sign_btn">회원가입</button>
 		</div>
         </form>
-        <script type="text/javascript">
-        
-        </script>
     </div>
 </div>
 </body>
