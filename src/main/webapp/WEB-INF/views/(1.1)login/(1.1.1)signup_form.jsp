@@ -20,8 +20,9 @@
         </div>
         <p>
         	<label for=userid>아이디</label>
-        	<input type="text" class="form-control"  id="txtid" placeholder="ID" name="id" required>
+        	<input type="text" class="form-control" id="txtid" placeholder="ID" name="id" check_result="fail" required>
         	<button type="button" id="idcheck_btn">중복확인</button>
+        	<input type="hidden" name="idDuplication" value="inUncheck">
         	<span id="result_id" class="css_result"></span>
         </p>
         <script type="text/javascript">
@@ -103,6 +104,7 @@
                     $('#txtnick').focus();
                 }
             });
+
         </script>
 		<p>
         	<label for="username">이름</label>
@@ -112,40 +114,25 @@
         	<label>이메일</label>
         	<input type="email" class="form-control" placeholder="Email" id="txtem" name="email" required>
         </p>
-        <fieldset class="fieldarea f2">
-		<label>이용약관</label>
-		<p class="agreeText">
-			<input id="agreement1" class="agchk" type="checkbox" name="agreement1"/>
-			<label for="agreement1" class="agreement">아래 사항에 동의 합니다.</label>
-			<textarea id="text1" readonly>
+        
+        <div class="form-check mb-3">
+        	<label>이용약관</label>
+    		<input type="checkbox" class="form-check-input" id="Check1" required>
+    		<label class="form-check-label" for="Check1" style="font-size: 0.8rem;">아래 사항에 동의합니다.</label>
+    		<div class="invalid-feedback">체크박스를 눌러주세요</div>
+    		<textarea id="text1" readonly>
 				이용약관
 			</textarea>
-		</p>
-		</fieldset>
-		<fieldset class="fieldarea f3">
-		<label>개인정보취급방침</label>
-		<p class="agreeText">
-			<input id="agreement2" class="agchk" type="checkbox" name="agreement2"/>
-			<label for="agreement2" class="agreement">아래 사항에 동의 합니다.</label>
-			<textarea id="text2" readonly>
-				개인정보 방침 및 안내
+  		</div>
+        <div class="form-check mb-3">
+        	<label>개인정보취급방침</label>
+    		<input type="checkbox" class="form-check-input" id="Check2" required>
+    		<label class="form-check-label" for="Check2" style="font-size: 0.8rem;">아래 사항에 동의합니다.</label>
+    		<div class="invalid-feedback">체크박스를 눌러주세요</div>
+    		<textarea id="text1" readonly>
+				개인정보취급방침
 			</textarea>
-		</p>
-		</fieldset>
-		<script type="text/javascript">
-		$("input:checkbox").click(checkedChange);
-        function checkedChange() {
-            if($(this).prop("checked")){
-                $("label[for="+this.id+"]").text("동의되었습니다.");
-                $("label[for="+this.id+"]").css("color","black");
-            }else{
-                $("label[for="+this.id+"]").text("동의 해주시기 바랍니다.");
-                $("label[for="+this.id+"]").css("color","red");
-            }
-        }
-        
-		</script>
-
+  		</div>
         <div class="d-flex justify-content-center">
         	<button type="submit" id="sign_btn">회원가입</button>
 		</div>
