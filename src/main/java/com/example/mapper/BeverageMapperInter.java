@@ -8,20 +8,20 @@ import com.example.dto.BeverageTO;
 
 public interface BeverageMapperInter {
 	
-	
+	//음료 전체 메뉴
 	 	@Select("select * from beverage order by seq+0 asc")
 	    List<BeverageTO> selectAllBeverage();
 	    
-	 	
+	//음료 카테고리
 	    @Select("select * from beverage where category=#{category} order by seq+0 asc")
 	    List<BeverageTO> selectCategory(String category);
 	    
-	
+	//음료 상세페이지
 	    @Select("select category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where name =#{name}")
 	    public BeverageTO BeverageInfo(BeverageTO to);
 	    
 	    
-//      w
+	//음료 정렬
 	    @Select("select * from beverage order by kcal+0 desc")
 	    List<BeverageTO> kcalDesc();
 	    
@@ -43,6 +43,10 @@ public interface BeverageMapperInter {
 	    @Select("select * from beverage order by sugars+0 desc")
 	    List<BeverageTO> sugarsDesc();
 	    
-	    @Select("select * from beverage order by sugars+0 desc")
+	    @Select("select * from beverage order by sugars+0 asc")
 	    List<BeverageTO> sugarsAsc();
+	    
+    //음료 검색
+	    @Select("select * from beverage where name like CONCAT('%',#{searchReq},'%')")
+		public List<BeverageTO> beverageSearch(String searchReq);
 }

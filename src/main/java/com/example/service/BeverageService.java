@@ -83,6 +83,12 @@ public class BeverageService {
 		
 		return sugarsAsc;
 	}
+	
+	public List<BeverageTO> beverageSearch(String searchReq) {
+		List<BeverageTO> bSearch = mapper.beverageSearch(searchReq);
+		
+		return bSearch;
+	}
 }
 
 

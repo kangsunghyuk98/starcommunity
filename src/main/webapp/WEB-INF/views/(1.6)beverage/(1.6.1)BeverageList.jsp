@@ -21,6 +21,10 @@
 		sbHtml.append("		</div>");
 		sbHtml.append("</div>");
 	}
+	
+	BeverageTO to =(BeverageTO)request.getAttribute( "to" );
+	String category = to.getCategory();
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +48,86 @@
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
-   
+   <script type="text/javascript">
+    		$(document).ready(
+    				function() {      			
+    			
+    			$("#selectBox").on("change",(function(selOpt){
+    				var selOpt = $("#selectBox").val();
+    				beverageSort(selOpt);
+    				console.log( selOpt );
+    			 	 })
+    				);
+    			
+				let searchReq = "";
+    			
+    			$("#button-addon2").on("click", function(searchReq){
+    				var searchReq = $(".form-control").val();    				
+    				BeverageSearch(searchReq); 
+    			});
+    			
+				});
+    		const beverageSort = function(selOpt){
+    			console.log( "beverageSort" );
+    				$.ajax({
+    					  url: '/BeverageSort',
+    				      type: 'post',    				      
+    				      data: { selOpt: selOpt }, 
+    				      dataType: 'json',
+    				      success: function(jsonObject) {
+    				    	console.log("성공"); 
+     				       $("#content").empty();
+    				       
+    				       let html = '';
+    				       $.each(jsonObject.data, function(index, item){
+	    				    	   
+	   				    	    html += '<div class="col">';
+	   				    	    html += '		<div class="row">';
+    				       		html += '			<a href="./BeverageInfo?name=' + item.name +'">';
+    							html += '				<img src="' + item.image + '"' + 'class="img-thumbnail img-fluid" alt=""></a>';
+    							html += '				<p class="beverage_name text-center">' + item.name + '</p>';
+    							html += '		</div>';
+    							html += '</div>'; 
+    				       });
+     				       $("#content").append(html); 
+    				      },
+    				      error: function(err){
+    				    	  console.log('error : ' + err.status);
+    				      }
+    				    });
+    		}
+    		
+    		const BeverageSearch = function(searchReq){
+    			 
+    			$.ajax({ 
+    				url: '/BeverageSearch',
+    				type: 'post',
+    				data: { searchReq: searchReq },    				
+    				success: function(result){
+    					
+    					$("#content").empty();	
+    					
+    					let html = '';
+    					result.forEach(function(item){
+   						  	html += '<div class="col">';
+   				    	    html += '		<div class="row">';
+  				       		html += '			<a href="./BeverageInfo?name=' + item.name +'">';
+  							html += '				<img src="' + item.image + '"' + 'class="img-thumbnail img-fluid" alt=""></a>';
+  							html += '				<p class="beverage_name text-center">' + item.name + '</p>';
+  							html += '		</div>';
+  							html += '</div>'; 
+    						
+    					});
+    					
+    					$("#content").append(html);
+    				},
+    				error: function(err){
+    					alert('error : ' + err.status);
+    				} 
+			});
+		}
+    		
+    </script>
 </head>
 
 <body>
@@ -55,17 +138,17 @@
     <br>
     <br>
     <div class="container col-lg-6 col-md-8 col-sm-10 contents">
-        <div class="content_header mt-auto ">음료 전체 보기</div>
+        <div class="content_header mt-auto "><%=category %></div>
         <hr class="mt-4 mb-4">
         <!-- 검색, 정렬 -->
         <div class="d-flex justify-content-end mt-4 p-2">
             <div class="">
-                <select class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
+                <select id="selectBox" class="form-select form-select-sm w_search" aria-label=".form-select-sm example">
                     <option value="all" selected>전체 선택</option>
                     <option value="kcal_desc">칼로리 높은 순</option>
                     <option value="kcal_asc">칼로리 낮은 순</option>
-                    <option value="caffiene_desc">카페인 높은 순</option>
-                    <option value="caffiene_asc">카페인 낮은 순</option>
+                    <option value="caffeine_desc">카페인 높은 순</option>
+                    <option value="caffeine_asc">카페인 낮은 순</option>
                     <option value="sat_fat_desc">지방 높은 순</option>
                     <option value="sat_fat_asc">지방 낮은 순</option>
                     <option value="sugars_desc">당 높은 순</option>
@@ -82,7 +165,7 @@
         </div>
 
         <div class="container">
-            <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+            <div id="content" class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
                 <%=sbHtml.toString() %>
                 <!-- 
                 <div class="col">
