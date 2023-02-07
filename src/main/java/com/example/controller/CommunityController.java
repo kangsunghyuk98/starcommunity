@@ -21,11 +21,12 @@ public class CommunityController {
 	// 커뮤니티 탭 mapping-----------------------------------------------------------
 	
 	@RequestMapping("/DailyBoardList")
-	public String showDailyBoardList(Model model, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
+	public String showDailyBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
+		System.out.println("controller boardname: "+boardname);
 		
-		int boardListCount = service.selectAllListCount();
+		int boardListCount = service.selectAllListCount(boardname);
 		Pagination pagination = new Pagination(boardListCount, currentPage);
-		List<BoardTO> boardLists = service.selectAllListTen(pagination.getStartIndex());
+		List<BoardTO> boardLists = service.selectAllListTen(boardname, pagination.getStartIndex());
 		
 		model.addAttribute("boardLists", boardLists);
 		model.addAttribute("boardListCount", boardListCount);
@@ -34,7 +35,6 @@ public class CommunityController {
         System.out.println(model);
 		return "(1.3)community/(1.3.1)daily_board_list";
 	}
-	
 	@RequestMapping("/BeverageBoardList")
     public String showBeverageBoardList() {
         return "(1.3)community/(1.3.2)beverage_board_list";
@@ -51,8 +51,10 @@ public class CommunityController {
     public String showFrequencyBoardList() {
         return "(1.3)community/(1.3.5)frequency_board_list";
     }
+    
     @RequestMapping("/BoardView")
-    public String showBoardView() {
+    public String showBoardView(@RequestParam(value="seq") int seq) {
+    	
         return "(1.3)community/(1.3.1.1)BoardView";
     }   
     @RequestMapping("/BoardWrite")

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class BoardTO {
 	// dlife_board
-	private int dlifeseq;
+	private int seq;
 	private String subject;
 	private String content;
 	private String wdate;

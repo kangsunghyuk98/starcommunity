@@ -13,44 +13,35 @@ import com.example.dto.MemberTO;
 @Mapper
 @Repository
 public interface BoardMapperInter {
-	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey order by dlifeseq desc ")
-	public ArrayList<BoardTO> boardList();
-	
+
 	//페이징 쿼리
-	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey order by dlifeseq desc "
+	@Select("select * from member join ${boardName} on member.memberkey = ${boardName}.memberkey order by seq desc "
 			+ "limit #{startNo}, 10")
-    List<BoardTO> selectAllListTen(int startNo); // 게시글10개씩 페이징 처리
+    List<BoardTO> selectAllListTen(String boardName, int startNo); // 게시글10개씩 페이징 처리
 	
-    @Select("select count(*) from member join dlife_board on member.memberkey = dlife_board.memberkey order by dlifeseq desc ")
-    int selectAllListCount();
+    @Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey order by seq desc ")
+    int selectAllListCount(String boardName);
 	
     
 	// 게시판 검색 쿼리
-	// 글쓴이 검색
-	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey where nickname like CONCAT('%',#{searchReq},'%') order by dlifeseq desc ")
-	public ArrayList<BoardTO> boardSearchWriter(String searchReq);
+	@Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey where nickname like CONCAT('%',#{searchReq},'%') order by seq desc ")
+	int boardSearchWriterCount(String boardName, String searchReq);
 	
-	@Select("select count(*) from member join dlife_board on member.memberkey = dlife_board.memberkey where nickname like CONCAT('%',#{searchReq},'%') order by dlifeseq desc ")
-	int boardSearchWriterCount(String searchReq);
-	
-	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey where nickname like CONCAT('%',#{searchReq},'%') order by dlifeseq desc "
+	@Select("select * from member join ${boardName} on member.memberkey = ${boardName}.memberkey where nickname like CONCAT('%',#{searchReq},'%') order by seq desc "
 			+ "limit #{startNo}, 10")
-	public ArrayList<BoardTO> boardSearchWriterListTen(String searchReq, int startNo);
+	public ArrayList<BoardTO> boardSearchWriterListTen(String boardName, String searchReq, int startNo);
 	
 	
-	//제목, 내용 검색	
-	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey "
-			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%') order by dlifeseq desc ")
-	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq);
+	//제목, 내용 검색		
+	@Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey "
+			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%') order by seq desc ")
+	int boardSearchSub_ConCount(String boardName, String searchReq);
 	
-	@Select("select count(*) from member join dlife_board on member.memberkey = dlife_board.memberkey "
-			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%') order by dlifeseq desc ")
-	int boardSearchSub_ConCount(String searchReq);
-	
-	@Select("select * from member join dlife_board on member.memberkey = dlife_board.memberkey "
-			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%') order by dlifeseq desc " 
+	@Select("select * from member join ${boardName} on member.memberkey = ${boardName}.memberkey "
+			+ "where subject like CONCAT('%',#{searchReq},'%') or content like CONCAT('%',#{searchReq},'%') order by seq desc " 
 			+ "limit #{startNo}, 10")
-	public ArrayList<BoardTO> boardSearchSub_ConListTen(String searchReq, int startNo);
+	public ArrayList<BoardTO> boardSearchSub_ConListTen(String boardName, String searchReq, int startNo);
 
+	
 	
 }

@@ -19,15 +19,14 @@ public class SearchController {
 	private BoardService service;
 	
 	@RequestMapping("/searchBoardList")
-	public Object searchBoardList(@RequestParam(value="searchReq")String searchReq, @RequestParam(value="searchOption")String searchOption, @RequestParam(value = "currentPage")int currentPage) {
-
-		int boardListSub_ConCount = service.boardSearchSub_ConCount(searchReq);
+	public Object searchBoardList(@RequestParam(value="boardname")String boardname, @RequestParam(value="searchReq")String searchReq, @RequestParam(value="searchOption")String searchOption, @RequestParam(value = "currentPage")int currentPage) {
+		int boardListSub_ConCount = service.boardSearchSub_ConCount(boardname, searchReq);
 		Pagination paginationSC = new Pagination(boardListSub_ConCount, currentPage);
-		List<BoardTO> boardListsSC = service.boardSearchSub_ConListTen(searchReq, paginationSC.getStartIndex());
+		List<BoardTO> boardListsSC = service.boardSearchSub_ConListTen(boardname, searchReq, paginationSC.getStartIndex());
 		
-		int boardListWriterCount = service.boardSearchWriterCount(searchReq);
+		int boardListWriterCount = service.boardSearchWriterCount(boardname, searchReq);
 		Pagination paginationW = new Pagination(boardListWriterCount, currentPage);
-		List<BoardTO> boardListsW = service.boardSearchWriterListTen(searchReq, paginationW.getStartIndex());
+		List<BoardTO> boardListsW = service.boardSearchWriterListTen(boardname, searchReq, paginationW.getStartIndex());
 		
 		String option1 = "nickname";
 		String option2 = "subject_content";
@@ -40,7 +39,7 @@ public class SearchController {
 			for( BoardTO to : boardListsW) {
 				JSONObject obj = new JSONObject();
 				
-				obj.put("dlifeseq", to.getDlifeseq() );
+				obj.put("seq", to.getSeq() );
 				obj.put("subject", to.getSubject() );
 				obj.put("content", to.getContent() );
 				obj.put("wdate", to.getWdate() );
@@ -65,7 +64,7 @@ public class SearchController {
 			for( BoardTO to : boardListsSC) {
 				JSONObject obj = new JSONObject();
 				
-				obj.put("dlifeseq", to.getDlifeseq() );
+				obj.put("seq", to.getSeq() );
 				obj.put("subject", to.getSubject() );
 				obj.put("content", to.getContent() );
 				obj.put("wdate", to.getWdate() );

@@ -15,63 +15,43 @@ public class BoardService {
 	@Autowired
 	private BoardMapperInter mapper;
 	
-	// 게시판 list 
-	public ArrayList<BoardTO> boardList(){
-		ArrayList<BoardTO> boardLists = mapper.boardList();
-		return boardLists;
-		
-	}
-	
 	// 게시판 List 페이징
-
-    public int selectAllListCount() {
-        int ListCount = mapper.selectAllListCount();
+    public int selectAllListCount(String boardName) {
+        int ListCount = mapper.selectAllListCount(boardName);
         return ListCount;
     }
 	 
-	public List<BoardTO> selectAllListTen(int startNo){
-        List<BoardTO> allTenList = mapper.selectAllListTen(startNo);
+	public List<BoardTO> selectAllListTen(String boardName, int startNo){
+        List<BoardTO> allTenList = mapper.selectAllListTen(boardName, startNo);
         return allTenList;
     }
 	
-	// 게시판 검색
-	//글쓴이 검색
-	
-	public ArrayList<BoardTO> boardSearchWriter(String searchReq) {
-		ArrayList<BoardTO> boardLists = mapper.boardSearchWriter(searchReq);
-		
-		return boardLists;
-	}
-	
-	public int boardSearchWriterCount(String searchReq) {
-		int ListCount = mapper.boardSearchWriterCount(searchReq);
+	// 글쓴이 검색
+	public int boardSearchWriterCount(String boardName, String searchReq) {
+		int ListCount = mapper.boardSearchWriterCount(boardName, searchReq);
 		
 		return ListCount;
 	}
 	
-	public ArrayList<BoardTO> boardSearchWriterListTen(String searchReq, int startNo) {
-		ArrayList<BoardTO> boardLists = mapper.boardSearchWriterListTen(searchReq, startNo);
+	public ArrayList<BoardTO> boardSearchWriterListTen(String boardName, String searchReq, int startNo) {
+		ArrayList<BoardTO> boardLists = mapper.boardSearchWriterListTen(boardName, searchReq, startNo);
 		
 		return boardLists;
 	}
 	
-	//제목, 내용 검색
-	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq) {
-		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_Con(searchReq);
-
-		return boardLists;
-	}
-	
-	public int boardSearchSub_ConCount(String searchReq) {
-		int ListCount = mapper.boardSearchSub_ConCount(searchReq);
+	// 제목, 내용 검색
+	public int boardSearchSub_ConCount(String boardName, String searchReq) {
+		int ListCount = mapper.boardSearchSub_ConCount(boardName, searchReq);
 
 		return ListCount;
 	}
 	
-	public ArrayList<BoardTO> boardSearchSub_ConListTen(String searchReq, int startNo) {
-		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_ConListTen(searchReq, startNo);
+	public ArrayList<BoardTO> boardSearchSub_ConListTen(String boardName, String searchReq, int startNo) {
+		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_ConListTen(boardName, searchReq, startNo);
 
 		return boardLists;
 	}
+	
+	//게시판 view
 	
 }

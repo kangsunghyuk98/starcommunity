@@ -51,7 +51,7 @@
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"
                             role="button" data-bs-toggle="dropdown">Community</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/DailyBoardList">일상 게시판</a></li>
+                            <li><a class="dropdown-item" href="/DailyBoardList?boardname=dlife_board">일상 게시판</a></li>
                             <li><a class="dropdown-item" href="/BeverageBoardList">음료 게시판</a></li>
                             <li><a class="dropdown-item" href="/ReviewBoardList">매장 방문 후기게시판</a></li>
                             <li><a class="dropdown-item" href="/MDBoardList">MD 게시판</a></li>

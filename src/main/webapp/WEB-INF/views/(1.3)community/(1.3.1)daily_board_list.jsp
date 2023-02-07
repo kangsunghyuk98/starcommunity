@@ -9,7 +9,7 @@
 	StringBuilder sbHtml = new StringBuilder(); 	
 	
 	for(BoardTO to : boardLists){
-		int dlifeseq = to.getDlifeseq();
+		int seq = to.getSeq();
 		String subject = to.getSubject();
 		String content = to.getContent();
 		String wdate = to.getWdate();
@@ -21,18 +21,20 @@
 		String nickname = to.getNickname();
 		
 		sbHtml.append("<tr>");
-		sbHtml.append("    <td>"+ dlifeseq +"</td>");
+		sbHtml.append("    <td>"+ seq +"</td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView?Dlifeseq="+ dlifeseq +"'>"+ subject +"</a></td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView?seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
 		sbHtml.append("    <td>");
-		if( imgname != " " || imgname != "" || imgname != null ){
+		
+		if( !imgname.equals("") ){
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
 		} else {
 			sbHtml.append("<img />");
 		}
+		
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");
 	}
@@ -56,9 +58,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script>
-       function fn_paging(currentPage) {
-           location.href = '/DailyBoardList?currentPage='+currentPage;
-       }
+    	function fn_paging(currentPage) {
+           location.href = '/DailyBoardList?boardname=dlife_board&currentPage='+currentPage;
+    	}
 	</script>
 	
     <script type="text/javascript">
@@ -66,16 +68,16 @@
     			let searchReq = "";
     			let searchOption = "";
     			let url = "";
-    			
     			//검색 버튼 클릭
     			$("#button-addon2").on("click", function(){
     				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
     				let currentPage = 1;
+    				let boardname = "dlife_board";
     				
-    				url = "/searchBoardList?currentPage="+currentPage+"&searchReq="+searchReq+"&searchOption="+searchOption ;
-    				searchBoardList(searchReq, searchOption, currentPage, url);
+    				url = "/searchBoardList?boardname="+boardname+"&currentPage="+currentPage+"&searchReq="+searchReq+"&searchOption="+searchOption ;
+    				searchBoardList(boardname,searchReq, searchOption, currentPage, url);
     				
     			});
     			
@@ -84,15 +86,16 @@
     				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				let currentPage = 1; // searchBoardList 변수때문에 써 놓은 값. ajax로 보내지는 않는다.
+    				let currentPage = 1; // searchBoardList 변수때문에 써 놓은 값.
+    				let boardname = "dlife_board";
     				
     				url = $(this).attr("url");
-    				searchBoardList(searchReq, searchOption, currentPage, url); 
+    				searchBoardList(boardname, searchReq, searchOption, currentPage, url); 
     				
     			});
     		});
     		
-    		const searchBoardList = function(searchReq, searchOption, currentPage, url){
+    		const searchBoardList = function(boardname, searchReq, searchOption, currentPage, url){
 	    			$.ajax({
 	    				url: url,
 	    				type: 'get',
@@ -108,19 +111,20 @@
 	    					for(let i=0; i <= index; i++){
 	    						
 	    						html += '<tr>';
-	    						html += '    <td>'+ arr[i].dlifeseq +'</td>';
+	    						html += '    <td>'+ arr[i].seq +'</td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView?'+ arr[i].dlifeseq +'">'+ arr[i].subject+'</a></td>';
+	    						html += '    <td><a class="view_btn" href="/BoardView?seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].wdate +'</td>';
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';
 	    						html += '	 <td>';
-	    						console.log("imgname :"+arr[i].imgname+":");
-	    						if( arr[i].imgname != " " || "" || null){
+	    						
+	    						if( arr[i].imgname != "" ){
 	    							html += '<img src="/img/icon/icon_file.gif">';	
 	    						} else {	
 	    							html += '<img/>';
 	    						}
+	    						
 	    						html += '	 </td>';
 	    						html += '</tr>';
 	    					}
@@ -128,29 +132,31 @@
 	    					
 	    					//검색 후 페이징
 	    					let pagination = jsonData.pagination;
+	    					
 	    					$(".pagination").empty();
 	    					
 	    					let htmlPg = '';	    					
 	    					if( pagination.curRange != 1){
-	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
 	    					}
 	    					if( pagination.curPage != 1 ){
-    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
+    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
 	    					}
 	    					for(let i=pagination.startPage; i<=pagination.endPage; i++){
 	    						if ( i == pagination.curPage ) {
 	    							htmlPg += '<span style="font-weight: bold;"><li class="page-item"><a class="page-link">'+i+'</a></li></span>';
 	    							
 	    						} else {
-	    							htmlPg += '<li class="page-item"><button id="'+i+'" class="page-link ajaxCall" url="/searchBoardList?currentPage='+i+'&searchReq='+searchReq+'&searchOption='+searchOption+'">'+i+'</button></li>';
+	    							htmlPg += '<li class="page-item"><button id="'+i+'" class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+i+'&searchReq='+searchReq+'&searchOption='+searchOption+'">'+i+'</button></li>';
 	    						}
 	    					}
 	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
-	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
 	    					}
 	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
-	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
+	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
 	    					}
+	    					
 	    					$(".pagination").append(htmlPg);
 	    					
 	    				},
@@ -203,7 +209,7 @@
 	        </table>
         </dsiv>
     <div>
-        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='./BoardWrite'">글쓰기</button>
+        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
     </div>
     
     <div class="container-sm">
