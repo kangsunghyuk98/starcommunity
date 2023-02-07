@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.example.dto.BoardTO"%>
-<%@ page import="java.util.ArrayList"%>    
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
-	
+
 	StringBuilder sbHtml = new StringBuilder(); 	
 	
 	for(BoardTO to : boardLists){
@@ -18,7 +19,7 @@
 		int recommend = to.getRecommend();
 		int memberkey = to.getMemberkey();
 		String nickname = to.getNickname();
-				
+		
 		sbHtml.append("<tr>");
 		sbHtml.append("    <td>"+ dlifeseq +"</td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
@@ -36,6 +37,7 @@
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");
 	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -54,6 +56,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
+    <script>
+       function fn_paging(currentPage) {
+           location.href = '/DailyBoardList?currentPage='+currentPage;
+       }
+	</script>
+	
     <script type="text/javascript">
     		$(document).ready(function() {   			
  
@@ -62,17 +70,23 @@
     			$("#button-addon2").on("click", function(searchReq){
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				searchBoardList(searchReq); 
+    				
+    				let currentPage = 1;
+    				searchBoardList(searchReq, searchOption, currentPage); 
     			});
+    			
+ 
     		});
     		
-    		const searchBoardList = function(searchReq){
+    		
+    		const searchBoardList = function(searchReq, searchOption, currentPage){
  
 	    			$.ajax({
-	    				url: '/searchBoardList',
-	    				type: 'post',
+	    				url: '/searchBoardList?currentPage='+currentPage,
+	    				type: 'get',
 	    				data: { searchReq: searchReq,
-	    					 searchOption: searchOption
+	    					 searchOption: searchOption,
+	    					 currentPage: currentPage
 	    					},
 	    				dataType: 'json',
 	    				success: function(jsonData){
@@ -80,63 +94,69 @@
 	    					$("#tbody").empty();	
 	    					
 	    					let html = '';
-	    					$.each(jsonData.data, function(index, item){
+	    					let index = (jsonData.data.length) - 1;
+	    					let arr = jsonData.data;
+	    					
+	    					console.log("index : " + index);
+	    					for(let i=0; i <= index; i++){
+	    						
 	    						html += '<tr>';
-	    						html += '    <td>'+ item.dlifeseq +'</td>';
-	    						html += '    <td>'+ item.nickname +'</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView?'+ item.dlifeseq +'">'+ item.subject+'</a></td>';
-	    						html += '    <td>'+ item.wdate +'</td>';
-	    						html += '    <td>'+ item.hit +'</td>';
-	    						html += '    <td>'+ item.recommend +'</td>';
+	    						html += '    <td>'+ arr[i].dlifeseq +'</td>';
+	    						html += '    <td>'+ arr[i].nickname +'</td>';
+	    						html += '    <td><a class="view_btn" href="./BoardView?'+ arr[i].dlifeseq +'">'+ arr[i].subject+'</a></td>';
+	    						html += '    <td>'+ arr[i].wdate +'</td>';
+	    						html += '    <td>'+ arr[i].hit +'</td>';
+	    						html += '    <td>'+ arr[i].recommend +'</td>';
 	    						html += '	 <td>';
-	    						if( item.imgname != "" ){
+	    						if( arr[i].imgname != "" ){
 	    							html += '<img src="/img/icon/icon_file.gif">';	
-	    						} else if( item.imgname != null) {
+	    						} else if( arr[i].imgname != null) {
 	    							html += '<img src="/img/icon/icon_file.gif">';
 	    						} else {
 	    						}
 	    						html += '	 </td>';
-	    						html += '</tr>';	
-	    					});
+	    						html += '</tr>';
+	    						
+	    					}
+	    					
 	    					
 	    					$("#tbody").append(html);
+	    					
+	    					
+	    					let pagination = jsonData.pagination;
+	    					$(".pagination").empty();
+	    					
+	    					let htmlPg = '';
+	    					
+	    					if( pagination.curRange != 1){
+	    						htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage=1" class="page-link">처음</a></li>';	
+	    					}
+	    					if( pagination.curPage != 1 ){
+    							htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+pagination.prevPage+'" class="page-link">이전</a></li>';
+	    					}
+	    					for(let i=pagination.startPage; i<=pagination.endPage; i++){
+	    						if ( i = pagination.curPage ) {
+	    							htmlPg += '<span style="font-weight: bold;"><li class="page-item">'+i+'</li></span>';
+	    						} else {
+	    							htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+i+'" class="page-link">'+i+'</a></li>';
+	    						}
+	    					}
+	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
+	    						htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+pagination.nextPage+'" class="page-link">다음</a></li>';	
+	    					}
+	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
+	    						htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+pagination.pageCnt+'" class="page-link">끝</a></li>';
+	    					}
+	    					
+	    					$(".pagination").append(htmlPg);
+	    					
 	    				},
 	    				error: function(err){
 	    					alert('error : ' + err.status);
 	    				} 
 				});
+	    			
     		}
-    		
-    		/* const showBoardList = function(){
-	    			$.ajax({
-	    				url: '/showBoardList',
-	    				type: 'get',
-	    				dataType: 'json',
-	    				success: function(jsonData){
-	    					console.log("showBoardList")
-	    					console.log(jsonData);
-	    					
-	    					$("#tbody").empty();	
-	    					
-	    					let html = '';
-	    					$.each(jsonData.data, function(index, item){
-	    						html += '<tr>';
-	    						html += '    <td>seq'+ item.seq +'</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
-	    						html += '    <td>2xxx.xx.xx</td>';
-	    						html += '    <td>xx</td>';
-	    						html += '    <td>xx</td>';
-	    						html += '    <td>i</td>';
-	    						html += '</tr>';	
-	    					});
-	    					
-	    					$("#tbody").append(html);
-	    				},
-	    				error: function(err){
-	    					alert('error : ' + err.status);
-	    				} 
-				});
-    		} */
     </script>
 </head>
 
@@ -183,21 +203,42 @@
     <div>
         <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='./BoardWrite'">글쓰기</button>
     </div>
+    
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
-            <div class="col-md-3" style="float: none; margin: 0 auto;">      
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">next</a></li>
+                    <c:if test="${pagination.curRange ne 1 }">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging(1)">처음</a></li>
+                    </c:if>
+      
+                    <c:if test="${pagination.curPage ne 1}">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pagination.prevPage }')">이전</a></li>
+                    </c:if>
+                    
+                    <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
+                        <c:choose>
+                            <c:when test="${pageNum eq pagination.curPage}">
+                                <span style="font-weight: bold;"><li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li></span>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    
+                    <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.nextPage }')" class="page-link">다음</a></li>
+                    </c:if>
+
+                    <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.pageCnt }')" class="page-link">끝</a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>
     </div>
+    
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

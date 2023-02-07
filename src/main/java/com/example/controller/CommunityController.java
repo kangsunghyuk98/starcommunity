@@ -4,26 +4,35 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dto.BoardTO;
-import com.example.mapper.BoardMapperInter;
+import com.example.dto.Pagination;
+import com.example.service.BoardService;
 
 @Controller
 public class CommunityController {
 	@Autowired
-	private BoardMapperInter mapper;
+	private BoardService service;
 	
 	// 커뮤니티 탭 mapping-----------------------------------------------------------
 	
 	@RequestMapping("/DailyBoardList")
-	public ModelAndView showDailyBoardList(ModelAndView modelAndView) {
-		List<BoardTO> boardLists = mapper.boardList();
+	public String showDailyBoardList(Model model, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
 		
-		modelAndView.addObject("boardLists", boardLists);
-		modelAndView.setViewName("(1.3)community/(1.3.1)daily_board_list");
-		return modelAndView;
+		int boardListCount = service.selectAllListCount();
+		Pagination pagination = new Pagination(boardListCount, currentPage);
+		List<BoardTO> boardLists = service.selectAllListTen(pagination.getStartIndex());
+		
+		model.addAttribute("boardLists", boardLists);
+		model.addAttribute("boardListCount", boardListCount);
+        model.addAttribute("pagination", pagination);
+		
+        System.out.println(model);
+		return "(1.3)community/(1.3.1)daily_board_list";
 	}
 	
 	@RequestMapping("/BeverageBoardList")
