@@ -43,6 +43,8 @@
                             <li><a class="dropdown-item" href="/BeverageList?category=티">티</a></li>
                             <li><a class="dropdown-item" href="/BeverageList?category=기타 제조 음료">기타 제조 음료</a></li>
                             <li><a class="dropdown-item" href="/BeverageList?category=스타벅스 주스(병음료)">스타벅스 주스(병음료)</a></li>
+                       	    <li><a class="dropdown-item" href="/BeverageList?category=2023 New Year">2023 New Year</a></li>
+                       	
                         </ul>
                     </li>
                     <li><a href="/home/recommend" class="nav-link px-4 link-dark btn">Recommend</a></li>
