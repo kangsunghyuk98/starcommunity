@@ -35,7 +35,7 @@
         sb.append("            </div>");
         sb.append("       </td>");
         sb.append("       <td class=\"coment_re_btn float-end\">");
-        sb.append("         <button type=\"button\" value=\""+ bto.getSeq()+"\" class=\"comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  \">삭제</button>");
+        sb.append("         <button type=\"button\" value=\""+ bto.getBevseq()+"\" class=\"comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  \">삭제</button>");
         sb.append("       </td>");
         sb.append("    </tr>");
     }
@@ -142,9 +142,15 @@
         </div>
         <hr class="mt-3 mb-5">
 
+
+        <sec:authorize access="isAnonymous()">
+            로그인 후 댓글 서비스를 이용하실 수 있습니다. (프론트에서 디자인 처리 요망)
+        </sec:authorize>
+
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
 
+            <sec:authorize access="isAuthenticated()">
             <form action="/Beverage_cmtok" method="post">
                 <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
                 <input type="hidden" name="seq" value="<%= seq %>" />
@@ -156,8 +162,9 @@
                     </div>
                     <button type="submit" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">코멘트 등록</button>
                 </div>
-
             </form>
+            </sec:authorize>
+
             <!-- 댓글 리스트 -->
             <div class="comment">
                 <table class="container-fluid">
