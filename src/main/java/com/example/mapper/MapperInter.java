@@ -19,10 +19,10 @@ public interface MapperInter {
     @Insert("insert into member values (0, #{id}, #{role},#{password}, #{nickname}, #{name}, #{email},#{provider},#{providerId})")
     int oauthSave(MemberTO to);
 
-    @Select("select id, role, password, nickname, name, email, provider, providerid from member where id = #{username}")
+    @Select("select memberkey, id, role, password, nickname, name, email, provider, providerid from member where id = #{username}")
     MemberTO selectMemberKeyById(String username); // MemberUserDetailsService에서 회원정보 가져오기 위한 메서드
 
-    @Select("select id, role, password, nickname, name, email, provider, providerid from member where id = #{username}")
+    @Select("select memberkey, id, role, password, nickname, name, email, provider, providerid from member where id = #{username}")
     MemberTO oauthSelectMemberKeyById(String username); // PrincipalOauth2UserService에서 회원정보 가져오기 위한 메서드
 
     @Select("select count(*) as count from member where id = #{id}")

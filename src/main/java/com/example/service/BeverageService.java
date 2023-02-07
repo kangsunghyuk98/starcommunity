@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 
+import com.example.dto.BeverageCmtTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,11 @@ public class BeverageService {
 		
 		return to;
 		
+	}
+
+	public BeverageTO beverageInfoBySeq(BeverageTO to) {
+		to = mapper.BeverageInfoBySeq(to);
+		return to;
 	}
 	
 // ----------
@@ -89,6 +95,25 @@ public class BeverageService {
 		
 		return bSearch;
 	}
+
+	// Beverage 댓글관련 쿼리
+	public int beverageCmtWrite(BeverageCmtTO to) {
+		int result = mapper.beverageCmtWrite(to);
+		int flag = 1;
+
+		if (result == 1) {
+			flag = 0;
+		}else {
+			flag = 1;
+		}
+		return flag;
+	}
+
+	public List<BeverageCmtTO> selectAllCmtList(String seq) {
+		List<BeverageCmtTO> AllCmtList = mapper.selectAllCmtList(seq);
+		return AllCmtList;
+	}
+
 }
 
 

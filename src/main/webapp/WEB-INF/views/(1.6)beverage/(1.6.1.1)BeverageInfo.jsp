@@ -1,10 +1,14 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.example.dto.BeverageTO"%>
-
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.dto.BeverageCmtTO" %>
 <%
 	BeverageTO to = (BeverageTO)request.getAttribute( "to" );
-	
+
+    String seq = to.getSeq();
 	String category = to.getCategory();
 	String name = to.getName();
 	String engName = to.getEngName();
@@ -17,7 +21,10 @@
 	String sugars = to.getSugars();
 	String caffeine = to.getCaffeine();
 	String drinkInfo = to.getDrinkInfo();
-%>    
+
+    List<BeverageCmtTO> allCmtList = (List<BeverageCmtTO>) request.getAttribute("allCmtList");
+
+%>
     
 <!DOCTYPE html>
 <html>
@@ -44,9 +51,9 @@
     
     <script>
     	$(document).ready(function () {
-    		let text = "";
+    		let text = document.getElementById("comment").innerText;
     		$(".cmt_btn").on("click", function(){
-    			if( text != "" || null ){
+    			if( text != "" || text != null ){
     				alert("코멘트가 등록되었습니다");
     			} else {
     				alert("코멘트를 작성해야합니다");
@@ -85,8 +92,8 @@
                 </div>
                 <table class="table">
                     <tr scope="row">
-                        <th colspan="2" style="font-weight: bold; font-size: medium;">제품 영양 정보</td>
-                        <th colspan="2" style="font-weight: bold; font-size: medium;" class="txt_align_r"><%=productInfo %></td>
+                        <th colspan="2" style="font-weight: bold; font-size: medium;">제품 영양 정보</th>
+                        <th colspan="2" style="font-weight: bold; font-size: medium;" class="txt_align_r"><%=productInfo %></th>
                     </tr>
                     <tr scope="row">
                         <td scope="col">1회 제공량 (kcal)</td>
@@ -119,48 +126,62 @@
         </div>
         <hr class="mt-3 mb-5">
 
+
+        <sec:authorize access="isAnonymous()">
+            로그인 후 댓글 서비스를 이용하실 수 있습니다. (프론트에서 디자인 처리 요망)
+        </sec:authorize>
+
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
-            <form action="" method="post">
+
+            <sec:authorize access="isAuthenticated()">
+            <form action="/Beverage_cmtok" method="post">
+                <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
+                <input type="hidden" name="seq" value="<%= seq %>" />
+
                 <div class="write_comment">
                     <div class="mb-3 mt-3 ">
                         <label for="comment">Comments:</label>
-                        <textarea class="form-control mt-3" rows="2" id="comment" name="text"></textarea>
+                        <textarea class="form-control mt-3" rows="2" id="comment" name="comment"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">코멘트 등록</button>
+                    <button type="submit" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">코멘트 등록</button>
                 </div>
             </form>
+            </sec:authorize>
+
             <!-- 댓글 리스트 -->
             <div class="comment">
                 <table class="container-fluid">
-                    <tr class="clearfix border-top comment_tr">
-                        <td class="coment_re_txt float-start">
-                            <div class="mt-2 mb-2">
-                                <strong>글쓴이1</strong>(2023.09.19 02:00)
-                            </div>
-                            <div class="coment_re_txt mb-2">
-                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                            </div>
-                        </td>
-                        <td class="coment_re_btn float-end">
-                            <button type="button"
-                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
-                        </td>
-                    </tr>
-                    <tr class="clearfix border-top comment_tr">
-                        <td class="coment_re_txt float-start">
-                            <div class="mt-2 mb-2">
-                                <strong>글쓴이1</strong>(2023.09.19 02:00)
-                            </div>
-                            <div class="coment_re_txt mb-2">
-                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                            </div>
-                        </td>
-                        <td class="coment_re_btn float-end">
-                            <button type="button"
-                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
-                        </td>
-                    </tr>
+                    <!-- 댓글이 들어가는 영역 -->
+
+                    <c:forEach var="bto" items="${allCmtList}">
+
+                        <tr class="clearfix border-top comment_tr">
+                            <td class="coment_re_txt float-start">
+                                <div class="mt-2 mb-2">
+                                    <strong>${bto.name}</strong>(${bto.cdate})
+                                </div>
+                                <div class="coment_re_txt mb-2">
+                                    ${bto.comment}
+                                </div>
+                            </td>
+
+                            <sec:authorize access="isAuthenticated()">
+
+                                <sec:authentication property="principal" var="principal"/>
+
+                                <c:if test="${principal.to.memberKey eq bto.memberKey}">
+                                    <td class="coment_re_btn float-end">
+                                        <button type="button" value="${bto.bevcseq}" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>
+                                    </td>
+                                </c:if>
+
+                            </sec:authorize>
+
+                        </tr>
+
+                    </c:forEach>
+
                 </table>
                 <div class="coment_re_view">
                     <button type="button" class="btn btn-sm ">코멘트 더보기</button>

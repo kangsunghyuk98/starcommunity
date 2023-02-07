@@ -2,10 +2,16 @@ package com.example.mapper;
 
 import java.util.List;
 
+import com.example.dto.BeverageCmtTO;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.example.dto.BeverageTO;
+import org.springframework.stereotype.Repository;
 
+@Mapper
+@Repository
 public interface BeverageMapperInter {
 	
 	//음료 전체 메뉴
@@ -19,6 +25,9 @@ public interface BeverageMapperInter {
 	//음료 상세페이지
 	    @Select("select category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where name =#{name}")
 	    public BeverageTO BeverageInfo(BeverageTO to);
+
+	@Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where seq =#{seq}")
+	public BeverageTO BeverageInfoBySeq(BeverageTO to);
 	    
 	    
 	//음료 정렬
@@ -49,4 +58,12 @@ public interface BeverageMapperInter {
     //음료 검색
 	    @Select("select * from beverage where name like CONCAT('%',#{searchReq},'%')")
 		public List<BeverageTO> beverageSearch(String searchReq);
+
+	// Beverage 댓글 관련 쿼리
+	@Insert("insert into beverage_cmt values (0,#{comment},now(),#{memberKey},#{seq})")
+	int beverageCmtWrite(BeverageCmtTO to);
+
+	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, beverage_cmt.memberkey, member.name from beverage_cmt inner join member " +
+			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq}")
+	List<BeverageCmtTO> selectAllCmtList(String seq);
 }

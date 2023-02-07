@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.dto.BeverageCmtTO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,7 @@ public class BeverageController {
 	
 	@Autowired
 	private BeverageService bs;
-	
-	
 
-	
     // 베버리지 탭 mapping-----------------------------------------------------------
 	
 	@RequestMapping("/BeverageList")
@@ -57,22 +55,35 @@ public class BeverageController {
         
 		return "(1.6)beverage/(1.6.1)BeverageList";
 		
-    } 
-    
-   
-    
-    @RequestMapping("/BeverageInfo")
-    public String showBeverageInfo( HttpServletRequest request, Model model) {
-    	
-    	BeverageTO to = new BeverageTO();
-    	to.setName( request.getParameter( "name" ) );
-    	
-    	to = bs.beverageInfo(to);
-    	
-    	model.addAttribute("to", to );
-    	
-        return "(1.6)beverage/(1.6.1.1)BeverageInfo";
-    } 
+    }
+
+
+
+	@RequestMapping("/BeverageInfo")
+	public String showBeverageInfo(HttpServletRequest request, Model model) {
+
+		BeverageTO to = new BeverageTO();
+		to.setName( request.getParameter( "name" ) );
+		to.setSeq(request.getParameter("seq"));
+		to = bs.beverageInfoBySeq(to);
+
+		List<BeverageCmtTO> allCmtList = bs.selectAllCmtList(to.getSeq());
+
+		model.addAttribute("to", to );
+		model.addAttribute("allCmtList", allCmtList);
+
+		return "(1.6)beverage/(1.6.1.1)BeverageInfo";
+	}
+
+	@RequestMapping("/Beverage_cmtok")
+	public String beverageCmtOk (BeverageCmtTO to, Model model) {
+
+		int flag = bs.beverageCmtWrite(to);
+		model.addAttribute("flag",flag);
+		model.addAttribute("seq",to.getSeq());
+
+		return "okaction/beverage_cmt_ok";
+	}
     
     
     @RequestMapping("/BeverageSort")
