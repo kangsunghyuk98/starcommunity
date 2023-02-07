@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BeverageCmtTO {
-    private String bevseq;
+    private String bevcseq;
     private String comment;
     private String cdate;
     private String memberKey;

@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.example.dto.BeverageCmtTO;
+import com.example.security.SecurityMember;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +48,7 @@ public class BeverageController {
     }
     
     @RequestMapping("/BeverageInfo")
-    public String showBeverageInfo( HttpServletRequest request, Model model) {
+    public String showBeverageInfo(HttpServletRequest request, Model model) {
     	
     	BeverageTO to = new BeverageTO();
     	to.setName( request.getParameter( "name" ) );

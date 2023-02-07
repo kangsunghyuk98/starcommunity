@@ -1,9 +1,10 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.example.dto.BeverageTO"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.dto.BeverageCmtTO" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 	BeverageTO to = (BeverageTO)request.getAttribute( "to" );
 
@@ -22,23 +23,6 @@
 	String drinkInfo = to.getDrinkInfo();
 
     List<BeverageCmtTO> allCmtList = (List<BeverageCmtTO>) request.getAttribute("allCmtList");
-    StringBuilder sb = new StringBuilder();
-
-    for(BeverageCmtTO bto:allCmtList) {
-        sb.append("    <tr class=\"clearfix border-top comment_tr\">");
-        sb.append("        <td class=\"coment_re_txt float-start\">");
-        sb.append("            <div class=\"mt-2 mb-2\">");
-        sb.append("                 <strong>"+bto.getName()+"</strong>("+bto.getCdate()+")");
-        sb.append("            </div>");
-        sb.append("            <div class=\"coment_re_txt mb-2\">");
-        sb.append(bto.getComment());
-        sb.append("            </div>");
-        sb.append("       </td>");
-        sb.append("       <td class=\"coment_re_btn float-end\">");
-        sb.append("         <button type=\"button\" value=\""+ bto.getBevseq()+"\" class=\"comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  \">삭제</button>");
-        sb.append("       </td>");
-        sb.append("    </tr>");
-    }
 
 %>
     
@@ -169,7 +153,35 @@
             <div class="comment">
                 <table class="container-fluid">
                     <!-- 댓글이 들어가는 영역 -->
-                    <%= sb.toString() %>
+
+                    <c:forEach var="bto" items="${allCmtList}">
+
+                        <tr class="clearfix border-top comment_tr">
+                            <td class="coment_re_txt float-start">
+                                <div class="mt-2 mb-2">
+                                    <strong>${bto.name}</strong>(${bto.cdate})
+                                </div>
+                                <div class="coment_re_txt mb-2">
+                                    ${bto.comment}
+                                </div>
+                            </td>
+
+                            <sec:authorize access="isAuthenticated()">
+
+                                <sec:authentication property="principal" var="principal"/>
+
+                                <c:if test="${principal.to.memberKey eq bto.memberKey}">
+                                    <td class="coment_re_btn float-end">
+                                        <button type="button" value="${bto.bevcseq}" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>
+                                    </td>
+                                </c:if>
+
+                            </sec:authorize>
+
+                        </tr>
+
+                    </c:forEach>
+
                 </table>
                 <div class="coment_re_view">
                     <button type="button" class="btn btn-sm ">코멘트 더보기</button>
