@@ -28,11 +28,10 @@
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
 		sbHtml.append("    <td>");
-		if( imgname != "" ){
+		if( imgname != " " || imgname != "" || imgname != null ){
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
-		} else if( imgname != null) {
-			sbHtml.append("<img src='/img/icon/icon_file.gif'>");
 		} else {
+			sbHtml.append("<img />");
 		}
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");
@@ -116,9 +115,10 @@
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';
 	    						html += '	 <td>';
-	    						if( arr[i].imgname != "" || arr[i].imgname != " " || arr[i].imgname != null  ){
+	    						console.log("imgname :"+arr[i].imgname+":");
+	    						if( arr[i].imgname != " " || "" || null){
 	    							html += '<img src="/img/icon/icon_file.gif">';	
-	    						} else {
+	    						} else {	
 	    							html += '<img/>';
 	    						}
 	    						html += '	 </td>';
