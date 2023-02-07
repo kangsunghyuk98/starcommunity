@@ -3,6 +3,7 @@ package com.example.mapper;
 import java.util.List;
 
 import com.example.dto.BeverageCmtTO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
