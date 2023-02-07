@@ -64,40 +64,48 @@
 	
     <script type="text/javascript">
     		$(document).ready(function() {   			
- 
     			let searchReq = "";
+    			let searchOption = "";
+    			let url = "";
     			
-    			$("#button-addon2").on("click", function(searchReq){
+    			//검색 버튼 클릭
+    			$("#button-addon2").on("click", function(){
+    				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				
     				let currentPage = 1;
-    				searchBoardList(searchReq, searchOption, currentPage); 
+    				
+    				url = "/searchBoardList?currentPage="+currentPage+"&searchReq="+searchReq+"&searchOption="+searchOption ;
+    				searchBoardList(searchReq, searchOption, currentPage, url);
+    				
     			});
     			
- 
+    			//검색 후 페이징 버튼 클릭
+    			$(document).on('click', '.ajaxCall', function(){
+    				
+    				searchReq = $(".form-control").val();
+    				searchOption = $("#select_box option:selected").val();
+    				let currentPage = 1; // searchBoardList 변수때문에 써 놓은 값. ajax로 보내지는 않는다.
+    				
+    				url = $(this).attr("url");
+    				searchBoardList(searchReq, searchOption, currentPage, url); 
+    				
+    			});
     		});
     		
-    		
-    		const searchBoardList = function(searchReq, searchOption, currentPage){
- 
+    		const searchBoardList = function(searchReq, searchOption, currentPage, url){
 	    			$.ajax({
-	    				url: '/searchBoardList?currentPage='+currentPage,
+	    				url: url,
 	    				type: 'get',
-	    				data: { searchReq: searchReq,
-	    					 searchOption: searchOption,
-	    					 currentPage: currentPage
-	    					},
 	    				dataType: 'json',
 	    				success: function(jsonData){
-	    					
+	    					//검색 후 게시판 글 리스트
 	    					$("#tbody").empty();	
 	    					
 	    					let html = '';
 	    					let index = (jsonData.data.length) - 1;
 	    					let arr = jsonData.data;
 	    					
-	    					console.log("index : " + index);
 	    					for(let i=0; i <= index; i++){
 	    						
 	    						html += '<tr>';
@@ -108,46 +116,41 @@
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';
 	    						html += '	 <td>';
-	    						if( arr[i].imgname != "" ){
+	    						if( arr[i].imgname != "" || arr[i].imgname != " " || arr[i].imgname != null  ){
 	    							html += '<img src="/img/icon/icon_file.gif">';	
-	    						} else if( arr[i].imgname != null) {
-	    							html += '<img src="/img/icon/icon_file.gif">';
 	    						} else {
+	    							html += '<img/>';
 	    						}
 	    						html += '	 </td>';
 	    						html += '</tr>';
-	    						
 	    					}
-	    					
-	    					
 	    					$("#tbody").append(html);
 	    					
-	    					
+	    					//검색 후 페이징
 	    					let pagination = jsonData.pagination;
 	    					$(".pagination").empty();
 	    					
-	    					let htmlPg = '';
-	    					
+	    					let htmlPg = '';	    					
 	    					if( pagination.curRange != 1){
-	    						htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage=1" class="page-link">처음</a></li>';	
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
 	    					}
 	    					if( pagination.curPage != 1 ){
-    							htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+pagination.prevPage+'" class="page-link">이전</a></li>';
+    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
 	    					}
 	    					for(let i=pagination.startPage; i<=pagination.endPage; i++){
-	    						if ( i = pagination.curPage ) {
-	    							htmlPg += '<span style="font-weight: bold;"><li class="page-item">'+i+'</li></span>';
+	    						if ( i == pagination.curPage ) {
+	    							htmlPg += '<span style="font-weight: bold;"><li class="page-item"><a class="page-link">'+i+'</a></li></span>';
+	    							
 	    						} else {
-	    							htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+i+'" class="page-link">'+i+'</a></li>';
+	    							htmlPg += '<li class="page-item"><button id="'+i+'" class="page-link ajaxCall" url="/searchBoardList?currentPage='+i+'&searchReq='+searchReq+'&searchOption='+searchOption+'">'+i+'</button></li>';
 	    						}
 	    					}
 	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
-	    						htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+pagination.nextPage+'" class="page-link">다음</a></li>';	
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
 	    					}
 	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
-	    						htmlPg += '<li class="page-item"><a href="/searchBoardList?currentPage='+pagination.pageCnt+'" class="page-link">끝</a></li>';
+	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
 	    					}
-	    					
 	    					$(".pagination").append(htmlPg);
 	    					
 	    				},
@@ -155,7 +158,6 @@
 	    					alert('error : ' + err.status);
 	    				} 
 				});
-	    			
     		}
     </script>
 </head>
@@ -176,7 +178,7 @@
             </select>
             <div class="input-group mb-3 w_search_text">
                 <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="">검색</button>
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
             </div>
         </div>
         <hr>
