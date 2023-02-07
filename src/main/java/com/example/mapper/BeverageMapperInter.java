@@ -66,4 +66,7 @@ public interface BeverageMapperInter {
 	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, beverage_cmt.memberkey, member.name from beverage_cmt inner join member " +
 			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq}")
 	List<BeverageCmtTO> selectAllCmtList(String seq);
+	
+	@Delete("delete from beverage_cmt where bevcseq = #{bevcseq}")
+	int deleteBeverageCmt (String bevcseq);
 }
