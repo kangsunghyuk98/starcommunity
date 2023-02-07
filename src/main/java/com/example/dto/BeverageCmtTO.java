@@ -12,4 +12,5 @@ public class BeverageCmtTO {
     private String memberKey;
     private String seq;
     private String name;
+    private String nickname;
 }
