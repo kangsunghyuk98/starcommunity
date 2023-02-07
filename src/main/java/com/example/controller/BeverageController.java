@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.dto.BeverageTO;
 import com.example.service.BeverageService;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -81,6 +82,15 @@ public class BeverageController {
 		model.addAttribute("seq",to.getSeq());
 
 		return "okaction/beverage_cmt_ok";
+	}
+
+	@RequestMapping("/Beverage_cmt_delete")
+	public String beverageCmtDelete (@RequestParam("bevcseq") String bevcseq, Model model) {
+
+		int flag = bs.deleteBeverageCmt(bevcseq);
+		model.addAttribute("flag",flag);
+
+		return "okaction/beverage_cmt_delete";
 	}
 
 	@RequestMapping("/BeverageSort")

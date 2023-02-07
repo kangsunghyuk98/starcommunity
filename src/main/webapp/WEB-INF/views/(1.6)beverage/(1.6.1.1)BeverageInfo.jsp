@@ -59,14 +59,39 @@
     				alert("코멘트를 작성해야합니다");
     			}
     		});
-    		
-    		$(".comment_d_btn").on("click", function () {
-                let result = confirm("코멘트를 삭제하시겠습니까?");
-                if (result == true) {
-                    alert('코멘트가 삭제되었습니다');
+
+            $('.comment_d_btn').click(function(){
+
+                if(confirm('댓글을 삭제하시겠습니까?')){
+                    let queryString = location.search;
+                    const urlParams = new URLSearchParams(queryString);
+
+                    let bevcseq = $(this).attr('value');
+                    let seq = urlParams.get("seq");
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Beverage_cmt_delete',
+                        data: 'bevcseq=' + bevcseq,
+                        dataType: 'text',
+                        success: function (result) {
+                            if (result == 0) {
+                                alert('댓글이 삭제되었습니다.');
+                                location.href = '/BeverageInfo?seq='+seq;
+                            }else{
+                                alert('삭제 실패하였습니다. (유효하지 않은 memberkey)');
+                            }
+                        },
+                        error: function () {
+                            alert('삭제 실패')
+                            return;
+                        }
+                    });
                 } else {
+                    return false;
                 }
             });
+
     	});    	 
     </script>
 </head>
@@ -181,6 +206,12 @@
                         </tr>
 
                     </c:forEach>
+
+                    <script>
+
+
+
+                    </script>
 
                 </table>
                 <div class="coment_re_view">

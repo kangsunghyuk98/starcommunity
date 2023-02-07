@@ -111,6 +111,18 @@ public class BeverageService {
 		return AllCmtList;
 	}
 
+	public int deleteBeverageCmt (String bevcseq) {
+		int result = mapper.deleteBeverageCmt(bevcseq);
+		int flag = 1;
+
+		if (result == 1) {
+			flag = 0;
+		} else {
+			flag = 1;
+		}
+		return flag;
+	}
+
 }
 
 
