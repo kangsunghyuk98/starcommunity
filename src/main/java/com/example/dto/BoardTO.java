@@ -2,10 +2,12 @@ package com.example.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 public class BoardTO {
-	private int dlifeseq;
+	// dlife_board
+	private int seq;
 	private String subject;
 	private String content;
 	private String wdate;

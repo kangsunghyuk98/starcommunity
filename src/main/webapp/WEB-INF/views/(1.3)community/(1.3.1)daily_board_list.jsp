@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.example.dto.BoardTO"%>
-<%@ page import="java.util.ArrayList"%>    
+<%@ page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
-	
+
 	StringBuilder sbHtml = new StringBuilder(); 	
 	
 	for(BoardTO to : boardLists){
-		int dlifeseq = to.getDlifeseq();
+		int seq = to.getSeq();
 		String subject = to.getSubject();
 		String content = to.getContent();
 		String wdate = to.getWdate();
@@ -18,24 +19,26 @@
 		int recommend = to.getRecommend();
 		int memberkey = to.getMemberkey();
 		String nickname = to.getNickname();
-				
+		
 		sbHtml.append("<tr>");
-		sbHtml.append("    <td>"+ dlifeseq +"</td>");
+		sbHtml.append("    <td>"+ seq +"</td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView?Dlifeseq="+ dlifeseq +"'>"+ subject +"</a></td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView?seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
 		sbHtml.append("    <td>");
-		if( imgname != "" ){
+		
+		if( !imgname.equals("") ){
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
-		} else if( imgname != null) {
-			sbHtml.append("<img src='/img/icon/icon_file.gif'>");
 		} else {
+			sbHtml.append("<img />");
 		}
+		
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");
 	}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -54,89 +57,114 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
+    <script>
+    	function fn_paging(currentPage) {
+           location.href = '/DailyBoardList?boardname=dlife_board&currentPage='+currentPage;
+    	}
+	</script>
+	
     <script type="text/javascript">
     		$(document).ready(function() {   			
- 
     			let searchReq = "";
-    			
-    			$("#button-addon2").on("click", function(searchReq){
+    			let searchOption = "";
+    			let url = "";
+    			//검색 버튼 클릭
+    			$("#button-addon2").on("click", function(){
+    				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				searchBoardList(searchReq); 
+    				let currentPage = 1;
+    				let boardname = "dlife_board";
+    				
+    				url = "/searchBoardList?boardname="+boardname+"&currentPage="+currentPage+"&searchReq="+searchReq+"&searchOption="+searchOption ;
+    				searchBoardList(boardname,searchReq, searchOption, currentPage, url);
+    				
+    			});
+    			
+    			//검색 후 페이징 버튼 클릭
+    			$(document).on('click', '.ajaxCall', function(){
+    				
+    				searchReq = $(".form-control").val();
+    				searchOption = $("#select_box option:selected").val();
+    				let currentPage = 1; // searchBoardList 변수때문에 써 놓은 값.
+    				let boardname = "dlife_board";
+    				
+    				url = $(this).attr("url");
+    				searchBoardList(boardname, searchReq, searchOption, currentPage, url); 
+    				
     			});
     		});
     		
-    		const searchBoardList = function(searchReq){
- 
+    		const searchBoardList = function(boardname, searchReq, searchOption, currentPage, url){
 	    			$.ajax({
-	    				url: '/searchBoardList',
-	    				type: 'post',
-	    				data: { searchReq: searchReq,
-	    					 searchOption: searchOption
-	    					},
+	    				url: url,
+	    				type: 'get',
 	    				dataType: 'json',
 	    				success: function(jsonData){
-	    					
+	    					//검색 후 게시판 글 리스트
 	    					$("#tbody").empty();	
 	    					
 	    					let html = '';
-	    					$.each(jsonData.data, function(index, item){
-	    						html += '<tr>';
-	    						html += '    <td>'+ item.dlifeseq +'</td>';
-	    						html += '    <td>'+ item.nickname +'</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView?'+ item.dlifeseq +'">'+ item.subject+'</a></td>';
-	    						html += '    <td>'+ item.wdate +'</td>';
-	    						html += '    <td>'+ item.hit +'</td>';
-	    						html += '    <td>'+ item.recommend +'</td>';
-	    						html += '	 <td>';
-	    						if( item.imgname != "" ){
-	    							html += '<img src="/img/icon/icon_file.gif">';	
-	    						} else if( item.imgname != null) {
-	    							html += '<img src="/img/icon/icon_file.gif">';
-	    						} else {
-	    						}
-	    						html += '	 </td>';
-	    						html += '</tr>';	
-	    					});
+	    					let index = (jsonData.data.length) - 1;
+	    					let arr = jsonData.data;
 	    					
+	    					for(let i=0; i <= index; i++){
+	    						
+	    						html += '<tr>';
+	    						html += '    <td>'+ arr[i].seq +'</td>';
+	    						html += '    <td>'+ arr[i].nickname +'</td>';
+	    						html += '    <td><a class="view_btn" href="/BoardView?seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
+	    						html += '    <td>'+ arr[i].wdate +'</td>';
+	    						html += '    <td>'+ arr[i].hit +'</td>';
+	    						html += '    <td>'+ arr[i].recommend +'</td>';
+	    						html += '	 <td>';
+	    						
+	    						if( arr[i].imgname != "" ){
+	    							html += '<img src="/img/icon/icon_file.gif">';	
+	    						} else {	
+	    							html += '<img/>';
+	    						}
+	    						
+	    						html += '	 </td>';
+	    						html += '</tr>';
+	    					}
 	    					$("#tbody").append(html);
+	    					
+	    					//검색 후 페이징
+	    					let pagination = jsonData.pagination;
+	    					
+	    					$(".pagination").empty();
+	    					
+	    					let htmlPg = '';	    					
+	    					if( pagination.curRange != 1){
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
+	    					}
+	    					if( pagination.curPage != 1 ){
+    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
+	    					}
+	    					for(let i=pagination.startPage; i<=pagination.endPage; i++){
+	    						if ( i == pagination.curPage ) {
+	    							htmlPg += '<span style="font-weight: bold;"><li class="page-item"><a class="page-link">'+i+'</a></li></span>';
+	    							
+	    						} else {
+	    							htmlPg += '<li class="page-item"><button id="'+i+'" class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+i+'&searchReq='+searchReq+'&searchOption='+searchOption+'">'+i+'</button></li>';
+	    						}
+	    					}
+	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
+	    					}
+	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
+	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
+	    					}
+	    					
+	    					$(".pagination").append(htmlPg);
+	    					
 	    				},
 	    				error: function(err){
 	    					alert('error : ' + err.status);
 	    				} 
 				});
     		}
-    		
-    		/* const showBoardList = function(){
-	    			$.ajax({
-	    				url: '/showBoardList',
-	    				type: 'get',
-	    				dataType: 'json',
-	    				success: function(jsonData){
-	    					console.log("showBoardList")
-	    					console.log(jsonData);
-	    					
-	    					$("#tbody").empty();	
-	    					
-	    					let html = '';
-	    					$.each(jsonData.data, function(index, item){
-	    						html += '<tr>';
-	    						html += '    <td>seq'+ item.seq +'</td>';
-	    						html += '    <td><a class="view_btn" href="./BoardView">'+ item.subject+'</a></td>';
-	    						html += '    <td>2xxx.xx.xx</td>';
-	    						html += '    <td>xx</td>';
-	    						html += '    <td>xx</td>';
-	    						html += '    <td>i</td>';
-	    						html += '</tr>';	
-	    					});
-	    					
-	    					$("#tbody").append(html);
-	    				},
-	    				error: function(err){
-	    					alert('error : ' + err.status);
-	    				} 
-				});
-    		} */
     </script>
 </head>
 
@@ -156,7 +184,7 @@
             </select>
             <div class="input-group mb-3 w_search_text">
                 <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="">검색</button>
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
             </div>
         </div>
         <hr>
@@ -181,23 +209,44 @@
 	        </table>
         </dsiv>
     <div>
-        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='./BoardWrite'">글쓰기</button>
+        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
     </div>
+    
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
-            <div class="col-md-3" style="float: none; margin: 0 auto;">      
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">next</a></li>
+                    <c:if test="${pagination.curRange ne 1 }">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging(1)">처음</a></li>
+                    </c:if>
+      
+                    <c:if test="${pagination.curPage ne 1}">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pagination.prevPage }')">이전</a></li>
+                    </c:if>
+                    
+                    <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
+                        <c:choose>
+                            <c:when test="${pageNum eq pagination.curPage}">
+                                <span style="font-weight: bold;"><li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li></span>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    
+                    <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.nextPage }')" class="page-link">다음</a></li>
+                    </c:if>
+
+                    <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.pageCnt }')" class="page-link">끝</a></li>
+                    </c:if>
                 </ul>
             </div>
         </div>
     </div>
+    
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

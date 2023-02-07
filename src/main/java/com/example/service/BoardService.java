@@ -1,6 +1,7 @@
 package com.example.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,24 +11,47 @@ import com.example.mapper.BoardMapperInter;
 
 @Service
 public class BoardService {
+	
 	@Autowired
 	private BoardMapperInter mapper;
 	
-	public ArrayList<BoardTO> boardList(){
-		ArrayList<BoardTO> boardLists = mapper.boardList();
-		return boardLists;
+	// 게시판 List 페이징
+    public int selectAllListCount(String boardName) {
+        int ListCount = mapper.selectAllListCount(boardName);
+        return ListCount;
+    }
+	 
+	public List<BoardTO> selectAllListTen(String boardName, int startNo){
+        List<BoardTO> allTenList = mapper.selectAllListTen(boardName, startNo);
+        return allTenList;
+    }
+	
+	// 글쓴이 검색
+	public int boardSearchWriterCount(String boardName, String searchReq) {
+		int ListCount = mapper.boardSearchWriterCount(boardName, searchReq);
+		
+		return ListCount;
 	}
 	
-	// 게시판 검색 
-	public ArrayList<BoardTO> boardSearchWriter(String searchReq) {
-		ArrayList<BoardTO> boardLists = mapper.boardSearchWriter(searchReq);
+	public ArrayList<BoardTO> boardSearchWriterListTen(String boardName, String searchReq, int startNo) {
+		ArrayList<BoardTO> boardLists = mapper.boardSearchWriterListTen(boardName, searchReq, startNo);
 		
 		return boardLists;
 	}
 	
-	public ArrayList<BoardTO> boardSearchSub_Con(String searchReq) {
-		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_Con(searchReq);
-		
+	// 제목, 내용 검색
+	public int boardSearchSub_ConCount(String boardName, String searchReq) {
+		int ListCount = mapper.boardSearchSub_ConCount(boardName, searchReq);
+
+		return ListCount;
+	}
+	
+	public ArrayList<BoardTO> boardSearchSub_ConListTen(String boardName, String searchReq, int startNo) {
+		ArrayList<BoardTO> boardLists = mapper.boardSearchSub_ConListTen(boardName, searchReq, startNo);
+
 		return boardLists;
 	}
+	
+	//게시판 view
+	
 }

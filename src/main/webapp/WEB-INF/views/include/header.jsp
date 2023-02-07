@@ -43,6 +43,7 @@
                             <li><a class="dropdown-item" href="/BeverageList?category=티">티</a></li>
                             <li><a class="dropdown-item" href="/BeverageList?category=기타 제조 음료">기타 제조 음료</a></li>
                             <li><a class="dropdown-item" href="/BeverageList?category=스타벅스 주스(병음료)">스타벅스 주스(병음료)</a></li>
+                       	
                         </ul>
                     </li>
                     <li><a href="/home/recommend" class="nav-link px-4 link-dark btn">Recommend</a></li>
@@ -50,7 +51,7 @@
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"
                             role="button" data-bs-toggle="dropdown">Community</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/DailyBoardList">일상 게시판</a></li>
+                            <li><a class="dropdown-item" href="/DailyBoardList?boardname=dlife_board">일상 게시판</a></li>
                             <li><a class="dropdown-item" href="/BeverageBoardList">음료 게시판</a></li>
                             <li><a class="dropdown-item" href="/ReviewBoardList">매장 방문 후기게시판</a></li>
                             <li><a class="dropdown-item" href="/MDBoardList">MD 게시판</a></li>
@@ -62,8 +63,8 @@
                             role="button" data-bs-toggle="dropdown">Mypage</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/member/myinfo">개인 정보 보기</a></li>
-                            <li><a class="dropdown-item" href="#">내가 쓴 글 목록</a></li>
-                            <li><a class="dropdown-item" href="#">나만의 레시피</a></li>
+                            <li><a class="dropdown-item" href="/MypageWriteList">내가 쓴 글 목록</a></li>
+                            <li><a class="dropdown-item" href="/MypageCustom">나만의 레시피</a></li>
                         </ul>
                     </li>
                     </sec:authorize>
