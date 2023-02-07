@@ -84,6 +84,15 @@ public class BeverageController {
 
 		return "okaction/beverage_cmt_ok";
 	}
+	
+	@RequestMapping("/Beverage_cmt_delete")
+	public String beverageCmtDelete (@RequestParam("bevcseq") String bevcseq, Model model) {
+
+		int flag = bs.deleteBeverageCmt(bevcseq);
+		model.addAttribute("flag",flag);
+
+		return "okaction/beverage_cmt_delete";
+	}
     
     
     @RequestMapping("/BeverageSort")
