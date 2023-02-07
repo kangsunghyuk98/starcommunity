@@ -55,6 +55,10 @@ public interface BeverageMapperInter {
 	    @Select("select * from beverage order by sugars+0 desc")
 	    List<BeverageTO> sugarsAsc();
 
+	//음료 검색
+	@Select("select * from beverage where name like CONCAT('%',#{searchReq},'%')")
+	public List<BeverageTO> beverageSearch(String searchReq);
+
 
 	// Beverage 댓글 관련 쿼리
 	@Insert("insert into beverage_cmt values (0,#{comment},now(),#{memberKey},#{seq})")

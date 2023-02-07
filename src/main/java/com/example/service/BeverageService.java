@@ -86,6 +86,13 @@ public class BeverageService {
 		return sugarsAsc;
 	}
 
+	public List<BeverageTO> beverageSearch(String searchReq) {
+		List<BeverageTO> bSearch = mapper.beverageSearch(searchReq);
+
+		return bSearch;
+	}
+
+
 	// Beverage 댓글관련 쿼리
 	public int beverageCmtWrite(BeverageCmtTO to) {
 		int result = mapper.beverageCmtWrite(to);
