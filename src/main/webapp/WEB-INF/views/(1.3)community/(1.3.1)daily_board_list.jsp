@@ -7,6 +7,7 @@
 	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
 
 	StringBuilder sbHtml = new StringBuilder(); 	
+	String boardname = "dlife_board";
 	
 	for(BoardTO to : boardLists){
 		int seq = to.getSeq();
@@ -23,7 +24,7 @@
 		sbHtml.append("<tr>");
 		sbHtml.append("    <td>"+ seq +"</td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView?seq="+ seq +"'>"+ subject +"</a></td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView?boardname="+boardname+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
@@ -58,6 +59,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script>
+    	
     	function fn_paging(currentPage) {
            location.href = '/DailyBoardList?boardname=dlife_board&currentPage='+currentPage;
     	}
@@ -113,7 +115,7 @@
 	    						html += '<tr>';
 	    						html += '    <td>'+ arr[i].seq +'</td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
-	    						html += '    <td><a class="view_btn" href="/BoardView?seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
+	    						html += '    <td><a class="view_btn" href="/BoardView?boardname='+boardname+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].wdate +'</td>';
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';

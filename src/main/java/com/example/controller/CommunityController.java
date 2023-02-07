@@ -22,7 +22,6 @@ public class CommunityController {
 	
 	@RequestMapping("/DailyBoardList")
 	public String showDailyBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
-		System.out.println("controller boardname: "+boardname);
 		
 		int boardListCount = service.selectAllListCount(boardname);
 		Pagination pagination = new Pagination(boardListCount, currentPage);
@@ -32,7 +31,6 @@ public class CommunityController {
 		model.addAttribute("boardListCount", boardListCount);
         model.addAttribute("pagination", pagination);
 		
-        System.out.println(model);
 		return "(1.3)community/(1.3.1)daily_board_list";
 	}
 	@RequestMapping("/BeverageBoardList")
@@ -53,7 +51,13 @@ public class CommunityController {
     }
     
     @RequestMapping("/BoardView")
-    public String showBoardView(@RequestParam(value="seq") int seq) {
+    public String showBoardView(Model model, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq) {
+
+    	BoardTO to = service.viewPageContents(boardname, seq);
+    	
+    	model.addAttribute("to", to);
+    	model.addAttribute("boardname", boardname);
+    	model.addAttribute("seq", seq);
     	
         return "(1.3)community/(1.3.1.1)BoardView";
     }   

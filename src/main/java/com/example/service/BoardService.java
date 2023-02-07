@@ -53,5 +53,12 @@ public class BoardService {
 	}
 	
 	//게시판 view
-	
+	public BoardTO viewPageContents(String boardName, int seq){
+		BoardTO to = new BoardTO();
+		mapper.viewPageHitUp(boardName, seq);
+		to = mapper.viewPageContents(boardName, seq);
+		
+		return to;
+	}
+		    // 조회수
 }
