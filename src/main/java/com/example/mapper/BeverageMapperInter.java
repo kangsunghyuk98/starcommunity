@@ -2,6 +2,8 @@ package com.example.mapper;
 
 import java.util.List;
 
+import com.example.dto.BeverageCmtTO;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,8 +23,11 @@ public interface BeverageMapperInter {
 	    List<BeverageTO> selectCategory(String category);
 	    
 	
-	    @Select("select category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where name =#{name}")
+	    @Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where name =#{name}")
 	    public BeverageTO BeverageInfo(BeverageTO to);
+
+	@Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where seq =#{seq}")
+	public BeverageTO BeverageInfoBySeq(BeverageTO to);
 	    
 	    
 //      w
@@ -49,4 +54,14 @@ public interface BeverageMapperInter {
 	    
 	    @Select("select * from beverage order by sugars+0 desc")
 	    List<BeverageTO> sugarsAsc();
+
+
+	// Beverage 댓글 관련 쿼리
+	@Insert("insert into beverage_cmt values (0,#{comment},now(),#{memberKey},#{seq})")
+	int beverageCmtWrite(BeverageCmtTO to);
+
+	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, member.name from beverage_cmt inner join member " +
+			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq}")
+	List<BeverageCmtTO> selectAllCmtList(String seq);
+
 }

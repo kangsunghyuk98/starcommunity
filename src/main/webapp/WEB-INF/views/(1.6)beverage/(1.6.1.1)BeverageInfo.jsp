@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.example.dto.BeverageTO"%>
-
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.dto.BeverageCmtTO" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 	BeverageTO to = (BeverageTO)request.getAttribute( "to" );
-	
+
+    String seq = to.getSeq();
 	String category = to.getCategory();
 	String name = to.getName();
 	String engName = to.getEngName();
@@ -17,7 +20,27 @@
 	String sugars = to.getSugars();
 	String caffeine = to.getCaffeine();
 	String drinkInfo = to.getDrinkInfo();
-%>    
+
+    List<BeverageCmtTO> allCmtList = (List<BeverageCmtTO>) request.getAttribute("allCmtList");
+    StringBuilder sb = new StringBuilder();
+
+    for(BeverageCmtTO bto:allCmtList) {
+        sb.append("    <tr class=\"clearfix border-top comment_tr\">");
+        sb.append("        <td class=\"coment_re_txt float-start\">");
+        sb.append("            <div class=\"mt-2 mb-2\">");
+        sb.append("                 <strong>"+bto.getName()+"</strong>("+bto.getCdate()+")");
+        sb.append("            </div>");
+        sb.append("            <div class=\"coment_re_txt mb-2\">");
+        sb.append(bto.getComment());
+        sb.append("            </div>");
+        sb.append("       </td>");
+        sb.append("       <td class=\"coment_re_btn float-end\">");
+        sb.append("         <button type=\"button\" value=\""+ bto.getSeq()+"\" class=\"comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  \">삭제</button>");
+        sb.append("       </td>");
+        sb.append("    </tr>");
+    }
+
+%>
     
 <!DOCTYPE html>
 <html>
@@ -44,9 +67,9 @@
     
     <script>
     	$(document).ready(function () {
-    		let text = "";
+    		let text = document.getElementById("comment").innerText;
     		$(".cmt_btn").on("click", function(){
-    			if( text != "" || null ){
+    			if( text != "" || text != null ){
     				alert("코멘트가 등록되었습니다");
     			} else {
     				alert("코멘트를 작성해야합니다");
@@ -85,8 +108,8 @@
                 </div>
                 <table class="table">
                     <tr scope="row">
-                        <th colspan="2" style="font-weight: bold; font-size: medium;">제품 영양 정보</td>
-                        <th colspan="2" style="font-weight: bold; font-size: medium;" class="txt_align_r"><%=productInfo %></td>
+                        <th colspan="2" style="font-weight: bold; font-size: medium;">제품 영양 정보</th>
+                        <th colspan="2" style="font-weight: bold; font-size: medium;" class="txt_align_r"><%=productInfo %></th>
                     </tr>
                     <tr scope="row">
                         <td scope="col">1회 제공량 (kcal)</td>
@@ -121,46 +144,25 @@
 
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
-            <form action="" method="post">
+
+            <form action="/Beverage_cmtok" method="post">
+                <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
+                <input type="hidden" name="seq" value="<%= seq %>" />
+
                 <div class="write_comment">
                     <div class="mb-3 mt-3 ">
                         <label for="comment">Comments:</label>
-                        <textarea class="form-control mt-3" rows="2" id="comment" name="text"></textarea>
+                        <textarea class="form-control mt-3" rows="2" id="comment" name="comment"></textarea>
                     </div>
-                    <button type="button" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">코멘트 등록</button>
+                    <button type="submit" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">코멘트 등록</button>
                 </div>
+
             </form>
             <!-- 댓글 리스트 -->
             <div class="comment">
                 <table class="container-fluid">
-                    <tr class="clearfix border-top comment_tr">
-                        <td class="coment_re_txt float-start">
-                            <div class="mt-2 mb-2">
-                                <strong>글쓴이1</strong>(2023.09.19 02:00)
-                            </div>
-                            <div class="coment_re_txt mb-2">
-                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                            </div>
-                        </td>
-                        <td class="coment_re_btn float-end">
-                            <button type="button"
-                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
-                        </td>
-                    </tr>
-                    <tr class="clearfix border-top comment_tr">
-                        <td class="coment_re_txt float-start">
-                            <div class="mt-2 mb-2">
-                                <strong>글쓴이1</strong>(2023.09.19 02:00)
-                            </div>
-                            <div class="coment_re_txt mb-2">
-                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                            </div>
-                        </td>
-                        <td class="coment_re_btn float-end">
-                            <button type="button"
-                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
-                        </td>
-                    </tr>
+                    <!-- 댓글이 들어가는 영역 -->
+                    <%= sb.toString() %>
                 </table>
                 <div class="coment_re_view">
                     <button type="button" class="btn btn-sm ">코멘트 더보기</button>

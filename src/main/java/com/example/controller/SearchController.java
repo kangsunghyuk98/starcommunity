@@ -15,6 +15,7 @@ import com.example.service.BoardService;
 public class SearchController {
 	@Autowired
 	private BoardService service;
+
 	
 	@RequestMapping("/searchBoardList")
 	public Object searchBoardList(String searchReq, String searchOption) {

@@ -12,10 +12,11 @@
 	for(BeverageTO to : beverageLists){
 		String image = to.getImage();
 		String name = to.getName();
+        String seq = to.getSeq();
 		
 		sbHtml.append("<div class='col'>");
 		sbHtml.append("		<div class='row'>");
-		sbHtml.append("			<a href='./BeverageInfo?name=" + name +"'>"  );
+		sbHtml.append("			<a href='./BeverageInfo?name=" + name +"&seq="+seq+"'>"  );
 		sbHtml.append("				<img src='" + image + "'" + "class='img-thumbnail img-fluid' alt=''></a>" );
 		sbHtml.append("				<p class='beverage_name text-center'>" + name + "</p>");
 		sbHtml.append("		</div>");
