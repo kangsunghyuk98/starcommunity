@@ -184,7 +184,7 @@
                         <tr class="clearfix border-top comment_tr">
                             <td class="coment_re_txt float-start">
                                 <div class="mt-2 mb-2">
-                                    <strong>${bto.name}</strong>(${bto.cdate})
+                                    <strong>${bto.nickname}</strong>(${bto.cdate})
                                 </div>
                                 <div class="coment_re_txt mb-2">
                                     ${bto.comment}
