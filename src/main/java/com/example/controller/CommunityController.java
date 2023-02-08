@@ -2,13 +2,14 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dto.BoardTO;
 import com.example.dto.Pagination;
@@ -16,6 +17,7 @@ import com.example.service.BoardService;
 
 @Controller
 public class CommunityController {
+	
 	@Autowired
 	private BoardService service;
 	
@@ -120,8 +122,30 @@ public class CommunityController {
     
     @RequestMapping("/board/BoardWrite")
     public String showBoardWrite() {
+    	System.out.println( "board_write is called" );
         return "(1.3)community/(1.3.1.2)BoardWrite";
-    }      
+    }     
+    
+    @RequestMapping("/board/BoardWrite_ok")
+    public String BoardWriteOk( @RequestParam(value="boardname") String boardname, HttpServletRequest request, Model model ) {
+    	System.out.println( "board_write_ok is called" );
+    	
+    	BoardTO to = new BoardTO();
+    	to.setSubject( request.getParameter( "subject" ) );
+    	to.setContent( request.getParameter( "content" ) );
+    	to.setImgname( request.getParameter( "imgname" ) );
+    	to.setImgformat( request.getParameter( "imgformat" ) );
+    	to.setMemberkey( Integer.parseInt( request.getParameter( "memberkey" ) ) );
+    	
+    	int flag = service.boardWriteOk( boardname, to );
+    	System.out.println( flag );
+    	
+    	model.addAttribute( "flag", flag );
+    	model.addAttribute( "boardname", boardname );
+    	
+    	return "okaction/board_write_ok";
+    } 
+    
     @RequestMapping("/board/BoardModify")
     public String showBoardModify() {
         return "(1.3)community/(1.3.1.3)BoardModify";

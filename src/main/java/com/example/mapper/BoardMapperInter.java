@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.example.dto.BoardTO;
-import com.example.dto.MemberTO;
 
 @Mapper
 @Repository
@@ -55,4 +55,7 @@ public interface BoardMapperInter {
 	@Delete("delete from ${boardName} where seq=#{seq}")
 	public int deleteBoardContent(String boardName, int seq);
 	
+	// write_ok (글쓰기)
+	@Insert( "insert into ${boardName} values ( 0, #{subject}, #{content}, now(), 0, #{imgname}, #{imgformat}, 0, #{memberkey})" )
+	int boardWriteOk(String boardName, BoardTO to);
 }

@@ -25,6 +25,29 @@
     <script type="text/javascript" src="/js/(1)header.js"></script>
     
     <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById( 'w_btn' ).onclick = function() {
+				if( document.wfrm.subject.value.trim() == "" ) {
+					alert("제목을 입력해주세요.");
+					return false;
+				}
+				submitPost = function() {
+					oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
+					let content = document.getElementById("editorTxt").value
+
+					if(content == '') {
+					    alert("내용을 입력해주세요.")
+					    oEditors.getById["editorTxt"].exec("FOCUS")
+					    return
+					} else {
+					    console.log(content)
+					}
+				}
+				document.wfrm.submit();
+			};
+		};
+	</script>
 </head>
 
 <body>
@@ -35,25 +58,24 @@
     <br>
     <br>
     <div class="contents container col-lg-6 col-md-8 col-sm-10 ">
-        <div class="content_header mt-auto ">글쓰기</div>
-        <div class="mb-3 title">
-            <label for="exampleInputEmail1" class="form-label">제목</label>
-            <input type="text" class="form-control" id="">
-        </div>
-        <div class="mb-3 vstack ">
-            <label for="formFileMultiple" class="form-label">파일 이름 : </label>
-            <label for="formFileMultiple" class="form-label">파일 크기 : </label>
-            <input class="form-control" type="file" id="" multiple>
-        </div>
-        <form action="" method="post">
-            <textarea name="editorTxt" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요"
-                style="width: 100%"></textarea>
-            <div>
-	            <button type="button" id="w_btn" style="float: right;" class="btn btn-outline-secondary ">글쓰기</button>
-	            <button type="button" onclick="history.back();" style="float: right;"
-	                class="btn btn-outline-secondary ">취소</button>
-            </div>
-        </form>
+	    <form action="/BoardWrite_ok" method="post" name="wfrm" enctype="multipart/form-data">
+	        <div class="content_header mt-auto ">글쓰기</div>
+	        <div class="mb-3 title">
+	            <label for="exampleInputEmail1" class="form-label">제목</label>
+	            <input type="text" name="subject" class="form-control" value="">
+	        </div>
+	        <div class="mb-3 vstack ">
+	            <label for="formFileMultiple" class="form-label">파일 이름 : </label>
+	            <label for="formFileMultiple" class="form-label">파일 크기 : </label>
+	            <input class="form-control" type="file" name="upload" value="" multiple>
+	        </div>
+	        <textarea name="content" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 100%"></textarea>
+	        <div>
+		        <button type="button" id="w_btn" style="float: right;" class="btn btn-outline-secondary ">글쓰기</button>
+		        <button type="button" onclick="history.back();" style="float: right;"
+		            class="btn btn-outline-secondary ">취소</button>
+	        </div>
+	    </form>
     </div>
 
     <!-- 풋터 영역 -->

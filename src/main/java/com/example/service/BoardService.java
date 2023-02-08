@@ -73,4 +73,16 @@ public class BoardService {
 		
 		return flag; 
 	}
+	
+	// 게시판 write
+	public int boardWriteOk(String boardName, BoardTO to) {
+		int result = mapper.boardWriteOk(boardName, to);
+		int flag = 1;
+		
+		if( result == 1) {
+			flag = 0;
+		}
+		
+		return flag;
+	}
 }
