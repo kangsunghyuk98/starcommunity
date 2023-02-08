@@ -216,7 +216,7 @@
         
   		<sec:authorize access="isAuthenticated()">
             <div>
-                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
+                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/board/BoardWrite'">글쓰기</button>
             </div>
     	</sec:authorize>>
     
