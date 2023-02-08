@@ -65,7 +65,7 @@
         <div class="resultDesc">
 
         </div>
-        <button type="button" class="btn btn-primary mt-5" onclick="location.href='/Recommend'">  Again?  </button>
+        <button type="button" class="btn btn-primary mt-5" onclick="location.href='/home/recommend'">  Again?  </button>
         <!-- 결과 내용을 sns로 공유하는 기능으로 확장할 가능성을 대비해 주석처리 -->
         <!-- <button type="button" class="btn btn-primary kakao mt-3 py-2 px-3" onclick="">공유하기</button> -->
     </section>

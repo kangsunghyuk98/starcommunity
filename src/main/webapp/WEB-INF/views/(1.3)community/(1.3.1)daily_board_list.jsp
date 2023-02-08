@@ -3,6 +3,7 @@
 <%@page import="com.example.dto.BoardTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
 
@@ -212,11 +213,14 @@
 	                <%=sbHtml.toString()%> 
 	            </tbody>
 	        </table>
-        </dsiv>
-    <div>
-        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
-    </div>
-    
+        </div>
+
+        <sec:authorize access="isAuthenticated()">
+            <div>
+                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
+            </div>
+        </sec:authorize>
+
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
             <div class="col-md-3" style="float: none; margin: 0 auto;">
