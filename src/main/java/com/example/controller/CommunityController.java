@@ -31,7 +31,7 @@ public class CommunityController {
 		model.addAttribute("boardLists", boardLists);
 		model.addAttribute("boardListCount", boardListCount);
         model.addAttribute("pagination", pagination);
-		
+		model.addAttribute("boardname", boardname);
 		return "(1.3)community/(1.3.1)daily_board_list";
 	}
 	@RequestMapping("/BeverageBoardList")
