@@ -121,8 +121,9 @@ public class CommunityController {
     }   
     
     @RequestMapping("/board/BoardWrite")
-    public String showBoardWrite() {
+    public String showBoardWrite(@RequestParam(value="boardname") String boardname, Model model) {
     	System.out.println( "board_write is called" );
+    	model.addAttribute("boardname", boardname);
         return "(1.3)community/(1.3.1.2)BoardWrite";
     }     
     
@@ -149,7 +150,9 @@ public class CommunityController {
     } 
     
     @RequestMapping("/board/BoardModify")
-    public String showBoardModify() {
+    public String showBoardModify(@RequestParam(value="boardname") String boardname, @RequestParam(value="seq") int seq, Model model) {
+    	model.addAttribute("boardname", boardname);
+    	model.addAttribute("seq", seq);
         return "(1.3)community/(1.3.1.3)BoardModify";
     }
     

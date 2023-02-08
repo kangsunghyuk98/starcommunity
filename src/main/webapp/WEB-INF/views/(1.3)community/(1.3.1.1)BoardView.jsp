@@ -143,8 +143,8 @@
 	        </div>
         </div>
         <div class="btns hstack gap-2 mt-2">
-            <button type="button" onclick="location.href='/${category}?boardname=<%=boardname %>&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
-            <button type="button" onclick="location.href='/board/BoardModify'"
+            <button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
+            <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&seq=${seq}'"
                 class="btn btn-outline-secondary m_btn ms-auto">수정</button>
         	
 			
