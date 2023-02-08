@@ -125,9 +125,9 @@ public class CommunityController {
     }   
     
     @RequestMapping("/board/BoardWrite")
-    public String showBoardWrite(@RequestParam(value="boardname") String boardname, Model model) {
-    	System.out.println( "board_write is called" );
+    public String showBoardWrite( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, Model model) {    	
     	model.addAttribute("boardname", boardname);
+    	model.addAttribute("category", category);
         return "(1.3)community/(1.3.1.2)BoardWrite";
     }     
     
@@ -139,22 +139,26 @@ public class CommunityController {
     	System.out.println(to.getMemberkey());
     	System.out.println(to.getSubject());
     	
-    	try {
-			if( !upload.isEmpty() ) {
-				to.setImgname( upload.getOriginalFilename() );	
-				to.setFilesize( upload.getSize() ); 
-				
-				upload.transferTo( new File( upload.getOriginalFilename() ) );
-			}
-		} catch (IllegalStateException e) {
-			System.out.println( e.getMessage() );
-		} catch( IOException e ) {
-			System.out.println( e.getMessage() );
+    	// file reneme
+    	String fileRename = System.currentTimeMillis() + "_" + upload.getOriginalFilename();
+    	
+    	if( !upload.isEmpty() ) {
+			to.setImgname( fileRename );	
+			to.setFilesize( upload.getSize() ); 
 		}
     	
     	int flag = service.boardWriteOk( boardname, to );
-    	
     	System.out.println( flag );
+    	// DB에 정상 반영 되면 파일도 업로드해 줌
+    	if( flag == 0 ) {
+    		try {
+    			upload.transferTo( new File( fileRename ) );
+    		} catch (IllegalStateException e) {
+    			System.out.println( e.getMessage() );
+    		} catch( IOException e ) {
+    			System.out.println( e.getMessage() );
+    		}
+    	}
     	
     	model.addAttribute( "flag", flag );
     	model.addAttribute( "boardname", boardname );
