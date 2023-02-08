@@ -85,4 +85,22 @@ public class BoardService {
 		
 		return flag;
 	}
+	
+	// 게시판 수정
+	public BoardTO viewModifyPage(String boardName, int seq) {
+		BoardTO to = new BoardTO();
+		to = mapper.viewModifyPage(boardName, seq);
+		return to;
+	}
+	
+	public int boardModifyOk(String boardName, BoardTO to, int seq) {
+		int result = mapper.boardModifyOk(boardName, to, seq);
+		int flag = 1;
+		
+		if( result == 1) {
+			flag = 0;
+		}
+		
+		return flag;
+	} 
 }

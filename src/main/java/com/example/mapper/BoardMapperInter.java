@@ -58,4 +58,12 @@ public interface BoardMapperInter {
 	// write_ok (글쓰기)
 	@Insert( "insert into ${boardName} values ( 0, #{subject}, #{content}, now(), 0, #{imgname}, #{imgformat}, 0, #{memberkey})" )
 	int boardWriteOk(String boardName, BoardTO to);
+	
+	// modify
+	@Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey where seq like CONCAT('%',#{seq},'%') ")
+	public BoardTO viewModifyPage(String boardName, int seq);
+	
+	// modify_ok (글수정)
+	@Insert( "update ${boardName} set subject = #{subject}, content = #{content}, wdate = now(), imgname = #{imgname}, imgformat = #{imgformat}, where seq like CONCAT('%',#{seq},'%')" )
+	int boardModifyOk(String boardName, BoardTO to, int seq);
 }
