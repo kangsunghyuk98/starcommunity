@@ -9,7 +9,8 @@
 
 	StringBuilder sbHtml = new StringBuilder(); 	
 	String boardname = (String)request.getAttribute("boardname");
-	
+	String category = (String)request.getAttribute("category");
+	int currentPage = (int)request.getAttribute("currentPage");
 	for(BoardTO to : boardLists){
 		int seq = to.getSeq();
 		String subject = to.getSubject();
@@ -24,8 +25,8 @@
 		
 		sbHtml.append("<tr>");
 		sbHtml.append("    <td>"+ seq +"</td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView?category="+category+"&boardname="+boardname+"&currentPage="+currentPage+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView?boardname="+boardname+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
@@ -61,9 +62,9 @@
     
     <script>
     	let boardname = "${boardname}";
-    	console.log(boardname);
-    	function fn_paging(boardname, currentPage) {
-           location.href = '/DailyBoardList?boardname='+boardname+'&currentPage='+currentPage;
+    	let category = '${category}';
+    	function fn_paging(category, boardname, currentPage) {
+           location.href = '/'+category+'?boardname='+boardname+'&currentPage='+currentPage;
     	}
 	</script>
 	
@@ -79,10 +80,10 @@
     				searchOption = $("#select_box option:selected").val();
     				let currentPage = 1;
     				let boardname = '${boardname}';
-    				console.log(boardname);
-    				
+    				let category = '${category}';
+
     				url = "/searchBoardList?boardname="+boardname+"&currentPage="+currentPage+"&searchReq="+searchReq+"&searchOption="+searchOption ;
-    				searchBoardList(boardname,searchReq, searchOption, currentPage, url);
+    				searchBoardList(boardname,searchReq, searchOption, currentPage, url, category);
     				
     			});
     			
@@ -91,17 +92,17 @@
     				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				let currentPage = 1; // searchBoardList 변수때문에 써 놓은 값.
+    				let currentPage = '${currentPage};'
     				let boardname = '${boardname}';
-    				console.log(boardname);
+    				let category = '${category}';
     				
     				url = $(this).attr("url");
-    				searchBoardList(boardname, searchReq, searchOption, currentPage, url); 
+    				searchBoardList(boardname, searchReq, searchOption, currentPage, url, category); 
     				
     			});
     		});
     		
-    		const searchBoardList = function(boardname, searchReq, searchOption, currentPage, url){
+    		const searchBoardList = function(boardname, searchReq, searchOption, currentPage, url, category){
 	    			$.ajax({
 	    				url: url,
 	    				type: 'get',
@@ -118,8 +119,8 @@
 	    						
 	    						html += '<tr>';
 	    						html += '    <td>'+ arr[i].seq +'</td>';
+	    						html += '    <td><a class="view_btn" href="/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
-	    						html += '    <td><a class="view_btn" href="/BoardView?boardname='+boardname+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].wdate +'</td>';
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';
@@ -199,8 +200,8 @@
 	            <thead>
 	                <tr>
 	                    <th>번호</th>
-	                    <th>닉네임</th>
 	                    <th>제목</th>
+                      	<th>닉네임</th>
 	                    <th>작성일자</th>
 	                    <th>조회수</th>
 	                    <th>추천수</th>
@@ -227,11 +228,11 @@
                 <ul class="pagination justify-content-center">
                 	
                     <c:if test="${pagination.curRange ne 1 }">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${boardname}', 1)">처음</a></li>
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', 1)">처음</a></li>
                     </c:if>
       
                     <c:if test="${pagination.curPage ne 1}">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${boardname}', '${pagination.prevPage }')">이전</a></li>
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pagination.prevPage }')">이전</a></li>
                     </c:if>
                     
                     <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
@@ -240,17 +241,17 @@
                                 <span style="font-weight: bold;"><li class="page-item"><a class="page-link">${pageNum}</a></li></span>
                             </c:when>
                             <c:otherwise>
-                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${boardname}', '${pageNum }')">${pageNum}</a></li>
+                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pageNum }')">${pageNum}</a></li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
                     
                     <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging(${boardname}, '${pagination.nextPage }')" class="page-link">다음</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.nextPage }')" class="page-link">다음</a></li>
                     </c:if>
 
                     <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging(${boardname}, '${pagination.pageCnt }')" class="page-link">끝</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.pageCnt }')" class="page-link">끝</a></li>
                     </c:if>
                 </ul>
             </div>

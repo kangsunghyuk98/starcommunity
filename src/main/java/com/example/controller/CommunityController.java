@@ -24,6 +24,7 @@ public class CommunityController {
 	@RequestMapping("/DailyBoardList")
 	public String showDailyBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
 		
+		String category = "DailyBoardList";
 		int boardListCount = service.selectAllListCount(boardname);
 		Pagination pagination = new Pagination(boardListCount, currentPage);
 		List<BoardTO> boardLists = service.selectAllListTen(boardname, pagination.getStartIndex());
@@ -31,57 +32,106 @@ public class CommunityController {
 		model.addAttribute("boardLists", boardLists);
 		model.addAttribute("boardListCount", boardListCount);
         model.addAttribute("pagination", pagination);
+        model.addAttribute("category", category);
 		model.addAttribute("boardname", boardname);
+		model.addAttribute("currentPage", currentPage);
 		return "(1.3)community/(1.3.1)daily_board_list";
 	}
+	
 	@RequestMapping("/BeverageBoardList")
-    public String showBeverageBoardList() {
+    public String showBeverageBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
+		
+		String category = "BeverageBoardList";
+		int boardListCount = service.selectAllListCount(boardname);
+		Pagination pagination = new Pagination(boardListCount, currentPage);
+		List<BoardTO> boardLists = service.selectAllListTen(boardname, pagination.getStartIndex());
+		
+		model.addAttribute("boardLists", boardLists);
+		model.addAttribute("boardListCount", boardListCount);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("category", category);
+		model.addAttribute("boardname", boardname);
+		model.addAttribute("currentPage", currentPage);
         return "(1.3)community/(1.3.2)beverage_board_list";
     }
+	
     @RequestMapping("/ReviewBoardList")
-    public String showReviewBoardList() {
-        return "(1.3)community/(1.3.3)review_board_list";
+    public String showReviewBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
+    	
+    	String category = "ReviewBoardList";
+    	int boardListCount = service.selectAllListCount(boardname);
+		Pagination pagination = new Pagination(boardListCount, currentPage);
+		List<BoardTO> boardLists = service.selectAllListTen(boardname, pagination.getStartIndex());
+		
+		model.addAttribute("boardLists", boardLists);
+		model.addAttribute("boardListCount", boardListCount);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("category", category);
+		model.addAttribute("boardname", boardname);
+		model.addAttribute("currentPage", currentPage);
+    	return "(1.3)community/(1.3.3)review_board_list";
     }
+
     @RequestMapping("/MDBoardList")
-    public String showMDBoardList() {
-        return "(1.3)community/(1.3.4)MD_board_list";
+    public String showMDBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
+    	
+    	String category = "MDBoardList";
+    	int boardListCount = service.selectAllListCount(boardname);
+		Pagination pagination = new Pagination(boardListCount, currentPage);
+		List<BoardTO> boardLists = service.selectAllListTen(boardname, pagination.getStartIndex());
+		
+		model.addAttribute("boardLists", boardLists);
+		model.addAttribute("boardListCount", boardListCount);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("category", category);
+		model.addAttribute("boardname", boardname);
+		model.addAttribute("currentPage", currentPage);
+    	return "(1.3)community/(1.3.4)MD_board_list";
     }
+    
     @RequestMapping("/FrequencyBoardList")
-    public String showFrequencyBoardList() {
-        return "(1.3)community/(1.3.5)frequency_board_list";
+    public String showFrequencyBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
+    	
+    	String category = "FrequencyBoardList";
+    	int boardListCount = service.selectAllListCount(boardname);
+		Pagination pagination = new Pagination(boardListCount, currentPage);
+		List<BoardTO> boardLists = service.selectAllListTen(boardname, pagination.getStartIndex());
+		
+		model.addAttribute("boardLists", boardLists);
+		model.addAttribute("boardListCount", boardListCount);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("category", category);
+		model.addAttribute("boardname", boardname);
+		model.addAttribute("currentPage", currentPage);
+    	return "(1.3)community/(1.3.5)frequency_board_list";
     }
     
     @RequestMapping("/BoardView")
-    public String showBoardView(Model model, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq) {
-
+	public String showBoardView(Model model, @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq, @RequestParam(value="currentPage") int currentPage) {
     	BoardTO to = service.viewPageContents(boardname, seq);
     	
     	model.addAttribute("to", to);
     	model.addAttribute("boardname", boardname);
     	model.addAttribute("seq", seq);
-    	
+    	model.addAttribute("category", category);
+    	model.addAttribute("currentPage", currentPage);
         return "(1.3)community/(1.3.1.1)BoardView";
     }   
-    @RequestMapping("/BoardWrite")
+    
+    @RequestMapping("/board/BoardWrite")
     public String showBoardWrite() {
         return "(1.3)community/(1.3.1.2)BoardWrite";
     }      
-    @RequestMapping("/BoardModify")
+    @RequestMapping("/board/BoardModify")
     public String showBoardModify() {
         return "(1.3)community/(1.3.1.3)BoardModify";
     }
     
-    @RequestMapping("/BoardDelete")
+    @RequestMapping("/board/BoardDelete")
     @ResponseBody
     public int boardDelete(String boardname, int seq) {
-    	
-    	System.out.println(boardname);
-    	System.out.println(seq);
-    	
     	int flag = service.deleteBoardContent(boardname, seq);
-    	System.out.println(flag);
-    	
-    	
+   	
     	return flag;
     }
     

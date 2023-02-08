@@ -26,4 +26,13 @@ public class BoardTO {
     private String email;
     private String provider;
     private String providerId;
+    
+    
+    // 검색
+    
+    private String category;
+    private String boardname;
+    private int currentPage;
+    private String searchReq;
+    private String searchOption;
 }
