@@ -128,7 +128,9 @@ public class CommunityController {
     
     @RequestMapping("/board/BoardWrite_ok")
     public String BoardWriteOk( @RequestParam(value="boardname") String boardname, HttpServletRequest request, Model model ) {
+    
     	System.out.println( "board_write_ok is called" );
+    	System.out.println(request.getParameter( "content" ));
     	
     	BoardTO to = new BoardTO();
     	to.setSubject( request.getParameter( "subject" ) );
