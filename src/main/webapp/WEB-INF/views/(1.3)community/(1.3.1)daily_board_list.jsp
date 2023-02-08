@@ -218,9 +218,45 @@
 
         <sec:authorize access="isAuthenticated()">
             <div>
-                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/board/BoardWrite?category=${category}&boardname=${boardname}'">글쓰기</button>
+                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/board/BoardWrite?category=${category}&boardname='">글쓰기</button>
             </div>
         </sec:authorize>
+        
+        <div class="container-sm">
+        <div class="container row" style="float: none; margin: 100 auto;">
+            <div class="col-md-3" style="float: none; margin: 0 auto;">
+                <ul class="pagination justify-content-center">
+                	
+                    <c:if test="${pagination.curRange ne 1 }">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', 1)">처음</a></li>
+                    </c:if>
+      
+                    <c:if test="${pagination.curPage ne 1}">
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pagination.prevPage }')">이전</a></li>
+                    </c:if>
+                    
+                    <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
+                        <c:choose>
+                            <c:when test="${pageNum eq pagination.curPage}">
+                                <span style="font-weight: bold;"><li class="page-item"><a class="page-link">${pageNum}</a></li></span>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pageNum }')">${pageNum}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    
+                    <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.nextPage }')" class="page-link">다음</a></li>
+                    </c:if>
+
+                    <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.pageCnt }')" class="page-link">끝</a></li>
+                    </c:if>
+                </ul>
+            </div>
+        </div>
+    </div>
     
     
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
