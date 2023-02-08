@@ -16,6 +16,8 @@ public class BoardTO {
 	private String imgformat;
 	private int recommend;
 	private int memberkey;
+	private long filesize;
+	
 	
 	// member
     private String id;
@@ -28,8 +30,7 @@ public class BoardTO {
     private String providerId;
     
     
-    // 검색
-    
+    // 검색   
     private String category;
     private String boardname;
     private int currentPage;

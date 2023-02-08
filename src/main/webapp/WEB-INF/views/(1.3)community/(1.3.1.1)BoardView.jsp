@@ -17,7 +17,7 @@
 	int hit = to.getHit();         
 	String imgname = to.getImgname();  
 	String imgformat = to.getImgformat();
-	int recommend = to.getRecommend();   
+	int recommend = to.getRecommend();
 	int memberkey = to.getMemberkey();   
 	
 	String id = to.getId();        	  

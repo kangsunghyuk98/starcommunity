@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dto.BoardTO;
 import com.example.dto.Pagination;
@@ -128,23 +131,37 @@ public class CommunityController {
     }     
     
     @RequestMapping("/board/BoardWrite_ok")
-    public String BoardWriteOk( @RequestParam(value="boardname") String boardname, HttpServletRequest request, Model model ) {
+    public String BoardWriteOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, MultipartFile upload , HttpServletRequest request, Model model ) {
     
     	System.out.println( "board_write_ok is called" );
-    	System.out.println(request.getParameter( "content" ));
+    	System.out.println( request.getParameter( "content" ) );
+    	System.out.println( request.getParameter( "memberKey" ) );
     	
     	BoardTO to = new BoardTO();
     	to.setSubject( request.getParameter( "subject" ) );
     	to.setContent( request.getParameter( "content" ) );
-    	to.setImgname( request.getParameter( "imgname" ) );
-    	to.setImgformat( request.getParameter( "imgformat" ) );
-    	to.setMemberkey( Integer.parseInt( request.getParameter( "memberkey" ) ) );
+    	to.setMemberkey( Integer.parseInt( request.getParameter( "memberKey" ) ) );
+    	
+    	try {
+			if( !upload.isEmpty() ) {
+				to.setImgname( upload.getOriginalFilename() );	
+				// 아직 DB에 filesize없음.. 일단 걍 BoardTO에만 만듦
+				to.setFilesize( upload.getSize() ); 
+				
+				upload.transferTo( new File( upload.getOriginalFilename() ) );
+			}
+		} catch (IllegalStateException e) {
+			System.out.println( e.getMessage() );
+		} catch( IOException e ) {
+			System.out.println( e.getMessage() );
+		}
     	
     	int flag = service.boardWriteOk( boardname, to );
     	System.out.println( flag );
     	
     	model.addAttribute( "flag", flag );
     	model.addAttribute( "boardname", boardname );
+    	model.addAttribute( "category", category );
     	
     	return "okaction/board_write_ok";
     } 
