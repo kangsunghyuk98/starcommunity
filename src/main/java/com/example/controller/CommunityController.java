@@ -135,10 +135,6 @@ public class CommunityController {
     public String BoardWriteOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, MultipartFile upload , BoardTO to, Model model ) {
     	System.out.println( "board_write_ok is called" );
     	
-    	System.out.println(to.getContent());
-    	System.out.println(to.getMemberkey());
-    	System.out.println(to.getSubject());
-    	
     	// file reneme
     	String fileRename = System.currentTimeMillis() + "_" + upload.getOriginalFilename();
     	
@@ -148,9 +144,9 @@ public class CommunityController {
 		}
     	
     	int flag = service.boardWriteOk( boardname, to );
-    	System.out.println( flag );
+    	
     	// DB에 정상 반영 되면 파일도 업로드해 줌
-    	if( flag == 0 ) {
+    	if( flag == 0 && to.getFilesize() > 0 ) {
     		try {
     			upload.transferTo( new File( fileRename ) );
     		} catch (IllegalStateException e) {
