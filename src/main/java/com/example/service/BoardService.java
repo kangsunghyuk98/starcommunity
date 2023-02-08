@@ -60,5 +60,17 @@ public class BoardService {
 		
 		return to;
 	}
-		    // 조회수
+	
+	public int deleteBoardContent(String boardName, int seq) {
+		int result = mapper.deleteBoardContent(boardName, seq);
+		int flag = 1;
+		
+		if( result == 1) {
+			flag = 0;
+		} else {
+			flag = 1;
+		}
+		
+		return flag; 
+	}
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.example.dto.BoardTO"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	request.setCharacterEncoding("utf-8");
 	int seq = (int)request.getAttribute("seq");
@@ -46,16 +48,54 @@
     <script>
         $(document).ready(function () {
             $("#d_btn").on("click", function () {
-                let inputPassword = prompt("비밀번호를 입력하세요");
+            	if ( confirm("글을 삭제하시겠습니까?") ) {
+            		let queryString = location.search;
+                    const urlParams = new URLSearchParams(queryString);            		 
+                    
+                    let seq = urlParams.get("seq");
+                    let boardname = urlParams.get("boardname");
+                    console.log(seq);
+                    console.log(boardname);
+                    
+            		$.ajax({
+	    				url: '/BoardDelete',
+	    				type: 'get',
+	    				data: {
+	    					seq: seq,
+	    					boardname: boardname
+	    				},
+	    				dataType: 'text',
+	    				success: function(result){
+	    					if (result == 0){
+	    						alert("글이 삭제되었습니다");
+	    						  window.history.back();
+	    					} else {
+	    						 alert("삭제 실패하였습니다.");
+	    					}
+	    					
+	    				},
+	    				error: function(err){
+	    					alert('error : ' + err.status);
+	    				} 
+            		});
+            		
+                    
+                } else {
+                	alert("취소되었습니다");
+                }
+            	
+                /* let inputPassword = prompt("비밀번호를 입력하세요");
                 let password = '12345';
                 if (inputPassword != null || '') {
                     if (inputPassword == password) {
                         console.log("비밀번호는" + inputPassword);
                         alert("글이 삭제되었습니다");
+                        window.location.href="/"
                     } else {
                         alert("비밀번호가 틀렸습니다");
                     }
-                }
+                } */
+                
             });
             
             let text = "1";
@@ -117,9 +157,20 @@
             <button type="button" onclick="location.href='/DailyBoardList?boardname=<%=boardname %>'" class="btn btn-outline-secondary l_btn">목록</button>
             <button type="button" onclick="location.href='/BoardModify'"
                 class="btn btn-outline-secondary m_btn ms-auto">수정</button>
-            <button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+        	
+			
+			<sec:authorize var="" access="isAuthenticated()">
+				<sec:authentication property="principal" var="principal"/>
+				
+				<c:if test="${principal.to.memberKey eq to.memberkey}">
+						<button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+            	</c:if>
+			</sec:authorize>
+            
         </div>
         <hr class="mt-3 mb-2">
+
+
 
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">

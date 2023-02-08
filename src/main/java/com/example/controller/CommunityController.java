@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dto.BoardTO;
@@ -69,5 +70,20 @@ public class CommunityController {
     public String showBoardModify() {
         return "(1.3)community/(1.3.1.3)BoardModify";
     }
+    
+    @RequestMapping("/BoardDelete")
+    @ResponseBody
+    public int boardDelete(String boardname, int seq) {
+    	
+    	System.out.println(boardname);
+    	System.out.println(seq);
+    	
+    	int flag = service.deleteBoardContent(boardname, seq);
+    	System.out.println(flag);
+    	
+    	
+    	return flag;
+    }
+    
     
 }

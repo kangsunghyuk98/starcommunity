@@ -3,6 +3,7 @@ package com.example.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -51,5 +52,7 @@ public interface BoardMapperInter {
 	@Update("update ${boardName} set hit = hit+1 where seq=#{seq}")
 	public void viewPageHitUp(String boardName, int seq);
 	
+	@Delete("delete from ${boardName} where seq=#{seq}")
+	public int deleteBoardContent(String boardName, int seq);
 	
 }
