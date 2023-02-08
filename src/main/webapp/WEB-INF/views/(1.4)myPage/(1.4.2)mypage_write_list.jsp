@@ -87,8 +87,18 @@
                 </tr>
             </thead>
              <tbody>
-                <!-- 여기부터 모든 내가 쓴 글 목록 -->
-                        <%= sb.toString() %>
+             <!-- 여기부터 모든 내가 쓴 글 목록 -->
+             <c:choose>
+                 <c:when test="${allMyBoardListCount == 0}">
+                     <tr>
+                         <td colspan="4" style="text-align: center;">작성한 게시물이 없습니다.</td>
+                     </tr>
+                 </c:when>
+                 <c:otherwise>
+                     <%= sb.toString() %>
+                 </c:otherwise>
+             </c:choose>
+
             </tbody>
         </table>
     </div>
