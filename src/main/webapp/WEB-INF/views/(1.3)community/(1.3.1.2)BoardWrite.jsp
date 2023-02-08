@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -59,6 +60,7 @@
     <br>
     <div class="contents container col-lg-6 col-md-8 col-sm-10 ">
 	    <form action="/BoardWrite_ok" method="post" name="wfrm" enctype="multipart/form-data">
+		    <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
 	        <div class="content_header mt-auto ">글쓰기</div>
 	        <div class="mb-3 title">
 	            <label for="exampleInputEmail1" class="form-label">제목</label>
