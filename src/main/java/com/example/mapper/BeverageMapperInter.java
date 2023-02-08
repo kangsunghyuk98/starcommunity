@@ -31,7 +31,7 @@ public interface BeverageMapperInter {
 	public BeverageTO BeverageInfoBySeq(BeverageTO to);
 	    
 	    
-	//음료 정렬
+	//------------------------------------------------------------------------음료 정렬  
 	    @Select("select * from beverage order by kcal+0 desc")
 	    List<BeverageTO> kcalDesc();
 	    
@@ -56,9 +56,39 @@ public interface BeverageMapperInter {
 	    @Select("select * from beverage order by sugars+0 asc")
 	    List<BeverageTO> sugarsAsc();
 	    
-    //음료 검색
-	    @Select("select * from beverage where name like CONCAT('%',#{searchReq},'%')")
+// ------------------------------------------------------------------------------------------- 카테고리 포함 정렬
+	    
+	    @Select("select * from beverage where category=#{category} order by kcal+0 desc")
+	    List<BeverageTO> kcalDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by kcal+0 asc")
+	    List<BeverageTO> kcalAscCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by caffeine+0 desc")
+	    List<BeverageTO> caffeineDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by caffeine+0 asc")
+	    List<BeverageTO> caffeineAscCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sat_fat+0 desc")
+	    List<BeverageTO> sat_fatDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sat_fat+0 asc")
+	    List<BeverageTO> sat_fatAscCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sugars+0 desc")
+	    List<BeverageTO> sugarsDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sugars+0 asc")
+	    List<BeverageTO> sugarsAscCategory(String category);
+	    
+    //----------------------------------------------------------------------------------------------------음료 검색
+	    @Select("select * from beverage where name like CONCAT('%',#{searchReq},'%') order by seq+0 asc")
 		public List<BeverageTO> beverageSearch(String searchReq);
+	    
+    //-----------------------------------------------------------------------------------------------------음료 검색 카테고리 포함
+	    @Select("select * from beverage where category=#{category} and name like CONCAT('%',#{searchReq},'%') order by seq+0 asc")
+		public List<BeverageTO> beverageSearchCategory(String category,String searchReq);
 
 	// Beverage 댓글 관련 쿼리
 	@Insert("insert into beverage_cmt values (0,#{comment},now(),#{memberKey},#{seq})")

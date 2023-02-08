@@ -94,13 +94,20 @@ public class BeverageController {
 
 		return "okaction/beverage_cmt_delete";
 	}
+	
+//---------------------------------------------------------------------------음료 정렬
     
     
-    @RequestMapping("/BeverageSort")
+    @RequestMapping("/BeverageSort")  
     @ResponseBody
-    public Object BeverageSort(String selOpt) {
+    public Object BeverageSort(String selOpt, String category, HttpServletRequest request) {
+    	String category1 = request.getParameter("category");
+    	String selAll = "음료 전체";
+    	System.out.println(category1);
+    	System.out.println(category);
     	System.out.println(selOpt);
     	System.out.println("실행되었음");
+    	System.out.println("실행되었음2");
     	String option1 ="kcal_desc";
     	String option2 ="kcal_asc";
     	String option3 ="caffeine_desc";
@@ -112,10 +119,38 @@ public class BeverageController {
     	
     	List<BeverageTO> beverageLists;
     	
-    	JSONArray arr = new JSONArray();
-    	JSONObject jsonObject = new JSONObject();
+    	//카테고리가 "음료 전체"가 아닌지 구별
+    	if(!category1.equals(selAll)) {
+    		if(selOpt.equals(option1)) {
+        		System.out.println("categoryOption 선택 : " + option1);
+        		beverageLists = bs.orderKcalDescCategory(category1);     		
+        	}else if( selOpt.equals(option2) ) {
+        		System.out.println("categoryOption 선택 : " + option2);
+        		beverageLists = bs.orderKcalAscCategory(category1);
+        	}else if( selOpt.equals(option3) ) {
+        		System.out.println("categoryOption 선택 : " + option3);
+        		beverageLists = bs.orderCaffeineDescCategory(category1);
+        	}else if( selOpt.equals(option4) ) {
+        		System.out.println("categoryOption 선택 : " + option4);
+        		beverageLists = bs.orderCaffeineAscCategory(category1);
+        	}else if( selOpt.equals(option5) ) {
+        		System.out.println("categoryOption 선택 : " + option5);
+        		beverageLists = bs.orderSat_fatDescCategory(category1);
+        	}else if( selOpt.equals(option6) ) {
+        		System.out.println("categoryOption 선택 : " + option6);
+        		beverageLists = bs.orderSat_fatAscCategory(category1);
+        	}else if( selOpt.equals(option7) ) {
+        		System.out.println("categoryOption 선택 : " + option7);
+        		beverageLists = bs.orderSugarsDescCategory(category1);
+        	}else if( selOpt.equals(option8) ) {
+        		System.out.println("categoryOption 선택 : " + option8);
+        		beverageLists = bs.orderSugarsAscCategory(category1);
+        	}else {
+        		beverageLists = bs.selectCategory(category1);
+        	}
+    	}else {
     	
-    	if(selOpt.equals(option1)) {
+    	 if(selOpt.equals(option1)) {
     		System.out.println("option 선택 : " + option1);
     		beverageLists = bs.orderKcalDesc();     		
     	}else if( selOpt.equals(option2) ) {
@@ -142,6 +177,10 @@ public class BeverageController {
     	}else {
     		beverageLists = bs.selectAllBeverage(); 
     	}
+	}
+    	
+    	JSONArray arr = new JSONArray();
+    	JSONObject jsonObject = new JSONObject();
     	
     	System.out.println( "현재 선택된 옵션 : " + selOpt);
     	
@@ -172,19 +211,52 @@ public class BeverageController {
     	
     }
     
+//---------------------------------------------------------------------------음료 검색
+    
     @RequestMapping("/BeverageSearch")
     @ResponseBody
-	public List<BeverageTO> BeverageSearch(String searchReq,Model model) {
-		System.out.println(searchReq);	
+	public Object BeverageSearch(String searchReq,HttpServletRequest request,String category) {
+    	String selAll = "음료 전체";
+    	System.out.println(searchReq);	
+		String category1 = request.getParameter("category");
+		System.out.println(category1);
 		
-		List<BeverageTO> beverageSearch = bs.beverageSearch(searchReq);
+		List<BeverageTO> beverageSearch; 
 		
-		model.addAttribute("beverageSearch",beverageSearch);
-		
+		//카테고리가 "음료 전체"인지 아닌지 구별
+		if(!category1.equals(selAll)) {
+			beverageSearch= bs.beverageSearchCategory(category,searchReq);
+		}else {
+			beverageSearch= bs.beverageSearch(searchReq);
+		}
+		JSONArray arr = new JSONArray();
+    	JSONObject jsonData = new JSONObject();    	
+    	
+    	for( BeverageTO to : beverageSearch) {
+			JSONObject obj = new JSONObject();
 			
-		
-		
-		return bs.beverageSearch(searchReq) ;
-	}
+			obj.put("seq", to.getSeq());
+			obj.put("category", to.getCategory());
+			obj.put("name", to.getName() );
+			obj.put("engName", to.getEngName() );
+			obj.put("image", to.getImage() );
+			obj.put("productInfo", to.getProductInfo() );
+			obj.put("kcal", to.getKcal() );
+			obj.put("sat_fat", to.getSat_fat() );
+			obj.put("protein", to.getProtein() );
+			obj.put("sodium", to.getSodium() );
+			obj.put("sugars", to.getSugars() );
+			obj.put("caffeine", to.getCaffeine() );
+			obj.put("drinkInfo", to.getDrinkInfo() );
+			
+			arr.add(obj);
+			
+		}
+    	System.out.println("json 성공");
+    	jsonData.put("data", arr );   
+    	
+    	return jsonData; 
+    	
+    }
     
 }
