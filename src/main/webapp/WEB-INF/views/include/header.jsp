@@ -59,11 +59,12 @@
                         </ul>
                     </li>
                     <sec:authorize access="isAuthenticated()">
+                        <sec:authentication property="principal" var="principal"/>
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"
                             role="button" data-bs-toggle="dropdown">Mypage</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/member/myinfo">개인 정보 보기</a></li>
-                            <li><a class="dropdown-item" href="/MypageWriteList">내가 쓴 글 목록</a></li>
+                            <li><a class="dropdown-item" href="/member/myboardlists?memberKey=${principal.to.memberKey}">내가 쓴 글 목록</a></li>
                             <li><a class="dropdown-item" href="/MypageCustom">나만의 레시피</a></li>
                         </ul>
                     </li>

@@ -1,5 +1,6 @@
 package com.example.mapper;
 
+import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
 import com.example.security.SecurityMember;
 import org.apache.ibatis.annotations.*;
@@ -76,5 +77,28 @@ public interface MapperInter {
 
     @Select("select password from member where id = #{id}")
     String selectPasswordById(String id); // 비밀번호를 비교하기 위해 인코딩된 비번 뽑아오기
+
+
+
+    // 내가 쓴글 조회에서 사용되는 쿼리
+    @Select("select seq, subject, wdate, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'dlife_board') as boardname " +
+            "from dlife_board where memberkey = #{memberKey}")
+    List<BoardTO> selectAllMyDlifeBoards(String memberKey); // dlife_board select
+
+    @Select("select seq, subject, wdate, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'md_board') as boardname " +
+            "from md_board where memberkey = #{memberKey}")
+    List<BoardTO> selectAllMyMdBoards(String memberKey); // md_board select
+
+    @Select("select seq, subject, wdate, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'review_board') as boardname " +
+            "from review_board where memberkey = #{memberKey}")
+    List<BoardTO> selectAllMyReviewBoards(String memberKey); // review_board select
+
+    @Select("select seq, subject, wdate, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'frequency_board') as boardname " +
+            "from frequency_board where memberkey = #{memberKey}")
+    List<BoardTO> selectAllMyFrequencyBoards(String memberKey); // frequency_board select
+
+    @Select("select seq, subject, wdate, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'beverage_board') as boardname " +
+            "from beverage_board where memberkey = #{memberKey}")
+    List<BoardTO> selectAllMyBeverageBoards(String memberKey); // frequency_board select
 
 }

@@ -1,13 +1,16 @@
 package com.example.controller;
 
+import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
+import com.example.dto.Pagination;
 import com.example.service.ContentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/member")
@@ -48,5 +51,26 @@ public class ContentsController {
 
         return "okaction/myinfo_delete_ok";
     }
+
+    @RequestMapping("/myboardlists")
+    public String viewMyBoardList (@RequestParam("memberKey") String memberKey,
+                                   @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+                                   Model model) {
+
+        int allMyBoardListCount = contentsService.selectAllMyBoardList(memberKey).size();
+
+        Pagination pagination = new Pagination(allMyBoardListCount, currentPage);
+        List<BoardTO> allMyBoardLists = contentsService.selectAllMyBoardList(memberKey,pagination.getStartIndex());
+
+        model.addAttribute("allMyBoardListCount",allMyBoardListCount);
+        model.addAttribute("allMyBoardLists",allMyBoardLists);
+
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("memberKey",memberKey);
+
+        return "(1.4)myPage/(1.4.2)mypage_write_list";
+    }
+
+
 
 }

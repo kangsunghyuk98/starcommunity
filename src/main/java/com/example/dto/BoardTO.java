@@ -16,6 +16,7 @@ public class BoardTO {
 	private String imgformat;
 	private int recommend;
 	private int memberkey;
+	private String boardname;
 	
 	// member
     private String id;
