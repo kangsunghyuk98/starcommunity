@@ -1,10 +1,14 @@
 package com.example.service;
 
+import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
 import com.example.mapper.MapperInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ContentsService {
@@ -49,10 +53,49 @@ public class ContentsService {
             }
 
         }else {
-            flag = 1;
+           flag = 1;
         }
 
         return flag;
+    }
+
+    public List<BoardTO> selectAllMyBoardList (String memberKey) {
+        List<BoardTO> allMyBoardList = new ArrayList<>();
+
+        allMyBoardList.addAll(mapperInter.selectAllMyDlifeBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyMdBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyFrequencyBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyReviewBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyBeverageBoards(memberKey));
+
+        return allMyBoardList;
+    }
+
+    public List<BoardTO> selectAllMyBoardList (String memberKey, int startNo) {
+        List<BoardTO> allMyBoardList = new ArrayList<>();
+
+        allMyBoardList.addAll(mapperInter.selectAllMyDlifeBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyMdBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyFrequencyBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyReviewBoards(memberKey));
+        allMyBoardList.addAll(mapperInter.selectAllMyBeverageBoards(memberKey));
+
+        List<BoardTO> tempList = new ArrayList<>();
+
+        if (allMyBoardList.size() == 0) {
+            return tempList;
+        } else {
+            try {
+                for (int i = startNo; i < startNo+10; i++) {
+                    BoardTO to = allMyBoardList.get(i);
+                    tempList.add(to);
+                }
+            } catch (IndexOutOfBoundsException e) {
+                BoardTO to = new BoardTO();
+                tempList.add(to);
+            }
+            return tempList;
+        }
     }
 
 }
