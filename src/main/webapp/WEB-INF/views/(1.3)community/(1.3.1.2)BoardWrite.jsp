@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<% %>
+<% 
+	String boardname = (String)request.getAttribute( "boardname" );
+	String category = (String)request.getAttribute( "category" );
+%>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -50,7 +53,7 @@
 					}	
 					
 					submitPost();
-					console.log( document.wfrm.memberkey.value );
+					//console.log( document.wfrm.memberkey.value );
 	 				document.wfrm.submit();
 				};
 			}) 
@@ -66,7 +69,7 @@
     <br>
     <br>
     <div class="contents container col-lg-6 col-md-8 col-sm-10 ">
-	    <form action="/board/BoardWrite_ok?category=DailyBoardList&boardname=dlife_board" method="post" name="wfrm" enctype="multipart/form-data">
+	    <form action="/board/BoardWrite_ok?category=<%= category %>&boardname=<%= boardname %>" method="post" name="wfrm" enctype="multipart/form-data">
 		    <input type="hidden" name="memberkey" value="<sec:authentication property="principal.to.memberKey" />" />
 	        <div class="content_header mt-auto ">글쓰기</div>
 	        <div class="mb-3 title">
