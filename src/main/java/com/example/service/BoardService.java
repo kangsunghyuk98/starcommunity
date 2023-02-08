@@ -53,5 +53,24 @@ public class BoardService {
 	}
 	
 	//게시판 view
+	public BoardTO viewPageContents(String boardName, int seq){
+		BoardTO to = new BoardTO();
+		mapper.viewPageHitUp(boardName, seq);
+		to = mapper.viewPageContents(boardName, seq);
+		
+		return to;
+	}
 	
+	public int deleteBoardContent(String boardName, int seq) {
+		int result = mapper.deleteBoardContent(boardName, seq);
+		int flag = 1;
+		
+		if( result == 1) {
+			flag = 0;
+		} else {
+			flag = 1;
+		}
+		
+		return flag; 
+	}
 }

@@ -3,8 +3,10 @@ package com.example.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.example.dto.BoardTO;
@@ -42,6 +44,15 @@ public interface BoardMapperInter {
 			+ "limit #{startNo}, 10")
 	public ArrayList<BoardTO> boardSearchSub_ConListTen(String boardName, String searchReq, int startNo);
 
+	// view
+	@Select("select * from member join ${boardName} on member.memberkey = ${boardName}.memberkey where seq=#{seq} ")
+	public BoardTO viewPageContents(String boardName, int seq);
 	
+	// 조회수
+	@Update("update ${boardName} set hit = hit+1 where seq=#{seq}")
+	public void viewPageHitUp(String boardName, int seq);
+	
+	@Delete("delete from ${boardName} where seq=#{seq}")
+	public int deleteBoardContent(String boardName, int seq);
 	
 }

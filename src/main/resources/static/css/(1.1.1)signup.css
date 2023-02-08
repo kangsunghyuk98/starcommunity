@@ -94,17 +94,6 @@ body {
 	color: black;
 }
 
-.agreeText{
-	padding: 0.5em;
-}
-
-.agreement{
-	margin-top: 2%;
-	margin-bottom: 1%;
-	font-size: 0.9rem;
-	float: left;
-}
-
 #text1{
 	margin: auto;
 	width: 90%;
@@ -115,7 +104,6 @@ body {
 	margin: auto;
 	width: 90%;
 }
-
 
 #sign_btn{
     width: 40%;

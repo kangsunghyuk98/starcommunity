@@ -1,5 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.example.dto.BoardTO"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	request.setCharacterEncoding("utf-8");
+	int seq = (int)request.getAttribute("seq");
+	String boardname = (String)request.getAttribute("boardname");
+	
+	BoardTO to = (BoardTO)request.getAttribute("to");
+	
+	String subject = to.getSubject();  
+	String content = to.getContent();  
+	String wdate = to.getWdate();    
+	int hit = to.getHit();         
+	String imgname = to.getImgname();  
+	String imgformat = to.getImgformat();
+	int recommend = to.getRecommend();   
+	int memberkey = to.getMemberkey();   
+	
+	String id = to.getId();        	  
+	String nickname = to.getNickname(); 
+	
+%>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -25,16 +48,54 @@
     <script>
         $(document).ready(function () {
             $("#d_btn").on("click", function () {
-                let inputPassword = prompt("비밀번호를 입력하세요");
+            	if ( confirm("글을 삭제하시겠습니까?") ) {
+            		let queryString = location.search;
+                    const urlParams = new URLSearchParams(queryString);            		 
+                    
+                    let seq = urlParams.get("seq");
+                    let boardname = urlParams.get("boardname");
+                    console.log(seq);
+                    console.log(boardname);
+                    
+            		$.ajax({
+	    				url: '/BoardDelete',
+	    				type: 'get',
+	    				data: {
+	    					seq: seq,
+	    					boardname: boardname
+	    				},
+	    				dataType: 'text',
+	    				success: function(result){
+	    					if (result == 0){
+	    						alert("글이 삭제되었습니다");
+	    						  window.history.back();
+	    					} else {
+	    						 alert("삭제 실패하였습니다.");
+	    					}
+	    					
+	    				},
+	    				error: function(err){
+	    					alert('error : ' + err.status);
+	    				} 
+            		});
+            		
+                    
+                } else {
+                	alert("취소되었습니다");
+                }
+            	
+                /* let inputPassword = prompt("비밀번호를 입력하세요");
                 let password = '12345';
                 if (inputPassword != null || '') {
                     if (inputPassword == password) {
                         console.log("비밀번호는" + inputPassword);
                         alert("글이 삭제되었습니다");
+                        window.location.href="/"
                     } else {
                         alert("비밀번호가 틀렸습니다");
                     }
-                }
+                } */
+                
             });
             
             let text = "1";
@@ -65,48 +126,51 @@
     <br>
     <br>
      <div class="contents container col-lg-6 col-md-8 col-sm-10" style="height : 100%;">
-        <h3 class="mt-4 mb-3">친환경 활동에 함께하세요:)</h3>
+        <h3 class="mt-4 mb-3"><%=subject %></h3>
         <div class="label clearfix mt-auto ">
             <div class="hstack gap-2 mt-2">
                 <div class="view_content_info">작성자</div>
                 <div class="vr"></div>
-                <div class="view_content_info">별다방지기</div>
+                <div class="view_content_info"><%=nickname %></div>
                 <div class="vr"></div>
                 <div class="view_content_info">날짜</div>
                 <div class="vr"></div>
-                <div class="view_content_info">2023-01-27 12:32</div>
+                <div class="view_content_info"><%=wdate %></div>
                 <div class="view_content_info ms-auto">조회수</div>
                 <div class="vr"></div>
-                <div class="view_content_info">3</div>
+                <div class="view_content_info"><%=hit %></div>
             </div>
         </div>
         <hr class="mt-4">
 
         <!-- 본문 -->
         <div class="view_content">
-            <img src="img/(1.3.1.1)enviro_pic1.jpg" class="img-fluid">
-            <p class="mt-auto">친환경 활동</p>
-            <p class="mt-auto">
-                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                스타벅스는 친환경활동의 일환으로, 18년 11월 종이 빨대와 나무 스틱을 전국 매장으로 확대하면서 빨대 없이 마실 수 있는 아이스컵 뚜껑도 함께 소개하며 제품 포장을 위한 비닐 포장재는
-                친환경 소재 포장재로 변경해 1회용 플라스틱 사용 절감을 통한 친환경 활동을 시행하고 있습니다.
-                또한, 전국 스타벅스 매장에서 텀블러에 음료를 구매 시, 400원 할인 혹은 에코별을 증정하며 다회용컵 이용 고객에게 혜택을 드리고 있습니다.
-            </p>
-            <p class="mt-auto">
-                “구체적으로 매장별 평균 10W 기준의 LED 전구를 최대 10개까지 소등하여 시간당 100W씩 하루 총 300W 이상을 절전하였고, 전국 매장에서 두 달간 약 1,000만W 이상의 전력
-                절약에 도전하는 활동을 실시하였습니다.”
-                이와 더불어 스타벅스 코리아는 2010년부터 지구촌 기후변화 방지를 위한 전등끄기 캠페인 ‘Earth Hour’에 동참하고 있습니다. 스타벅스는 영업시간 1시간 동안 최소 조명만을 남겨둔
-                채, 전국 매장의 간판 및 창가 조명을 소등하고, 고객을 초청해 환경을 주제로 한 커피세미나를 행하고 있습니다.
-                스타벅스 코리아는 이처럼 작은 힘을 모아 큰 힘을 만들고 이를 통해 지구온난화 완화에 기여하고자 합니다.
-            </p>
+	        <div>
+	        	<img src="imgPath/coffee.jpg"/>
+	        	<br>
+	        </div>
+	        <div>
+	        	<%=content %>
+	        </div>
         </div>
         <div class="btns hstack gap-2 mt-2">
-            <button type="button" onclick="location.href='./DailyBoardList'" class="btn btn-outline-secondary l_btn">목록</button>
-            <button type="button" onclick="location.href='./BoardModify'"
+            <button type="button" onclick="location.href='/DailyBoardList?boardname=<%=boardname %>'" class="btn btn-outline-secondary l_btn">목록</button>
+            <button type="button" onclick="location.href='/BoardModify'"
                 class="btn btn-outline-secondary m_btn ms-auto">수정</button>
-            <button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+        	
+			
+			<sec:authorize var="" access="isAuthenticated()">
+				<sec:authentication property="principal" var="principal"/>
+				
+				<c:if test="${principal.to.memberKey eq to.memberkey}">
+						<button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+            	</c:if>
+			</sec:authorize>
+            
         </div>
         <hr class="mt-3 mb-2">
+
+
 
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">

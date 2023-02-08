@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dto.BoardTO;
@@ -22,7 +23,6 @@ public class CommunityController {
 	
 	@RequestMapping("/DailyBoardList")
 	public String showDailyBoardList(Model model, @RequestParam(value="boardname") String boardname, @RequestParam(value = "currentPage", defaultValue = "1") int currentPage ) {
-		System.out.println("controller boardname: "+boardname);
 		
 		int boardListCount = service.selectAllListCount(boardname);
 		Pagination pagination = new Pagination(boardListCount, currentPage);
@@ -31,8 +31,7 @@ public class CommunityController {
 		model.addAttribute("boardLists", boardLists);
 		model.addAttribute("boardListCount", boardListCount);
         model.addAttribute("pagination", pagination);
-		
-        System.out.println(model);
+		model.addAttribute("boardname", boardname);
 		return "(1.3)community/(1.3.1)daily_board_list";
 	}
 	@RequestMapping("/BeverageBoardList")
@@ -53,7 +52,13 @@ public class CommunityController {
     }
     
     @RequestMapping("/BoardView")
-    public String showBoardView(@RequestParam(value="seq") int seq) {
+    public String showBoardView(Model model, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq) {
+
+    	BoardTO to = service.viewPageContents(boardname, seq);
+    	
+    	model.addAttribute("to", to);
+    	model.addAttribute("boardname", boardname);
+    	model.addAttribute("seq", seq);
     	
         return "(1.3)community/(1.3.1.1)BoardView";
     }   
@@ -65,5 +70,20 @@ public class CommunityController {
     public String showBoardModify() {
         return "(1.3)community/(1.3.1.3)BoardModify";
     }
+    
+    @RequestMapping("/BoardDelete")
+    @ResponseBody
+    public int boardDelete(String boardname, int seq) {
+    	
+    	System.out.println(boardname);
+    	System.out.println(seq);
+    	
+    	int flag = service.deleteBoardContent(boardname, seq);
+    	System.out.println(flag);
+    	
+    	
+    	return flag;
+    }
+    
     
 }

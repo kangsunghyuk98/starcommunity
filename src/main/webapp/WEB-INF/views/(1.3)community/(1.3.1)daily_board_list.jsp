@@ -3,10 +3,12 @@
 <%@page import="com.example.dto.BoardTO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 	ArrayList<BoardTO> boardLists = (ArrayList<BoardTO>)request.getAttribute("boardLists");
 
 	StringBuilder sbHtml = new StringBuilder(); 	
+	String boardname = (String)request.getAttribute("boardname");
 	
 	for(BoardTO to : boardLists){
 		int seq = to.getSeq();
@@ -23,7 +25,7 @@
 		sbHtml.append("<tr>");
 		sbHtml.append("    <td>"+ seq +"</td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView?seq="+ seq +"'>"+ subject +"</a></td>");
+		sbHtml.append("    <td><a class='view_btn' href='/BoardView?boardname="+boardname+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
 		sbHtml.append("    <td>"+ recommend +"</td>");
@@ -58,8 +60,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <script>
-    	function fn_paging(currentPage) {
-           location.href = '/DailyBoardList?boardname=dlife_board&currentPage='+currentPage;
+    	let boardname = "${boardname}";
+    	console.log(boardname);
+    	function fn_paging(boardname, currentPage) {
+           location.href = '/DailyBoardList?boardname='+boardname+'&currentPage='+currentPage;
     	}
 	</script>
 	
@@ -74,7 +78,8 @@
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
     				let currentPage = 1;
-    				let boardname = "dlife_board";
+    				let boardname = '${boardname}';
+    				console.log(boardname);
     				
     				url = "/searchBoardList?boardname="+boardname+"&currentPage="+currentPage+"&searchReq="+searchReq+"&searchOption="+searchOption ;
     				searchBoardList(boardname,searchReq, searchOption, currentPage, url);
@@ -87,7 +92,8 @@
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
     				let currentPage = 1; // searchBoardList 변수때문에 써 놓은 값.
-    				let boardname = "dlife_board";
+    				let boardname = '${boardname}';
+    				console.log(boardname);
     				
     				url = $(this).attr("url");
     				searchBoardList(boardname, searchReq, searchOption, currentPage, url); 
@@ -113,7 +119,7 @@
 	    						html += '<tr>';
 	    						html += '    <td>'+ arr[i].seq +'</td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
-	    						html += '    <td><a class="view_btn" href="/BoardView?seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
+	    						html += '    <td><a class="view_btn" href="/BoardView?boardname='+boardname+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].wdate +'</td>';
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';
@@ -137,24 +143,24 @@
 	    					
 	    					let htmlPg = '';	    					
 	    					if( pagination.curRange != 1){
-	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
 	    					}
 	    					if( pagination.curPage != 1 ){
-    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
+    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
 	    					}
 	    					for(let i=pagination.startPage; i<=pagination.endPage; i++){
 	    						if ( i == pagination.curPage ) {
 	    							htmlPg += '<span style="font-weight: bold;"><li class="page-item"><a class="page-link">'+i+'</a></li></span>';
 	    							
 	    						} else {
-	    							htmlPg += '<li class="page-item"><button id="'+i+'" class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+i+'&searchReq='+searchReq+'&searchOption='+searchOption+'">'+i+'</button></li>';
+	    							htmlPg += '<li class="page-item"><button id="'+i+'" class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+i+'&searchReq='+searchReq+'&searchOption='+searchOption+'">'+i+'</button></li>';
 	    						}
 	    					}
 	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
-	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
 	    					}
 	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
-	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?boardname'+dlife_board+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
+	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
 	    					}
 	    					
 	    					$(".pagination").append(htmlPg);
@@ -207,40 +213,44 @@
 	                <%=sbHtml.toString()%> 
 	            </tbody>
 	        </table>
-        </dsiv>
-    <div>
-        <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
-    </div>
-    
+        </div>
+
+        <sec:authorize access="isAuthenticated()">
+            <div>
+                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/BoardWrite'">글쓰기</button>
+            </div>
+        </sec:authorize>
+
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
             <div class="col-md-3" style="float: none; margin: 0 auto;">
                 <ul class="pagination justify-content-center">
+                	
                     <c:if test="${pagination.curRange ne 1 }">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging(1)">처음</a></li>
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${boardname}', 1)">처음</a></li>
                     </c:if>
       
                     <c:if test="${pagination.curPage ne 1}">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pagination.prevPage }')">이전</a></li>
+                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${boardname}', '${pagination.prevPage }')">이전</a></li>
                     </c:if>
                     
                     <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
                         <c:choose>
                             <c:when test="${pageNum eq pagination.curPage}">
-                                <span style="font-weight: bold;"><li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li></span>
+                                <span style="font-weight: bold;"><li class="page-item"><a class="page-link">${pageNum}</a></li></span>
                             </c:when>
                             <c:otherwise>
-                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pageNum }')">${pageNum}</a></li>
+                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${boardname}', '${pageNum }')">${pageNum}</a></li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
                     
                     <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.nextPage }')" class="page-link">다음</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging(${boardname}, '${pagination.nextPage }')" class="page-link">다음</a></li>
                     </c:if>
 
                     <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${pagination.pageCnt }')" class="page-link">끝</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging(${boardname}, '${pagination.pageCnt }')" class="page-link">끝</a></li>
                     </c:if>
                 </ul>
             </div>
