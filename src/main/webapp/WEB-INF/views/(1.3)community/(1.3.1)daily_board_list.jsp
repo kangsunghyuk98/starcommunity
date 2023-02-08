@@ -32,7 +32,8 @@
 		sbHtml.append("    <td>"+ recommend +"</td>");
 		sbHtml.append("    <td>");
 		
-		if( !imgname.equals("") ){
+		// 지금 더미 데이터는 null이 아니고 ""(공백)이라 적용이 좀 이상한데, 실제 데이터 적용시에는 괜찮을 듯 함 
+		if( imgname != null  ){
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
 		} else {
 			sbHtml.append("<img />");

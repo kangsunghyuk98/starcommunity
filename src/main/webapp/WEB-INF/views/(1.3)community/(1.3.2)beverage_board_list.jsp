@@ -33,7 +33,7 @@
 		sbHtml.append("    <td>"+ recommend +"</td>");
 		sbHtml.append("    <td>");
 		
-		if( !imgname.equals("") ){
+		if( imgname != null  ){
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
 		} else {
 			sbHtml.append("<img />");
