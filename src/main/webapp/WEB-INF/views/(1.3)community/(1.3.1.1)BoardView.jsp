@@ -135,7 +135,7 @@
         <!-- 본문 -->
         <div class="view_content">
 	        <div>
-	        	<img src="imgPath/coffee.jpg"/>
+	        	<img src="imgPath/<%=imgname %>"/>
 	        	<br>
 	        </div>
 	        <div>

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -56,14 +57,14 @@ public interface BoardMapperInter {
 	public int deleteBoardContent(String boardName, int seq);
 	
 	// write_ok (글쓰기)
-	@Insert( "insert into ${boardName} values ( 0, #{subject}, #{content}, now(), 0, #{imgname}, #{imgformat}, 0, #{memberkey})" )
-	int boardWriteOk(String boardName, BoardTO to);
+	@Insert( "insert into ${boardname} values ( 0, #{to.subject}, #{to.content}, now(), 0, #{to.imgname}, #{to.imgformat}, 0, #{to.memberkey}, #{to.filesize})" )
+	int boardWriteOk(String boardname, BoardTO to);
 	
 	// modify
 	@Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey where seq like CONCAT('%',#{seq},'%') ")
 	public BoardTO viewModifyPage(String boardName, int seq);
 	
 	// modify_ok (글수정)
-	@Insert( "update ${boardName} set subject = #{subject}, content = #{content}, wdate = now(), imgname = #{imgname}, imgformat = #{imgformat}, where seq like CONCAT('%',#{seq},'%')" )
+	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, wdate = now(), imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq like CONCAT('%',#{seq},'%')" )
 	int boardModifyOk(String boardName, BoardTO to, int seq);
 }

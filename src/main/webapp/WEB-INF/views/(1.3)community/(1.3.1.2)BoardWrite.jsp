@@ -50,8 +50,8 @@
 					}	
 					
 					submitPost();
-					console.log( document.wfrm.memberKey.value )
-	 				/*document.wfrm.submit();*/
+					console.log( document.wfrm.memberkey.value );
+	 				document.wfrm.submit();
 				};
 			}) 
 		
@@ -67,7 +67,7 @@
     <br>
     <div class="contents container col-lg-6 col-md-8 col-sm-10 ">
 	    <form action="/board/BoardWrite_ok?category=DailyBoardList&boardname=dlife_board" method="post" name="wfrm" enctype="multipart/form-data">
-		    <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
+		    <input type="hidden" name="memberkey" value="<sec:authentication property="principal.to.memberKey" />" />
 	        <div class="content_header mt-auto ">글쓰기</div>
 	        <div class="mb-3 title">
 	            <label for="exampleInputEmail1" class="form-label">제목</label>
@@ -76,7 +76,7 @@
 	        <div class="mb-3 vstack ">
 	            <label for="formFileMultiple" class="form-label">파일 이름 : </label>
 	            <label for="formFileMultiple" class="form-label">파일 크기 : </label>
-	            <input class="form-control" type="file" name="upload" value="" multiple>
+	            <input class="form-control" type="file" name="upload" value="" >
 	        </div>
 	        <textarea name="content" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 100%"></textarea>
 	        <div>

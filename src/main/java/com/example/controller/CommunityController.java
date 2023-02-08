@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -131,21 +132,16 @@ public class CommunityController {
     }     
     
     @RequestMapping("/board/BoardWrite_ok")
-    public String BoardWriteOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, MultipartFile upload , HttpServletRequest request, Model model ) {
-    
+    public String BoardWriteOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, MultipartFile upload , BoardTO to, Model model ) {
     	System.out.println( "board_write_ok is called" );
-    	System.out.println( request.getParameter( "content" ) );
-    	System.out.println( request.getParameter( "memberKey" ) );
     	
-    	BoardTO to = new BoardTO();
-    	to.setSubject( request.getParameter( "subject" ) );
-    	to.setContent( request.getParameter( "content" ) );
-    	to.setMemberkey( Integer.parseInt( request.getParameter( "memberKey" ) ) );
+    	System.out.println(to.getContent());
+    	System.out.println(to.getMemberkey());
+    	System.out.println(to.getSubject());
     	
     	try {
 			if( !upload.isEmpty() ) {
 				to.setImgname( upload.getOriginalFilename() );	
-				// 아직 DB에 filesize없음.. 일단 걍 BoardTO에만 만듦
 				to.setFilesize( upload.getSize() ); 
 				
 				upload.transferTo( new File( upload.getOriginalFilename() ) );
@@ -157,6 +153,7 @@ public class CommunityController {
 		}
     	
     	int flag = service.boardWriteOk( boardname, to );
+    	
     	System.out.println( flag );
     	
     	model.addAttribute( "flag", flag );
