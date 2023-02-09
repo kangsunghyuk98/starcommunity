@@ -1,10 +1,14 @@
 package com.example.dto;
 
+import org.springframework.stereotype.Repository;
+
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Getter
 @Setter
+
 public class BeverageTO {   
 	private String seq;
     private String category;
@@ -18,6 +22,7 @@ public class BeverageTO {
     private String sodium;
     private String sugars;
     private String caffeine;
+    private String allergyCause;
     private String drinkInfo;
 
 

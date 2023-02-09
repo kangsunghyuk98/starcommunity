@@ -49,34 +49,41 @@
             integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
+     
     <script type="text/javascript">
+    
         $(document).ready(
             function() {
-
-                $("#selectBox").on("change",(function(selOpt){
+				// 음료 정렬 버튼 
+                $("#selectBox").on("change",(function(selOpt,category){
                         var selOpt = $("#selectBox").val();
-                        beverageSort(selOpt);
+                        var category = $('#Hcategory').val();	//카테고리 설정 ?: 히든으로 값을 가져옴
+                        console.log(category);
+                        beverageSort(selOpt,category);
                         console.log( selOpt );
                     })
                 );
-
-                let searchReq = "";
-
-                $("#button-addon2").on("click", function(searchReq){
-                    var searchReq = $(".form-control").val();
-                    BeverageSearch(searchReq);
-                });
+				//검색 버튼
+                let searchReq = "";				
+                $("#button-addon2").on("click", function(category,searchReq){
+                	var category = $('#Hcategory').val();
+                    var searchReq = $(".form-control").val();                    
+                    console.log(category);
+                    BeverageSearch(category ,searchReq);
+                });  
 
             });
-        const beverageSort = function(selOpt){
+        const beverageSort = function(selOpt,category){
             console.log( "beverageSort" );
+            console.log(category);
             $.ajax({
                 url: '/BeverageSort',
                 type: 'post',
-                data: { selOpt: selOpt },
+                data: { selOpt: selOpt,category: category},
                 dataType: 'json',
+                async    : false,  						// ajax 요청 순차적으로 실행
                 success: function(jsonObject) {
-                    console.log("성공");
+                    console.log("성공1");
                     $("#content").empty();
 
                     let html = '';
@@ -98,18 +105,20 @@
             });
         }
 
-        const BeverageSearch = function(searchReq){
+        const BeverageSearch = function(category, searchReq){
 
             $.ajax({
                 url: '/BeverageSearch',
-                type: 'post',
-                data: { searchReq: searchReq },
-                success: function(result){
-
+                type: 'get',
+                data: { category: category,searchReq: searchReq },
+                dataType: 'json',
+                async    : false,
+                success: function(jsonData){
+                	console.log("검색성공1");
                     $("#content").empty();
 
                     let html = '';
-                    result.forEach(function(item){
+                    $.each(jsonData.data, function(index, item){
                         html += '<div class="col">';
                         html += '		<div class="row">';
                         html += '			<a href="./BeverageInfo?name=' + item.name +'&seq='+ item.seq +'">';
@@ -156,6 +165,8 @@
                 <option value="sugars_asc">당 낮은 순</option>
             </select>
         </div>
+        <input type="hidden" id="Hcategory" class="Hcategory" value = "<%=category %>"> <!-- 카테고리값 -->
+        
 
         <div class=" input-group mb-3 w_search_text  ">
             <input type="text" class="form-control" placeholder="search" aria-label="Recipient's username"

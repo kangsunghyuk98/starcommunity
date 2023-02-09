@@ -15,23 +15,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BeverageMapperInter {
 	
-	
+	//음료 전체 메뉴
 	 	@Select("select * from beverage order by seq+0 asc")
 	    List<BeverageTO> selectAllBeverage();
 	    
-	 	
+	//음료 카테고리
 	    @Select("select * from beverage where category=#{category} order by seq+0 asc")
 	    List<BeverageTO> selectCategory(String category);
 	    
-	
-	    @Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where name =#{name}")
+	//음료 상세페이지
+	    @Select("select category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, allergyCause, drinkInfo from beverage where name =#{name}")
 	    public BeverageTO BeverageInfo(BeverageTO to);
 
-	@Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where seq =#{seq}")
+	@Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, allergyCause, drinkInfo from beverage where seq =#{seq}")
 	public BeverageTO BeverageInfoBySeq(BeverageTO to);
 	    
 	    
-//      w
+	//------------------------------------------------------------------------음료 정렬  
 	    @Select("select * from beverage order by kcal+0 desc")
 	    List<BeverageTO> kcalDesc();
 	    
@@ -53,24 +53,51 @@ public interface BeverageMapperInter {
 	    @Select("select * from beverage order by sugars+0 desc")
 	    List<BeverageTO> sugarsDesc();
 	    
-	    @Select("select * from beverage order by sugars+0 desc")
+	    @Select("select * from beverage order by sugars+0 asc")
 	    List<BeverageTO> sugarsAsc();
-
-	//음료 검색
-	@Select("select * from beverage where name like CONCAT('%',#{searchReq},'%')")
-	public List<BeverageTO> beverageSearch(String searchReq);
-
+	    
+// ------------------------------------------------------------------------------------------- 카테고리 포함 정렬
+	    
+	    @Select("select * from beverage where category=#{category} order by kcal+0 desc")
+	    List<BeverageTO> kcalDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by kcal+0 asc")
+	    List<BeverageTO> kcalAscCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by caffeine+0 desc")
+	    List<BeverageTO> caffeineDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by caffeine+0 asc")
+	    List<BeverageTO> caffeineAscCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sat_fat+0 desc")
+	    List<BeverageTO> sat_fatDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sat_fat+0 asc")
+	    List<BeverageTO> sat_fatAscCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sugars+0 desc")
+	    List<BeverageTO> sugarsDescCategory(String category);
+	    
+	    @Select("select * from beverage where category=#{category} order by sugars+0 asc")
+	    List<BeverageTO> sugarsAscCategory(String category);
+	    
+    //----------------------------------------------------------------------------------------------------음료 검색
+	    @Select("select * from beverage where name like CONCAT('%',#{searchReq},'%') order by seq+0 asc")
+		public List<BeverageTO> beverageSearch(String searchReq);
+	    
+    //-----------------------------------------------------------------------------------------------------음료 검색 카테고리 포함
+	    @Select("select * from beverage where category=#{category} and name like CONCAT('%',#{searchReq},'%') order by seq+0 asc")
+		public List<BeverageTO> beverageSearchCategory(String category,String searchReq);
 
 	// Beverage 댓글 관련 쿼리
 	@Insert("insert into beverage_cmt values (0,#{comment},now(),#{memberKey},#{seq})")
 	int beverageCmtWrite(BeverageCmtTO to);
 
-	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, beverage_cmt.memberkey, member.name, member.nickname" +
-			" from beverage_cmt inner join member " +
+	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, beverage_cmt.memberkey, member.name, member.nickname from beverage_cmt inner join member " +
 			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq}")
 	List<BeverageCmtTO> selectAllCmtList(String seq);
-
+	
 	@Delete("delete from beverage_cmt where bevcseq = #{bevcseq}")
 	int deleteBeverageCmt (String bevcseq);
-
 }
