@@ -16,6 +16,16 @@
 	String wdate = to.getWdate();    
 	int hit = to.getHit();         
 	String imgname = to.getImgname();  
+	String imgPath = "/imgPath/" + imgname;
+	
+	if( imgname == null  ){
+		imgPath = "";	
+	} else if( imgname.equals("") ){
+		imgPath = "";
+	} else {
+		
+	}
+	
 	String imgformat = to.getImgformat();
 	int recommend = to.getRecommend();
 	int memberkey = to.getMemberkey();   
@@ -56,6 +66,7 @@
             let boardname = urlParams.get("boardname");
             let category = '${category}';
             
+            
             $("#d_btn").on("click", function () {
             	if ( confirm("글을 삭제하시겠습니까?") ) {
             		$.ajax({
@@ -63,7 +74,8 @@
 	    				type: 'get',
 	    				data: {
 	    					seq: seq,
-	    					boardname: boardname
+	    					boardname: boardname,
+	    					imgname : '<%=imgname%>'
 	    				},
 	    				dataType: 'text',
 	    				success: function(result){
@@ -135,7 +147,7 @@
         <!-- 본문 -->
         <div class="view_content">
 	        <div>
-	        	<img src="imgPath/<%=imgname %>"/>
+	        	<img src="<%=imgPath %>"/>
 	        	<br>
 	        </div>
 	        <div>
@@ -144,15 +156,13 @@
         </div>
         <div class="btns hstack gap-2 mt-2">
             <button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
-            <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
-                class="btn btn-outline-secondary m_btn ms-auto">수정</button>
-        	
-			
+           
 			<sec:authorize var="" access="isAuthenticated()">
 				<sec:authentication property="principal" var="principal"/>
-				
 				<c:if test="${principal.to.memberKey eq to.memberkey}">
-						<button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+					 <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
+	                class="btn btn-outline-secondary m_btn ms-auto">수정</button>
+					<button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
             	</c:if>
 			</sec:authorize>
             

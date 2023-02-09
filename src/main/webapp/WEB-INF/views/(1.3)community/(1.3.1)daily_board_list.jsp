@@ -37,7 +37,7 @@
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
 		} else {
 			sbHtml.append("<img />");
-		}
+		} 
 		
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");

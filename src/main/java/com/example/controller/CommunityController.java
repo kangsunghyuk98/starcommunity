@@ -187,9 +187,30 @@ public class CommunityController {
     
     @RequestMapping("/board/BoardDelete")
     @ResponseBody
-    public int boardDelete(String boardname, int seq) {
+    public int boardDelete(String boardname, int seq, String imgname) {
     	int flag = service.deleteBoardContent(boardname, seq);
-   	
+    	
+    	String path = "C:/Users/zxzz9/Documents/files/";
+    			
+    	//파일 삭제
+    	if (flag == 0 && imgname != null) {
+    		try {
+    			File file = new File(path + imgname);
+    			
+    			boolean result = file.delete();
+    			
+    			if (result) {
+    	            System.out.println("File is deleted");
+    	        } else {
+    	            System.out.println("Failed to delete");
+    	        }
+    			
+    		} catch (Exception e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
+    	
     	return flag;
     }
     

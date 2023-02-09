@@ -35,6 +35,8 @@
 		
 		if( imgname != null  ){
 			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
+		} else if( imgname.equals("") ){
+			sbHtml.append("<img />");
 		} else {
 			sbHtml.append("<img />");
 		}
