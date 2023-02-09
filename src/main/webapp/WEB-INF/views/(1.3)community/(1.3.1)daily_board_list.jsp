@@ -34,10 +34,10 @@
 		
 		// 지금 더미 데이터는 null이 아니고 ""(공백)이라 적용이 좀 이상한데, 실제 데이터 적용시에는 괜찮을 듯 함 
 		if( imgname != null  ){
-			sbHtml.append("<img src='/img/icon/icon_file.gif'>");	
+			sbHtml.append("<img src='/img/icon/icon_file.gif'>");
 		} else {
 			sbHtml.append("<img />");
-		} 
+		}
 		
 		sbHtml.append("    </td>");
 		sbHtml.append("</tr>");
@@ -159,10 +159,11 @@
 	    						}
 	    					}
 	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
+	    						console.log(pagination.nextPage);
 	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
 	    					}
 	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
-	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</li>';
 	    					}
 	    					
 	    					$(".pagination").append(htmlPg);
@@ -229,11 +230,11 @@
                 <ul class="pagination justify-content-center">
                 	
                     <c:if test="${pagination.curRange ne 1 }">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', 1)">처음</a></li>
+                        <li class="page-item"><button class="page-link" onClick="fn_paging('${category}', '${boardname}', 1)">처음</li>
                     </c:if>
       
                     <c:if test="${pagination.curPage ne 1}">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pagination.prevPage }')">이전</a></li>
+                        <li class="page-item"><button class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pagination.prevPage }')">이전</li>
                     </c:if>
                     
                     <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
@@ -242,17 +243,17 @@
                                 <span style="font-weight: bold;"><li class="page-item"><a class="page-link">${pageNum}</a></li></span>
                             </c:when>
                             <c:otherwise>
-                                <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pageNum }')">${pageNum}</a></li>
+                                <li class="page-item"><button class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pageNum }')">${pageNum}</li>
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
                     
                     <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.nextPage }')" class="page-link">다음</a></li>
+                        <li class="page-item"><button onClick="fn_paging('${category}', '${boardname}', '${pagination.nextPage }')" class="page-link">다음</li>
                     </c:if>
 
                     <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.pageCnt }')" class="page-link">끝</a></li>
+                        <li class="page-item"><button onClick="fn_paging('${category}', '${boardname}', '${pagination.pageCnt }')" class="page-link">끝</li>
                     </c:if>
                 </ul>
             </div>
@@ -266,7 +267,7 @@
 </div>
 
 <!-- 풋터 영역 -->
-<footer></footer>
+<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>

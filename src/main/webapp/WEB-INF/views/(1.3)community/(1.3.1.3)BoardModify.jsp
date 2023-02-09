@@ -104,7 +104,7 @@
         </form>
     </div>
 
-    <!-- 풋터 영역 -->
-    <footer></footer>
+<!-- 풋터 영역 -->
+<jsp:include page="../include/footer.jsp"/>
 </body>
 </html>

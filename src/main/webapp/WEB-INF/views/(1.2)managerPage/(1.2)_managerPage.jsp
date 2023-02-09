@@ -168,7 +168,7 @@
 
 
 <!-- 풋터 영역 -->
-<footer></footer>
+<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>

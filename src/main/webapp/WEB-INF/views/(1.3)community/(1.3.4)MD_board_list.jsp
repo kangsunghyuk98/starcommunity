@@ -245,11 +245,11 @@
                     </c:forEach>
                     
                     <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.nextPage }')" class="page-link">다음</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', '${boardname}', '${pagination.nextPage }')" class="page-link">다음</a></li>
                     </c:if>
 
                     <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', ${boardname}, '${pagination.pageCnt }')" class="page-link">끝</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}','${boardname}', '${pagination.pageCnt }')" class="page-link">끝</a></li>
                     </c:if>
                 </ul>
             </div>
@@ -262,7 +262,7 @@
 </div>
 
 <!-- 풋터 영역 -->
-<footer></footer>
+<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>

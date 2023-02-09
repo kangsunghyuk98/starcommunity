@@ -190,8 +190,8 @@
 	</div>
 	<script src="/js/(1.8.1)custom_2.js"></script>
 
-	<!-- 풋터 영역 -->
-	<footer></footer>
+<!-- 풋터 영역 -->
+<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>

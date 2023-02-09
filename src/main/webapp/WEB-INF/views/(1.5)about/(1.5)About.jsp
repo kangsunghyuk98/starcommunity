@@ -39,10 +39,11 @@
         <div class="team-name">Team 별 다섯</div>
         <div class="team-image">
             <image src="/img/(1.5)MemberImage.PNG" class="img-fluid" alt="별다섯 이미지"></image>
-        </div>
+        </div> 
     </div>
 
-    <!-- 풋터 영역 -->
-    <footer></footer>
+<!-- 풋터 영역 -->
+<jsp:include page="../include/footer.jsp"/>
+	
 </body>
 </html>

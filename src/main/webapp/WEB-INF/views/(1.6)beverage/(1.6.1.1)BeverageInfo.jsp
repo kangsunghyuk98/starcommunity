@@ -41,7 +41,15 @@
     <link rel="stylesheet" href="/css/(1)contents.css">
     <link rel="stylesheet" href="/css/(1.6.1.1)beverageInfo.css">
     <title>Beverage</title>
-
+	
+	<style>
+		.cmt_login_message{
+            font-weight: bold;
+            font-size: 1.25rem;
+            text-align: center;
+		}
+	</style>
+	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
@@ -151,15 +159,14 @@
                 </div>
         </div>
         <hr class="mt-3 mb-5">
-
-
-        <sec:authorize access="isAnonymous()">
-            로그인 후 댓글 서비스를 이용하실 수 있습니다. (프론트에서 디자인 처리 요망)
-        </sec:authorize>
-
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
-
+			<sec:authorize access="isAnonymous()">
+	        	<div >
+	            	<p class="cmt_login_message mt-4 mb-5" >로그인 후 댓글 서비스를 이용하실 수 있습니다</p>
+	            	<label class="mb-3 " for="comment" style="font-weight: bold;">Comments</label>
+	            </div>
+        	</sec:authorize>
             <sec:authorize access="isAuthenticated()">
             <form action="/Beverage_cmtok" method="post">
                 <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
@@ -182,6 +189,7 @@
 
                     <c:forEach var="bto" items="${allCmtList}">
 
+   					<c:out value="${i}"/>
                         <tr class="clearfix border-top comment_tr">
                             <td class="coment_re_txt float-start">
                                 <div class="mt-2 mb-2">
@@ -209,14 +217,14 @@
                     </c:forEach>
 
                 </table>
-                <div class="coment_re_view">
-                    <button type="button" class="btn btn-sm ">코멘트 더보기</button>
-                </div>
+	                <div class="coment_re_view">
+	                    <button type="button" class="btn btn-sm see_more_btn">코멘트 더보기</button>
+	                </div>
             </div>
         </div>
     </div>
 
-    <!-- 풋터 영역 -->
-    <footer></footer>
+<!-- 풋터 영역 -->
+<jsp:include page="../include/footer.jsp"/>
 </body>
 </html>

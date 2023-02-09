@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<div id="header">
+<header id="header">
     <div class="memberShip text-end">
         <sec:authorize access="isAnonymous()">
             <button type="button" onclick="location.href='/guest/login'" class="login_btn btn ">Login</button>
@@ -16,9 +16,9 @@
         </sec:authorize>
     </div>
 
-    <nav class="navbar navbar-expand-lg  border-bottom">
+    <nav class="navbar navbar-expand-lg  border-bottom"> 
         <div class="container-fluid">
-            <a href="/home/index" class="d-flex Logo">Logo</a>
+            <a href="/" class="d-flex Logo" value="Logo"><img src="/img/img_files/starcommunity_logo.png" class="img-fluid" width="150" height="75"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -73,4 +73,4 @@
             </div>
         </div>
     </nav>
-</div>
+</header>
