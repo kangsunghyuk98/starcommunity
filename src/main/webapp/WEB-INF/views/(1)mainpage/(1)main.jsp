@@ -65,7 +65,7 @@ AOS.init();
 <!-- 1페이지 -->
 <div class="w-100 overflow-hidden bg-gray-100" id="top">
 <div class="container position-relative">
-  <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main.webp); background-size: 80%, 60%; background-repeat: no-repeat; opacity: 0.5;"></div>
+  <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main_img.webp); background-size: 80%, 60%; background-repeat: no-repeat; opacity: 0.5;"></div>
     <div class="row">
 		<div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
   			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,&nbsp;&nbsp;&nbsp;&nbsp; 별다방커뮤니티</h1>
