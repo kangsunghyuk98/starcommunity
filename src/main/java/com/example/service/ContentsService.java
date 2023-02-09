@@ -34,7 +34,7 @@ public class ContentsService {
         return flag;
     }
 
-    public int deleteMemberInfo(String id, String password) {
+    public int deleteMemberInfo(String id, String password, String memberKey) {
 
         String encPassword = mapperInter.selectPasswordById(id);
         boolean matchPass = passwordEncoder.matches(password,encPassword);
@@ -43,6 +43,15 @@ public class ContentsService {
         int flag = 1;
 
         if (matchPass) {
+
+            mapperInter.deleteMyDlifeBoard(memberKey);
+            mapperInter.deleteMyMdBoard(memberKey);
+            mapperInter.deleteMyReviewBoard(memberKey);
+            mapperInter.deleteMyBeverageBoard(memberKey);
+            mapperInter.deleteMyFrequencyBoard(memberKey);
+            mapperInter.deleteMyDlifeCmt(memberKey);
+            mapperInter.deleteMyMdCmt(memberKey);
+            mapperInter.deleteMyBeverageCmt(memberKey);
 
             result = mapperInter.deleteMemberInfo(id, encPassword);
 

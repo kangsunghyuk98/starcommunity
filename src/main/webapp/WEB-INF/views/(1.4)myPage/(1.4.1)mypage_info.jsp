@@ -51,7 +51,7 @@
             </thead>
         </table>
         <button id="m_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/member/myinfo_modify'">내 정보 수정</button>
-        <button id="q_btn" type="button" class="btn btn-outline-secondary btn-lg px-4">회원탈퇴</button>
+        <button id="q_btn" value="<sec:authentication property="principal.to.memberKey" />" type="button" class="btn btn-outline-secondary btn-lg px-4">회원탈퇴</button>
         <script>
             $('#q_btn').click(function(){
                 let inputPass1 = prompt("비밀번호를 입력해주세요.");
@@ -66,12 +66,14 @@
                         if(trimPass1 == trimPass2) {
 
                             let memberId = document.getElementById("principal_id").innerText.trim();
+                            let memberKey = $(this).attr('value');
 
                             $.ajax({
                                 type: 'GET',
                                 data: {
                                   id : memberId,
-                                  password : trimPass1
+                                  password : trimPass1,
+                                  memberKey : memberKey
                                 },
                                 url: "/member/myinfo_delete_ok",
                                 dataType: "text",

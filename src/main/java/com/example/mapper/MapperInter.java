@@ -72,6 +72,31 @@ public interface MapperInter {
     @Update("update member set nickname = #{nickname}, email = #{email}, password = #{password} where memberkey = #{memberKey}")
     int modifyMemberInfo(MemberTO to); // 내정보 수정 쿼리
 
+    // 회원 탈퇴 전 모든 memberKey랑 연관된 부분 삭제 처리 시작
+    @Delete("delete from dlife_board where memberkey = #{memberKey}")
+    int deleteMyDlifeBoard(String memberKey);
+
+    @Delete("delete from md_board where memberkey = #{memberKey}")
+    int deleteMyMdBoard(String memberKey);
+
+    @Delete("delete from review_board where memberkey = #{memberKey}")
+    int deleteMyReviewBoard(String memberKey);
+
+    @Delete("delete from frequency_board where memberkey = #{memberKey}")
+    int deleteMyFrequencyBoard(String memberKey);
+
+    @Delete("delete from beverage_board where memberkey = #{memberKey}")
+    int deleteMyBeverageBoard(String memberKey);
+
+    @Delete("delete from dlife_cmt where memberkey = #{memberKey}")
+    int deleteMyDlifeCmt(String memberKey);
+
+    @Delete("delete from md_cmt where memberkey = #{memberKey}")
+    int deleteMyMdCmt(String memberKey);
+
+    @Delete("delete from beverage_cmt where memberkey = #{memberKey}")
+    int deleteMyBeverageCmt(String memberKey);
+
     @Delete("delete from member where id = #{id} and password = #{password}")
     int deleteMemberInfo(String id, String password);
 
