@@ -200,15 +200,17 @@
         </div>
         <hr class="mt-3 mb-2">
 
-
-
-         <sec:authorize access="isAnonymous()">
-             로그인 후 댓글 서비스를 이용하실 수 있습니다. (프론트에서 디자인 처리 요망)
-         </sec:authorize>
-
+		
+       	
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
-
+			<sec:authorize access="isAnonymous()">
+		       	<div >
+		           	<p class="cmt_login_message mt-4 mb-5" >로그인 후 댓글 서비스를 이용하실 수 있습니다</p>
+		           	<label class="mb-3 " for="comment" style="font-weight: bold;">Comments</label>
+	           </div>
+       		</sec:authorize>
+       	
             <!-- 댓글작성폼 -->
             <sec:authorize access="isAuthenticated()">
                 <form action="/board/writecmt" method="post">

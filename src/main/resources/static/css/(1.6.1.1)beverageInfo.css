@@ -94,3 +94,8 @@ img {
 .l_btn{
     margin-top: 15px;
 }
+.cmt_login_message{
+          font-weight: bold;
+          font-size: 1.0rem;
+          text-align: center;
+}

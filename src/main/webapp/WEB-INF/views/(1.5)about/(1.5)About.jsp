@@ -31,14 +31,14 @@
 <jsp:include page="../include/header.jsp"/>
 
     <!-- 콘텐츠 영역 -->
-    <div class="container col-lg-6 col-md-8 col-sm-10 About-contents">
-        <div class="about-txt">About</div>
-        <div class="about-img">
-            <image src="/img/(1.5)스타벅스 커뮤니티.png" class="img-fluid" alt="커뮤니티 이미지"> </image>
+    <div class="container col-lg-6 col-md-8 col-sm-10 About-contents vstack gap-2 mx-auto">
+        <div class="col about-txt">About</div>
+        <div class="col about-img mt-3 mb-5 "  >
+            <image src="/img/(1.5)about.png" class="img-fluid" width="800"; alt="커뮤니티 이미지"> </image>
         </div>
-        <div class="team-name">Team 별 다섯</div>
-        <div class="team-image">
-            <image src="/img/(1.5)MemberImage.PNG" class="img-fluid" alt="별다섯 이미지"></image>
+        <div class="col team-name">Team 별 다섯</div>
+        <div class="col team-image mt-2 mb-5" >
+            <image src="/img/(1.5)Member.PNG" class="img-fluid" width="400"; alt="별다섯 이미지"></image>
         </div> 
     </div>
 

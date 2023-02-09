@@ -4,6 +4,7 @@
     /* font-weight: bold; */
     font-family: 'BMJUA';
     text-align: center;
+    margin-bottom: 30px;;
     /* width: 70%; */
 }
  
@@ -23,8 +24,14 @@
 }
 
 .team-image{
+	
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-bottom: 30px;;
+
 }
 
+.about-img{
+	 
+
+	
+}
