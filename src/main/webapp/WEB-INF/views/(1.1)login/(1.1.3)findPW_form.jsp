@@ -16,13 +16,13 @@
 
     <form action="/guest/findpw_ok" method="post" class="signup">
         <span>아이디</span>
-        <input type="text" placeholder="ID" name="id">
+        <input class="form-control" type="text" placeholder="ID" name="id" required>
 
         <span>이름</span>
-        <input type="text" placeholder="name" name="name">
+        <input class="form-control" type="text" placeholder="name" name="name" required>
 
         <span>이메일</span>
-        <input type="email" placeholder="email address" name="email">
+        <input class="form-control" type="email" placeholder="email address" name="email" required>
         <div class="row justify-content-center mt-3">
             <button id="btn1">비밀번호 찾기</button>
         </div>
@@ -31,3 +31,4 @@
     </div>
 </div>
 </body>
+</html>
