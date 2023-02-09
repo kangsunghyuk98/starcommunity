@@ -56,7 +56,8 @@
     <jsp:include page="../include/header.jsp"/>
 
 <!-- 콘텐츠 영역 -->
-
+<br>
+<br>
 <!-- AOS 스크립트 초기화 -->
 <script>
 AOS.init();
@@ -64,12 +65,13 @@ AOS.init();
 <!-- 1페이지 -->
 <div class="w-100 overflow-hidden bg-gray-100" id="top">
 <div class="container position-relative">
-  <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/source10.webp);"></div>
+  <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main.webp); background-size: 80%, 60%; background-repeat: no-repeat; opacity: 0.5;"></div>
     <div class="row">
 		<div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
-  			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것, 스타벅스커뮤니티</h1>
+  			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,&nbsp;&nbsp;&nbsp;&nbsp; 별다방커뮤니티</h1>
   			<p class="lead">스타벅스를 125% 즐길 수 있는 커뮤니티의 탄생. 스타벅스를 즐기는 사람들과 소통하고 나만의 레시피를 만들어 사람들과 공유해보세요!</p>
-  			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-dark btn-xl shadow me-3 rounded-0 my-5">커뮤니티 들어가기</a>
+  			<p class="lead"><span class="count_num">00</span>명의 이용자와 <span class="count_num">00</span>개의 게시글이 당신을 기다리고 있습니다 </p>
+  			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-dark btn-xl shadow me-3 rounded-0 my-3">별다방 들어가기</a>
 		</div>
 	</div>
 </div>
@@ -80,7 +82,7 @@ AOS.init();
 <div class="py-vh-5 w-100 overflow-hidden" id="page2">
  	<div class="container">
     	<div class="row d-flex justify-content-end">
-			<div class="col-lg-8" data-aos="fade-down"><h2 class="display-6">다양한 커뮤니티로 사람들과 소통하세요! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일상을 나누는 것부터 프리퀀시 교환까지 모두 스타벅스 커뮤니티에서 가능합니다.</h2></div>
+			<div class="col-lg-8 my-5" data-aos="fade-down"><h2 class="display-6">다양한 게시판으로 사람들과 소통하세요! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일상을 나누는 것부터 프리퀀시 교환까지 모두 별다방 커뮤니티에서 가능합니다.</h2></div>
 		</div>
 		<div class="row d-flex align-items-center">
 			<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
@@ -203,7 +205,7 @@ AOS.init();
 			<div class="col-lg-4">
   				<h3 class="py-5 border-top border-dark" data-aos="fade-left">스타벅스 커뮤니티</h3>
   				<p data-aos="fade-left" data-aos-delay="200">
-  				사용자에게 필요한 정보를 제공하고 나만의 커스텀 레시피를 저장 및 공유할 수 있습니다. 성향에 맟추어 음료를 추천해주고 편리한 UI를 제공하는 사이트입니다.
+  				사용자에게 필요한 정보를 제공하고 나만의 커스텀 레시피를 저장 및 공유할 수 있습니다. 성향에 맞추어 음료를 추천해주고 편리한 UI를 제공하는 사이트입니다.
   				</p>
   				<p>
     				<a href="/home/about" data-aos="fade-left" data-aos-delay="400">About us</a>
