@@ -29,7 +29,7 @@
 <body>
 <!-- 헤더 영역 -->
 <jsp:include page="../include/header.jsp"/>
-
+	<br>
     <!-- 콘텐츠 영역 -->
     <div class="container col-lg-6 col-md-8 col-sm-10 About-contents vstack gap-2 mx-auto">
         <div class="col about-txt">About</div>
