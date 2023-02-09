@@ -105,4 +105,72 @@ public class BoardService {
 		
 		return flag;
 	} 
+	
+	// 댓글 관련 로직 시작
+	public int writeCmt(BoardCmtTO bto) {
+
+		int result = 0;
+		int flag = 0;
+
+		if (bto.getBoardname().equals("dlife_board")) {
+			 result = mapper.writeDlifeCmt(bto);
+		} else if (bto.getBoardname().equals("md_board")) {
+			result = mapper.writeMdCmt(bto);
+		} else if (bto.getBoardname().equals("beverage_board")) {
+			result = mapper.writeBeverageBoardCmt(bto);
+		} else if (bto.getBoardname().equals("frequency_board")) {
+			result = mapper.writeFrequencyCmt(bto);
+		} else if (bto.getBoardname().equals("review_board")) {
+			result = mapper.writeReviewCmt(bto);
+		}
+
+		if (result == 1) {
+			flag = 0;
+		}else {
+			flag = 1;
+		}
+
+		return flag;
+	}
+
+	public List<BoardCmtTO> selectAllCmtList (String boardName, int seq) {
+		List<BoardCmtTO> allCmtList = new ArrayList<>();
+
+		if (boardName.equals("dlife_board")){
+			allCmtList = mapper.selectCmtList("dlife_cmt", seq);
+		} else if (boardName.equals("beverage_board")) {
+			allCmtList = mapper.selectCmtList("beverage_board_cmt", seq);
+		} else if (boardName.equals("md_board")) {
+			allCmtList = mapper.selectCmtList("md_cmt", seq);
+		} else if (boardName.equals("frequency_board")) {
+			allCmtList = mapper.selectCmtList("frequency_cmt", seq);
+		} else if (boardName.equals("review_board")) {
+			allCmtList = mapper.selectCmtList("review_cmt", seq);
+		}
+		return allCmtList;
+	}
+
+	public int deleteCmt (BoardCmtTO bto) {
+		int result = 0;
+		int flag = 1;
+
+		if (bto.getBoardname().equals("dlife_board")) {
+			result = mapper.deleteCmt(bto.getCseq(), "dlife_cmt");
+		} else if (bto.getBoardname().equals("beverage_board")) {
+			result = mapper.deleteCmt(bto.getCseq(), "beverage_board_cmt");
+		} else if (bto.getBoardname().equals("md_board")) {
+			result = mapper.deleteCmt(bto.getCseq(), "md_cmt");
+		} else if (bto.getBoardname().equals("frequency_board")) {
+			result = mapper.deleteCmt(bto.getCseq(), "frequency_cmt");
+		} else if (bto.getBoardname().equals("review_board")) {
+			result = mapper.deleteCmt(bto.getCseq(), "review_cmt");
+		}
+
+		if (result == 1) {
+			flag = 0;
+		} else {
+			flag = 1;
+		}
+		return flag;
+	}
 }
