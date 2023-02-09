@@ -166,9 +166,7 @@
 	    					}
 	    					
 	    					$(".pagination").append(htmlPg);
-	    					
-	    					console.log( pagination.curPage );
-	    					return currentPage;
+	
 	    				},
 	    				error: function(err){
 	    					alert('error : ' + err.status);

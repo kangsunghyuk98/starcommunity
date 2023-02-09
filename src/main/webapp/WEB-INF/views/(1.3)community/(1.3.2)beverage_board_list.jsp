@@ -96,7 +96,7 @@
     				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				let currentPage = '${currentPage};'
+    				let currentPage = '${currentPage}'
     				let boardname = '${boardname}';
     				let category = '${category}';
     				
