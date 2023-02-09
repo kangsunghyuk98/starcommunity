@@ -15,19 +15,41 @@
             sb.append("<td colspan='4' style='text-align: center;'>게시물의 끝입니다.</td>");
             sb.append("    </tr>");
         } else {
-            sb.append("    <tr>");
-            sb.append("    <td>"+to.getSeq()+"</td>");
-            sb.append("    <td><a class='view_btn' href='#'>"+to.getSubject()+"</a></td>");
-            sb.append("    <td>"+to.getWdate()+"</td>");
+
             if (to.getBoardname().equals("dlife_board")) {
+                sb.append("    <tr>");
+                sb.append("    <td>"+to.getSeq()+"</td>");
+                sb.append("    <td><a class='view_btn' href='/BoardView?category=DailyBoardList" +
+                        "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
+                sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>일상게시판</td>");
             } else if (to.getBoardname().equals("md_board")) {
+                sb.append("    <tr>");
+                sb.append("    <td>"+to.getSeq()+"</td>");
+                sb.append("    <td><a class='view_btn' href='/BoardView?category=MDBoardList" +
+                        "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
+                sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>MD게시판</td>");
             } else if (to.getBoardname().equals("review_board")) {
+                sb.append("    <tr>");
+                sb.append("    <td>"+to.getSeq()+"</td>");
+                sb.append("    <td><a class='view_btn' href='/BoardView?category=ReviewBoardList" +
+                        "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
+                sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>매장방문 후기게시판</td>");
             } else if (to.getBoardname().equals("frequency_board")) {
+                sb.append("    <tr>");
+                sb.append("    <td>"+to.getSeq()+"</td>");
+                sb.append("    <td><a class='view_btn' href='/BoardView?category=FrequencyBoardList" +
+                        "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
+                sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>프리퀀시 게시판</td>");
             } else if (to.getBoardname().equals("beverage_board")) {
+                sb.append("    <tr>");
+                sb.append("    <td>"+to.getSeq()+"</td>");
+                sb.append("    <td><a class='view_btn' href='/BoardView?category=BeverageBoardList" +
+                        "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
+                sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>음료 게시판</td>");
             }
             sb.append("    </tr>");
