@@ -159,10 +159,6 @@
      </div>
 
 
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -170,7 +166,7 @@
 
 
 <!-- 풋터 영역 -->
-<footer></footer>
+<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>
