@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.example.dto.BeverageTO"%>	
+<%
+	BeverageTO to = (BeverageTO)request.getAttribute("to");
+	String name = to.getName();
+	String image = to.getImage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +30,7 @@
 		crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.6.3.js"
 	        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+	<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	
 	<script>
 		$(document).ready(function() {
@@ -40,6 +47,47 @@
 			});
 		});
 	</script>
+	<!--  카카오 공유하기 (임시) -->
+	<script type="text/javascript">
+	try {
+		  function sendLinkDefault() {
+			var urlNow = window.location.href;
+			var image =$('#Himage').val();
+			console.log(urlNow);
+		    Kakao.init('c8df747b7573e11f1ae3c257b67fa344')
+		    Kakao.Link.sendDefault({
+		      objectType: 'feed',
+		      content: {
+		        title: '나만의 레시피 공유',
+		        description: '스타벅스에서 즐기실 수 있는 나만의 레시피 공유',
+		        imageUrl:
+		          image,
+		        link: {
+		          mobileWebUrl: urlNow,
+		          webUrl: urlNow
+		        },
+		      },		      
+		      buttons: [
+		        {
+		          title: '웹으로 보기',
+		          link: {
+		            mobileWebUrl: urlNow,
+		            webUrl: urlNow
+		          },
+		        },
+		        {
+		          title: '앱으로 보기',
+		          link: {
+		            mobileWebUrl: urlNow,
+		            webUrl: urlNow
+		          },
+		        },
+		      ],
+		    })
+		  }
+		; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+		catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+	</script>
 </head>
 
 <body>
@@ -53,8 +101,9 @@
 		<div class="content_header">My Custom Recipe</div>
 		<dlv class="row mt-5 justify-content-center">
 			<div class="col-sm-6" >
-				<img id="beverage_img" src="/img/(1.8.1).PNG" class="img-fluid img-thumbnail mt-2">
-				<div class=" mt-2 mb-4 Beverage_name ">그린티 프라푸치노</div>
+				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2">
+				<div class=" mt-2 mb-4 Beverage_name "><%=name %></div>
+				 <input type="hidden" id="Himage" class="Himage" value = "<%=image %>">				
 			</div>
 			<div class="custom_text col-sm-6" >
 				<form id="custom_form">
@@ -131,7 +180,9 @@
 			<div id="result5"></div>
 		</div>
 		<div class="mb-4">
-			<form>
+			<form>		
+			<!-- 카카오 공유 버튼 (임시) -->		 
+				 <input type="button" onClick="sendLinkDefault();" value="Default"/>
 				<button id="return_menu" type="button" class="btn btn-outline-secondary recipe_btn">나만의 레시피 저장</button>
 				<button type="button" class="btn btn-outline-secondary recipe_btn mx-1 " onclick="location.href='./Custom1'">메뉴</button>
 			</form>

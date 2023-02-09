@@ -1,5 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.example.dto.BeverageTO" %>
+<%@ page import="java.util.ArrayList" %>
+<%	
+
+	ArrayList<BeverageTO> customLists = (ArrayList<BeverageTO>)request.getAttribute("customLists");
+
+	StringBuilder sbHtml = new StringBuilder();
+	
+	for(BeverageTO to : customLists){
+		String image = to.getImage();
+		String name = to.getName();
+        String seq = to.getSeq();
+		
+		sbHtml.append("<div class='col'>");
+		sbHtml.append("		<div class='row'>");
+		sbHtml.append("			<a href='./Custom2?name=" + name +"'>"  );
+		sbHtml.append("				<img src='" + image + "'" + "class='img-thumbnail img-fluid' alt=''></a>" );
+		sbHtml.append("				<p class='beverage_name text-center'>" + name + "</p>");
+		sbHtml.append("		</div>");
+		sbHtml.append("</div>");       
+        	
+	} 
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +60,8 @@
 	        <div class="mt-5 mb-4 custom_subject_txt" >음료의 이미지를 클릭하면 커스텀 페이지로 이동합니다</div>
 	        <div class="container">
 	       		<div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+	       		<%=sbHtml.toString() %>
+	       			<!--
 	                <div class="col">
 	                    <div class="row">
 	                    	<a href="./Custom2"><img src="/img/(1.8.1).PNG" class="img-thumbnail img-fluid" alt=""></a> 
@@ -86,6 +112,7 @@
 	                        <p class="beverage_name text-center">그린티 프라푸치노</p>
 	                    </div>
 	                </div>
+	                 -->
 	             </div>
 	        </div>
 	    </div>
