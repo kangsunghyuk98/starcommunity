@@ -199,6 +199,7 @@ public class BeverageController {
 			obj.put("sodium", to.getSodium() );
 			obj.put("sugars", to.getSugars() );
 			obj.put("caffeine", to.getCaffeine() );
+			obj.put("allergyCause", to.getAllergyCause() );
 			obj.put("drinkInfo", to.getDrinkInfo() );
 			
 			arr.add(obj);
@@ -247,6 +248,7 @@ public class BeverageController {
 			obj.put("sodium", to.getSodium() );
 			obj.put("sugars", to.getSugars() );
 			obj.put("caffeine", to.getCaffeine() );
+			obj.put("allergyCause", to.getAllergyCause() );
 			obj.put("drinkInfo", to.getDrinkInfo() );
 			
 			arr.add(obj);
