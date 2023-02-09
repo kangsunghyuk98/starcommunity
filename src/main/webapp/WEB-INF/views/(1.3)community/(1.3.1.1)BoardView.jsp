@@ -163,6 +163,8 @@
 
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
+
+            <!-- 댓글작성폼 -->
             <form action="" method="post">
                 <div class="write_comment">
                     <div class="mb-3 mt-3 ">
@@ -176,6 +178,7 @@
             <!-- 댓글 리스트 -->
             <div class="comment">
                 <table class="container-fluid">
+
                     <tr class="clearfix border-top comment_tr">
                         <td class="coment_re_txt float-start">
                             <div class="mt-2 mb-2">
@@ -190,20 +193,7 @@
                                 class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
                         </td>
                     </tr>
-                    <tr class="clearfix border-top comment_tr">
-                        <td class="coment_re_txt float-start">
-                            <div class="mt-2 mb-2">
-                                <strong>글쓴이1</strong>(2023.09.19 02:00)
-                            </div>
-                            <div class="coment_re_txt mb-2">
-                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                            </div>
-                        </td>
-                        <td class="coment_re_btn float-end">
-                            <button type="button"
-                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
-                        </td>
-                    </tr>
+
                 </table>
                 <div class="coment_re_view">
                     <button type="button" class="btn btn-sm ">댓글 더보기</button>

@@ -44,9 +44,12 @@ public class ContentsController {
     }
 
     @RequestMapping("/myinfo_delete_ok")
-    public String deleteOkMyinfo(@RequestParam("id") String id, @RequestParam("password") String password, Model model) {
+    public String deleteOkMyinfo(@RequestParam("id") String id, @RequestParam("password") String password,
+                                 @RequestParam("memberKey") String memberKey, Model model) {
 
-        int flag = contentsService.deleteMemberInfo(id,password);
+
+
+        int flag = contentsService.deleteMemberInfo(id, password, memberKey);
         model.addAttribute("flag",flag);
 
         return "okaction/myinfo_delete_ok";
