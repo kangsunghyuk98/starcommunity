@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,4 +74,35 @@ public class BoardService {
 		
 		return flag; 
 	}
+	
+	// 게시판 write
+	public int boardWriteOk(String boardname, BoardTO to) {
+		int result = mapper.boardWriteOk(boardname, to);
+		int flag = 1;
+		
+		if( result == 1) {
+			flag = 0;
+		}
+		
+		return flag;
+	}
+
+	
+	// 게시판 수정
+	public BoardTO viewModifyPage(String boardName, int seq) {
+		BoardTO to = new BoardTO();
+		to = mapper.viewModifyPage(boardName, seq);
+		return to;
+	}
+	
+	public int boardModifyOk(String boardName, BoardTO to, int seq) {
+		int result = mapper.boardModifyOk(boardName, to, seq);
+		int flag = 1;
+		
+		if( result == 1) {
+			flag = 0;
+		}
+		
+		return flag;
+	} 
 }

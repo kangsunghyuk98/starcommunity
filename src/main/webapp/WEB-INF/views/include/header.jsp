@@ -52,10 +52,10 @@
                             role="button" data-bs-toggle="dropdown">Community</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/DailyBoardList?boardname=dlife_board">일상 게시판</a></li>
-                            <li><a class="dropdown-item" href="/BeverageBoardList">음료 게시판</a></li>
-                            <li><a class="dropdown-item" href="/ReviewBoardList">매장 방문 후기게시판</a></li>
-                            <li><a class="dropdown-item" href="/MDBoardList">MD 게시판</a></li>
-                            <li><a class="dropdown-item" href="/FrequencyBoardList">프리퀀시 게시판</a></li>
+                            <li><a class="dropdown-item" href="/BeverageBoardList?boardname=beverage_board">음료 게시판</a></li>
+                            <li><a class="dropdown-item" href="/ReviewBoardList?boardname=review_board">매장 방문 후기게시판</a></li>
+                            <li><a class="dropdown-item" href="/MDBoardList?boardname=md_board">MD 게시판</a></li>
+                            <li><a class="dropdown-item" href="/FrequencyBoardList?boardname=frequency_board">프리퀀시 게시판</a></li>
                         </ul>
                     </li>
                     <sec:authorize access="isAuthenticated()">

@@ -7,7 +7,8 @@
 	request.setCharacterEncoding("utf-8");
 	int seq = (int)request.getAttribute("seq");
 	String boardname = (String)request.getAttribute("boardname");
-	
+	String category = (String)request.getAttribute("category");
+	int currentPage = (Integer)request.getAttribute("currentPage");
 	BoardTO to = (BoardTO)request.getAttribute("to");
 	
 	String subject = to.getSubject();  
@@ -16,7 +17,7 @@
 	int hit = to.getHit();         
 	String imgname = to.getImgname();  
 	String imgformat = to.getImgformat();
-	int recommend = to.getRecommend();   
+	int recommend = to.getRecommend();
 	int memberkey = to.getMemberkey();   
 	
 	String id = to.getId();        	  
@@ -47,18 +48,18 @@
 
     <script>
         $(document).ready(function () {
+        	
+        	let queryString = location.search;
+            const urlParams = new URLSearchParams(queryString);            		 
+            
+            let seq = urlParams.get("seq");
+            let boardname = urlParams.get("boardname");
+            let category = '${category}';
+            
             $("#d_btn").on("click", function () {
             	if ( confirm("글을 삭제하시겠습니까?") ) {
-            		let queryString = location.search;
-                    const urlParams = new URLSearchParams(queryString);            		 
-                    
-                    let seq = urlParams.get("seq");
-                    let boardname = urlParams.get("boardname");
-                    console.log(seq);
-                    console.log(boardname);
-                    
             		$.ajax({
-	    				url: '/BoardDelete',
+	    				url: '/board/BoardDelete',
 	    				type: 'get',
 	    				data: {
 	    					seq: seq,
@@ -68,7 +69,7 @@
 	    				success: function(result){
 	    					if (result == 0){
 	    						alert("글이 삭제되었습니다");
-	    						  window.history.back();
+	    						  location.href='/'+category+"?boardname="+boardname;
 	    					} else {
 	    						 alert("삭제 실패하였습니다.");
 	    					}
@@ -83,18 +84,6 @@
                 } else {
                 	alert("취소되었습니다");
                 }
-            	
-                /* let inputPassword = prompt("비밀번호를 입력하세요");
-                let password = '12345';
-                if (inputPassword != null || '') {
-                    if (inputPassword == password) {
-                        console.log("비밀번호는" + inputPassword);
-                        alert("글이 삭제되었습니다");
-                        window.location.href="/"
-                    } else {
-                        alert("비밀번호가 틀렸습니다");
-                    }
-                } */
                 
             });
             
@@ -146,7 +135,7 @@
         <!-- 본문 -->
         <div class="view_content">
 	        <div>
-	        	<img src="imgPath/coffee.jpg"/>
+	        	<img src="imgPath/<%=imgname %>"/>
 	        	<br>
 	        </div>
 	        <div>
@@ -154,8 +143,8 @@
 	        </div>
         </div>
         <div class="btns hstack gap-2 mt-2">
-            <button type="button" onclick="location.href='/DailyBoardList?boardname=<%=boardname %>'" class="btn btn-outline-secondary l_btn">목록</button>
-            <button type="button" onclick="location.href='/BoardModify'"
+            <button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
+            <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
                 class="btn btn-outline-secondary m_btn ms-auto">수정</button>
         	
 			

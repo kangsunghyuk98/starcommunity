@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.example.dto.BoardTO;
-import com.example.dto.MemberTO;
 
 @Mapper
 @Repository
@@ -55,4 +56,15 @@ public interface BoardMapperInter {
 	@Delete("delete from ${boardName} where seq=#{seq}")
 	public int deleteBoardContent(String boardName, int seq);
 	
+	// write_ok (글쓰기)
+	@Insert( "insert into ${boardname} values ( 0, #{to.subject}, #{to.content}, now(), 0, #{to.imgname}, #{to.imgformat}, 0, #{to.memberkey}, #{to.filesize})" )
+	int boardWriteOk(String boardname, BoardTO to);
+	
+	// modify
+	@Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey where seq like CONCAT('%',#{seq},'%') ")
+	public BoardTO viewModifyPage(String boardName, int seq);
+	
+	// modify_ok (글수정)
+	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, wdate = now(), imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq like CONCAT('%',#{seq},'%')" )
+	int boardModifyOk(String boardName, BoardTO to, int seq);
 }
