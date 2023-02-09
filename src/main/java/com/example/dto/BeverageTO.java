@@ -22,6 +22,7 @@ public class BeverageTO {
     private String sodium;
     private String sugars;
     private String caffeine;
+    private String allergyCause;
     private String drinkInfo;
 
 

@@ -24,10 +24,10 @@ public interface BeverageMapperInter {
 	    List<BeverageTO> selectCategory(String category);
 	    
 	//음료 상세페이지
-	    @Select("select category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where name =#{name}")
+	    @Select("select category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, allergyCause, drinkInfo from beverage where name =#{name}")
 	    public BeverageTO BeverageInfo(BeverageTO to);
 
-	@Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, drinkInfo from beverage where seq =#{seq}")
+	@Select("select seq, category, name, engName, image, productInfo, kcal, sat_fat, protein, sodium, sugars, caffeine, allergyCause, drinkInfo from beverage where seq =#{seq}")
 	public BeverageTO BeverageInfoBySeq(BeverageTO to);
 	    
 	    

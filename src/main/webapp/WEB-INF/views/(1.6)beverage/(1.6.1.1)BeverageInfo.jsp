@@ -20,6 +20,7 @@
 	String sodium = to.getSodium();
 	String sugars = to.getSugars();
 	String caffeine = to.getCaffeine();
+	String allergyCause = to.getAllergyCause();
 	String drinkInfo = to.getDrinkInfo();
 
     List<BeverageCmtTO> allCmtList = (List<BeverageCmtTO>) request.getAttribute("allCmtList");
@@ -140,7 +141,7 @@
                     </tr>                   
                 </table>
                 <div class="product_factor">
-                    <p style="text-align: right; font-size: small;">알레르기 유발요인 : 우유</p>
+                    <p style="text-align: right; font-size: small;"><%=allergyCause %></p>
                 </div>
             </div>
                 <div class="Beverage_txt"><%=drinkInfo %></div>
