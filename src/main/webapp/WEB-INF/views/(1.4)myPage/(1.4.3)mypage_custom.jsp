@@ -24,7 +24,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
- <div class="container col-lg-6 col-md-8 col-sm-10">
+ <div class="container col-lg-6 col-md-8 col-sm-10 mb-5">
     <div class="mypage_table">
         <div class="content_header">나만의 레시피</div>
         <hr>

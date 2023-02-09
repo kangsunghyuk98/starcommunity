@@ -93,7 +93,7 @@
     				
     				searchReq = $(".form-control").val();
     				searchOption = $("#select_box option:selected").val();
-    				let currentPage = '${currentPage};'
+    				let currentPage = '${currentPage}'
     				let boardname = '${boardname}';
     				let category = '${category}';
     				
@@ -159,7 +159,6 @@
 	    						}
 	    					}
 	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
-	    						console.log(pagination.nextPage);
 	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
 	    					}
 	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
@@ -168,6 +167,8 @@
 	    					
 	    					$(".pagination").append(htmlPg);
 	    					
+	    					console.log( pagination.curPage );
+	    					return currentPage;
 	    				},
 	    				error: function(err){
 	    					alert('error : ' + err.status);

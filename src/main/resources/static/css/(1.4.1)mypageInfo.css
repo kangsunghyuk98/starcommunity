@@ -14,11 +14,11 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 
 #m_btn{
-  float: right;
+  /* float: right; */
   font-size: 0.8rem;
 }
 
 #q_btn{
-  float: left;
+  /* float: left; */
   font-size: 0.8rem;
 }

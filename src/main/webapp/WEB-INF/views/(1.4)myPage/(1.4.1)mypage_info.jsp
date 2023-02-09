@@ -26,7 +26,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
- <div class="container col-lg-6 col-md-8 col-sm-10">
+ <div class="container col-lg-6 col-md-8 col-sm-10 mb-5">
     <div class="mypage_table">
         <div class="content_header">내 정보</div>
         <hr>
@@ -50,8 +50,10 @@
                 </tr>
             </thead>
         </table>
-        <button id="m_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/member/myinfo_modify'">내 정보 수정</button>
-        <button id="q_btn" value="<sec:authentication property="principal.to.memberKey" />" type="button" class="btn btn-outline-secondary btn-lg px-4">회원탈퇴</button>
+        <div class="hstack">
+	        <button id="q_btn" value="<sec:authentication property="principal.to.memberKey" />" type="button" class="btn btn-outline-secondary btn-lg px-4">회원탈퇴</button>
+	        <button id="m_btn" type="button" class="btn btn-outline-secondary btn-lg px-4 ms-auto" onclick="location.href='/member/myinfo_modify'">내 정보 수정</button>
+        </div>
         <script>
             $('#q_btn').click(function(){
                 let inputPass1 = prompt("비밀번호를 입력해주세요.");
@@ -103,8 +105,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </div>
 
-
 <!-- 풋터 영역 -->
 <jsp:include page="../include/footer.jsp"/>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<header id="header">
+<header id="header" class="mb-3">
     <div class="memberShip text-end">
         <sec:authorize access="isAnonymous()">
             <button type="button" onclick="location.href='/guest/login'" class="login_btn btn ">Login</button>
@@ -15,10 +15,9 @@
             </sec:authorize>
         </sec:authorize>
     </div>
-
-    <nav class="navbar navbar-expand-lg  border-bottom"> 
-        <div class="container-fluid">
-            <a href="/" class="d-flex Logo" value="Logo"><img src="/img/img_files/starcommunity_logo.png" class="img-fluid" width="150" height="75"></a>
+ 
+    <nav class="navbar navbar-expand-lg  border-bottom " >
+        <div class="container-fluid ">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,8 +25,9 @@
             </button> 
 
             <!-- 메뉴 -->
-            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
-                <ul class="nav col-12 col-md-auto mb-2 ">
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10" style="background-color: white;">
+    			<a href="/" class="d-flex Logo mb-4 " value="Logo"><img src="/img/img_files/starcommunity_logo.png" class="img-fluid"  width="150" height="75"></a>        	
+                <ul class="nav col-12 col-md-auto mb-3 mx-3">
                     <li><a href="/home/about" class="nav-link px-4 link-dark btn">About</a></li>
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"
                             role="button" data-bs-toggle="dropdown">Beverage</a>

@@ -22,11 +22,11 @@
 }
 
 #m_btn{
-  	float: right;
+  	/* float: right; */
   	font-size: 0.8rem;
 }
 
 #c_btn{
-  float: right;
+  /* float: right; */
   font-size: 0.8rem;
 }

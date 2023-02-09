@@ -25,54 +25,57 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
- <div class="container col-lg-6 col-md-8 col-sm-10">
+ <div class="container col-lg-6 col-md-8 col-sm-10 mb-5">
     <div class="container-sm mypage_table">
         <div class="content_header">내 정보</div>
         <hr>
 
         <form action="/member/myinfo_modify_ok" method="post">
-            <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
-        <table class="table table-hover table_margin">
-            <thead>
-                <tr>
-                    <th>이름</th>
-                    <td><sec:authentication property="principal.to.name" /></td>
-                </tr>
-                <tr>
-                    <th>아이디</th>
-                    <td><sec:authentication property="principal.to.id" /></td>
-                </tr>
-                <tr>
-                    <th>닉네임</th>
-                    <td>
-                        <input type="text" name="nickname" value="<sec:authentication property="principal.to.nickname" />" />
-                        <button id="check_btn" type="button" class="btn btn-secondary">중복확인</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>이메일</th>
-                    <td>
-                        <input type="email" name="email" value="<sec:authentication property="principal.to.email" />" />
-                    </td>
-                </tr>
-                <tr>
-                    <th>비밀번호 변경</th>
-                    <td>
-                        <input type="password" name="password" placeholder="수정할 비밀번호를 입력해주세요." />
-                    </td>
-                </tr>
-                <tr>
-                    <th>비밀번호 확인</th>
-                    <td>
-                        <input type="password" />
-                    </td>
-                </tr>
-            </thead>
-        </table>
-            <button id="m_btn" type="submit" class="btn btn-outline-secondary btn-lg px-4">수정</button>
+	        <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
+	        <table class="table table-hover table_margin">
+	            <thead>
+	                <tr>
+	                    <th>이름</th>
+	                    <td><sec:authentication property="principal.to.name" /></td>
+	                </tr>
+	                <tr>
+	                    <th>아이디</th>
+	                    <td><sec:authentication property="principal.to.id" /></td>
+	                </tr>
+	                <tr>
+	                    <th>닉네임</th>
+	                    <td>
+	                        <input type="text" name="nickname" value="<sec:authentication property="principal.to.nickname" />" />
+	                        <button id="check_btn" type="button" class="btn btn-secondary">중복확인</button>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th>이메일</th>
+	                    <td>
+	                        <input type="email" name="email" value="<sec:authentication property="principal.to.email" />" />
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th>비밀번호 변경</th>
+	                    <td>
+	                        <input type="password" name="password" placeholder="수정할 비밀번호를 입력해주세요." />
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <th>비밀번호 확인</th>
+	                    <td>
+	                        <input type="password" />
+	                    </td>
+	                </tr>
+	            </thead>
+	        </table>
+	        <div class="d-flex flex-row-reverse">
+	        	<button id="m_btn" type="submit" class="btn btn-outline-secondary btn-lg px-4 ">수정</button>
+	        	<button id="c_btn" type="button" class="btn btn-outline-secondary btn-lg px-4 mx-1" onclick="location.href='/member/myinfo'" >취소</button>
+	        </div>
         </form>
-
-        <button id="c_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/member/myinfo'" >취소</button>
+		
+        
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

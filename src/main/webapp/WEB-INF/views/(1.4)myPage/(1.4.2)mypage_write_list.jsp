@@ -94,7 +94,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
- <div class="container col-lg-6 col-md-8 col-sm-10">
+ <div class="container col-lg-6 col-md-8 col-sm-10 mb-5">
     <div class="mypage_table">
         <div class="content_header">내가 쓴 글</div>
         <b><sec:authentication property="principal.to.nickname"/></b> 님께서 작성하신 게시물은 총 <b>${allMyBoardListCount}</b>건 입니다.
