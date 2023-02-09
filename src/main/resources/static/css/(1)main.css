@@ -20,6 +20,7 @@ background-color: var(--bs-body-bg);
 
 .count_num{
 font-size: 1.8rem;
+color: #2E8B57;
 }
 
 h1{
@@ -42,7 +43,7 @@ margin-bottom: 1rem;
 }
 
 a {
-color: black;
+color: #2E8B57;
 text-decoration: underline; }
 a:hover {
   color: gray; 
@@ -78,12 +79,13 @@ font-weight: 300; }
     font-size: 1.33rem; } 
 } 
 
-#page2, #page3, #page4{
+#page2, #page3{
 margin-top: 15%;
 }
 
 #page4{
-margin-bottom: 5%;
+margin-top: 5%;
+margin-bottom: 12%;
 }
 
 .untree_co-section {
@@ -222,3 +224,5 @@ border-radius: 7px; }
     width: 4px;
     background: #107BE9; 
 }
+
+

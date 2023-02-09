@@ -28,3 +28,11 @@
 .notosanskr * { 
  font-family: 'Noto Sans KR', sans-serif;
 }
+
+/*한수원 한돋움체*/
+@font-face {
+    font-family: 'KHNPHD';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/KHNPHD.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

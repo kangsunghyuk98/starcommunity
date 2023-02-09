@@ -71,7 +71,7 @@ AOS.init();
   			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,&nbsp;&nbsp;&nbsp;&nbsp; 별다방커뮤니티</h1>
   			<p class="lead">스타벅스를 125% 즐길 수 있는 커뮤니티의 탄생. 스타벅스를 즐기는 사람들과 소통하고 나만의 레시피를 만들어 사람들과 공유해보세요!</p>
   			<p class="lead"><span class="count_num">00</span>명의 이용자와 <span class="count_num">00</span>개의 게시글이 당신을 기다리고 있습니다 </p>
-  			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-dark btn-xl shadow me-3 rounded-0 my-3">별다방 들어가기</a>
+  			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-success btn-xl shadow me-3 rounded-0 my-3">별다방 들어가기</a>
 		</div>
 	</div>
 </div>
@@ -192,13 +192,13 @@ AOS.init();
   			<div class="col-lg-6">
   				<div class="row gx-5 d-flex">
     				<div class="col-md-11">
-      					<div class="shadow ratio ratio-16x9 rounded bg-cover bp-center align-self-end" data-aos="fade-right" style="background-image: url(/img/people15.webp);--bs-aspect-ratio: 50%;"></div>
+      					<div class="shadow ratio ratio-16x9 rounded bg-cover bp-center align-self-end" data-aos="fade-right" style="background-image: url(/img/main_aboutus1.webp); background-size: 100%; background-repeat: no-repeat; --bs-aspect-ratio: 50%;"></div>
     				</div>
     				<div class="col-md-5 offset-md-1">
-      					<div class="shadow ratio ratio-1x1 rounded bg-cover mt-5 bp-center float-end" data-aos="fade-up" style="background-image: url(/img/interior42.webp);"></div>
+      					<div class="shadow ratio ratio-1x1 rounded bg-cover mt-5 bp-center float-end" data-aos="fade-up" style="background-image: url(/img/main_aboutus2.webp); background-size: 100%; background-repeat: no-repeat;"></div>
     				</div>
     				<div class="col-md-6">
-      					<div class="col-12 shadow ratio rounded bg-cover mt-5 bp-center" data-aos="fade-left" style="background-image: url(/img/people4.webp);--bs-aspect-ratio: 150%;"></div>
+      					<div class="col-12 shadow ratio rounded bg-cover mt-5 bp-center" data-aos="fade-left" style="background-image: url(/img/main_aboutus3.webp); background-size: 100%; background-repeat: no-repeat; --bs-aspect-ratio: 150%;"></div>
     				</div>
   				</div>
 			</div>
