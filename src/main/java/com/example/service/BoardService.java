@@ -76,7 +76,7 @@ public class BoardService {
 	}
 	
 	// 게시판 write
-	public int boardWriteOk(String boardname, BoardTO to) {
+	public int boardWriteOk( String boardname, BoardTO to ) {
 		int result = mapper.boardWriteOk(boardname, to);
 		int flag = 1;
 		
@@ -89,14 +89,14 @@ public class BoardService {
 
 	
 	// 게시판 수정
-	public BoardTO viewModifyPage(String boardName, int seq) {
+	public BoardTO boardModify( String boardname, int seq ) {
 		BoardTO to = new BoardTO();
-		to = mapper.viewModifyPage(boardName, seq);
+		to = mapper.boardModify( boardname, seq );
 		return to;
 	}
 	
-	public int boardModifyOk(String boardName, BoardTO to, int seq) {
-		int result = mapper.boardModifyOk(boardName, to, seq);
+	public int boardModifyOk( String boardname, BoardTO to, int seq ) {
+		int result = mapper.boardModifyOk( boardname, to, seq );
 		int flag = 1;
 		
 		if( result == 1) {

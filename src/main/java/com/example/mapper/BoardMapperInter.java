@@ -61,10 +61,10 @@ public interface BoardMapperInter {
 	int boardWriteOk(String boardname, BoardTO to);
 	
 	// modify
-	@Select("select count(*) from member join ${boardName} on member.memberkey = ${boardName}.memberkey where seq like CONCAT('%',#{seq},'%') ")
-	public BoardTO viewModifyPage(String boardName, int seq);
+	@Select("select * from ${boardname} where seq=#{seq} ")
+	public BoardTO boardModify(String boardname, int seq);
 	
 	// modify_ok (글수정)
 	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, wdate = now(), imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq like CONCAT('%',#{seq},'%')" )
-	int boardModifyOk(String boardName, BoardTO to, int seq);
+	int boardModifyOk(String boardname, BoardTO to, int seq);
 }

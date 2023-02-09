@@ -80,7 +80,7 @@
 	            <!-- 이거 가져오려면 작업이 좀 필요할 거 같아서 일단 주석처리 했습니다
 	            <label for="formFileMultiple" class="form-label">파일 이름 : </label>
 	            <label for="formFileMultiple" class="form-label">파일 크기 : </label> -->
-	            <input class="form-control" type="file" name="upload" value="" >
+	            <input class="form-control" type="file" name="upload" value="" multiple>
 	        </div>
 	        <textarea name="content" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 100%"></textarea>
 	        <div>

@@ -157,23 +157,31 @@ public class CommunityController {
     	}
     	
     	model.addAttribute( "flag", flag );
-    	model.addAttribute( "boardname", boardname );
     	model.addAttribute( "category", category );
+    	model.addAttribute( "boardname", boardname );
     	
     	return "okaction/board_write_ok";
     } 
     
     @RequestMapping("/board/BoardModify")
     public String showBoardModify( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="seq") int seq, BoardTO to, Model model) {
-    	model.addAttribute("boardname", boardname);
-    	model.addAttribute("seq", seq);
+    	
+    	to = service.boardModify( boardname, seq );
+    	
+    	model.addAttribute( "category", category );
+    	model.addAttribute( "boardname", boardname );
+    	model.addAttribute( "seq", seq );
+    	model.addAttribute( "to", to );
         return "(1.3)community/(1.3.1.3)BoardModify";
     }
     
     @RequestMapping("/board/BoardModify_ok")
     public String BoardModifyOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="seq") int seq, BoardTO to, Model model) {
-    	model.addAttribute("boardname", boardname);
-    	model.addAttribute("seq", seq);
+    	
+    	model.addAttribute( "category", category );
+    	model.addAttribute( "boardname", boardname );
+    	model.addAttribute( "seq", seq );
+    	model.addAttribute( "to", to );
         return "okaction/board_modify_ok";
     }
     
