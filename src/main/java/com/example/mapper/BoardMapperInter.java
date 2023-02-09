@@ -67,4 +67,27 @@ public interface BoardMapperInter {
 	// modify_ok (글수정)
 	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq=#{seq}" )
 	int boardModifyOk(String boardname, BoardTO to, int seq);
+	
+	// 여기서 부터 댓글 작성과 관련한 쿼리입니다.
+	@Insert("insert into dlife_cmt values (0, #{comment}, now(), 0, #{seq}, #{memberKey})")
+	int writeDlifeCmt(BoardCmtTO bto);
+
+	@Insert("insert into md_cmt values (0, #{comment}, now(), 0, #{seq}, #{memberKey})")
+	int writeMdCmt(BoardCmtTO bto);
+
+	@Insert("insert into beverage_board_cmt values (0, #{comment}, now(), 0, #{seq}, #{memberKey})")
+	int writeBeverageBoardCmt(BoardCmtTO bto);
+
+	@Insert("insert into frequency_cmt values (0, #{comment}, now(), 0, #{seq}, #{memberKey})")
+	int writeFrequencyCmt(BoardCmtTO bto);
+
+	@Insert("insert into review_cmt values (0, #{comment}, now(), 0, #{seq}, #{memberKey})")
+	int writeReviewCmt(BoardCmtTO bto);
+
+	@Select("select member.memberkey, member.nickname, ${cmtName}.cseq, ${cmtName}.cdate, ${cmtName}.comment from ${cmtName} inner join member " +
+			"on (${cmtName}.memberkey = member.memberkey) where ${cmtName}.seq = #{seq}")
+	List<BoardCmtTO> selectCmtList(String cmtName, int seq);
+
+	@Delete("delete from ${cmtName} where cseq = #{cseq}")
+	int deleteCmt(String cseq, String cmtName);
 }
