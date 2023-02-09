@@ -87,21 +87,52 @@
                 
             });
             
-            let text = "1";
+            let text = document.getElementById("comment").innerText;
     		$(".cmt_btn").on("click", function(){
-    			if( text != "" || null ){
-    				alert("댓글이 등록되었습니다");
+    			if( text != "" || text != null ){
     			} else {
     				alert("댓글을 작성해야합니다");
     			}
     		});
 	
             $(".comment_d_btn").on("click", function () {
-                let result = confirm("댓글을 삭제하시겠습니까?");
-                if (result == true) {
-                    alert('댓글이 삭제되었습니다');
+
+                let cseq = $(this).attr('value');
+
+                if(confirm('댓글을 삭제하시겠습니까?')){
+                    let queryString = location.search;
+                    const urlParams = new URLSearchParams(queryString);
+
+                    let seq = urlParams.get("seq");
+                    let currentPage = urlParams.get("currentPage");
+                    let category = urlParams.get("category");
+                    let boardname = urlParams.get("boardname");
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/board/deletecmt',
+                        data: {
+                            cseq : cseq,
+                            boardname : boardname
+                        },
+                        dataType: 'text',
+                        success: function (result) {
+                            if (result == 0) {
+                                alert('댓글이 삭제되었습니다.');
+                                location.href = '/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
+                            }else{
+                                alert('삭제 실패하였습니다. (유효하지 않은 memberkey)');
+                            }
+                        },
+                        error: function () {
+                            alert('삭제 실패')
+                            return;
+                        }
+                    });
                 } else {
+                    return false;
                 }
+
             });
         });
     </script>
@@ -144,55 +175,79 @@
         </div>
         <div class="btns hstack gap-2 mt-2">
             <button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
-            <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
-                class="btn btn-outline-secondary m_btn ms-auto">수정</button>
-        	
-			
-			<sec:authorize var="" access="isAuthenticated()">
-				<sec:authentication property="principal" var="principal"/>
-				
-				<c:if test="${principal.to.memberKey eq to.memberkey}">
-						<button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
-            	</c:if>
-			</sec:authorize>
+
+            <sec:authorize var="" access="isAuthenticated()">
+                <sec:authentication property="principal" var="principal"/>
+                <c:if test="${principal.to.memberKey eq to.memberkey}">
+                    <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
+                            class="btn btn-outline-secondary m_btn ms-auto">수정</button>
+                    <button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+                </c:if>
+            </sec:authorize>
             
         </div>
         <hr class="mt-3 mb-2">
 
-
+         <sec:authorize access="isAnonymous()">
+             로그인 후 댓글 서비스를 이용하실 수 있습니다. (프론트에서 디자인 처리 요망)
+         </sec:authorize>
 
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
 
             <!-- 댓글작성폼 -->
-            <form action="" method="post">
-                <div class="write_comment">
-                    <div class="mb-3 mt-3 ">
-                        <label for="comment">Comments:</label>
-                        <textarea class="form-control mt-3" rows="2" id="comment" name="text"></textarea>
+            <sec:authorize access="isAuthenticated()">
+                <form action="/board/writecmt" method="post">
+                    <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
+                    <input type="hidden" name="seq" value="<%= seq %>" />
+                    <input type="hidden" name="boardname" value="<%= boardname %>" />
+                    <input type="hidden" name="currentPage" value="<%= currentPage %>" />
+                    <input type="hidden" name="category" value="<%= category %>" />
+
+                    <div class="write_comment">
+                        <div class="mb-3 mt-3 ">
+                            <label for="comment">Comments:</label>
+                            <textarea class="form-control mt-3" rows="2" id="comment" name="comment"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">댓글 등록</button>
                     </div>
-                    <button type="button" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">댓글 등록</button>
-                </div>
-            </form>
+                </form>
+            </sec:authorize>
 
             <!-- 댓글 리스트 -->
             <div class="comment">
                 <table class="container-fluid">
 
-                    <tr class="clearfix border-top comment_tr">
-                        <td class="coment_re_txt float-start">
-                            <div class="mt-2 mb-2">
-                                <strong>글쓴이1</strong>(2023.09.19 02:00)
-                            </div>
-                            <div class="coment_re_txt mb-2">
-                                “스타벅스는 탄소 발자국을 줄이기 위한 다양한 노력을 기울이고 있습니다.”
-                            </div>
-                        </td>
-                        <td class="coment_re_btn float-end">
-                            <button type="button"
-                                class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2  ">삭제</button>
-                        </td>
-                    </tr>
+
+                    <!-- 댓글이 들어가는 영역 -->
+
+                    <c:forEach var="bto" items="${allCmtList}">
+
+                        <tr class="clearfix border-top comment_tr">
+                            <td class="coment_re_txt float-start">
+                                <div class="mt-2 mb-2">
+                                    <strong>${bto.nickname}</strong>(${bto.cdate})
+                                </div>
+                                <div class="coment_re_txt mb-2">
+                                        ${bto.comment}
+                                </div>
+                            </td>
+
+                            <sec:authorize access="isAuthenticated()">
+
+                                <sec:authentication property="principal" var="principal"/>
+
+                                <c:if test="${principal.to.memberKey eq bto.memberKey}">
+                                    <td class="coment_re_btn float-end">
+                                        <button type="button" value="${bto.cseq}" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>
+                                    </td>
+                                </c:if>
+
+                            </sec:authorize>
+
+                        </tr>
+
+                    </c:forEach>
 
                 </table>
                 <div class="coment_re_view">

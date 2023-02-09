@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.dto.BoardCmtTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -114,13 +115,19 @@ public class CommunityController {
     
     @RequestMapping("/BoardView")
 	public String showBoardView(Model model, @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq, @RequestParam(value="currentPage") int currentPage) {
-    	BoardTO to = service.viewPageContents(boardname, seq);
-    	
-    	model.addAttribute("to", to);
-    	model.addAttribute("boardname", boardname);
-    	model.addAttribute("seq", seq);
-    	model.addAttribute("category", category);
-    	model.addAttribute("currentPage", currentPage);
+
+		BoardTO to = service.viewPageContents(boardname, seq);
+
+		// 댓글 view 관련 처리
+		List<BoardCmtTO> allCmtList = service.selectAllCmtList(boardname, seq);
+
+		model.addAttribute("to", to);
+		model.addAttribute("boardname", boardname);
+		model.addAttribute("seq", seq);
+		model.addAttribute("category", category);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("allCmtList",allCmtList);
+
         return "(1.3)community/(1.3.1.1)BoardView";
     }   
     
@@ -184,6 +191,31 @@ public class CommunityController {
    	
     	return flag;
     }
+
+
+	// 댓글 관련 처리 메서드
+	@RequestMapping("/board/writecmt")
+	public String writeCmt (BoardCmtTO bto, @RequestParam("currentPage") int currentPage ,
+							@RequestParam("category") String category, Model model) {
+		int flag = service.writeCmt(bto);
+
+		model.addAttribute("flag",flag);
+		model.addAttribute("seq",bto.getSeq());
+		model.addAttribute("boardname",bto.getBoardname());
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("category",category);
+
+		return "okaction/write_board_cmt_ok";
+
+	}
+
+	@RequestMapping("/board/deletecmt")
+	public String deleteCmt (BoardCmtTO bto ,Model model) {
+		int flag = service.deleteCmt(bto);
+		model.addAttribute("flag",flag);
+
+		return "okaction/board_cmt_delete";
+	}
     
     
 }
