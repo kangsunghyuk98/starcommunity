@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.example.dto.BoardTO"%>
-<%
-	int seq = (int)request.getAttribute("seq");
-	String boardname = (String)request.getAttribute("boardname");
+<%	
 	String category = (String)request.getAttribute("category");
+	String boardname = (String)request.getAttribute("boardname");
 	int currentPage = (Integer)request.getAttribute("currentPage");
+	int seq = (int)request.getAttribute("seq");
 	BoardTO to = (BoardTO)request.getAttribute("to");
 	
-	System.out.println( to.getSubject() );
 	/* 
 	String subject = to.getSubject();  
 	String content = to.getContent();  
@@ -69,7 +68,7 @@
 					
 					submitPost();
 
-	 				document.wfrm.submit();
+	 				document.mfrm.submit();
 				};
 			}) 
 		
@@ -84,7 +83,7 @@
     <br>
     <br>
     <div class="contents container col-lg-6 col-md-8 col-sm-10 ">
-    	<form action="/board/BoardModify_ok?category=<%= category %>&boardname=<%= boardname %>" method="post" name="mfrm" enctype="multipart/form-data">
+    	<form action="/board/BoardModify_ok?category=<%= category %>&boardname=<%= boardname %>&currentPage=<%= currentPage %>&seq=<%= seq %>" method="post" name="mfrm" enctype="multipart/form-data">
     		<!-- <input type="hidden" name="memberkey" value="<sec:authentication property="principal.to.memberKey" />" /> -->
 	        <div class="content_header mt-auto ">글수정</div>
 	        <div class="mb-3 title">

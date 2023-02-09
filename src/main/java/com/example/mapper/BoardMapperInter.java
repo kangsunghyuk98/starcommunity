@@ -65,6 +65,6 @@ public interface BoardMapperInter {
 	public BoardTO boardModify(String boardname, int seq);
 	
 	// modify_ok (글수정)
-	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, wdate = now(), imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq like CONCAT('%',#{seq},'%')" )
+	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq=#{seq}" )
 	int boardModifyOk(String boardname, BoardTO to, int seq);
 }

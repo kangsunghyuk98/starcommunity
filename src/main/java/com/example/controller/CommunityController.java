@@ -164,12 +164,13 @@ public class CommunityController {
     } 
     
     @RequestMapping("/board/BoardModify")
-    public String showBoardModify( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="seq") int seq, BoardTO to, Model model) {
+    public String showBoardModify( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="currentPage") int currentPage, @RequestParam(value="seq") int seq, BoardTO to, Model model) {
     	
     	to = service.boardModify( boardname, seq );
     	
     	model.addAttribute( "category", category );
     	model.addAttribute( "boardname", boardname );
+    	model.addAttribute( "currentPage", currentPage );
     	model.addAttribute( "seq", seq );
     	model.addAttribute( "to", to );
         return "(1.3)community/(1.3.1.3)BoardModify";
