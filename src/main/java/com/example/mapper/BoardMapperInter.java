@@ -3,6 +3,7 @@ package com.example.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.dto.BoardCmtTO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
