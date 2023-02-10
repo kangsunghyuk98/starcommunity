@@ -1,11 +1,13 @@
 #main, #qna, #result{
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Bareun_hipi';
 }
-/* 추천 페이지는 콘텐츠 헤더 글자 넣지 않음
-.content_header{ 
-    font-size: 40px;
-    font-family: 'BMJUA';
-}*/
+.content_header{
+    margin-bottom: 10px;
+    font-size: 2.25rem;
+    font-weight: bold;
+    font-family: 'Bareun_hipi';
+    text-align: center;
+ }
 
 
 /* animation 관련 css -----------------------------------*/

@@ -29,7 +29,7 @@
 <br>
 <div class="container col-lg-6 col-md-8 col-sm-10">
     <section id="main" class="mx-auto mb-5 px-3 py-5">
-        <h1>Can I recommend something to you?</h1>
+        <div class="content_header">Can I recommend something to you?</div>
         <div class="col-lg-6 col-md-8 col-sm-10 mx-auto my-5">
             <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid">
         </div>
