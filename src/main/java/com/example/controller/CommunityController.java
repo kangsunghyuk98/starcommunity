@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.example.dto.BoardCmtTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class CommunityController {
 	
 	@Autowired
 	private BoardService service;
+	
+	@Value("${spring.servlet.multipart.location}")
+	private String multipartLocation;
 	
 	// 커뮤니티 탭 mapping-----------------------------------------------------------
 	
@@ -139,40 +143,26 @@ public class CommunityController {
     
     @RequestMapping("/board/BoardWrite_ok")
     public String BoardWriteOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, MultipartFile upload , BoardTO to, Model model ) {
-    	System.out.println( "board_write_ok is called" );
-    	
     	// file reneme
-    	String fileRename = System.currentTimeMillis() + "_" + upload.getOriginalFilename();
-    	
+    	String fileRename = System.currentTimeMillis() + "_" + upload.getOriginalFilename();    	
     	if( !upload.isEmpty() ) {
 			to.setImgname( fileRename );	
 			to.setFilesize( upload.getSize() ); 
+			to.setImgformat( upload.getOriginalFilename().substring( upload.getOriginalFilename().indexOf(".") + 1 ) );	// 확장자만 자르기
 		}
     	
-    	int flag = service.boardWriteOk( boardname, to );
-    	
-    	// DB에 정상 반영 되면 파일도 업로드해 줌
-    	if( flag == 0 && to.getFilesize() > 0 ) {
-    		try {
-    			upload.transferTo( new File( fileRename ) );
-    		} catch (IllegalStateException e) {
-    			System.out.println( e.getMessage() );
-    		} catch( IOException e ) {
-    			System.out.println( e.getMessage() );
-    		}
-    	}
+    	int flag = service.boardWriteOk( boardname, upload, to );
     	
     	model.addAttribute( "flag", flag );
     	model.addAttribute( "category", category );
-    	model.addAttribute( "boardname", boardname );
-    	
+    	model.addAttribute( "boardname", boardname );    	
     	return "okaction/board_write_ok";
     } 
     
     @RequestMapping("/board/BoardModify")
     public String showBoardModify( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="currentPage") int currentPage, @RequestParam(value="seq") int seq, BoardTO to, Model model) {
     	
-    	to = service.boardModify( boardname, seq );
+    	to = service.boardModify( boardname, seq, to );
     	
     	model.addAttribute( "category", category );
     	model.addAttribute( "boardname", boardname );
@@ -183,12 +173,30 @@ public class CommunityController {
     }
     
     @RequestMapping("/board/BoardModify_ok")
-    public String BoardModifyOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="seq") int seq, BoardTO to, Model model) {
+    public String BoardModifyOk( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, @RequestParam(value="currentPage") int currentPage, @RequestParam(value="seq") int seq, MultipartFile upload, BoardTO to, Model model) {
+    	System.out.println( category ); 
+    	System.out.println( boardname );
+    	System.out.println( currentPage ); 
+    	System.out.println( seq );
+    	System.out.println( upload.getSize() );
+    	System.out.println( to.getContent() );
+    	System.out.println( multipartLocation );
     	
+    	// file reneme
+    	String fileRename = System.currentTimeMillis() + "_" + upload.getOriginalFilename();    	
+    	if( !upload.isEmpty() ) {
+			to.setImgname( fileRename );	
+			to.setFilesize( upload.getSize() ); 
+			to.setImgformat( upload.getOriginalFilename().substring( upload.getOriginalFilename().indexOf(".") + 1 ) );	// 확장자만 자르기
+		}
+    	
+    	int flag = service.boardModifyOk( boardname, seq, upload, to );
+    	
+    	model.addAttribute( "flag", flag );
     	model.addAttribute( "category", category );
     	model.addAttribute( "boardname", boardname );
+    	model.addAttribute( "currentPage", currentPage );
     	model.addAttribute( "seq", seq );
-    	model.addAttribute( "to", to );
         return "okaction/board_modify_ok";
     }
     
@@ -196,13 +204,15 @@ public class CommunityController {
     @ResponseBody
     public int boardDelete(String boardname, int seq, String imgname) {
     	int flag = service.deleteBoardContent(boardname, seq);
-    	
-    	String path = "C:/Users/zxzz9/Documents/files/";
     			
+    	String path = "C:/Users/zxzz9/Documents/files/";
+    	//String path = "C:/Team Project/StarbucksCommunity/src/main/webapp/upload";
+    	
     	//파일 삭제
     	if (flag == 0 && imgname != null) {
     		try {
     			File file = new File(path + imgname);
+    			//File file = new File(multipartLocation + imgname);
     			
     			boolean result = file.delete();
     			

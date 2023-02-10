@@ -1,5 +1,6 @@
 package com.example.webconfig;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -9,9 +10,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+	@Value("${spring.servlet.multipart.location}")
+	private String multipartLocation;
+	
     private String uploadPath = "/imgPath/**";
     private String resourcePath = "file:///C:/Users/zxzz9/Documents/files/"; // 서버에 파일 업로드 경로가 정해지면 property에 입력할 예정
-
+      
+    //private String resourcePath = "file:///C:/Team Project/StarbucksCommunity/src/main/webapp/upload/"; // 서버에 파일 업로드 경로가 정해지면 property에 입력할 예정  
+    //private String resourcePath = "file:///" + this.multipartLocation + "/"; 
+    
     // Resource Handler란 이미지, javascript, css, html 등의 정적인 리소스에 대한 요청을 처리하는 것.
     // ResourceHandlerRegistry : 리소스를 등록, 핸들러를 관리하는 객체
     @Override
