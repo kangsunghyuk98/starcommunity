@@ -69,8 +69,8 @@ AOS.init();
   <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main_img.webp); background-size: 80%, 60%; background-repeat: no-repeat; opacity: 0.5;"></div>
     <div class="row">
 		<div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
-  			<p class="display-1 fw-bold mt-5">스타벅스의 모든것,</p>
-  			<p class="display-1 fw-bold mt-n1">별다방 커뮤니티</p>
+  			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,</h1>
+  			<h1 class="display-1 fw-bold mt-n1">별다방 커뮤니티</h1>
   			<p class="lead">스타벅스를 125% 즐길 수 있는 커뮤니티의 탄생. 스타벅스를 즐기는 사람들과 소통하고 나만의 레시피를 만들어 사람들과 공유해보세요!</p>
   			<p class="lead"><span class="count_num">${allMemberCount}</span>명의 이용자와 <span class="count_num">${allBoardCounts}</span>개의 게시글이 당신을 기다리고 있습니다 </p>
   			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-success btn-xl shadow me-3 rounded-0 my-3">별다방 들어가기</a>
@@ -84,25 +84,28 @@ AOS.init();
 <div class="py-vh-5 w-100 overflow-hidden" id="page2">
  	<div class="container position-relative">
     	<div class="row d-flex justify-content-end">
-			<div class="col-lg-8 my-5" data-aos="fade-down"><h2 class="display-6">다양한 게시판으로 사람들과 소통하세요! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일상을 나누는 것부터 프리퀀시 교환까지 모두 별다방 커뮤니티에서 가능합니다.</h2></div>
+			<div class="col-lg-8 my-5" data-aos="fade-down">
+				<h2 class="display-6">다양한 게시판으로 사람들과 소통하세요!</h2> 
+				<h2 class="display-6">일상을 나누는 것부터 프리퀀시 교환까지 모두 별다방 커뮤니티에서 가능합니다.</h2>
+			</div>
 		</div>
 		<div class="row d-flex align-items-center">
 			<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
   				<span class="h5 fw-lighter">01.</span>
   				<h3 class="py-5 border-top border-dark">일상게시판</h3>
-  				<p>스타벅스 애호가들의 일상은 어떨까요? 시시한 주제라도 좋아요. 오늘 하루 있었던 일을 공유해보세요.</p>
-  				<a href="/DailyBoardList?boardname=dlife_board" class="link-fancy">일상게시판 가기</a>
+  				<p class="page2_text">스타벅스 애호가들의 일상은 어떨까요? 시시한 주제라도 좋아요. 오늘 하루 있었던 일을 공유해보세요.</p>
+  				<a href="/DailyBoardList?boardname=dlife_board" class="link-fancy">일상게시판 바로가기</a>
 			</div>
 			<div class="col-md-6 col-lg-4 py-vh-4 pb-0" data-aos="fade-up" data-aos-delay="400">
   				<span class="h5 fw-lighter">02.</span>
   				<h3 class="py-5 border-top border-dark">매장 방문 후기 게시판</h3>
-  				<p>오늘 내가 방문한 스타벅스 매장은 어땠나요? 나의 스타벅스 매장 방문후기를 남겨주세요. 내가 남긴 방문 후기는 다른사람들이 보고 댓글을 남길 수도 있어요. 또한 다른 사람들의 방문후기를 보고 다음 방문 예정 매장에 대한 정보도 알아보세요!</p>
+  				<p class="page2_text">오늘 내가 방문한 스타벅스 매장은 어땠나요? 나의 스타벅스 매장 방문후기를 남겨주세요. 내가 남긴 방문 후기는 다른사람들이 보고 댓글을 남길 수도 있어요. 또한 다른 사람들의 방문후기를 보고 다음 방문 예정 매장에 대한 정보도 알아보세요!</p>
   				<a href="/ReviewBoardList?boardname=review_board" class="link-fancy">매장방문 후기게시판 바로가기</a>
 			</div>
 			<div class="col-md-6 col-lg-4 py-vh-6 pb-0" data-aos="fade-up" data-aos-delay="600">
   				<span class="h5 fw-lighter">03.</span>
   				<h3 class="py-5 border-top border-dark">프리퀀시 게시판</h3>
-  				<p>스타벅스 프리퀀시 교환 게시판에서 보다 쉽게 프리퀀시를 모아보세요. 내가 글을 올려서 교환할 수도 있고 다른사람이 올린 글에 댓글을 달아서 교환할 수도 있어요.</p>
+  				<p class="page2_text">스타벅스 프리퀀시 교환 게시판에서 보다 쉽게 프리퀀시를 모아보세요. 내가 글을 올려서 교환할 수도 있고 다른사람이 올린 글에 댓글을 달아서 교환할 수도 있어요.</p>
   				<a href="/FrequencyBoardList?boardname=frequency_board" class="link-fancy">프리퀀시 게시판 바로가기</a>
 			</div>
 		</div>
@@ -115,8 +118,8 @@ AOS.init();
       <div class="row mb-5">
         <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
           <span class="caption">byeoldabang community</span>
-          <h2 class="heading">별다방 커뮤니티만의 즐거움</h2>
-          <p>취향에 맞는 추천음료 부터 나만의 레시피 만들기 까지</p>
+          <h2 class="heading" style="font-size: 2.2rem;">별다방 125% 즐기는 방법</h2>
+          <p style="font-size: 1.1rem;">취향에 맞는 추천음료 부터 나만의 레시피 만들기 까지</p>
         </div>
       </div> <!-- /.row -->
 
@@ -130,8 +133,8 @@ AOS.init();
               </svg>
             </div> 
             <div class="service-contents">
-              <h3>추천 음료</h3>
-              <p>오늘의 기분에 따라서 취향에 따라서 맞춤형 음료를 추천해드려요. 매일 같은 음료만 먹기 질렸다면 음료추천을 받아보세요!</p>  
+              <h2>추천 음료</h2>
+              <p style="font-size: 1.2rem;">오늘의 기분에 따라서 취향에 따라서 맞춤형 음료를 추천해드려요. 매일 같은 음료만 먹기 질렸다면 음료추천을 받아보세요!</p>  
               <p><a href="/home/recommend" class="read-more">Recommend 바로가기</a></p>
             </div>
           </div>
@@ -146,8 +149,8 @@ AOS.init();
               </svg>
             </div>
             <div class="service-contents">
-              <h3>원하는 정보로 음료보기</h3>
-              <p>칼로리 낮은 순부터 지방 낮은순까지, 원하는 정보로 정렬하여 음료를 찾아보세요! 키워드로 음료를 찾고 음료에 대한 자세한 정보까지 제공합니다.</p>  
+              <h2>원하는 정보로 음료보기</h2>
+              <p style="font-size: 1.2rem;">칼로리 낮은 순부터 지방 낮은순까지, 원하는 정보로 정렬하여 음료를 찾아보세요! 키워드로 음료를 찾고 음료에 대한 자세한 정보까지 제공합니다.</p>  
               <p><a href="/BeverageList" class="read-more">Beverage 바로가기</a></p>
             </div>
           </div>
@@ -162,8 +165,8 @@ AOS.init();
               </svg>
             </div>
             <div class="service-contents">
-              <h3>나만의 레시피</h3>
-              <p>어려운 스타벅스 커스텀을 그만! 음료별로 손쉽게 커스텀 옵션을 확인하고 내가 원하는 커스텀을 만들어보세요.</p>  
+              <h2>나만의 레시피</h2>
+              <p style="font-size: 1.2rem;">어려운 스타벅스 커스텀을 그만! 음료별로 손쉽게 커스텀 옵션을 확인하고 내가 원하는 커스텀을 만들어보세요.</p>  
               <p><a href="/Custom1" class="read-more">coustom recipe 바로가기</a></p>
             </div>
           </div>
@@ -177,8 +180,8 @@ AOS.init();
               </svg>
             </div>
             <div class="service-contents">
-              <h3>가까운 매장 찾기</h3>
-              <p>내 근처 스타벅스 매장은 어디? 가까운 스타박스 매장을 스타벅스커뮤니티에서 찾아볼 수 있어요!</p>  
+              <h2>가까운 매장 찾기</h2>
+              <p style="font-size: 1.2rem;">내 근처 스타벅스 매장은 어디? 가까운 스타박스 매장을 스타벅스커뮤니티에서 찾아볼 수 있어요!</p>  
               <p><a href="#" class="read-more">가까운 매장 찾기</a></p>
             </div>
           </div>
@@ -205,8 +208,8 @@ AOS.init();
   				</div>
 			</div>
 			<div class="col-lg-4">
-  				<h3 class="py-5 border-top border-dark" data-aos="fade-left">별다방 커뮤니티</h3>
-  				<p data-aos="fade-left" data-aos-delay="200">
+  				<h2 class="py-5 border-top border-dark" data-aos="fade-left">별다방 커뮤니티</h2>
+  				<p data-aos="fade-left" data-aos-delay="200" style="font-size: 1.2rem;">
   				별다방 커뮤니티에 오신 걸 환영합니다. 별다방 커뮤니티에선 사용자에게 필요한 정보를 제공하고 나만의 커스텀 레시피를 저장 및 공유할 수 있습니다. 성향에 맞추어 음료를 추천해주고 편리한 UI를 제공하는 사이트입니다. 아래 ahout us를 클릭하면 커뮤니티에 대한 정보를 더 얻을 수 있습니다.
   				</p>
   				<p>

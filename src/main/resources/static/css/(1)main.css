@@ -7,7 +7,7 @@
 
 body {
 margin: 0;
-font-family: 'KHNPHD';
+font-family: 'BMJUA';
 font-size: var(--bs-body-font-size);
 font-weight: var(--bs-body-font-weight);
 line-height: var(--bs-body-line-height);
@@ -53,15 +53,21 @@ h3, .h3 {
       font-size: 1.75rem; } }
 
 p {
-margin-top: 0;
-margin-bottom: 1rem; 
+	argin-top: 0;
+	margin-bottom: 1rem; 
 }
 
 a {
-color: #2E8B57;
-text-decoration: underline; }
+	color: #2E8B57;
+	text-decoration: none;
+	font-size: 1.2rem;
+}
 a:hover {
   color: gray; 
+}
+
+.page2_text{
+	font-size: 1.3rem;
 }
 
 .display-1 {
@@ -128,7 +134,7 @@ position: relative; }
       content: ""; }
 
 .caption {
-color: #107BE9;
+color: #3CB371;
 font-size: 13px;
 text-transform: uppercase;
 font-weight: 700;
