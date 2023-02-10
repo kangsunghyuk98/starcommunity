@@ -45,12 +45,17 @@
 			}
 			
 			$(document).ready(function () {
-		    	document.getElementById( 'w_btn' ).onclick = function() {
-				
+		    	document.getElementById( 'w_btn' ).onclick = function() {				
 					if( document.wfrm.subject.value.trim() == "" ) {
 						alert("제목을 입력해주세요.");
 						return false;
 					}	
+					
+					/*let ext = document.wfrm.upload.value.trim().split('.')
+					if( ext != "jpg" || ext != "png" || ext != "gif" || ext != null ) {
+						alert("첨부 파일이 이미지 형식이 아닙니다1.");
+						return false;
+					}*/
 					
 					submitPost();
 					//console.log( document.wfrm.memberkey.value );
