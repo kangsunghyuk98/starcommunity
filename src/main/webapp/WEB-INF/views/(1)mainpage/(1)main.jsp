@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -70,7 +71,7 @@ AOS.init();
 		<div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
   			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,&nbsp;&nbsp;&nbsp;&nbsp; 별다방커뮤니티</h1>
   			<p class="lead">스타벅스를 125% 즐길 수 있는 커뮤니티의 탄생. 스타벅스를 즐기는 사람들과 소통하고 나만의 레시피를 만들어 사람들과 공유해보세요!</p>
-  			<p class="lead"><span class="count_num">00</span>명의 이용자와 <span class="count_num">00</span>개의 게시글이 당신을 기다리고 있습니다 </p>
+  			<p class="lead"><span class="count_num">${allMemberCount}</span>명의 이용자와 <span class="count_num">${allBoardCounts}</span>개의 게시글이 당신을 기다리고 있습니다 </p>
   			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-success btn-xl shadow me-3 rounded-0 my-3">별다방 들어가기</a>
 		</div>
 	</div>
@@ -146,7 +147,7 @@ AOS.init();
             <div class="service-contents">
               <h3>원하는 정보로 음료보기</h3>
               <p>칼로리 낮은 순부터 지방 낮은순까지, 원하는 정보로 정렬하여 음료를 찾아보세요! 키워드로 음료를 찾고 음료에 대한 자세한 정보까지 제공합니다.</p>  
-              <p><a href="/BevergeList" class="read-more">Beverge 바로가기</a></p>
+              <p><a href="/BeverageList" class="read-more">Beverage 바로가기</a></p>
             </div>
           </div>
         </div>

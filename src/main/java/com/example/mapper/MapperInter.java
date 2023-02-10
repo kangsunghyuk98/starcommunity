@@ -126,4 +126,25 @@ public interface MapperInter {
             "from beverage_board where memberkey = #{memberKey}")
     List<BoardTO> selectAllMyBeverageBoards(String memberKey); // frequency_board select
 
+
+
+    // 메인에서 사용될 전체 사용자와 게시글 조회쿼리
+    @Select("select count(*) from member where role = 'ROLE_USER'")
+    int countAllMember();
+
+    @Select("select count(*) from dlife_board")
+    int countAllDlifeBoard();
+
+    @Select("select count(*) from beverage_board")
+    int countAllBeverageBoard();
+
+    @Select("select count(*) from md_board")
+    int countAllMdBoard();
+
+    @Select("select count(*) from frequency_board")
+    int countAllFrequencyBoard();
+
+    @Select("select count(*) from review_board")
+    int countAllReviewBoard();
+
 }

@@ -107,4 +107,15 @@ public class ContentsService {
         }
     }
 
+    public int countAllMembers() {
+        return mapperInter.countAllMember();
+    }
+
+    public int countAllBoard() {
+       int allBoardCount = mapperInter.countAllBeverageBoard() + mapperInter.countAllDlifeBoard() + mapperInter.countAllMdBoard() +
+               mapperInter.countAllFrequencyBoard() + mapperInter.countAllReviewBoard();
+
+       return allBoardCount;
+    }
+
 }
