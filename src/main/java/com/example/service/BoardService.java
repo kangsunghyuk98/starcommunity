@@ -1,12 +1,16 @@
 package com.example.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.dto.BoardCmtTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dto.BoardTO;
 import com.example.mapper.BoardMapperInter;
@@ -16,6 +20,10 @@ public class BoardService {
 	
 	@Autowired
 	private BoardMapperInter mapper;
+	
+	// application.properties에서 multipart.location 값 가져오기
+	@Value("${spring.servlet.multipart.location}")
+	private String multipartLocation;
 	
 	// 게시판 List 페이징
     public int selectAllListCount(String boardName) {
@@ -77,31 +85,73 @@ public class BoardService {
 	}
 	
 	// 게시판 write
-	public int boardWriteOk( String boardname, BoardTO to ) {
-		int result = mapper.boardWriteOk(boardname, to);
-		int flag = 1;
+	public int boardWriteOk( String boardname, MultipartFile upload, BoardTO to ) {
+		int result = mapper.boardWriteOk( boardname, to );
 		
+		int flag = 1;	// 비정상
 		if( result == 1) {
-			flag = 0;
+			flag = 0;	// 정상
+		} else if( to.getImgformat() != "png" || to.getImgformat() != "jpg" || to.getImgformat() != "gif" ) {
+			flag = 2;	// 첨부파일이 이미지 파일이 아닐 때
 		}
 		
+		// DB에 정상 반영 되면 파일도 업로드해 줌
+    	if( flag == 0 && to.getFilesize() > 0 ) {
+    		try {
+    			upload.transferTo( new File( to.getImgname() ) );
+    		} catch (IllegalStateException e) {
+    			System.out.println( e.getMessage() );
+    		} catch( IOException e ) {
+    			System.out.println( e.getMessage() );
+    		}
+    	}		
 		return flag;
 	}
-
 	
-	// 게시판 수정
-	public BoardTO boardModify( String boardname, int seq ) {
-		BoardTO to = new BoardTO();
+	// 게시판 modify
+	public BoardTO boardModify( String boardname, int seq, BoardTO to ) {
 		to = mapper.boardModify( boardname, seq );
 		return to;
 	}
 	
-	public int boardModifyOk( String boardname, BoardTO to, int seq ) {
-		int result = mapper.boardModifyOk( boardname, to, seq );
-		int flag = 1;
+	public int boardModifyOk( String boardname, int seq, MultipartFile upload, BoardTO to ) {
+		String oldFilename = mapper.getOldFileName( boardname, seq );
 		
-		if( result == 1) {
-			flag = 0;
+		int result = 0;
+		if( to.getImgname() != null ) {
+			result = mapper.modifyOkUseNewfile( boardname, to, seq );
+		} else {
+			result = mapper.modifyOkUseOldfile( boardname, to, seq );
+		} 
+				
+		int flag = 1;
+		if( result == 1 ) {
+			flag = 0;	// 정상
+			
+			// DB에 정상 반영 되면 파일도 업로드해 줌
+			if( to.getFilesize() > 0 ) {
+	    		try {
+	    			upload.transferTo( new File( to.getImgname() ) );
+	    		} catch (IllegalStateException e) {
+	    			System.out.println( e.getMessage() );
+	    		} catch( IOException e ) {
+	    			System.out.println( e.getMessage() );
+	    		}
+	    	}	
+			
+			if( to.getImgname() != null && oldFilename != null ) {
+				File file = new File( multipartLocation, oldFilename );
+				file.delete();
+			}
+		} else if( result == 0 ) {
+			flag = 1;	// 비정상
+			
+			/*if( to.getImgname() != null ) {
+				File file = new File( multipartLocation, to.getImgname() );
+				file.delete();
+			}*/
+		} else if( to.getImgformat() != "png" || to.getImgformat() != "jpg" || to.getImgformat() != "gif" ) {
+			flag = 2;	// 첨부파일이 이미지 파일이 아닐 때
 		}
 		
 		return flag;

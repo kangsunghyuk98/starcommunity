@@ -46,6 +46,7 @@ public interface BoardMapperInter {
 			+ "limit #{startNo}, 10")
 	public ArrayList<BoardTO> boardSearchSub_ConListTen(String boardName, String searchReq, int startNo);
 
+	
 	// view
 	@Select("select * from member join ${boardName} on member.memberkey = ${boardName}.memberkey where seq=#{seq} ")
 	public BoardTO viewPageContents(String boardName, int seq);
@@ -57,17 +58,25 @@ public interface BoardMapperInter {
 	@Delete("delete from ${boardName} where seq=#{seq}")
 	public int deleteBoardContent(String boardName, int seq);
 	
+	
 	// write_ok (글쓰기)
 	@Insert( "insert into ${boardname} values ( 0, #{to.subject}, #{to.content}, now(), 0, #{to.imgname}, #{to.imgformat}, 0, #{to.memberkey}, #{to.filesize})" )
 	int boardWriteOk(String boardname, BoardTO to);
 	
-	// modify
-	@Select("select * from ${boardname} where seq=#{seq} ")
+	// modify (글수정)
+	@Select( "select * from ${boardname} where seq=#{seq}" )
 	public BoardTO boardModify(String boardname, int seq);
 	
-	// modify_ok (글수정)
-	@Insert( "update ${boardName} set subject = #{to.subject}, content = #{to.content}, imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq=#{seq}" )
-	int boardModifyOk(String boardname, BoardTO to, int seq);
+	// modify_ok 
+	@Select( "select imgname from ${boardname} where seq=#{seq}")
+	String getOldFileName(String boardname, int seq);
+	
+	@Insert( "update ${boardname} set subject = #{to.subject}, content = #{to.content}, imgname = #{to.imgname}, imgformat = #{to.imgformat}, filesize = #{to.filesize} where seq=#{seq}" )
+	int modifyOkUseNewfile(String boardname, BoardTO to, int seq);
+	
+	@Insert( "update ${boardname} set subject = #{to.subject}, content = #{to.content} where seq=#{seq}" )
+	int modifyOkUseOldfile(String boardname, BoardTO to, int seq);
+	
 	
 	// 여기서 부터 댓글 작성과 관련한 쿼리입니다.
 	@Insert("insert into dlife_cmt values (0, #{comment}, now(), 0, #{seq}, #{memberKey})")

@@ -93,9 +93,9 @@
 	        <div class="mb-3">
 	            <label for="formFileMultiple" class="form-label">파일 이름 : <%= to.getImgname() %></label>
 	            <label for="formFileMultiple" class="form-label">파일 크기 : <%= to.getFilesize()/(1024*1024) + "MByte" %></label>
-	            <input class="form-control" type="file" id="upload" value="" multiple>
+	            <input class="form-control" type="file" name="upload" value="" multiple>
 	        </div>
-	        <textarea name="editorTxt" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 100%"><%= to.getContent() %></textarea>
+	        <textarea name="content" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 100%"><%= to.getContent() %></textarea>
 	        <div>
 		    <button type="button" id="m_btn" style="float: right;" class="btn btn-outline-secondary ">글수정</button>
 		    <button type="button" onclick="history.back();" style="float: right;"
