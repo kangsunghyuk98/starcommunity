@@ -54,19 +54,19 @@
                 </tr>
             </tbody>
         </table>
-        <button id="custom_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/Custom1'">나만의 레시피 만들기</button>
+        <button id="custom_btn" type="button" class="btn btn-outline-secondary btn-lg px-4 " onclick="location.href='/Custom1'">나만의 레시피 만들기</button>
     </div>
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
             <div class="col-md-3" style="float: none; margin: 0 auto;">      
                 <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">previous</a></li>
+                        <li class="page-item"><a class="page-link btn_before" href="#">이전</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">4</a></li>
                         <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">next</a></li>
+                        <li class="page-item"><a class="page-link btn_next" href="#">다음</a></li>
                     </ul>
                 </div>
             </div>

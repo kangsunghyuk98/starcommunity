@@ -36,7 +36,6 @@
 
 #w_btn{
   float: right;
-  width: 100px;
   font-size: 16px;
   margin-bottom: 13px;
 }
@@ -60,6 +59,10 @@
     color: #000;
     background-color: #fafafa; 
     border-color: #ccc;
+}
+
+.btn_before, .btn_next {
+	width: 60px;
 }
 
 

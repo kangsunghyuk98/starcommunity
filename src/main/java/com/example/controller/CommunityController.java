@@ -118,7 +118,7 @@ public class CommunityController {
     	return "(1.3)community/(1.3.5)frequency_board_list";
     }
     
-    @RequestMapping("/BoardView")
+    @RequestMapping("/board/BoardView")
 	public String showBoardView(Model model, @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq, @RequestParam(value="currentPage") int currentPage) {
     		BoardTO to = service.viewPageContents(boardname, seq);
 

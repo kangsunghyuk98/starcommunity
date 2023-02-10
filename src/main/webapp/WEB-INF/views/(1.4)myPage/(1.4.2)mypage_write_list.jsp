@@ -19,35 +19,35 @@
             if (to.getBoardname().equals("dlife_board")) {
                 sb.append("    <tr>");
                 sb.append("    <td>"+to.getSeq()+"</td>");
-                sb.append("    <td><a class='view_btn' href='/BoardView?category=DailyBoardList" +
+                sb.append("    <td><a class='view_btn' href='/board/BoardView?category=DailyBoardList" +
                         "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
                 sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>일상게시판</td>");
             } else if (to.getBoardname().equals("md_board")) {
                 sb.append("    <tr>");
                 sb.append("    <td>"+to.getSeq()+"</td>");
-                sb.append("    <td><a class='view_btn' href='/BoardView?category=MDBoardList" +
+                sb.append("    <td><a class='view_btn' href='/board/BoardView?category=MDBoardList" +
                         "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
                 sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>MD게시판</td>");
             } else if (to.getBoardname().equals("review_board")) {
                 sb.append("    <tr>");
                 sb.append("    <td>"+to.getSeq()+"</td>");
-                sb.append("    <td><a class='view_btn' href='/BoardView?category=ReviewBoardList" +
+                sb.append("    <td><a class='view_btn' href='/board/BoardView?category=ReviewBoardList" +
                         "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
                 sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>매장방문 후기게시판</td>");
             } else if (to.getBoardname().equals("frequency_board")) {
                 sb.append("    <tr>");
                 sb.append("    <td>"+to.getSeq()+"</td>");
-                sb.append("    <td><a class='view_btn' href='/BoardView?category=FrequencyBoardList" +
+                sb.append("    <td><a class='view_btn' href='/board/BoardView?category=FrequencyBoardList" +
                         "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
                 sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>프리퀀시 게시판</td>");
             } else if (to.getBoardname().equals("beverage_board")) {
                 sb.append("    <tr>");
                 sb.append("    <td>"+to.getSeq()+"</td>");
-                sb.append("    <td><a class='view_btn' href='/BoardView?category=BeverageBoardList" +
+                sb.append("    <td><a class='view_btn' href='/board/BoardView?category=BeverageBoardList" +
                         "&boardname="+to.getBoardname()+"&currentPage=1&seq="+to.getSeq()+"'>"+to.getSubject()+"</a></td>");
                 sb.append("    <td>"+to.getWdate()+"</td>");
                 sb.append("    <td>음료 게시판</td>");
@@ -134,7 +134,7 @@
                  <ul class="pagination justify-content-center">
 
                      <c:if test="${pagination.curPage ne 1}">
-                         <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${pagination.prevPage }')">이전</a></li>
+                         <li class="page-item"><a href="#" class="page-link btn_before" onClick="fn_paging('${pagination.prevPage }')">이전</a></li>
                      </c:if>
 
                      <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
@@ -149,7 +149,7 @@
                      </c:forEach>
 
                      <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                         <li class="page-item"><a href="#" onClick="fn_paging('${pagination.nextPage }')" class="page-link">다음</a></li>
+                         <li class="page-item"><a href="#" onClick="fn_paging('${pagination.nextPage }')" class="page-link btn_next">다음</a></li>
                      </c:if>
 
                  </ul>

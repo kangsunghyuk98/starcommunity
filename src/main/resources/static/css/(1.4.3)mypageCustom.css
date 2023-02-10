@@ -16,7 +16,6 @@ font-family: 'Noto Sans KR', sans-serif;
 #custom_btn{
   float: right;
   font-size: 0.8rem;
-  width: 200px;
   margin-bottom: 10px;
 }
 
@@ -41,3 +40,6 @@ font-family: 'Noto Sans KR', sans-serif;
   border-color: #ccc;
 }
 
+.btn_before, .btn_next {
+	width: 60px;
+}

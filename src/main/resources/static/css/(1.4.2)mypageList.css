@@ -37,5 +37,8 @@
     background-color: #fafafa; 
     border-color: #ccc;
 }
+.btn_before, .btn_next {
+	width: 60px;
+}
 
 

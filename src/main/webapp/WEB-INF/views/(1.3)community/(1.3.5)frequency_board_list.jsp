@@ -25,7 +25,7 @@
 		
 		sbHtml.append("<tr>");
 		sbHtml.append("    <td>"+ seq +"</td>");
-		sbHtml.append("    <td><a class='view_btn' href='/BoardView?category="+category+"&boardname="+boardname+"&currentPage="+currentPage+"&seq="+ seq +"'>"+ subject +"</a></td>");
+		sbHtml.append("    <td><a class='view_btn' href='/board/BoardView?category="+category+"&boardname="+boardname+"&currentPage="+currentPage+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
 		sbHtml.append("    <td>"+ hit +"</td>");
@@ -120,7 +120,7 @@
 	    						
 	    						html += '<tr>';
 	    						html += '    <td>'+ arr[i].seq +'</td>';
-	    						html += '    <td><a class="view_btn" href="/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
+	    						html += '    <td><a class="view_btn" href="/board/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
 	    						html += '    <td>'+ arr[i].wdate +'</td>';
 	    						html += '    <td>'+ arr[i].hit +'</td>';
@@ -145,10 +145,10 @@
 	    					
 	    					let htmlPg = '';	    					
 	    					if( pagination.curRange != 1){
-	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall btn_before" url="/searchBoardList?boardname='+boardname+'&currentPage=1&searchReq='+searchReq+'&searchOption='+searchOption+'">처음</button></li>';
 	    					}
 	    					if( pagination.curPage != 1 ){
-    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
+    							htmlPg += '<li class="page-item"><button class="page-link ajaxCall btn_before" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.prevPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">이전</button></li>';
 	    					}
 	    					for(let i=pagination.startPage; i<=pagination.endPage; i++){
 	    						if ( i == pagination.curPage ) {
@@ -159,10 +159,10 @@
 	    						}
 	    					}
 	    					if( pagination.curPage != pagination.pageCnt && pagination.pageCnt > 0 ){
-	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
+	    						htmlPg += '<li class="page-item"><button class="page-link ajaxCall btn_next" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.nextPage+'&searchReq='+searchReq+'&searchOption='+searchOption+'">다음</button></li>';
 	    					}
 	    					if( pagination.curRange != pagination.rangeCnt && pagination.rangeCnt > 0 ) {
-	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
+	    						htmlPg += '<li class="page-item"><a class="page-link ajaxCall btn_next" url="/searchBoardList?boardname='+boardname+'&currentPage='+pagination.pageCnt+'&searchReq='+searchReq+'&searchOption='+searchOption+'">끝</a></li>';
 	    					}
 	    					
 	    					$(".pagination").append(htmlPg);
@@ -217,7 +217,7 @@
 	
 	<sec:authorize access="isAuthenticated()">
             <div>
-                <button id="w_btn" type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='/board/BoardWrite?category=${category}&boardname=${boardname}'">글쓰기</button>
+                <button id="w_btn" type="button" class="btn btn-outline-secondary px-4" onclick="location.href='/board/BoardWrite?category=${category}&boardname=${boardname}'">글쓰기</button>
             </div>
     </sec:authorize>
     
@@ -227,11 +227,11 @@
                 <ul class="pagination justify-content-center">
                 	
                     <c:if test="${pagination.curRange ne 1 }">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', 1)">처음</a></li>
+                        <li class="page-item"><a href="#" class="btn_before page-link" onClick="fn_paging('${category}', '${boardname}', 1)">처음</a></li>
                     </c:if>
       
                     <c:if test="${pagination.curPage ne 1}">
-                        <li class="page-item"><a href="#" class="page-link" onClick="fn_paging('${category}', '${boardname}', '${pagination.prevPage }')">이전</a></li>
+                        <li class="page-item"><a href="#" class="btn_before page-link" onClick="fn_paging('${category}', '${boardname}', '${pagination.prevPage }')">이전</a></li>
                     </c:if>
                     
                     <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
@@ -246,11 +246,11 @@
                     </c:forEach>
                     
                     <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', '${boardname}', '${pagination.nextPage }')" class="page-link">다음</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', '${boardname}', '${pagination.nextPage }')" class="btn_next page-link">다음</a></li>
                     </c:if>
 
                     <c:if test="${pagination.curRange ne pagination.rangeCnt && pagination.rangeCnt > 0}">
-                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', '${boardname}', '${pagination.pageCnt }')" class="page-link">끝</a></li>
+                        <li class="page-item"><a href="#" onClick="fn_paging('${category}', '${boardname}', '${pagination.pageCnt }')" class="btn_next page-link">끝</a></li>
                     </c:if>
                 </ul>
             </div>
