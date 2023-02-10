@@ -27,11 +27,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -86,11 +89,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -146,11 +152,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -206,11 +215,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -266,11 +278,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -278,9 +293,11 @@
 			$("#syrup_li").change(function(){
 				var result = $('#syrup_li option:selected').val();
 				if(result=='frappuccino'){
+					$("#syrup_li option").prop('selected',false).hide();
 					$('#syrup3_li').show();
 					$('#syrup2_li').hide();
 				}else{
+					$("#syrup_li option[value='frappuccino']").prop('disabled',true).hide();
 					$('#syrup2_li').show();
 					$('#syrup3_li').hide();
 				}
@@ -329,11 +346,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -341,9 +361,11 @@
 			$("#syrup_li").change(function(){
 				var result = $('#syrup_li option:selected').val();
 				if(result=='frappuccino'){
+					$("#syrup_li option").prop('selected',false).hide();
 					$('#syrup3_li').show();
 					$('#syrup2_li').hide();
 				}else{
+					$("#syrup_li option[value='frappuccino']").prop('disabled',true).hide();
 					$('#syrup2_li').show();
 					$('#syrup3_li').hide();
 				}
@@ -393,11 +415,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -405,9 +430,11 @@
 			$("#syrup_li").change(function(){
 				var result = $('#syrup_li option:selected').val();
 				if(result=='frappuccino'){
+					$("#syrup_li option").prop('selected',false).hide();
 					$('#syrup3_li').show();
 					$('#syrup2_li').hide();
 				}else{
+					$("#syrup_li option[value='frappuccino']").prop('disabled',true).hide();
 					$('#syrup2_li').show();
 					$('#syrup3_li').hide();
 				}
@@ -457,11 +484,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -469,9 +499,11 @@
 			$("#syrup_li").change(function(){
 				var result = $('#syrup_li option:selected').val();
 				if(result=='frappuccino'){
+					$("#syrup_li option").prop('selected',false).hide();
 					$('#syrup3_li').show();
 					$('#syrup2_li').hide();
 				}else{
+					$("#syrup_li option[value='frappuccino']").prop('disabled',true).hide();
 					$('#syrup2_li').show();
 					$('#syrup3_li').hide();
 				}
@@ -522,11 +554,14 @@
 			$("#coffee1_li").change(function(){
 				var result = $('#coffee1 option:selected').val();
 				if(result =='1' || result =='3'){
-					$('#coffee2_li').hide();
+					$("#coffee1_li option[value='2']").prop('disabled',true).hide();
+					$('#coffee2_li').prop('disabled',true).hide();
 					$('#coffee3_li').show();
 				}else if(result=='2'){
+				$("#coffee1_li option[value='1']").prop('disabled',true).hide();
+				$("#coffee1_li option[value='3']").prop('disabled',true).hide();
 					$('#coffee2_li').show();
-					$('#coffee3_li').hide();
+					$('#coffee3_li').prop('disabled',true).hide();
 				}
 			
 			});
@@ -534,9 +569,11 @@
 			$("#syrup_li").change(function(){
 				var result = $('#syrup_li option:selected').val();
 				if(result=='frappuccino'){
+					$("#syrup_li option").prop('selected',false).hide();
 					$('#syrup3_li').show();
 					$('#syrup2_li').hide();
 				}else{
+					$("#syrup_li option[value='frappuccino']").prop('disabled',true).hide();
 					$('#syrup2_li').show();
 					$('#syrup3_li').hide();
 				}

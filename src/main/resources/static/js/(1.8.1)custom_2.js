@@ -24,6 +24,7 @@ let text15 = "";
 let text16 = "";
 let text17 = "";
 let text18 = "";
+let text19 = "";
 let recipe_txt = "";
 
 function handleOnChange0(e) {
@@ -190,7 +191,7 @@ function handleOnChange19(e) {
 }
 
 function recipe_txt_func() {
-	recipe_txt = text0 + " " + text1 + " " + text2 + " " + text3 + " " + text4 + " " + text5 + " " + text6 + " " + text7 + " " + text8 + " " + text9 + " " + text10 + " " + tex11 + " " + text12 + " " + text13 + " " + text14 + " " + text15 + " " + text16 + " " + text17 + " " + text18 + " " + text19;
-	/*console.log(txt);*/
+	recipe_txt = text0 + " " + text1 + " " + text2 + " " + text3 + " " + text4 + " " + text5 + " " + text6 + " " + text7 + " " + text8 + " " + text9 + " " + text10 + " " + text11 + " " + text12 + " " + text13 + " " + text14 + " " + text15 + " " + text16 + " " + text17 + " " + text18 + " " + text19 ;
+	console.log(recipe_txt);
 	return recipe_txt;
 }
