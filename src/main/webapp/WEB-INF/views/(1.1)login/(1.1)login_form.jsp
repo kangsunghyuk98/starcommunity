@@ -40,8 +40,8 @@
                 <div id="d2" class="col-sm-4">
                     <a style="text-decoration: inherit; color: black;" href="/guest/findpw">비밀번호 찾기</a>
                 </div>
-                    <div id="d3" class="col-sm-4">
-                        <a style="text-decoration: inherit; color: black;" href="/guest/register">회원가입</a>
+                <div id="d3" class="col-sm-4">
+                    <a style="text-decoration: inherit; color: black;" href="/guest/register">회원가입</a>
                 </div>
         </div>
     </form>
