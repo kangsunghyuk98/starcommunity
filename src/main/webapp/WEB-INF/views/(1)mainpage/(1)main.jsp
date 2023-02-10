@@ -78,10 +78,72 @@ AOS.init();
 	</div>
 </div>
 </div>
+<!-- 2페이지-->
+<div class="untree_co-section" id="page2">
+    <div class="container">
+    	<div class="row">
+        	<div class="col-12 mb-5" data-aos="fade-up">
+          		<span class="caption">recommed</span>
+          		<h2 class="heading">실시간 추천글</h2>
+        	</div>
+        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          		<div class="service">
+            		<div class="service-icon color-1 mb-4">
+              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
+            		</div>
+            		<div class="service-contents">
+              			<p style="font-size: 1.2rem;"><span>subject</span></p>
+              			<h3><span>writer</span></h3> 
+            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
+            			<a href="#" class="link-fancy">글 보러가기</a>
+            		</div>
+          		</div>
+       		</div>
+        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          		<div class="service">
+            		<div class="service-icon color-1 mb-4">
+              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
+            		</div>
+            		<div class="service-contents">
+              			<p style="font-size: 1.2rem;"><span>subject</span></p>
+              			<h3><span>writer</span></h3> 
+            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
+            			<a href="#" class="link-fancy">글 보러가기</a>
+            		</div>
+          		</div>
+        	</div>
+        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          		<div class="service">
+            		<div class="service-icon color-1 mb-4">
+              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
+            		</div>
+            		<div class="service-contents">
+              			<p style="font-size: 1.2rem;"><span>subject</span></p>
+              			<h3><span>writer</span></h3> 
+            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
+            			<a href="#" class="link-fancy">글 보러가기</a>
+            		</div>
+          		</div>
+        	</div>
+        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          		<div class="service">
+            		<div class="service-icon color-1 mb-4">
+              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
+            		</div>
+            		<div class="service-contents">
+              			<p style="font-size: 1.2rem;"><span>subject</span></p>
+              			<h3><span>writer</span></h3> 
+            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
+            			<a href="#" class="link-fancy">글 보러가기</a>
+            		</div>
+          		</div> 
+        	</div> 
+    	</div> 
+	</div> 
+</div> 
 
-
-<!-- 2페이지 -->
-<div class="py-vh-5 w-100 overflow-hidden" id="page2">
+<!-- 3페이지 -->
+<div class="py-vh-5 w-100 overflow-hidden" id="page3">
  	<div class="container position-relative">
     	<div class="row d-flex justify-content-end">
 			<div class="col-lg-8 my-5" data-aos="fade-down">
@@ -112,8 +174,8 @@ AOS.init();
 	</div>
 </div>
 
-<!-- 3페이지 -->
- <div class="untree_co-section" id="page3">
+<!-- 4페이지 -->
+ <div class="untree_co-section" id="page4">
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
@@ -121,12 +183,12 @@ AOS.init();
           <h2 class="heading" style="font-size: 2.2rem;">별다방 125% 즐기는 방법</h2>
           <p style="font-size: 1.1rem;">취향에 맞는 추천음료 부터 나만의 레시피 만들기 까지</p>
         </div>
-      </div> <!-- /.row -->
+      </div>
 
       <div class="row">
         <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="service horizontal d-flex">
-            <div class="service-icon color-1 mb-4">
+            <div class="service-icon color-2 mb-4">
               <svg class="bi bi-app-indicator" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
                 <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
@@ -158,7 +220,7 @@ AOS.init();
         
         <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="service horizontal d-flex">
-            <div class="service-icon color-3 mb-4">
+            <div class="service-icon color-2 mb-4">
               <svg class="bi bi-briefcase" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6h-1v6a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-6H0v6z"/>
                 <path fill-rule="evenodd" d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v2.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 6.884V4.5zM1.5 4a.5.5 0 0 0-.5.5v1.616l6.871 1.832a.5.5 0 0 0 .258 0L15 6.116V4.5a.5.5 0 0 0-.5-.5h-13zM5 2.5A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
@@ -174,7 +236,7 @@ AOS.init();
         
         <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
           <div class="service horizontal d-flex">
-            <div class="service-icon color-4 mb-4">
+            <div class="service-icon color-2 mb-4">
               <svg class="bi bi-collection" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M14.5 13.5h-13A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5zm-13 1A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
               </svg>
@@ -190,8 +252,8 @@ AOS.init();
     </div>
   </div>
   
-<!-- 4페이지 -->
-<div class="py-vh-4 bg-gray-100 w-100 overflow-hidden" id="page4">
+<!-- 5페이지 -->
+<div class="py-vh-4 bg-gray-100 w-100 overflow-hidden" id="page5">
 	<div class="container">  
 		<div class="row d-flex justify-content-between align-items-center">
   			<div class="col-lg-6">

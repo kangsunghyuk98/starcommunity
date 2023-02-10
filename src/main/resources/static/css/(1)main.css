@@ -100,11 +100,11 @@ font-weight: 300; }
     font-size: 1.33rem; } 
 } 
 
-#page2, #page3{
+#page2, #page3, #page4{
 margin-top: 15%;
 }
 
-#page4{
+#page5{
 margin-top: 5%;
 margin-bottom: 12%;
 }
@@ -245,5 +245,3 @@ border-radius: 7px; }
     width: 4px;
     background: #107BE9; 
 }
-
-
