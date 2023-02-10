@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.example.dto.BoardCmtTO;
 import com.example.dto.BoardLikeTO;
+import com.example.security.SecurityMember;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -119,20 +121,27 @@ public class CommunityController {
     }
     
     @RequestMapping("/board/BoardView")
-	public String showBoardView(Model model, @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname,  @RequestParam(value="seq") int seq, @RequestParam(value="currentPage") int currentPage) {
-    		BoardTO to = service.viewPageContents(boardname, seq);
+	public String showBoardView(Model model, @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname,
+								@RequestParam(value="seq") int seq, @RequestParam(value="currentPage") int currentPage,
+								@AuthenticationPrincipal SecurityMember securityMember) {
 
-		// 댓글 view 관련 처리
-		List<BoardCmtTO> allCmtList = service.selectAllCmtList(boardname, seq);
+		if (securityMember == null) {
+			return "okaction/pleaselogin";
+		} else {
+			BoardTO to = service.viewPageContents(boardname, seq);
 
-		model.addAttribute("to", to);
-		model.addAttribute("boardname", boardname);
-		model.addAttribute("seq", seq);
-		model.addAttribute("category", category);
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("allCmtList",allCmtList);
+			// 댓글 view 관련 처리
+			List<BoardCmtTO> allCmtList = service.selectAllCmtList(boardname, seq);
 
-        return "(1.3)community/(1.3.1.1)BoardView";
+			model.addAttribute("to", to);
+			model.addAttribute("boardname", boardname);
+			model.addAttribute("seq", seq);
+			model.addAttribute("category", category);
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("allCmtList",allCmtList);
+
+			return "(1.3)community/(1.3.1.1)BoardView";
+		}
     }
 
 	@RequestMapping("/board/clicklike")
