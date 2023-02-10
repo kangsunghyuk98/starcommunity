@@ -69,7 +69,8 @@ AOS.init();
   <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main_img.webp); background-size: 80%, 60%; background-repeat: no-repeat; opacity: 0.5;"></div>
     <div class="row">
 		<div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
-  			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,&nbsp;&nbsp;&nbsp;&nbsp; 별다방커뮤니티</h1>
+  			<p class="display-1 fw-bold mt-5">스타벅스의 모든것,</p>
+  			<p class="display-1 fw-bold mt-n1">별다방 커뮤니티</p>
   			<p class="lead">스타벅스를 125% 즐길 수 있는 커뮤니티의 탄생. 스타벅스를 즐기는 사람들과 소통하고 나만의 레시피를 만들어 사람들과 공유해보세요!</p>
   			<p class="lead"><span class="count_num">${allMemberCount}</span>명의 이용자와 <span class="count_num">${allBoardCounts}</span>개의 게시글이 당신을 기다리고 있습니다 </p>
   			<a href="/DailyBoardList?boardname=dlife_board" class="btn btn-success btn-xl shadow me-3 rounded-0 my-3">별다방 들어가기</a>
