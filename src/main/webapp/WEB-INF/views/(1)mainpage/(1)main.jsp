@@ -81,7 +81,7 @@ AOS.init();
 
 <!-- 2페이지 -->
 <div class="py-vh-5 w-100 overflow-hidden" id="page2">
- 	<div class="container">
+ 	<div class="container position-relative">
     	<div class="row d-flex justify-content-end">
 			<div class="col-lg-8 my-5" data-aos="fade-down"><h2 class="display-6">다양한 게시판으로 사람들과 소통하세요! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 일상을 나누는 것부터 프리퀀시 교환까지 모두 별다방 커뮤니티에서 가능합니다.</h2></div>
 		</div>
@@ -113,8 +113,8 @@ AOS.init();
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="0">
-          <span class="caption">starbuks community</span>
-          <h2 class="heading">스타벅스 커뮤니티만의 즐거움</h2>
+          <span class="caption">byeoldabang community</span>
+          <h2 class="heading">별다방 커뮤니티만의 즐거움</h2>
           <p>취향에 맞는 추천음료 부터 나만의 레시피 만들기 까지</p>
         </div>
       </div> <!-- /.row -->
@@ -199,14 +199,14 @@ AOS.init();
       					<div class="shadow ratio ratio-1x1 rounded bg-cover mt-5 bp-center float-end" data-aos="fade-up" style="background-image: url(/img/main_aboutus2.webp); background-size: 100%; background-repeat: no-repeat;"></div>
     				</div>
     				<div class="col-md-6">
-      					<div class="col-12 shadow ratio rounded bg-cover mt-5 bp-center" data-aos="fade-left" style="background-image: url(/img/main_aboutus3.webp); background-size: 100%; background-repeat: no-repeat; --bs-aspect-ratio: 150%;"></div>
+      					<div class="col-12 shadow ratio rounded bg-cover mt-5 bp-center" data-aos="fade-left" style="background-image: url(/img/main_aboutus3.webp); background-size: 100%; background-repeat: no-repeat; --bs-aspect-ratio: 130%;"></div>
     				</div>
   				</div>
 			</div>
 			<div class="col-lg-4">
-  				<h3 class="py-5 border-top border-dark" data-aos="fade-left">스타벅스 커뮤니티</h3>
+  				<h3 class="py-5 border-top border-dark" data-aos="fade-left">별다방 커뮤니티</h3>
   				<p data-aos="fade-left" data-aos-delay="200">
-  				사용자에게 필요한 정보를 제공하고 나만의 커스텀 레시피를 저장 및 공유할 수 있습니다. 성향에 맞추어 음료를 추천해주고 편리한 UI를 제공하는 사이트입니다.
+  				별다방 커뮤니티에 오신 걸 환영합니다. 별다방 커뮤니티에선 사용자에게 필요한 정보를 제공하고 나만의 커스텀 레시피를 저장 및 공유할 수 있습니다. 성향에 맞추어 음료를 추천해주고 편리한 UI를 제공하는 사이트입니다. 아래 ahout us를 클릭하면 커뮤니티에 대한 정보를 더 얻을 수 있습니다.
   				</p>
   				<p>
     				<a href="/home/about" data-aos="fade-left" data-aos-delay="400">About us</a>
