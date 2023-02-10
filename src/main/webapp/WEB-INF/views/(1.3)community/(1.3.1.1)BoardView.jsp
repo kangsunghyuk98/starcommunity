@@ -156,7 +156,7 @@
                         success: function (result) {
                             if (result == 0) {
                                 alert('댓글이 삭제되었습니다.');
-                                location.href = '/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
+                                location.href = '/board/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
                             }else{
                                 alert('삭제 실패하였습니다. (유효하지 않은 memberkey)');
                             }
@@ -195,9 +195,9 @@
                     dataType: 'text',
                     success: function (result) {
                         if (result == 1) {
-                            location.href = '/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
+                            location.href = '/board/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
                         }else{
-                            location.href = '/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
+                            location.href = '/board/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
                         }
                     },
                     error: function () {
