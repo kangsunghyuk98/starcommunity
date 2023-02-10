@@ -65,6 +65,31 @@
             let seq = urlParams.get("seq");
             let boardname = urlParams.get("boardname");
             let category = '${category}';
+
+            $.ajax({
+                type: 'POST',
+                url: '/board/selectlike',
+                data: {
+                    seq : seq,
+                    memberKey : <sec:authentication property="principal.to.memberKey"/>,
+                    boardname : boardname
+                },
+                dataType: 'text',
+                success: function (result) {
+                    let element = document.getElementById("inner");
+                    console.log(element);
+
+                    if (result == 1) {
+                        element.innerHTML = "<img id='heart_img' src='/img/full_heart.png' width='16px' height='16px'/>";
+                    }else{
+                        element.innerHTML = "<img id='heart_img' src='/img/empty_heart.png' width='16px' height='16px'/>";
+                    }
+                },
+                error: function () {
+                    alert('시스템 오류')
+                    return;
+                }
+            });
             
             
             $("#d_btn").on("click", function () {
@@ -146,6 +171,43 @@
                 }
 
             });
+
+            $(".like_btn").on("click",function () {
+
+                let queryString = location.search;
+                const urlParams = new URLSearchParams(queryString);
+
+                let seq = urlParams.get("seq");
+                let memberKey = $(this).attr("value");
+
+                let currentPage = urlParams.get("currentPage");
+                let category = urlParams.get("category");
+                let boardname = urlParams.get("boardname");
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/board/clicklike',
+                    data: {
+                        seq : seq,
+                        memberKey : memberKey,
+                        boardname : boardname
+                    },
+                    dataType: 'text',
+                    success: function (result) {
+                        if (result == 1) {
+                            location.href = '/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
+                        }else{
+                            location.href = '/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+seq+'';
+                        }
+                    },
+                    error: function () {
+                        alert('시스템 오류')
+                        return;
+                    }
+                });
+
+            });
+
         });
     </script>
 </head>
@@ -187,6 +249,16 @@
         </div>
         <div class="btns hstack gap-2 mt-2">
             <button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
+
+
+        <sec:authorize access="isAuthenticated()">
+
+            <button type="button" class="like_btn" value='<sec:authentication property="principal.to.memberKey"/>'>
+                <div id="inner"></div>
+            </button> 좋아요 ${to.recommend}
+
+        </sec:authorize>
+
            
 			<sec:authorize var="" access="isAuthenticated()">
 				<sec:authentication property="principal" var="principal"/>

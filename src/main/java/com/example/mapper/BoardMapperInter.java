@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.dto.BoardCmtTO;
+import com.example.dto.BoardLikeTO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -100,4 +101,22 @@ public interface BoardMapperInter {
 
 	@Delete("delete from ${cmtName} where cseq = #{cseq}")
 	int deleteCmt(String cseq, String cmtName);
+
+	// 좋아요 기능 쿼리
+
+	@Insert("insert into likecheck values (0, #{memberKey}, #{seq}, #{boardname})")
+	int insertLikeMember(BoardLikeTO boardLikeTO);
+
+	@Delete("delete from likecheck where memberkey = #{memberKey} and seq = #{seq} and boardname = #{boardname}")
+	int deleteLikeMember(BoardLikeTO boardLikeTO);
+
+	@Select("select count(*) from likecheck where memberkey = #{memberKey} and seq = #{seq} and boardname = #{boardname}")
+	int checkLikeMember(BoardLikeTO boardLikeTO);
+
+	@Update("update ${boardname} set recommend = recommend + 1 where seq = #{seq}")
+	int clickLike(String boardname, String seq);
+
+	@Update("update ${boardname} set recommend = recommend - 1 where seq = #{seq}")
+	int cancleLike(String boardname, String seq);
+
 }

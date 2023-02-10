@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.example.dto.BoardCmtTO;
+import com.example.dto.BoardLikeTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -132,7 +133,28 @@ public class CommunityController {
 		model.addAttribute("allCmtList",allCmtList);
 
         return "(1.3)community/(1.3.1.1)BoardView";
-    }   
+    }
+
+	@RequestMapping("/board/clicklike")
+	public String clickLikeBtn(BoardLikeTO boardLikeTO, Model model) {
+
+		int result = service.checkLikeMember(boardLikeTO);
+		model.addAttribute("result", result); // 좋아요 했으면 1 안했으면 0
+
+		return "okaction/like_check_ok";
+
+	}
+
+	@RequestMapping("/board/selectlike")
+	public String selectLikeBtn(BoardLikeTO boardLikeTO, Model model) {
+
+		int result = service.selectLikeMember(boardLikeTO);
+		model.addAttribute("result", result); // 좋아요 했으면 1 안했으면 0
+
+		return "okaction/like_check_ok";
+
+	}
+
     
     @RequestMapping("/board/BoardWrite")
     public String showBoardWrite( @RequestParam(value="category") String category, @RequestParam(value="boardname") String boardname, Model model) {    	

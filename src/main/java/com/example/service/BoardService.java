@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.dto.BoardCmtTO;
+import com.example.dto.BoardLikeTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -224,4 +225,25 @@ public class BoardService {
 		}
 		return flag;
 	}
+
+	// 좋아요 기능 로직 여기부터
+	public int checkLikeMember(BoardLikeTO boardLikeTO) {
+		int result = mapper.checkLikeMember(boardLikeTO);
+
+		if (result == 0) {
+			mapper.insertLikeMember(boardLikeTO);
+			mapper.clickLike(boardLikeTO.getBoardname(), boardLikeTO.getSeq());
+		} else {
+			mapper.deleteLikeMember(boardLikeTO);
+			mapper.cancleLike(boardLikeTO.getBoardname(), boardLikeTO.getSeq());
+		}
+		return result;
+	}
+
+	public int selectLikeMember(BoardLikeTO boardLikeTO) {
+		int result = mapper.checkLikeMember(boardLikeTO);
+		return result;
+	}
+
+
 }
