@@ -22,7 +22,7 @@
                 data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button> 
+            </button>
 
             <!-- 메뉴 -->
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10" style="background-color: white;">

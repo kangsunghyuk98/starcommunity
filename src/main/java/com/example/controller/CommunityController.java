@@ -144,6 +144,11 @@ public class CommunityController {
 		}
     }
 
+	@RequestMapping("/redirect/login")
+	public String redirectLoginPage () {
+		return "redirect:/guest/login";
+	}
+
 	@RequestMapping("/board/clicklike")
 	public String clickLikeBtn(BoardLikeTO boardLikeTO, Model model) {
 

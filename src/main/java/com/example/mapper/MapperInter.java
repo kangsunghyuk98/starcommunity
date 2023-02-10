@@ -94,8 +94,20 @@ public interface MapperInter {
     @Delete("delete from md_cmt where memberkey = #{memberKey}")
     int deleteMyMdCmt(String memberKey);
 
+    @Delete("delete from beverage_board_cmt where memberkey = #{memberKey}")
+    int deleteMyBeverageBoradCmt(String memberKey);
+
+    @Delete("delete from frequency_cmt where memberkey = #{memberKey}")
+    int deleteMyFrequencyCmt(String memberKey);
+
+    @Delete("delete from review_cmt where memberkey = #{memberKey}")
+    int deleteMyReviewCmt(String memberKey);
+
     @Delete("delete from beverage_cmt where memberkey = #{memberKey}")
     int deleteMyBeverageCmt(String memberKey);
+
+    @Delete("delete from likecheck where memberkey = #{memberKey}")
+    int deleteMyLikecheck(String memberKey);
 
     @Delete("delete from member where id = #{id} and password = #{password}")
     int deleteMemberInfo(String id, String password);
