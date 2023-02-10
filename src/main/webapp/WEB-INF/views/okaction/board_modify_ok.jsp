@@ -10,10 +10,10 @@
 	out.println( "<script type='text/javascript'>" );
     if ( flag == 0 ) {
     	out.println( "alert('글수정에 성공했습니다.');" );	
-    	out.println( "location.href='/BoardView?category="+ category +"&boardname=" + boardname + "&currentPage=" + currentPage + "&seq=" + seq + "'");
+    	out.println( "location.href='/board/BoardView?category="+ category +"&boardname=" + boardname + "&currentPage=" + currentPage + "&seq=" + seq + "'");
     } else if( flag == 1 ){
     	out.println( "alert('글수정에 실패했습니다.');" );
-    	out.println( "location.href='/BoardView?category="+ category +"&boardname=" + boardname + "&currentPage=" + currentPage + "&seq=" + seq + "'");    
+    	out.println( "location.href='/board/BoardView?category="+ category +"&boardname=" + boardname + "&currentPage=" + currentPage + "&seq=" + seq + "'");
     } else if( flag == 2 ){
     	out.println( "alert('첨부 파일이 이미지 형식이 아닙니다.');" );
 		out.println( "history.back();" );
