@@ -88,6 +88,9 @@
 		; window.kakaoDemoCallback && window.kakaoDemoCallback() }
 		catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
 	</script>
+	<script src="/js/(1.8.1)custom_2Select.js"></script>
+	
+	
 </head>
 
 <body>
@@ -103,7 +106,7 @@
 			<div class="col-sm-6" >
 				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2">
 				<div class=" mt-2 mb-4 Beverage_name "><%=name %></div>
-				 <input type="hidden" id="Himage" class="Himage" value = "<%=image %>">				
+				 <input type="hidden" id="Himage" class="Himage" value = "<%=image %>">	
 			</div>
 			<div class="custom_text col-sm-6" >
 				<form id="custom_form">
@@ -116,55 +119,207 @@
 								<option value="venti">벤티 사이즈</option>
 							</select>
 						</li>
-						<li class="list-group-item" id="shot_li">
-								<label for="shot" class="li_label">샷추가</label> 
-								<select class="form-select" id="shot" onchange="handleOnChange1(this)">
+						<li class="list-group-item" id="coffee1_li">
+								<label for="coffee1" class="li_label">커피 추가</label> 
+								<select class="form-select" id="coffee1" onchange="handleOnChange1(this)">
+									<option value="" disabled selected>---선택---</option>
+									<option value="1">에스프레소 샷 </option>
+									<option value="2">에스프레소 옵션 </option>
+									<option value="3">프라푸치노 로스트 </option>									
+								</select>
+						</li>
+						<li class="list-group-item" id="coffee2_li">
+								<label for="coffee2" class="li_label">커피 추가</label> 
+								<select class="form-select" id="coffee2" onchange="handleOnChange2(this)">
+									<option value="" disabled selected>---선택---</option>
+									<option value="1">블론드 </option>
+									<option value="2">디카페인 </option>
+									<option value="3">1/2 디카페인 </option>									
+								</select>
+						</li>
+						<li class="list-group-item" id="coffee3_li">
+								<label for="coffee3" class="li_label">샷추가</label> 
+								<select class="form-select" id="coffee3" onchange="handleOnChange3(this)">
 									<option value="" disabled selected>---선택---</option>
 									<option value="1">1샷 </option>
 									<option value="2">2샷 </option>
 									<option value="3">3샷 </option>
 									<option value="4">4샷 </option>
 									<option value="5">5샷 </option>
+									<option value="6">6샷 </option>
+									<option value="7">7샷 </option>
+									<option value="8">8샷 </option>
+									<option value="9">9샷 </option>
 								</select>
 						</li>
 						<li class="list-group-item" id="syrup_li">
-							<label for="syrup" class="li_label">시럽</label>
-							<select class="form-select" id="syrup" onchange="handleOnChange2(this)">
+							<label for="syrup1" class="li_label">시럽</label>
+							<select class="form-select" id="syrup1" onchange="handleOnChange4(this)">
 								<option value="" disabled selected>---선택---</option>
-								<option id="syrup" value="vanilla">바닐라 시럽</option>
-								<option id="syrup" value="hazelnut">헤이즐넛 시럽</option>
-								<option id="syrup" value="caramel">카라멜 시럽</option>
+								<option value="mocha">모카 시럽</option>
+								<option value="whiteMocha">화이트모카 시럽</option>
+								<option value="dolce">돌체 시럽</option>														
+								<option value="vanilla">바닐라 시럽</option>
+								<option value="hazelnut">헤이즐넛 시럽</option>
+								<option value="caramel">카라멜 시럽</option>
+								<option value="strawberry">딸기소스</option>
+								<option value=frappuccino>프라푸치노용 시럽</option>
+								<option value=classic>클래식 시럽</option>
+								
+							</select>
+						</li>
+						
+						<li class="list-group-item" id="syrup2_li">
+								<label for="syrup2" class="li_label">시럽 옵션</label> 
+								<select class="form-select" id="syrup2" onchange="handleOnChange5(this)">
+									<option value="" disabled selected>---선택---</option>
+									<option value="1">1샷 </option>
+									<option value="2">2샷 </option>
+									<option value="3">3샷 </option>
+									<option value="4">4샷 </option>
+									<option value="5">5샷 </option>
+									<option value="6">6샷 </option>
+									<option value="7">7샷 </option>
+									<option value="8">8샷 </option>
+									<option value="9">9샷 </option>
+								</select>
+						</li>
+						<li class="list-group-item" id="syrup3_li">
+								<label for="syrup3" class="li_label">프라푸치노 시럽 옵션</label> 
+								<select class="form-select" id="syrup3" onchange="handleOnChange6(this)">
+									<option value="" disabled selected>---선택---</option>
+									<option value="normal">일반 </option>
+									<option value="light">라이트</option>									
+								</select>
+						</li>
+						<li class="list-group-item" id="tea_li">
+							<label for="tea" class="li_label">티</label>
+							<select class="form-select" id="tea" onchange="handleOnChange7(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option value="less">적게</option>
+								<option value="normal">보통</option>
+								<option value="more">많이</option>								
 							</select>
 						</li>
 						<li class="list-group-item" id="milk_li">
 							<label for="milk" class="li_label">우유</label>
-							<select class="form-select" id="milk" onchange="handleOnChange3(this)">
+							<select class="form-select" id="milk" onchange="handleOnChange8(this)">
 								<option value="" disabled selected>---선택---</option>
-								<option id="milk" value="less">저지방우유</option>
-								<option id="milk" value="none">무지방우유</option>
-								<option id="milk" value="oats">귀리우유</option>
-								<option id="milk" value="soy">두유</option>
+								<option value="less">저지방우유</option>
+								<option value="none">무지방우유</option>
+								<option value="oats">귀리우유</option>
+								<option value="soy">두유</option>
+								<option value="normal">일반</option>
+								<option value="none">없이</option>
 							</select>
 						</li>
 						<li class="list-group-item" id="ice_li">
 							<label for="ice" class="li_label">얼음</label>
-							<select class="form-select" id="ice" onchange="handleOnChange4(this)">
+							<select class="form-select" id="ice" onchange="handleOnChange9(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="ice" value="less">적게</option>
 								<option id="ice" value="regular">보통</option>
 								<option id="ice" value="extra">많이</option>
 							</select>
 						</li>
-						<li class="list-group-item" id="whippedcream_li">
-							<label for="whippedcream" class="li_label">휘핑크림</label>
-							<select class="form-select" id="whippedcream"onchange="handleOnChange5(this)">
+						<li class="list-group-item" id="java_chip1_li">
+							<label for="java_chip1" class="li_label">자바칩</label>
+							<select class="form-select" id="java_chip1"onchange="handleOnChange10(this)">
 								<option value="" disabled selected>---선택---</option>
-								<option id="whippedcream" value="none">빼고</option>
-								<option id="whippedcream" value="less">적게</option>
-								<option id="whippedcream" value="regular">보통</option>
-								<option id="whippedcream" value="extra">많이</option>
+								<option value="normal">통 자바칩 토핑</option>
+								<option value="frappuccino">프라푸치노 자바칩</option>
+								<option value="half">자바칩&토핑(반반)</option>								
 							</select>
-							</li>
+						</li>
+						<li class="list-group-item" id="java_chip2_li">
+							<label for="java_chip2" class="li_label">자바칩 옵션</label>
+							<select class="form-select" id="java_chip2"onchange="handleOnChange11(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option value="1">1샷</option>
+								<option value="2">2샷</option>
+								<option value="3">3샷</option>
+								<option value="4">4샷</option>
+								<option value="5">5샷 </option>
+								<option value="6">6샷 </option>
+								<option value="7">7샷 </option>
+								<option value="8">8샷 </option>
+								<option value="9">9샷 </option>
+							</select>
+						</li>
+						<li class="list-group-item" id="whippedcream1_li">
+							<label for="whippedcream1" class="li_label">휘핑크림</label>
+							<select class="form-select" id="whippedcream1"onchange="handleOnChange12(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option id="whippedcream1" value="none">일반 휘핑</option>
+								<option id="whippedcream1" value="less">에스프레소 휘핑</option>								
+							</select>
+						</li>
+						<li class="list-group-item" id="whippedcream2_li">
+							<label for="whippedcream2" class="li_label">휘핑크림 옵션</label>
+							<select class="form-select" id="whippedcream2"onchange="handleOnChange13(this)">
+								<option value="" disabled selected>---선택---</option>								
+								<option id="whippedcream2" value="less">적게</option>
+								<option id="whippedcream2" value="normal">보통</option>
+								<option id="whippedcream2" value="more">많이</option>								
+							</select>
+						</li>
+						<li class="list-group-item" id="drizzle1_li">
+							<label for="drizzle1" class="li_label">드리즐</label>
+							<select class="form-select" id="drizzle1"onchange="handleOnChange14(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option id="drizzle1" value="caremel">카라멜 드리즐</option>
+								<option id="drizzle1" value="chocolate">초콜릿 드리즐</option>														
+							</select>
+						</li>
+						<li class="list-group-item" id="drizzle2_li">
+							<label for="drizzle2" class="li_label">드리즐 옵션</label>
+							<select class="form-select" id="drizzle1"onchange="handleOnChange15(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option id="drizzle2" value="less">적게</option>
+								<option id="drizzle2" value="normal">보통</option>
+								<option id="drizzle2" value="more">많이</option>														
+							</select>
+						</li>
+						<li class="list-group-item" id="etc1_li">
+							<label for="etc1" class="li_label">기타:민트 초콜릿 칩 파우더 </label>
+							<select class="form-select" id="etc1"onchange="handleOnChange16(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option id="etc1" value="less">적게</option>
+								<option id="etc1" value="normal">보통</option>																					
+							</select>
+						</li>
+						<li class="list-group-item" id="etc2_li">
+							<label for="etc2" class="li_label">기타:망고 주스 </label>
+							<select class="form-select" id="etc2"onchange="handleOnChange17(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option id="etc2" value="less">적게</option>
+								<option id="etc2" value="normal">보통</option>	
+								<option id="etc2" value="more">많이</option>																					
+							</select>
+						</li>
+						<li class="list-group-item" id="etc3_li">
+							<label for="etc3" class="li_label">기타:유기농 말차 </label>
+							<select class="form-select" id="etc3"onchange="handleOnChange18(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option id="etc3" value="1">1샷</option>
+								<option id="etc3" value="2">2샷</option>
+								<option id="etc3" value="3">3샷</option>
+								<option id="etc3" value="4">4샷</option>
+								<option id="etc3" value="5">5샷</option>
+								<option id="etc3" value="6">6샷</option>
+								<option id="etc3" value="7">7샷</option>
+								<option id="etc3" value="8">8샷</option>
+								<option id="etc3" value="9">9샷</option>																			
+							</select>
+						</li>
+						<li class="list-group-item" id="topping_li">
+							<label for="topping" class="li_label">에스프레소 칩 토핑 </label>
+							<select class="form-select" id="topping"onchange="handleOnChange19(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option value="less">적게</option>
+								<option value="normal">많이</option>																										
+							</select>
+						</li>
 					</ul>
 				</form>
 			</div>
@@ -178,6 +333,20 @@
 			<div id="result3"></div>
 			<div id="result4"></div>
 			<div id="result5"></div>
+			<div id="result6"></div>
+			<div id="result7"></div>
+			<div id="result8"></div>
+			<div id="result9"></div>
+			<div id="result10"></div>
+			<div id="result11"></div>
+			<div id="result12"></div>
+			<div id="result13"></div>
+			<div id="result14"></div>
+			<div id="result15"></div>
+			<div id="result16"></div>
+			<div id="result17"></div>
+			<div id="result18"></div>
+			<div id="result19"></div>
 		</div>
 		<div class="mb-4">
 			<form>		
@@ -190,8 +359,8 @@
 	</div>
 	<script src="/js/(1.8.1)custom_2.js"></script>
 
-<!-- 풋터 영역 -->
-<jsp:include page="../include/footer.jsp"/>
+	<!-- 풋터 영역 -->
+	<footer></footer>
 
 </body>
 </html>
