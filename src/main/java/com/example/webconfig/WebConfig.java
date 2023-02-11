@@ -13,10 +13,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
 	@Value("${spring.servlet.multipart.location}")
-	String multipartLocation;
+	private String multipartLocation;
 	
     private String uploadPath = "/imgPath/**"; 
-    String resourcePath = "file:///"; 
+    private String resourcePath = "file:///"; 
     
     // Resource Handler란 이미지, javascript, css, html 등의 정적인 리소스에 대한 요청을 처리하는 것.
     // ResourceHandlerRegistry : 리소스를 등록, 핸들러를 관리하는 객체
@@ -24,6 +24,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(uploadPath)	// 리소스와 연결될 URL path를 지정
                 .addResourceLocations(resourcePath + multipartLocation);	// 실제 리소스가 존재하는 외부 경로를 지정
+        System.out.println( resourcePath );
+        System.out.println( multipartLocation );
     }
     
     // http://localhost:8080/imgPath/daum.png => 이런 식으로 브라우저에서 열면 이미지 확인 가능
