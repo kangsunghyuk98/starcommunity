@@ -25,7 +25,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
- <div class="container col-lg-6 col-md-8 col-sm-10 mb-5">
+ <div class="container col-lg-8 col-md-8 col-sm-10 mb-5">
     <div class="container-sm mypage_table">
         <div class="content_header">내 정보</div>
         <hr>

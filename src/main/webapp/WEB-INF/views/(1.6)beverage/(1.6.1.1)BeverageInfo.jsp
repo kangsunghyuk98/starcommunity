@@ -184,7 +184,7 @@
     <!-- 콘텐츠 영역 -->
     <br>
     <br>
-    <div class="container col-lg-6 col-md-8 col-sm-10">
+    <div class="container col-lg-8 col-md-8 col-sm-10">
         <!-- 음료 정보 -->
         <div class="row Beverage_info  ">
             <div class="content_header mt-auto mb-4 "><%=category %></div>

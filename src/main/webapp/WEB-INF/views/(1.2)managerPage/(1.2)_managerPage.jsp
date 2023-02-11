@@ -51,7 +51,7 @@
 <br>
 <br>
 <div>
-    <div class="container col-lg-6 col-md-8 col-sm-10">
+    <div class="container col-lg-8 col-md-8 col-sm-10">
 
         <div class="content_header">회원 관리</div>
         <p>회원의 정보로 검색하여 관리할 수 있습니다. (리스트 초기화 하려면 아무것도 입력하지 않은 상태에서 search)</p>
