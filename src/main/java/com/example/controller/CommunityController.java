@@ -248,7 +248,7 @@ public class CommunityController {
     	if (flag == 0 && imgname != null) {
     		try {
     			//File file = new File(path + imgname);
-    			File file = new File(multipartLocation + "/" + imgname);
+    			File file = new File(multipartLocation + imgname);
     			
     			boolean result = file.delete();
     			

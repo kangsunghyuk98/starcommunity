@@ -92,8 +92,6 @@ public class BoardService {
 		int flag = 1;	// 비정상
 		if( result == 1) {
 			flag = 0;	// 정상
-		} else if( to.getImgformat() != "png" || to.getImgformat() != "jpg" || to.getImgformat() != "gif" ) {
-			flag = 2;	// 첨부파일이 이미지 파일이 아닐 때
 		}
 		
 		// DB에 정상 반영 되면 파일도 업로드해 줌
@@ -144,16 +142,14 @@ public class BoardService {
 				File file = new File( multipartLocation, oldFilename );
 				file.delete();
 			}
-		} else if( result == 0 ) {
+		} /*else if( result == 0 ) {
 			flag = 1;	// 비정상
 			
-			/*if( to.getImgname() != null ) {
+			if( to.getImgname() != null ) {
 				File file = new File( multipartLocation, to.getImgname() );
 				file.delete();
-			}*/
-		} else if( to.getImgformat() != "png" || to.getImgformat() != "jpg" || to.getImgformat() != "gif" ) {
-			flag = 2;	// 첨부파일이 이미지 파일이 아닐 때
-		}
+			}
+		}*/
 		
 		return flag;
 	} 
