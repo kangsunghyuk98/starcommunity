@@ -29,6 +29,27 @@
             crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
+    <!-- <style>
+        #main_contents {
+            position: absolute;
+            font-size: 5em;
+            width: 300px;
+            top: 200px;
+            left: 400px;
+            animation: slideContents 2s ease-out;
+        }
+        
+        @keyframes slideContents {
+            from {
+               left: -100px;
+                opacity: 0;
+            }
+            to {
+                left: 400px;
+                opacity: 1;
+            }
+        }
+    </style> -->
 </head>
 
 <body>
@@ -71,8 +92,9 @@ AOS.init();
         	<div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
           		<div class="service">
             		<div class="service-icon color-1 mb-4">
-              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
-                        <span class="count_num">${to.recommend}</span>
+              			<span>
+              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03" id="recommed_img">
+                        <span class="count_num">${to.recommend}</span><span style="color: #006400; font-size: 0.75rem;">추천수</span>
             		</div>
             		<div class="service-contents">
               			<p style="font-size: 1.2rem;"><span>${to.subject}</span></p>

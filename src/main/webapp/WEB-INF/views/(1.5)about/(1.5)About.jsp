@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="ko">
 
 <head>
@@ -51,40 +52,28 @@ AOS.init();
         </div> 
     </div>-->
 <div class="untree_co-section" id="about-section">
-    <div class="container">
-      <div class="row justify-content-between mb-5">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="/img/team.webp" alt="Image" class="img-fluid">
-        </div>
-        <div class="col-lg-6">
-          <div class="mb-4">
-            <span class="caption">About</span>
-            <h2 class="heading">팀 소개</h2>
-          </div>
-          <div class="mb-4">
-            <p style="font-size: 1.3rem;">방문을 환영합니다. 저희는 별다섯팀입니다. 5명이 모여서 별점 5개를 목표로 사이트를 제작했습니다. 2023년 1월 13일부터 프로젝트를 진행했고 2023년 2월 16일에 프로젝트를 마무리했습니다.</p>
-            <p>Separated they <span class="highlight">live in Bookmarksgrove right at the coast of the Semantics</span>, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>  
-          </div>
-
-          <ul class="list-unstyled ul-check primary mb-4">
-            <li>There live the blind texts</li>
-            <li>Far far away behind the word</li>
-            <li>Their place and supplies</li>
-          </ul>
-
-
-          <div class="row count-numbers">
-            <div class="col-6 col-lg-6" data-aos="fade-up" data-aos-delay="0">
-              <span class="counter d-block"><span>0</span></span>
-              <span class="caption-2">Members</span>
-            </div>
-            <div class="col-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <span class="counter d-block"><span>0</span></span>
-              <span class="caption-2">Posts</span>
-            </div>
-          </div>
-        </div> <!-- /.col-lg-6 -->
-      </div> <!-- /.row -->
+	<div class="container">
+    	<div class="row justify-content-between mb-5">
+       		<div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+          		<img src="/img/team.webp" alt="Image" class="img-fluid">
+        	</div>
+        	<div class="col-lg-6">
+          		<div class="mb-4">
+            		<span class="caption">About</span>
+            		<h2 class="heading">팀 소개</h2>
+          		</div>
+          		<div class="mb-4">
+            		<p style="font-size: 1.35rem;">방문을 환영합니다. 저희는 별다섯팀입니다. 5명이 모여서 별점 5개를 목표로 사이트를 제작했습니다. 2023년 1월 13일부터 프로젝트를 진행했고 같은해 2023년 2월 16일에 프로젝트를 마무리했습니다.</p>
+            		<p style="font-size: 1.35rem;">별다방 커뮤니티는 사용자에게 필요한 정보를 제공하고, 취향에 맞는 추천을 해주고, 사람들과 공유할 수 있는 즐거움을 선사하며, 편리한 UI로 원활한 소통을 할 수 있는 차별화된 커뮤니티입니다. </p>
+            		<p style="font-size: 1.35rem;">커뮤니티 이용 시 불편한 점은 하단의 이메일 주소를 통해 남겨주시기 바랍니다</p>
+            		<p style="font-size: 1.35rem; color: #2E8B57;">byeoldabang_community@gmail.com</p>
+          		</div>
+          		<br>
+          		<br>
+        	</div>
+      	</div>
+	</div>
+</div>
 
 <!-- 풋터 영역 -->
 <jsp:include page="../include/footer.jsp"/>
