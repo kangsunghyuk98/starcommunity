@@ -72,10 +72,16 @@ public class BoardService {
 		return to;
 	}
 	
-	public int deleteBoardContent(String boardName, int seq) {
-		int result = mapper.deleteBoardContent(boardName, seq);
-		int flag = 1;
-		
+	public int deleteBoardContent(String boardname, int seq) {
+		// 게시글 지우기 전에 like랑 cmt 삭제
+		int deleteLikeResult = mapper.deleteBoardLike(boardname, seq);
+		//System.out.println( deleteLikeResult );		
+		String cmtTablename = boardname.split("_")[0] + "_cmt";
+		int deleteCmtResult = mapper.deleteBoardCmt(cmtTablename, seq);
+		//System.out.println( deleteCmtResult );
+		// 실제 게시글 삭제
+		int result = mapper.deleteBoardContent(boardname, seq);		
+		int flag = 1;		
 		if( result == 1) {
 			flag = 0;
 		} else {

@@ -56,8 +56,15 @@ public interface BoardMapperInter {
 	@Update("update ${boardName} set hit = hit+1 where seq=#{seq}")
 	public void viewPageHitUp(String boardName, int seq);
 	
-	@Delete("delete from ${boardName} where seq=#{seq}")
-	public int deleteBoardContent(String boardName, int seq);
+	// delete (글삭제)
+	@Delete("delete from likecheck where boardname=#{boardname} and seq=#{seq}")
+	public int deleteBoardLike(String boardname, int seq);
+	
+	@Delete("delete from ${cmtTablename} where seq=#{seq}")
+	public int deleteBoardCmt(String cmtTablename, int seq);
+	
+	@Delete("delete from ${boardname} where seq=#{seq}")
+	public int deleteBoardContent(String boardname, int seq);
 	
 	
 	// write_ok (글쓰기)

@@ -238,10 +238,9 @@ public class CommunityController {
     
     @RequestMapping("/board/BoardDelete")
     @ResponseBody
-    public int boardDelete(String boardname, int seq, String imgname, int memberkey) {
+    public int boardDelete(String boardname, int seq, String imgname) {
     	
     	int flag = service.deleteBoardContent(boardname, seq);
-    	System.out.println(memberkey);
     			
     	//String path = "C:/Users/zxzz9/Documents/files/";
     	//String path = "C:/Team Project/StarbucksCommunity/src/main/webapp/upload";
