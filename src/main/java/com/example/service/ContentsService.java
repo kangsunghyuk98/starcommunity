@@ -122,4 +122,26 @@ public class ContentsService {
        return allBoardCount;
     }
 
+    //메인페이지 실시간 추천수 로직
+    public List<BoardTO> selectRecommendRanking() {
+        List<BoardTO> boardList = mapperInter.selectRecommendRanking();
+
+        for(BoardTO to:boardList) {
+            if (to.getBoardname().equals("beverage_board")) {
+                to.setCategory("BeverageBoardList");
+            } else if (to.getBoardname().equals("dlife_board")) {
+                to.setCategory("DlifeBoardList");
+            } else if (to.getBoardname().equals("frequency_board")) {
+                to.setCategory("FrequencyBoardList");
+            } else if (to.getBoardname().equals("md_board")) {
+                to.setCategory("MDBoardList");
+            } else if (to.getBoardname().equals("review_board")) {
+                to.setCategory("ReviewBoardList");
+            }
+        }
+
+        return boardList;
+    }
+
+
 }

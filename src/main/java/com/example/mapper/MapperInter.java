@@ -159,4 +159,23 @@ public interface MapperInter {
     @Select("select count(*) from review_board")
     int countAllReviewBoard();
 
+    // 메인에서 사용될 실시간 추천글 순위 가져오는 쿼리
+    @Select("select *, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'beverage_board') as boardname from beverage_board" +
+            " inner join member on (beverage_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select *, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'dlife_board') as boardname from dlife_board" +
+            " inner join member on (dlife_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select *, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'frequency_board') as boardname from frequency_board" +
+            " inner join member on (frequency_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select *, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'md_board') as boardname from md_board" +
+            " inner join member on (md_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select *, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'review_board') as boardname from review_board" +
+            " inner join member on (review_board.memberkey = member.memberkey)" +
+            " order by recommend desc" +
+            " limit 5")
+    List<BoardTO> selectRecommendRanking();
+
 }
