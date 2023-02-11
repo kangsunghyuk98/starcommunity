@@ -86,10 +86,12 @@ AOS.init();
           		<span class="caption">recommed</span>
           		<h2 class="heading">실시간 추천글</h2>
         	</div>
+
         	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="0">
           		<div class="service">
             		<div class="service-icon color-1 mb-4">
               			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
+                        <span class="count_num">좋아요갯수</span>
             		</div>
             		<div class="service-contents">
               			<p style="font-size: 1.2rem;"><span>subject</span></p>
@@ -99,45 +101,7 @@ AOS.init();
             		</div>
           		</div>
        		</div>
-        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-          		<div class="service">
-            		<div class="service-icon color-1 mb-4">
-              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
-            		</div>
-            		<div class="service-contents">
-              			<p style="font-size: 1.2rem;"><span>subject</span></p>
-              			<h3><span>writer</span></h3> 
-            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
-            			<a href="#" class="link-fancy">글 보러가기</a>
-            		</div>
-          		</div>
-        	</div>
-        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          		<div class="service">
-            		<div class="service-icon color-1 mb-4">
-              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
-            		</div>
-            		<div class="service-contents">
-              			<p style="font-size: 1.2rem;"><span>subject</span></p>
-              			<h3><span>writer</span></h3> 
-            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
-            			<a href="#" class="link-fancy">글 보러가기</a>
-            		</div>
-          		</div>
-        	</div>
-        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          		<div class="service">
-            		<div class="service-icon color-1 mb-4">
-              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
-            		</div>
-            		<div class="service-contents">
-              			<p style="font-size: 1.2rem;"><span>subject</span></p>
-              			<h3><span>writer</span></h3> 
-            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
-            			<a href="#" class="link-fancy">글 보러가기</a>
-            		</div>
-          		</div> 
-        	</div> 
+
     	</div> 
 	</div> 
 </div> 
