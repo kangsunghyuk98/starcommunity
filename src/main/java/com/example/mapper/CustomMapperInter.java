@@ -2,11 +2,13 @@ package com.example.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import com.example.dto.BeverageTO;
+import com.example.dto.CustomRecipeTO;
 
 @Mapper
 @Repository
@@ -17,4 +19,11 @@ public interface CustomMapperInter {
 	
 	@Select("select seq, name, image from beverage where name =#{name}")
 	public BeverageTO customInfo(BeverageTO to);
+	
+	@Insert("insert into custom_recipe values ( 0, now(), #{recipe}, #{memberKey}, #{beverage}) ")
+	int insertCustmRecipe(CustomRecipeTO cto);
+	
+	@Select("select custom_recipe.cusseq, custom_recipe.wdate, custom_recipe.recipe, custom_recipe.memberkey, custom_recipe.beverage, member.name, member.nickname from custom_recipe inner join member " +
+	"on (custom_recipe.memberkey = member.memberkey)")
+	List<CustomRecipeTO> selectCustomList();
 }

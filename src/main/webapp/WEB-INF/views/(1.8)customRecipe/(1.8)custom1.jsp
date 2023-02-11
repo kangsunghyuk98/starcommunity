@@ -15,7 +15,7 @@
 		
 		sbHtml.append("<div class='col'>");
 		sbHtml.append("		<div class='row'>");
-		sbHtml.append("			<a href='./Custom2?name=" + name +"'>"  );
+		sbHtml.append("			<a href='./Custom2?name=" + name+"&seq="+seq +"'>"  );
 		sbHtml.append("				<img src='" + image + "'" + "class='img-thumbnail img-fluid' alt=''></a>" );
 		sbHtml.append("				<p class='beverage_name text-center'>" + name + "</p>");
 		sbHtml.append("		</div>");

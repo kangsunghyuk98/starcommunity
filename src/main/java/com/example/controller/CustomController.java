@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.dto.BeverageTO;
 import com.example.dto.BoardTO;
+import com.example.dto.CustomRecipeTO;
 import com.example.mapper.BoardMapperInter;
 import com.example.service.CustomService;
 
@@ -42,5 +43,16 @@ public class CustomController {
         model.addAttribute("to",to);
         
         return "(1.8)customRecipe/(1.8.1)custom2";
+    }
+    
+    @RequestMapping("/CustomInsert")
+    public String insertCustomRecipe(CustomRecipeTO cto, Model model) {
+    	
+    	int flag = cs.insertCustom(cto);
+    	model.addAttribute("flag",flag);
+    	
+    
+    	
+    	return "okaction/custom_ok";
     }
 }

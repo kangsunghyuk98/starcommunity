@@ -1,10 +1,21 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.example.dto.CustomRecipeTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="com.example.dto.BeverageTO"%>	
 <%
 	BeverageTO to = (BeverageTO)request.getAttribute("to");
-	String name = to.getName();
-	String image = to.getImage();
+	
+	
+	String seq = to.getSeq();
+	
+	String name= to.getName();
+	
+	String image = to.getImage();	
+	
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -33,20 +44,43 @@
 	<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	
 	<script>
+		
+	
 		$(document).ready(function() {
+			
 			$("#return_menu").on("click", function(){
-				recipe_txt_func();
-				console.log(recipe_txt);
-				
-				if(recipe_txt != '     ' || null ){
+				var recipe = recipe_txt_func();
+				const beverage = urlParams.get('name');
+				console.log(recipe);				
+				console.log(beverage);
+				if(recipe_txt && recipe_txt.trim() != '' ){					
 					alert("나만의 레시피가 저장되었습니다");	
+				
+					$.ajax({
+						type: 'POST',
+					url: '/CustomInsert',
+						data:{
+						recipe: recipe,
+							memberKey: <sec:authentication property="principal.to.memberKey"/>
+							
+						},
+						dataType:'json',
+						success: function(result){
+							
+					},
+						error: function(){
+							alert('오류')
+							return;
+						}
+					})
 				} else {
-					alert("레시피를 선택해 주세요")
+					alert("레시피를 선택해 주세요");
 				}
 				
 			});
 		});
 	</script>
+	
 	<!--  카카오 공유하기 (임시) -->
 	<script type="text/javascript">
 	try {
@@ -106,8 +140,7 @@
 			<div class="col-sm-6" >
 				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2">
 				<div class=" mt-2 mb-4 Beverage_name "><%=name %></div>
-				 <input type="hidden" id="Himage" class="Himage" value = "<%=image %>">	
-			</div>
+     		</div>
 			<div class="custom_text col-sm-6" >
 				<form id="custom_form">
 					<ul class="list-group list-group-flush" id="custom_ul">
@@ -351,13 +384,20 @@
 		<div class="mb-4">
 			<form>		
 			<!-- 카카오 공유 버튼 (임시) -->		 
-				 <input type="button" onClick="sendLinkDefault();" value="Default"/>
-				<button id="return_menu" type="button" class="btn btn-outline-secondary recipe_btn">나만의 레시피 저장</button>
+			    <input type="button" onClick="sendLinkDefault();" value="Default"/>
+			
+			<sec:authorize access="isAuthenticated()">
+				<form action="/CustomInsert" method="post">           
+			                              
+				<button type="button" id="return_menu" class="btn btn-outline-secondary recipe_btn" >레시피 저장</button>
+			  </form>	
+			</sec:authorize>	
 				<button type="button" class="btn btn-outline-secondary recipe_btn mx-1 " onclick="location.href='./Custom1'">메뉴</button>
-			</form>
+			</form>		
 		</div>
 	</div>
 	<script src="/js/(1.8.1)custom_2.js"></script>
+	
 
 	<!-- 풋터 영역 -->
 	<footer></footer>
