@@ -29,27 +29,6 @@
             crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
-    <!-- <style>
-        #main_contents {
-            position: absolute;
-            font-size: 5em;
-            width: 300px;
-            top: 200px;
-            left: 400px;
-            animation: slideContents 2s ease-out;
-        }
-        
-        @keyframes slideContents {
-            from {
-               left: -100px;
-                opacity: 0;
-            }
-            to {
-                left: 400px;
-                opacity: 1;
-            }
-        }
-    </style> -->
 </head>
 
 <body>

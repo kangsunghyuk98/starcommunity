@@ -131,7 +131,7 @@ public class ContentsService {
             if (to.getBoardname().equals("beverage_board")) {
                 to.setCategory("BeverageBoardList");
             } else if (to.getBoardname().equals("dlife_board")) {
-                to.setCategory("DlifeBoardList");
+                to.setCategory("DailyBoardList");
             } else if (to.getBoardname().equals("frequency_board")) {
                 to.setCategory("FrequencyBoardList");
             } else if (to.getBoardname().equals("md_board")) {
