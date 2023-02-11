@@ -3,6 +3,9 @@ package com.example.service;
 import java.util.List;
 
 import com.example.dto.BeverageCmtTO;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -168,7 +171,13 @@ public class BeverageService {
 
 	public List<BeverageCmtTO> selectAllCmtList(String seq) {
 		List<BeverageCmtTO> AllCmtList = mapper.selectAllCmtList(seq);
+    	
 		return AllCmtList;
+	}
+	
+	public List<BeverageCmtTO> selectAddCmtList(String seq, int addNum){
+		List<BeverageCmtTO> addCmtList = mapper.selectAddCmtList(seq, addNum);
+		return addCmtList;
 	}
 	
 	public int deleteBeverageCmt (String bevcseq) {

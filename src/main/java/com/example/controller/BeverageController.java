@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -93,6 +94,14 @@ public class BeverageController {
 		model.addAttribute("flag",flag);
 
 		return "okaction/beverage_cmt_delete";
+	}
+	
+	@RequestMapping("/Beverage_add_cmt")
+	@ResponseBody
+	public List<BeverageCmtTO> beverageAddCmt(@RequestParam("seq")String seq, @RequestParam("addNum")int addNum) {
+		
+		List<BeverageCmtTO> addCmtList = bs.selectAddCmtList(seq, addNum);
+		return addCmtList;
 	}
 	
 //---------------------------------------------------------------------------음료 정렬

@@ -44,7 +44,7 @@
 	                url: '/guest/idcheck',
 	                data: 'id=' + $('#txtid').val(),
 	                dataType: 'text',
-	                async: false,
+	                async: false, 
 	                success: function(result) {
 	                    if (result == 0) {
 	                        $('#result_id').text('사용 가능한 아이디입니다.');
@@ -107,6 +107,7 @@
 	    	if(  $('#result_id').text() == "사용 가능한 아이디입니다."){
 				if( $(".successPWChk").text() == "비밀번호가 일치합니다." ){
 					if(  $('#result_nick').text() == "사용 가능한 닉네임입니다." ){
+						
 		    		} else {
 		    			alert('닉네임 중복확인을 해주세요.');
 		    			return false;

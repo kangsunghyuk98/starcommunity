@@ -95,8 +95,12 @@ public interface BeverageMapperInter {
 	int beverageCmtWrite(BeverageCmtTO to);
 
 	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, beverage_cmt.memberkey, member.name, member.nickname from beverage_cmt inner join member " +
-			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq}")
+			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq} order by cdate desc")
 	List<BeverageCmtTO> selectAllCmtList(String seq);
+	
+	@Select("select beverage_cmt.bevcseq, beverage_cmt.comment, beverage_cmt.cdate, beverage_cmt.memberkey, member.name, member.nickname from beverage_cmt inner join member " +
+			"on (beverage_cmt.memberkey = member.memberkey) where beverage_cmt.seq = #{seq} order by cdate desc limit ${addNum}, 3")
+	List<BeverageCmtTO> selectAddCmtList(String seq, int addNum);
 	
 	@Delete("delete from beverage_cmt where bevcseq = #{bevcseq}")
 	int deleteBeverageCmt (String bevcseq);
