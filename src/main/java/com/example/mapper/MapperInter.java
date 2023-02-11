@@ -159,4 +159,23 @@ public interface MapperInter {
     @Select("select count(*) from review_board")
     int countAllReviewBoard();
 
+    // 메인에서 사용될 실시간 추천글 순위 가져오는 쿼리
+    @Select("select * from beverage_board" +
+            " inner join member on (beverage_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select * from dlife_board" +
+            " inner join member on (dlife_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select * from frequency_board" +
+            " inner join member on (frequency_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select * from md_board" +
+            " inner join member on (md_board.memberkey = member.memberkey)" +
+            " union all" +
+            " select * from review_board" +
+            " inner join member on (review_board.memberkey = member.memberkey)" +
+            " order by recommend desc" +
+            " limit 5")
+    List<BoardTO> selectRecommendRanking();
+
 }

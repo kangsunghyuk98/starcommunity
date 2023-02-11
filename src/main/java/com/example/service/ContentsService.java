@@ -122,4 +122,11 @@ public class ContentsService {
        return allBoardCount;
     }
 
+    //메인페이지 실시간 추천수 로직
+    public List<BoardTO> selectRecommendRanking() {
+        List<BoardTO> boardList = mapperInter.selectRecommendRanking();
+        return boardList;
+    }
+
+
 }
