@@ -1,4 +1,3 @@
-
 .About-contents{
     margin-bottom: 10px;
     /* font-weight: bold; */
@@ -7,7 +6,7 @@
     margin-bottom: 30px;;
     /* width: 70%; */
 }
- 
+
 .about-txt{
     height: 100px;
     font-size: 1.5rem;
@@ -31,7 +30,59 @@
 }
 
 .about-img{
-	 
-
-	
 }
+
+/* 수정한 어바웃*/
+
+body {
+font-family: 'BMJUA';
+}
+.untree_co-section {
+padding: 100px 0;
+position: relative; }
+@media (max-width: 991.98px) {
+  .untree_co-section {
+    padding: 50px 0; } }
+.untree_co-section .heading {
+  font-size: 38px;
+  color: #000000;
+  font-weight: 600; }
+  .untree_co-section .heading strong {
+    font-weight: 700; }
+  @media (max-width: 991.98px) {
+    .untree_co-section .heading {
+      font-size: 28px; } }
+  .untree_co-section .heading.border-b {
+    position: relative; }
+    .untree_co-section .heading.border-b:before {
+      width: 100px;
+      height: 1px;
+      background: #000000;
+      left: 0;
+      content: ""; 
+}
+
+.caption {
+color: #3CB371;
+font-size: 13px;
+text-transform: uppercase;
+font-weight: 700;
+display: inline-block; }
+
+.ul-check li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px; }
+  .ul-check li:before {
+    position: absolute;
+    left: 0;
+    top: -.2rem;
+    content: "\e5ca";
+    font-size: 20px;
+    font-family: 'icomoon'; }
+
+.ul-check.primary li:before {
+  color: #107BE9; }
+
+.ul-check.white li:before {
+  color: #ffffff; }
