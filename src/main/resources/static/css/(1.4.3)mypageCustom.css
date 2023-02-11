@@ -3,11 +3,14 @@
   font-size: 40px;
   font-family: 'BMJUA';
 }
-
 .mypage_table{
-  width: 90%;
-}
 
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+td{
+	font-size: 0.8rem;
+}
 .table_margin{
 font-family: 'Noto Sans KR', sans-serif;
   margin-top: -15px;
@@ -43,3 +46,5 @@ font-family: 'Noto Sans KR', sans-serif;
 .btn_before, .btn_next {
 	width: 60px;
 }
+
+

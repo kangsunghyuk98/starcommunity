@@ -102,10 +102,10 @@
         <table class="table table-hover table_margin">
             <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성일자</th>
-                    <th>게시판</th>
+                    <th style="width: 5%;">번호</th>
+                    <th style="width: 55%;">제목</th>
+                    <th style="width: 22%;">작성일자</th>
+                    <th style="width: 18%;">게시판</th>
                 </tr>
             </thead>
              <tbody>

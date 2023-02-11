@@ -35,7 +35,7 @@
 	        <table class="table table-hover table_margin">
 	            <thead>
 	                <tr>
-	                    <th>이름</th>
+	                    <th width="20%;" >이름</th>
 	                    <td><sec:authentication property="principal.to.name" /></td>
 	                </tr>
 	                <tr>
@@ -45,26 +45,28 @@
 	                <tr>
 	                    <th>닉네임</th>
 	                    <td>
-	                        <input type="text" name="nickname" value="<sec:authentication property="principal.to.nickname" />" />
-	                        <button id="check_btn" type="button" class="btn btn-secondary">중복확인</button>
+	                    	<div class="hstack gap-1">
+		                        <input type="text" name="nickname" value="<sec:authentication property="principal.to.nickname" />" />
+		                        <button id="check_btn" type="button" class="btn btn-secondary btn-sm">중복확인</button>
+	                        </div>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <th>이메일</th>
 	                    <td>
-	                        <input type="email" name="email" value="<sec:authentication property="principal.to.email" />" />
+	                        <input type="email"  name="email" value="<sec:authentication property="principal.to.email" />" />
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <th>비밀번호 변경</th>
 	                    <td>
-	                        <input type="password" name="password" placeholder="수정할 비밀번호를 입력해주세요." />
+	                        <input type="password"  name="password" placeholder="수정할 비밀번호를 입력해주세요." />
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <th>비밀번호 확인</th>
 	                    <td>
-	                        <input type="password" />
+	                        <input type="password"   />
 	                    </td>
 	                </tr>
 	            </thead>

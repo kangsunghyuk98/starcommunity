@@ -40,10 +40,10 @@
         <table class="table table-hover table_margin">
             <thead>
                 <tr>
-                    <th>번호</th>
-                    <th>작성일자</th>
-                    <th>음료명</th>
-                    <th>레시피 내용</th>
+                    <th style="width: 5%;" >번호</th>
+                    <th style="width: 10%;">작성일자</th>
+                    <th style="width: 20%;">음료명</th>
+                    <th style="width: 65%;">레시피 내용</th>
                 </tr>
             </thead>
             <tbody>

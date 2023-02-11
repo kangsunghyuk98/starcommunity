@@ -27,13 +27,13 @@
 <br>
 <br>
  <div class="container col-lg-8 col-md-8 col-sm-10 mb-5">
-    <div class="mypage_table">
+    <div class="contariner-sm mypage_table">
         <div class="content_header">내 정보</div>
         <hr>
         <table class="table table-hover table_margin">
             <thead>
                 <tr>
-                    <th>이름</th>
+                    <th width="20%;" >이름</th>
                     <td><sec:authentication property="principal.to.name" /></td>
                 </tr>
                 <tr>
