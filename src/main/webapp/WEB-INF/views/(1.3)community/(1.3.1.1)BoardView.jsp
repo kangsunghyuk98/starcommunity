@@ -240,7 +240,7 @@
         <!-- 본문 -->
         <div class="view_content">
 	        <div>
-	        	<img src="<%=imgPath %>"/>
+	        	<img src="<%=imgPath %>" class="img-fluid"/>
 	        	<br>
 	        </div>
 	        <div>
