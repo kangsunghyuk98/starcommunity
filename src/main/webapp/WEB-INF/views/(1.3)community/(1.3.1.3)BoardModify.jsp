@@ -47,8 +47,7 @@
 						return false;
 					}	
 					// 첨부파일 이미지인지 검사
-					let fileExt = document
-					let fileExt = document.wfrm.upload.value.trim().slice(-3);
+					let fileExt = document.mfrm.upload.value.trim().slice(-3);
 					console.log( fileExt );
 					if( fileExt != '' ){
 						if( fileExt != 'png' ){
@@ -63,7 +62,6 @@
 					// 에디터 API에서 내용 가져와서 검사
 					submitPost();
 					let content = document.getElementById("editorTxt").value
-
 					if(content == '<p>&nbsp;</p>') {
 					    alert("내용을 입력해주세요.")
 					    oEditors.getById["editorTxt"].exec("FOCUS")

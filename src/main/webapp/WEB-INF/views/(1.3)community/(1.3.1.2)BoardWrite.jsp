@@ -59,7 +59,6 @@
 					// 에디터 API에서 내용 가져와서 검사
 					submitPost();
 					let content = document.getElementById("editorTxt").value
-
 					if(content == '<p>&nbsp;</p>') {
 					    alert("내용을 입력해주세요.")
 					    oEditors.getById["editorTxt"].exec("FOCUS")
