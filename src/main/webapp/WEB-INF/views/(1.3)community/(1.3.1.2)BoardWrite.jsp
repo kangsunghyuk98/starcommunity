@@ -81,7 +81,7 @@
     <!-- 콘텐츠 영역 -->
     <br>
     <br>
-    <div class="contents container col-lg-6 col-md-8 col-sm-10 ">
+    <div class="contents container col-lg-8 col-md-8 col-sm-10 ">
 	    <form action="/board/BoardWrite_ok?category=<%= category %>&boardname=<%= boardname %>" method="post" name="wfrm" enctype="multipart/form-data">
 		    <input type="hidden" name="memberkey" value="<sec:authentication property="principal.to.memberKey" />" />
 	        <div class="content_header mt-auto ">글쓰기</div>

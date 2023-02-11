@@ -182,7 +182,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
-	<div class="content container col-lg-6 col-md-8 col-sm-10">
+	<div class="content container col-lg-8 col-md-8 col-sm-10">
     	<div class="content_header">MD게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">

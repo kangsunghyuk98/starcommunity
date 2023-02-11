@@ -219,7 +219,7 @@
     <!-- 콘텐츠 영역 -->
     <br>
     <br>
-     <div class="contents container col-lg-6 col-md-8 col-sm-10" style="height : 100%;">
+     <div class="contents container col-lg-8 col-md-8 col-sm-10" style="height : 100%;">
         <h3 class="mt-4 mb-3"><%=subject %></h3>
         <div class="label clearfix mt-auto ">
             <div class="hstack gap-2 mt-2">
