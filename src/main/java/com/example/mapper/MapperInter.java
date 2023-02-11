@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
+import com.example.dto.MyCustomTO;
 import com.example.security.SecurityMember;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -175,7 +176,15 @@ public interface MapperInter {
             " select *, (select table_name from information_schema.tables where table_schema = schema() and table_name = 'review_board') as boardname from review_board" +
             " inner join member on (review_board.memberkey = member.memberkey)" +
             " order by recommend desc" +
-            " limit 5")
+            " limit 6")
     List<BoardTO> selectRecommendRanking();
+
+    // 나만의 레시피 불러오는 쿼리
+
+    @Select("select count(*) from custom_recipe where memberkey = #{memberKey}")
+    int countAllMyCustom(String memberKey);
+
+    @Select("select * from custom_recipe where memberkey = #{memberKey} limit #{startNo},10")
+    List<MyCustomTO> selectMyCustomList(String memberKey, int startNo);
 
 }

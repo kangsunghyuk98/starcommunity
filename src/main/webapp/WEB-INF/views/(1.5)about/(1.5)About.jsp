@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="/css/(1)header.css">
     <link rel="stylesheet" href="/css/(1)contents.css">
     <link rel="stylesheet" href="/css/(1.5)about.css">
+    
+     <!-- AOS 설정 -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <title>About</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -29,9 +34,13 @@
 <body>
 <!-- 헤더 영역 -->
 <jsp:include page="../include/header.jsp"/>
-	<br>
+<!-- AOS 스크립트 초기화 -->
+<script>
+AOS.init();
+</script>
+<br>
     <!-- 콘텐츠 영역 -->
-    <div class="container col-lg-6 col-md-8 col-sm-10 About-contents vstack gap-2 mx-auto">
+    <!-- <div class="container col-lg-6 col-md-8 col-sm-10 About-contents vstack gap-2 mx-auto">
         <div class="col about-txt">About</div>
         <div class="col about-img mt-3 mb-5 "  >
             <image src="/img/(1.5)about.png" class="img-fluid" width="800"; alt="커뮤니티 이미지"> </image>
@@ -40,7 +49,42 @@
         <div class="col team-image mt-2 mb-5" >
             <image src="/img/(1.5)Member.PNG" class="img-fluid" width="400"; alt="별다섯 이미지"></image>
         </div> 
-    </div>
+    </div>-->
+<div class="untree_co-section" id="about-section">
+    <div class="container">
+      <div class="row justify-content-between mb-5">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="/img/team.webp" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-lg-6">
+          <div class="mb-4">
+            <span class="caption">About</span>
+            <h2 class="heading">팀 소개</h2>
+          </div>
+          <div class="mb-4">
+            <p style="font-size: 1.3rem;">방문을 환영합니다. 저희는 별다섯팀입니다. 5명이 모여서 별점 5개를 목표로 사이트를 제작했습니다. 2023년 1월 13일부터 프로젝트를 진행했고 2023년 2월 16일에 프로젝트를 마무리했습니다.</p>
+            <p>Separated they <span class="highlight">live in Bookmarksgrove right at the coast of the Semantics</span>, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>  
+          </div>
+
+          <ul class="list-unstyled ul-check primary mb-4">
+            <li>There live the blind texts</li>
+            <li>Far far away behind the word</li>
+            <li>Their place and supplies</li>
+          </ul>
+
+
+          <div class="row count-numbers">
+            <div class="col-6 col-lg-6" data-aos="fade-up" data-aos-delay="0">
+              <span class="counter d-block"><span>0</span></span>
+              <span class="caption-2">Members</span>
+            </div>
+            <div class="col-6 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <span class="counter d-block"><span>0</span></span>
+              <span class="caption-2">Posts</span>
+            </div>
+          </div>
+        </div> <!-- /.col-lg-6 -->
+      </div> <!-- /.row -->
 
 <!-- 풋터 영역 -->
 <jsp:include page="../include/footer.jsp"/>

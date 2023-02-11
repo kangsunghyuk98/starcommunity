@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
+import com.example.dto.MyCustomTO;
 import com.example.mapper.MapperInter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -139,8 +140,19 @@ public class ContentsService {
                 to.setCategory("ReviewBoardList");
             }
         }
-
         return boardList;
+    }
+
+    // 나만의 레시피 불러오는 로직
+
+    public int countMyCustomRecipe (String memberKey) {
+        int myCustomCount = mapperInter.countAllMyCustom(memberKey);
+        return myCustomCount;
+    }
+
+    public List<MyCustomTO> selectMyCustomList(String memberKey, int startNo) {
+        List<MyCustomTO> myCustomList = mapperInter.selectMyCustomList(memberKey,startNo);
+        return myCustomList;
     }
 
 
