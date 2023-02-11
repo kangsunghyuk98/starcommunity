@@ -24,13 +24,13 @@
 		String nickname = to.getNickname();
 		
 		sbHtml.append("<tr>");
-		sbHtml.append("    <td>"+ seq +"</td>");
+		sbHtml.append("    <td style='text-align: center;'>"+ seq +"</td>");
 		sbHtml.append("    <td><a class='view_btn' href='/board/BoardView?category="+category+"&boardname="+boardname+"&currentPage="+currentPage+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
 		sbHtml.append("    <td>"+ wdate +"</td>");
-		sbHtml.append("    <td>"+ hit +"</td>");
-		sbHtml.append("    <td>"+ recommend +"</td>");
-		sbHtml.append("    <td>");
+		sbHtml.append("    <td style='text-align: center;'>"+ hit +"</td>");
+		sbHtml.append("    <td style='text-align: center;'>"+ recommend +"</td>");
+		sbHtml.append("    <td style='text-align: center;'>");
 		
 		// 지금 더미 데이터는 null이 아니고 ""(공백)이라 적용이 좀 이상한데, 실제 데이터 적용시에는 괜찮을 듯 함 
 		if( imgname != null  ){
@@ -200,13 +200,13 @@
 	        <table class="table table-hover table_margin">
 	            <thead>
 	                <tr>
-	                    <th>번호</th>
-	                    <th>제목</th>
-                      	<th>닉네임</th>
-	                    <th>작성일자</th>
-	                    <th>조회수</th>
-	                    <th>추천수</th>
-	                    <th>img</th>
+	                    <th style="width: 5%; text-align: center;">번호</th>
+	                    <th style="width: 43%;">제목</th>
+                      	<th style="width: 13%;">닉네임</th>
+	                    <th style="width: 18%;">작성일자</th>
+	                    <th style="width: 7%; text-align: center;" >조회수</th>
+	                    <th style="width: 7; text-align: center;" >추천수</th>
+	                    <th style="width: 5%; text-align: center;">img</th>
 	                </tr>
 	            </thead>
 	            
