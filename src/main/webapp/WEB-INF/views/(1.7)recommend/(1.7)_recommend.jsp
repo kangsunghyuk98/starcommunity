@@ -27,17 +27,17 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
-<div class="container col-lg-6 col-md-8 col-sm-10">
+<div class="container col-lg-8 col-md-8 col-sm-10">
     <section id="main" class="mx-auto mb-5 px-3 py-5">
         <div class="content_header">Can I recommend something to you?</div>
         <div class="col-lg-6 col-md-8 col-sm-10 mx-auto my-5">
-            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid">
+            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid" style="max-width: 90%;">
         </div>
         <p>
             오늘은 뭘 마실까 고민이 되시나요?<br />
             나와 꼭 맞는 음료를 찾고 싶은 당신을 위해 준비했습니다<br />
         </p>
-        <button type="button" class="btn btn-primary mt-3" onclick="js:begin()">  Start Now  </button>
+        <button type="button" class="btn btn-success mt-3" onclick="js:begin()" style="width: 20%">  Start Now  </button>
     </section>
     <section id="qna" >
         <div class="status mx-auto mt-5">
@@ -65,7 +65,7 @@
         <div class="resultDesc">
 
         </div>
-        <button type="button" class="btn btn-primary mt-5" onclick="location.href='/home/recommend'">  Again?  </button>
+        <button type="button" class="btn btn-success mt-5" onclick="location.href='/home/recommend'" style="width: 20%">  Again?  </button>
         <!-- 결과 내용을 sns로 공유하는 기능으로 확장할 가능성을 대비해 주석처리 -->
         <!-- <button type="button" class="btn btn-primary kakao mt-3 py-2 px-3" onclick="">공유하기</button> -->
     </section>

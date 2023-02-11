@@ -1,11 +1,11 @@
 #main, #qna, #result{
-    font-family: 'Bareun_hipi';
+    font-family: 'BMJUA';
 }
 .content_header{
     margin-bottom: 10px;
-    font-size: 2.25rem;
+    font-size: 2.4rem;
     font-weight: bold;
-    font-family: 'Bareun_hipi';
+    font-family: 'BMJUA';
     text-align: center;
  }
 
@@ -41,12 +41,12 @@
 
 /* main 영역에 들어갈 css -----------------------------------*/
 #main{
-    background-color: antiquewhite;
+    background-color: #ebffeb;
     text-align: center;
     border-radius: 20px;
 }
 p{
-    font-size: 20px;
+    font-size: 1.7rem;
 }
 
 
@@ -61,7 +61,7 @@ p{
     width: 100%;
 }
 .qBox{
-    background-color: antiquewhite;
+    background-color: #D2FFD2;
     border-radius: 20px;
     font-size: 35px;
     /*height: 200px;*/
@@ -72,7 +72,7 @@ p{
 }
 
 .answerList{
-    background-color: antiquewhite;
+    background-color: #D2FFD2;
     border-radius: 20px;
     display: block;
     width: 50%;
@@ -80,7 +80,7 @@ p{
     font-size: 20px;
 }
 .answerList:hover, .answerList:focus{
-    background-color: brown;
+    background-color: #6FCC98;
     color: white;
 }
 
@@ -106,17 +106,18 @@ p{
 /* result 영역에 들어갈 css -----------------------------------*/
 #result{
     display: none;
-    background-color: antiquewhite;
+    background-color: #ebffeb;
     text-align: center;
     border-radius: 20px;
 }
   
 .resultName{
-    font-size: 40px;
+    font-size: 3.0rem;
 }
 .resultDesc{
-    font-size: 20px;
+    font-size: 1.8rem;
 }
+
 /* 결과 공유 부분을 만들게 될 경우 사용
 .kakao{
     color: white;
