@@ -42,6 +42,7 @@
                 <tr>
                     <th>번호</th>
                     <th>작성일자</th>
+                    <th>음료명</th>
                     <th>레시피 내용</th>
                 </tr>
             </thead>
@@ -53,6 +54,7 @@
                 <tr>
                     <td>${cto.cusseq}</td>
                     <td>${cto.wdate}</td>
+                    <td>${cto.beverage}</td>
                     <td>${cto.recipe}</td>
                 </tr>
 
