@@ -100,7 +100,8 @@
 	    				data: {
 	    					seq: seq,
 	    					boardname: boardname,
-	    					imgname : '<%=imgname%>'
+	    					imgname : '<%=imgname%>',
+	    					memberkey: '<%=memberkey%>'
 	    				},
 	    				dataType: 'text',
 	    				success: function(result){

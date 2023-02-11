@@ -184,7 +184,7 @@ public class CommunityController {
     	if( !upload.isEmpty() ) {
 			to.setImgname( fileRename );	
 			to.setFilesize( upload.getSize() ); 
-			to.setImgformat( upload.getOriginalFilename().substring( upload.getOriginalFilename().indexOf(".") + 1 ) );	// 확장자만 자르기
+			to.setImgformat( fileRename.substring( fileRename.length()-3, fileRename.length() ) );	// 확장자만 자르기
 		}
     	
     	int flag = service.boardWriteOk( boardname, upload, to );
@@ -223,7 +223,7 @@ public class CommunityController {
     	if( !upload.isEmpty() ) {
 			to.setImgname( fileRename );	
 			to.setFilesize( upload.getSize() ); 
-			to.setImgformat( upload.getOriginalFilename().substring( upload.getOriginalFilename().indexOf(".") + 1 ) );	// 확장자만 자르기
+			to.setImgformat( fileRename.substring( fileRename.length()-3, fileRename.length() ) );	// 확장자만 자르기
 		}
     	
     	int flag = service.boardModifyOk( boardname, seq, upload, to );
@@ -238,8 +238,10 @@ public class CommunityController {
     
     @RequestMapping("/board/BoardDelete")
     @ResponseBody
-    public int boardDelete(String boardname, int seq, String imgname) {
+    public int boardDelete(String boardname, int seq, String imgname, int memberkey) {
+    	
     	int flag = service.deleteBoardContent(boardname, seq);
+    	System.out.println(memberkey);
     			
     	//String path = "C:/Users/zxzz9/Documents/files/";
     	//String path = "C:/Team Project/StarbucksCommunity/src/main/webapp/upload";
