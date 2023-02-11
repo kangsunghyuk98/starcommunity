@@ -92,7 +92,6 @@ AOS.init();
         	<div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
           		<div class="service">
             		<div class="service-icon color-1 mb-4">
-              			<span>
               			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03" id="recommed_img">
                         <span class="count_num">${to.recommend}</span><span style="color: #006400; font-size: 0.75rem;">추천수</span>
             		</div>
@@ -211,9 +210,9 @@ AOS.init();
               </svg>
             </div>
             <div class="service-contents">
-              <h2>가까운 매장 찾기</h2>
-              <p style="font-size: 1.2rem;">내 근처 스타벅스 매장은 어디? 가까운 스타박스 매장을 스타벅스커뮤니티에서 찾아볼 수 있어요!</p>  
-              <p><a href="#" class="read-more">가까운 매장 찾기</a></p>
+              <h2>음료 게시판</h2>
+              <p style="font-size: 1.2rem;">가장 맛있는 커스텀 레시피는 뭘까요? 음료 게시판에서 내가 만든 커스텀 레시피를 공유하고 다른 커스텀 레시피를 확인해보세요.</p>  
+              <p><a href="#" class="read-more">음료게시판 바로가기</a></p>
             </div>
           </div>
         </div>
