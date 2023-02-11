@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.dto.BeverageCmtTO;
 import com.example.dto.BoardCmtTO;
 import com.example.dto.BoardLikeTO;
 import com.example.security.SecurityMember;
@@ -283,7 +284,15 @@ public class CommunityController {
 		return "okaction/write_board_cmt_ok";
 
 	}
-
+	
+	@RequestMapping("/Board_add_cmt")
+	@ResponseBody
+	public List<BoardCmtTO> boardAddCmt(@RequestParam(value="boardname") String boardname, @RequestParam("seq")int seq, @RequestParam("addNum")int addNum) {
+		
+		List<BoardCmtTO> addCmtList = service.selectAddCmtList(boardname, seq, addNum);
+		return addCmtList;
+	}
+	
 	@RequestMapping("/board/deletecmt")
 	public String deleteCmt (BoardCmtTO bto ,Model model) {
 		int flag = service.deleteCmt(bto);

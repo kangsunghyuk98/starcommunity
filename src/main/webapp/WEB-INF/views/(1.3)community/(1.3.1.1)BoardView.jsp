@@ -131,8 +131,8 @@
     				alert("댓글을 작성해야합니다");
     			}
     		});
-	
-            $(".comment_d_btn").on("click", function () {
+
+    		$(document).on('click', '.comment_d_btn', function(){
 
                 let cseq = $(this).attr('value');
 
@@ -207,8 +207,89 @@
                 });
 
             });
+			
+                
+            	let addNum = 3;
+            	
+                $('.show_cmt_btn').on('click', function(){
 
+                	addCmt(boardname, seq, addNum);
+                	addNum = addNum + 3;
+                	//console.log(addNum);
+                	
+                	return addNum; 
+                });
+                
+                $('.close_cmt_btn').on('click', function(){
+                	$('#cmt_table').empty();
+                	addNum = 3
+                	
+                	return addNum;
+                });
+                
         });
+        
+                function addCmt(boardname, seq, addNum){
+            	    $.ajax({
+            	        type: 'POST',
+            	        url: '/Board_add_cmt',
+            	        data: {
+            	        	boardname: boardname,
+            	            seq: seq,
+            	            addNum: addNum
+            	        },
+            	        success: function (result) {
+            	        	
+           	            	// console.log(result);
+            	            let html = '';
+
+            	            $.each(result, function (index, item) {
+
+            	            	let memberKey = 0;
+                	        	let KeyResult = false;
+                	        
+                	        	<sec:authorize access="isAuthenticated()">
+                	        	<sec:authentication property="principal" var="principal"/>;
+                	    	    	memberKey = ${principal.to.memberKey};
+                	    	    	let memberKeyStr = memberKey.toString();
+                	    	    	KeyResult = (memberKeyStr == item.memberKey);
+                	        	</sec:authorize>
+            	            	
+            	            	 html += '<tr class="clearfix border-top comment_tr">';
+           	                     html += '    <td class="coment_re_txt float-start">';
+           	                     html += '        <div class="mt-2 mb-2">';
+           	                     html += '            <strong>'+ item.nickname +'</strong>('+ item.cdate +')';
+            	                 html += '        </div>';
+           	                     html += '        <div class="coment_re_txt mb-2">';
+           	                     html += '            '+ item.comment +'';
+           	                     html += '        </div>';
+           	                     html += '    </td>';
+           	                     
+           	                     //console.log("memberKeyStr : " + memberKeyStr + " " + typeof memberKeyStr);
+        	                     //console.log("item.memberkey : " + item.memberKey + " " + typeof item.memberKey);
+        	                     
+        	                   	 //console.log(KeyResult);
+        	                   	 // if( memberKeyStr == item.memberKey ){ => 왜 이 조건문은 false로 나오는가?ㄴ
+           	                     if( KeyResult ){
+           	                    	console.log("true ");
+           	                    	html += '            <td class="coment_re_btn float-end">';
+               	                    html += '               <button type="button" value="'+ item.cseq +'" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>';
+               	                    html += '            </td>';
+               	                    
+           	                     } else {
+           	                    	console.log("false ");
+           	                     }
+            	                 html += '</tr>';
+            	            });
+            	            $("#cmt_table").append(html);
+            	        },
+            	        error: function () {
+            	            alert('[error] 댓글추가 실패. ' + err.status)
+            	            return;
+            	        }
+            	    });
+
+            	}   
     </script>
 </head>
 
@@ -301,8 +382,7 @@
 
                     <!-- 댓글이 들어가는 영역 -->
 
-                    <c:forEach var="bto" items="${allCmtList}">
-
+                    <c:forEach var="bto" items="${allCmtList}" begin="0" end="2">
                         <tr class="clearfix border-top comment_tr">
                             <td class="coment_re_txt float-start">
                                 <div class="mt-2 mb-2">
@@ -312,26 +392,22 @@
                                         ${bto.comment}
                                 </div>
                             </td>
-
                             <sec:authorize access="isAuthenticated()">
-
                                 <sec:authentication property="principal" var="principal"/>
-
                                 <c:if test="${principal.to.memberKey eq bto.memberKey}">
                                     <td class="coment_re_btn float-end">
                                         <button type="button" value="${bto.cseq}" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>
                                     </td>
                                 </c:if>
-
                             </sec:authorize>
-
                         </tr>
-
                     </c:forEach>
-
+                </table>
+                <table class="container-fluid" id="cmt_table">
                 </table>
                 <div class="coment_re_view">
-                    <button type="button" class="btn btn-sm ">댓글 더보기</button>
+                    <button type="button" class="btn btn-sm show_cmt_btn">댓글 더보기</button>
+                    <button type="button" class="btn btn-sm close_cmt_btn">댓글 접기</button>
                 </div>
             </div>
         </div>

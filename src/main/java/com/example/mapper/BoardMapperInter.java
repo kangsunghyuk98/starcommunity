@@ -3,6 +3,7 @@ package com.example.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.dto.BeverageCmtTO;
 import com.example.dto.BoardCmtTO;
 import com.example.dto.BoardLikeTO;
 import org.apache.ibatis.annotations.Delete;
@@ -103,12 +104,18 @@ public interface BoardMapperInter {
 	int writeReviewCmt(BoardCmtTO bto);
 
 	@Select("select member.memberkey, member.nickname, ${cmtName}.cseq, ${cmtName}.cdate, ${cmtName}.comment from ${cmtName} inner join member " +
-			"on (${cmtName}.memberkey = member.memberkey) where ${cmtName}.seq = #{seq}")
+			"on (${cmtName}.memberkey = member.memberkey) where ${cmtName}.seq = #{seq} order by cdate desc")
 	List<BoardCmtTO> selectCmtList(String cmtName, int seq);
 
+	@Select("select member.memberkey, member.nickname, ${cmtName}.cseq, ${cmtName}.cdate, ${cmtName}.comment from ${cmtName} inner join member " +
+			"on (${cmtName}.memberkey = member.memberkey) where ${cmtName}.seq = #{seq} order by cdate desc limit ${addNum}, 3")
+	List<BoardCmtTO> selectAddCmtList(String cmtName, int seq, int addNum);
+	
 	@Delete("delete from ${cmtName} where cseq = #{cseq}")
 	int deleteCmt(String cseq, String cmtName);
 
+	
+	
 	// 좋아요 기능 쿼리
 
 	@Insert("insert into likecheck values (0, #{memberKey}, #{seq}, #{boardname})")

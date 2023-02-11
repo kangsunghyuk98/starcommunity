@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.dto.BeverageCmtTO;
 import com.example.dto.BoardCmtTO;
 import com.example.dto.BoardLikeTO;
 import org.apache.ibatis.annotations.Param;
@@ -227,7 +228,24 @@ public class BoardService {
 		}
 		return flag;
 	}
+	
+	public List<BoardCmtTO> selectAddCmtList (String boardName, int seq, int addNum) {
+		List<BoardCmtTO> addCmtList = new ArrayList<>();
 
+		if (boardName.equals("dlife_board")){
+			addCmtList = mapper.selectAddCmtList("dlife_cmt", seq, addNum);
+		} else if (boardName.equals("beverage_board")) {
+			addCmtList = mapper.selectAddCmtList("beverage_board_cmt", seq, addNum);
+		} else if (boardName.equals("md_board")) {
+			addCmtList = mapper.selectAddCmtList("md_cmt", seq, addNum);
+		} else if (boardName.equals("frequency_board")) {
+			addCmtList = mapper.selectAddCmtList("frequency_cmt", seq, addNum);
+		} else if (boardName.equals("review_board")) {
+			addCmtList = mapper.selectAddCmtList("review_cmt", seq, addNum);
+		}
+		return addCmtList;
+	}
+	
 	// 좋아요 기능 로직 여기부터
 	public int checkLikeMember(BoardLikeTO boardLikeTO) {
 		int result = mapper.checkLikeMember(boardLikeTO);
