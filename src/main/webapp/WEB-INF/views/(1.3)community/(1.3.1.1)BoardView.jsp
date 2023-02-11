@@ -80,9 +80,9 @@
                     console.log(element);
 
                     if (result == 1) {
-                        element.innerHTML = "<img id='heart_img' src='/img/full_heart.png' width='16px' height='16px'/>";
+                        element.innerHTML = "<img id='heart_img' src='/img/icon/like_full.png' width='28px' height='28px'/>";
                     }else{
-                        element.innerHTML = "<img id='heart_img' src='/img/empty_heart.png' width='16px' height='16px'/>";
+                        element.innerHTML = "<img id='heart_img' src='/img/icon/like_empty.png' width='28px' height='28px'/>";
                     }
                 },
                 error: function () {
@@ -249,32 +249,24 @@
 	        </div>
         </div>
         <div class="btns hstack gap-2 mt-2">
-            <button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-outline-secondary l_btn">목록</button>
-
-
-        <sec:authorize access="isAuthenticated()">
-
-            <button type="button" class="like_btn" value='<sec:authentication property="principal.to.memberKey"/>'>
-                <div id="inner"></div>
-            </button> 좋아요 ${to.recommend}
-
-        </sec:authorize>
-
-           
+        	<sec:authorize access="isAuthenticated()">
+	            <button type="button" class="like_btn hstack gap-1" style="border: none; background-color:transparent;" value='<sec:authentication property="principal.to.memberKey"/>'>
+	                <div id="inner"></div>
+	                <div> 좋아요 ${to.recommend}</div>
+	            </button>
+        	</sec:authorize>
+			<button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-sm btn-outline-secondary l_btn ms-auto">목록</button>           
 			<sec:authorize var="" access="isAuthenticated()">
 				<sec:authentication property="principal" var="principal"/>
 				<c:if test="${principal.to.memberKey eq to.memberkey}">
 					 <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
-	                class="btn btn-outline-secondary m_btn ms-auto">수정</button>
-					<button type="button" id="d_btn" class="btn btn-outline-secondary ">삭제</button>
+	                class="btn btn-sm btn-outline-secondary m_btn">수정</button>
+					<button type="button" id="d_btn" class="btn btn-sm btn-outline-secondary ">삭제</button>
             	</c:if>
 			</sec:authorize>
-            
         </div>
         <hr class="mt-3 mb-2">
 
-		
-       	
         <!-- 댓글 -->
         <div class="container-fluid mt-4 w3-border w3-round ws-grey clearfix" style="padding:20px 30px">
 			<sec:authorize access="isAnonymous()">
