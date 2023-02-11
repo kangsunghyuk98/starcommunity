@@ -26,7 +26,6 @@
     List<BeverageCmtTO> allCmtList = (List<BeverageCmtTO>) request.getAttribute("allCmtList");
     
 %>
-    
 <!DOCTYPE html>
 <html>
 <head> 
@@ -98,7 +97,6 @@
             let seq = '<%=seq%>';
         	let addNum = 3;
         	
-        	
             $('.show_cmt_btn').on('click', function(){
 
             	addCmt(seq, addNum);
@@ -114,7 +112,6 @@
             	
             	return addNum;
             });
-
   		});
     	
     	function addCmt(seq, addNum){
@@ -127,21 +124,21 @@
     	        },
     	        success: function (result) {
     	        	
-    	        	let memberKey = 0;
-    	        	let KeyResult = false;
-    	        
-    	        	<sec:authorize access="isAuthenticated()">
-    	        	<sec:authentication property="principal" var="principal"/>;
-    	    	    	memberKey = ${principal.to.memberKey};
-    	    	    	let memberKeyStr = memberKey.toString();
-    	    	    	KeyResult = (memberKeyStr == item.memberKey);
-    	        	</sec:authorize>
-    	        	
    	            	// console.log(result);
     	            let html = '';
 
     	            $.each(result, function (index, item) {
 
+    	            	let memberKey = 0;
+        	        	let KeyResult = false;
+        	        
+        	        	<sec:authorize access="isAuthenticated()">
+        	        	<sec:authentication property="principal" var="principal"/>;
+        	    	    	memberKey = ${principal.to.memberKey};
+        	    	    	let memberKeyStr = memberKey.toString();
+        	    	    	KeyResult = (memberKeyStr == item.memberKey);
+        	        	</sec:authorize>
+    	            	
     	            	 html += '<tr class="clearfix border-top comment_tr">';
    	                     html += '    <td class="coment_re_txt float-start">';
    	                     html += '        <div class="mt-2 mb-2">';
@@ -155,8 +152,8 @@
    	                     //console.log("memberKeyStr : " + memberKeyStr + " " + typeof memberKeyStr);
 	                     //console.log("item.memberkey : " + item.memberKey + " " + typeof item.memberKey);
 	                     
-	                   	 console.log(KeyResult);
-	                   	// if( memberKeyStr == item.memberKey ){ => 왜 이 조건문은 false로 나오는가?ㄴ
+	                   	 //console.log(KeyResult);
+	                   	 // if( memberKeyStr == item.memberKey ){ => 왜 이 조건문은 false로 나오는가?ㄴ
    	                     if( KeyResult ){
    	                    	console.log("true ");
    	                    	html += '            <td class="coment_re_btn float-end">';
@@ -169,7 +166,6 @@
     	                 html += '</tr>';
     	            });
     	            $("#cmt_table").append(html);
-    	            
     	        },
     	        error: function () {
     	            alert('[error] 댓글추가 실패. ' + err.status)
