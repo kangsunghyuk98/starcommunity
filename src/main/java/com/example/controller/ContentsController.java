@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
+import com.example.dto.MyCustomTO;
 import com.example.dto.Pagination;
 import com.example.service.ContentsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,22 @@ public class ContentsController {
         return "(1.4)myPage/(1.4.2)mypage_write_list";
     }
 
+    @RequestMapping("/mycustom")
+    public String viewMyCustomRecipe(@RequestParam("memberKey") String memberKey,
+                                    @RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
+                                     Model model) {
 
+        int myCustomCount = contentsService.countMyCustomRecipe(memberKey);
+
+        Pagination pagination = new Pagination(myCustomCount, currentPage);
+        List<MyCustomTO> allMyCutomList = contentsService.selectMyCustomList(memberKey, pagination.getStartIndex());
+
+        model.addAttribute("allMyCutomList", allMyCutomList);
+        model.addAttribute("myCustomCount", myCustomCount);
+        model.addAttribute("pagination", pagination);
+        model.addAttribute("memberKey",memberKey);
+
+        return "(1.4)myPage/(1.4.3)mypage_custom";
+    }
 
 }

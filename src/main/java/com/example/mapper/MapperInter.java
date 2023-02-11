@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import com.example.dto.BoardTO;
 import com.example.dto.MemberTO;
+import com.example.dto.MyCustomTO;
 import com.example.security.SecurityMember;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -177,5 +178,13 @@ public interface MapperInter {
             " order by recommend desc" +
             " limit 5")
     List<BoardTO> selectRecommendRanking();
+
+    // 나만의 레시피 불러오는 쿼리
+
+    @Select("select count(*) from custom_recipe where memberkey = #{memberKey}")
+    int countAllMyCustom(String memberKey);
+
+    @Select("select * from custom_recipe where memberkey = #{memberKey} limit #{startNo},10")
+    List<MyCustomTO> selectMyCustomList(String memberKey, int startNo);
 
 }

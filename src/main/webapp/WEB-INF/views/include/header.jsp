@@ -65,7 +65,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/member/myinfo">개인 정보 보기</a></li>
                             <li><a class="dropdown-item" href="/member/myboardlists?memberKey=${principal.to.memberKey}">내가 쓴 글 목록</a></li>
-                            <li><a class="dropdown-item" href="/MypageCustom">나만의 레시피</a></li>
+                            <li><a class="dropdown-item" href="/member/mycustom?memberKey=${principal.to.memberKey}">나만의 레시피</a></li>
                         </ul>
                     </li>
                     </sec:authorize>
