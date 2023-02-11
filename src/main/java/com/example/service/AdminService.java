@@ -45,7 +45,21 @@ public class AdminService {
         return conMemberList;
     }
 
-    public int memberDelete(int memberKey) {
+    public int memberDelete(String memberKey) {
+        mapperInter.deleteMyDlifeBoard(memberKey);
+        mapperInter.deleteMyMdBoard(memberKey);
+        mapperInter.deleteMyReviewBoard(memberKey);
+        mapperInter.deleteMyBeverageBoard(memberKey);
+        mapperInter.deleteMyFrequencyBoard(memberKey);
+        mapperInter.deleteMyDlifeCmt(memberKey);
+        mapperInter.deleteMyMdCmt(memberKey);
+        mapperInter.deleteMyBeverageBoradCmt(memberKey);
+        mapperInter.deleteMyFrequencyCmt(memberKey);
+        mapperInter.deleteMyReviewCmt(memberKey);
+        mapperInter.deleteMyBeverageCmt(memberKey);
+        mapperInter.deleteMyLikecheck(memberKey);
+        mapperInter.deleteMyCustom(memberKey);
+
         int result = mapperInter.memberDelete(memberKey);
         int flag = 1;
 

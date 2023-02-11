@@ -64,7 +64,7 @@ public interface MapperInter {
     List<MemberTO> selectUseConditionName(String keyword);
 
     @Delete("delete from member where memberkey = #{memberKey}")
-    int memberDelete(int memberKey);
+    int memberDelete(String memberKey);
 
 
 
@@ -109,6 +109,9 @@ public interface MapperInter {
 
     @Delete("delete from likecheck where memberkey = #{memberKey}")
     int deleteMyLikecheck(String memberKey);
+
+    @Delete("delete from custom_recipe where memberkey = #{memberKey}")
+    int deleteMyCustom(String memberKey);
 
     @Delete("delete from member where id = #{id} and password = #{password}")
     int deleteMemberInfo(String id, String password);

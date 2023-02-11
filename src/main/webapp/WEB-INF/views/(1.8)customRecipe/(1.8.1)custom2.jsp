@@ -15,7 +15,7 @@
 	
 	String image = to.getImage();	
 	
-	
+	List<CustomRecipeTO> allCustom = (List<CustomRecipeTO>) request.getAttribute("allCustom");
 %>
 <!DOCTYPE html>
 <html>
@@ -46,14 +46,21 @@
 	<script>
 		
 	
-		$(document).ready(function() {
-			
+		$(document).ready(function() {	
+			let memberKey = 0;
+			<sec:authorize access="isAuthenticated()">
+        	<sec:authentication property="principal" var="principal"/>;
+    	    	memberKey = ${principal.to.memberKey};     	    	
+        	</sec:authorize>
 			$("#return_menu").on("click", function(){
 				var recipe = recipe_txt_func();
 				const beverage = urlParams.get('name');
+				
 				console.log(recipe);				
 				console.log(beverage);
-				if(recipe_txt && recipe_txt.trim() != '' ){					
+				
+				if(recipe_txt && recipe_txt.trim() != '' ){		
+					
 					alert("나만의 레시피가 저장되었습니다");	
 				
 					$.ajax({
@@ -61,7 +68,7 @@
 					url: '/CustomInsert',
 						data:{
 						recipe: recipe,
-						memberKey: <sec:authentication property="principal.to.memberKey"/>,
+						memberKey: memberKey,
 						beverage: beverage	
 						},
 						dataType:'text',
@@ -73,7 +80,9 @@
 							return;
 						}
 					})
-				} else {
+				} 
+				
+				else {
 					alert("레시피를 선택해 주세요");
 				}
 				
@@ -385,14 +394,23 @@
 			<form>		
 			<!-- 카카오 공유 버튼 (임시) -->		 
 			    <input type="button" onClick="sendLinkDefault();" value="Default"/>
+			    
 			
-			<sec:authorize access="isAuthenticated()">
-				<form action="/CustomInsert" method="post">           
-			                              
-				<button type="button" id="return_menu" class="btn btn-outline-secondary recipe_btn" >레시피 저장</button>
-			  </form>	
+			<sec:authorize var="" access="isAuthenticated()">
+				
+					<form action="/CustomInsert" method="post">		                              
+	                  
+						<button type="button" id="return_menu" class="btn btn-outline-secondary recipe_btn" >레시피 저장</button>
+		 		   </form>	
+	 		  
 			</sec:authorize>	
 				<button type="button" class="btn btn-outline-secondary recipe_btn mx-1 " onclick="location.href='./Custom1'">메뉴</button>
+			<sec:authorize access="isAnonymous()">
+	        	<div >
+	            	<p class="cmt_login_message mt-4 mb-5" >로그인 후 나만의 레시피를 저장하실 수 있습니다</p>
+	            </div>
+        	</sec:authorize>
+			
 			</form>		
 		</div>
 	</div>

@@ -40,7 +40,11 @@ public class CustomController {
         to.setName(request.getParameter("name") );
         to.setImage(request.getParameter("image") );
         to = cs.customInfo(to);
+        
+        List<CustomRecipeTO> allCustom = cs.selectCustomList();
+        
         model.addAttribute("to",to);
+        model.addAttribute("allCustom",allCustom);
         
         return "(1.8)customRecipe/(1.8.1)custom2";
     }

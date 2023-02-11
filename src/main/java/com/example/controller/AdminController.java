@@ -49,7 +49,7 @@ public class AdminController {
     }
 
     @RequestMapping("/member_delete")
-    public String memberDelete(@RequestParam("memberkey") int memberKey, Model model) {
+    public String memberDelete(@RequestParam("memberkey") String memberKey, Model model) {
         int result = adminService.memberDelete(memberKey);
         model.addAttribute("result",result);
         return "okaction/admin_memberdelete_ok";

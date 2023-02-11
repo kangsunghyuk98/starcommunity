@@ -57,6 +57,7 @@ public class ContentsService {
             mapperInter.deleteMyReviewCmt(memberKey);
             mapperInter.deleteMyBeverageCmt(memberKey);
             mapperInter.deleteMyLikecheck(memberKey);
+            mapperInter.deleteMyCustom(memberKey);
 
             result = mapperInter.deleteMemberInfo(id, encPassword);
 

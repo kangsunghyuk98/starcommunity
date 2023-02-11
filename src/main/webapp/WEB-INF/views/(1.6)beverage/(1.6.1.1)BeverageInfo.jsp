@@ -62,7 +62,7 @@
     			}
     		});
 
-            $('.comment_d_btn').click(function(){
+    		$(document).on('click', '.comment_d_btn', function(){
 
                 if(confirm('댓글을 삭제하시겠습니까?')){
                     let queryString = location.search;
