@@ -33,32 +33,41 @@
 			// 스마트 에디터 설정입니다.  
 			submitPost = function() {
 				oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
-				let content = document.getElementById("editorTxt").value
-
-				if(content == '') {
-				    alert("내용을 입력해주세요.")
-				    oEditors.getById["editorTxt"].exec("FOCUS")
-				    return
-				} else {
-				    console.log(content)
-				}
+				
 			}
 			
 			$(document).ready(function () {
-		    	document.getElementById( 'w_btn' ).onclick = function() {				
+		    	document.getElementById( 'w_btn' ).onclick = function() {
+		    		
 					if( document.wfrm.subject.value.trim() == "" ) {
 						alert("제목을 입력해주세요.");
 						return false;
 					}	
-					
-					/*let ext = document.wfrm.upload.value.trim().split('.')
-					if( ext != "jpg" || ext != "png" || ext != "gif" || ext != null ) {
-						alert("첨부 파일이 이미지 형식이 아닙니다1.");
-						return false;
-					}*/
-					
+					// 첨부파일 이미지인지 검사
+					let fileExt = document.wfrm.upload.value.trim().slice(-3);
+					console.log( fileExt );
+					if( fileExt != '' ){
+						if( fileExt != 'png' ){
+							if( fileExt != 'jpg' ){
+								if( fileExt != 'gif' ){
+									alert( '첨부하신 파일은 이미지 파일이 아닙니다.' );
+									return false;
+								}
+							}
+						}
+					}
+					// 에디터 API에서 내용 가져와서 검사
 					submitPost();
-					//console.log( document.wfrm.memberkey.value );
+					let content = document.getElementById("editorTxt").value
+
+					if(content == '<p>&nbsp;</p>') {
+					    alert("내용을 입력해주세요.")
+					    oEditors.getById["editorTxt"].exec("FOCUS")
+					    return false;
+					} else {
+					    console.log(content)
+					}
+
 	 				document.wfrm.submit();
 				};
 			}) 

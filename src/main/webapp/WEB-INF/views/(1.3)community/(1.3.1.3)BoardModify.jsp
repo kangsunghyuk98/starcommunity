@@ -7,17 +7,6 @@
 	int currentPage = (Integer)request.getAttribute("currentPage");
 	int seq = (int)request.getAttribute("seq");
 	BoardTO to = (BoardTO)request.getAttribute("to");
-	
-	/* 
-	String subject = to.getSubject();  
-	String content = to.getContent();  
-	String wdate = to.getWdate();    
-	int hit = to.getHit();         
-	String imgname = to.getImgname();  
-	String imgformat = to.getImgformat();
-	int recommend = to.getRecommend();
-	int memberkey = to.getMemberkey(); 
-	long filesize = to.getFilesize(); */
 %>
 <!DOCTYPE html>
 <html>
@@ -47,15 +36,7 @@
 			// 스마트 에디터 설정입니다.  
 			submitPost = function() {
 				oEditors.getById["editorTxt"].exec("UPDATE_CONTENTS_FIELD", [])
-				let content = document.getElementById("editorTxt").value
-
-				if(content == '') {
-				    alert("내용을 입력해주세요.")
-				    oEditors.getById["editorTxt"].exec("FOCUS")
-				    return
-				} else {
-				    console.log(content)
-				}
+				
 			}
 			
 			$(document).ready(function () {
@@ -65,9 +46,32 @@
 						alert( '제목을 입력하셔야 합니다.' );
 						return false;
 					}	
-					
+					// 첨부파일 이미지인지 검사
+					let fileExt = document
+					let fileExt = document.wfrm.upload.value.trim().slice(-3);
+					console.log( fileExt );
+					if( fileExt != '' ){
+						if( fileExt != 'png' ){
+							if( fileExt != 'jpg' ){
+								if( fileExt != 'gif' ){
+									alert( '첨부하신 파일은 이미지 파일이 아닙니다.' );
+									return false;
+								}
+							}
+						}
+					}
+					// 에디터 API에서 내용 가져와서 검사
 					submitPost();
+					let content = document.getElementById("editorTxt").value
 
+					if(content == '<p>&nbsp;</p>') {
+					    alert("내용을 입력해주세요.")
+					    oEditors.getById["editorTxt"].exec("FOCUS")
+					    return false;
+					} else {
+					    console.log(content)
+					}
+					
 	 				document.mfrm.submit();
 				};
 			}) 
