@@ -139,16 +139,17 @@
 <body>
 	<!-- 헤더 영역 -->
 	<jsp:include page="../include/header.jsp" />
-
+<input type="hidden" id="Himage" class="Himage" value = "<%=image %>">
 	<!-- 콘텐츠 영역 -->
 	<br>
 	<br>
-	<div class="container content col-lg-8 col-md-8 col-sm-10 px-5 py-5 ">
+	<div class="container content col-lg-6 col-md-8 col-sm-10 px-5 py-5 ">
 		<div class="content_header">My Custom Recipe</div>
+		<hr>
 		<dlv class="row mt-5 justify-content-center">
-			<div class="col-sm-6" >
-				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2">
-				<div class=" mt-2 mb-4 Beverage_name "><%=name %></div>
+			<div class="col-sm-6">
+				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2" style="width: 100%;">
+				<div class="mt-2 mb-4 Beverage_name"><%=name %></div>
      		</div>
 			<div class="custom_text col-sm-6" >
 				<form id="custom_form">
@@ -183,15 +184,15 @@
 								<label for="coffee3" class="li_label">샷추가</label> 
 								<select class="form-select" id="coffee3" onchange="handleOnChange3(this)">
 									<option value="" disabled selected>---선택---</option>
-									<option value="1">1샷 </option>
-									<option value="2">2샷 </option>
-									<option value="3">3샷 </option>
-									<option value="4">4샷 </option>
-									<option value="5">5샷 </option>
-									<option value="6">6샷 </option>
-									<option value="7">7샷 </option>
-									<option value="8">8샷 </option>
-									<option value="9">9샷 </option>
+									<option value="1">1 </option>
+									<option value="2">2</option>
+									<option value="3">3 </option>
+									<option value="4">4 </option>
+									<option value="5">5 </option>
+									<option value="6">6 </option>
+									<option value="7">7 </option>
+									<option value="8">8 </option>
+									<option value="9">9 </option>
 								</select>
 						</li>
 						<li class="list-group-item" id="syrup_li">
@@ -215,15 +216,15 @@
 								<label for="syrup2" class="li_label">시럽 옵션</label> 
 								<select class="form-select" id="syrup2" onchange="handleOnChange5(this)">
 									<option value="" disabled selected>---선택---</option>
-									<option value="1">1샷 </option>
-									<option value="2">2샷 </option>
-									<option value="3">3샷 </option>
-									<option value="4">4샷 </option>
-									<option value="5">5샷 </option>
-									<option value="6">6샷 </option>
-									<option value="7">7샷 </option>
-									<option value="8">8샷 </option>
-									<option value="9">9샷 </option>
+									<option value="1">1 </option>
+									<option value="2">2 </option>
+									<option value="3">3 </option>
+									<option value="4">4 </option>
+									<option value="5">5 </option>
+									<option value="6">6 </option>
+									<option value="7">7 </option>
+									<option value="8">8 </option>
+									<option value="9">9 </option>
 								</select>
 						</li>
 						<li class="list-group-item" id="syrup3_li">
@@ -277,15 +278,15 @@
 							<label for="java_chip2" class="li_label">자바칩 옵션</label>
 							<select class="form-select" id="java_chip2"onchange="handleOnChange11(this)">
 								<option value="" disabled selected>---선택---</option>
-								<option value="1">1샷</option>
-								<option value="2">2샷</option>
-								<option value="3">3샷</option>
-								<option value="4">4샷</option>
-								<option value="5">5샷 </option>
-								<option value="6">6샷 </option>
-								<option value="7">7샷 </option>
-								<option value="8">8샷 </option>
-								<option value="9">9샷 </option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5 </option>
+								<option value="6">6 </option>
+								<option value="7">7 </option>
+								<option value="8">8 </option>
+								<option value="9">9 </option>
 							</select>
 						</li>
 						<li class="list-group-item" id="whippedcream1_li">
@@ -343,15 +344,15 @@
 							<label for="etc3" class="li_label">기타:유기농 말차 </label>
 							<select class="form-select" id="etc3"onchange="handleOnChange18(this)">
 								<option value="" disabled selected>---선택---</option>
-								<option id="etc3" value="1">1샷</option>
-								<option id="etc3" value="2">2샷</option>
-								<option id="etc3" value="3">3샷</option>
-								<option id="etc3" value="4">4샷</option>
-								<option id="etc3" value="5">5샷</option>
-								<option id="etc3" value="6">6샷</option>
-								<option id="etc3" value="7">7샷</option>
-								<option id="etc3" value="8">8샷</option>
-								<option id="etc3" value="9">9샷</option>																			
+								<option id="etc3" value="1">1</option>
+								<option id="etc3" value="2">2</option>
+								<option id="etc3" value="3">3</option>
+								<option id="etc3" value="4">4</option>
+								<option id="etc3" value="5">5</option>
+								<option id="etc3" value="6">6</option>
+								<option id="etc3" value="7">7</option>
+								<option id="etc3" value="8">8</option>
+								<option id="etc3" value="9">9</option>																			
 							</select>
 						</li>
 						<li class="list-group-item" id="topping_li">
@@ -393,18 +394,18 @@
 		<div class="mb-4">
 			<form>		
 			<!-- 카카오 공유 버튼 (임시) -->		 
-			    <input type="button" onClick="sendLinkDefault();" value="Default"/>
+			    <input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="카카오톡 공유하기"/>
 			    
 			
 			<sec:authorize var="" access="isAuthenticated()">
 				
 					<form action="/CustomInsert" method="post">		                              
 	                  
-						<button type="button" id="return_menu" class="btn btn-outline-secondary recipe_btn" >레시피 저장</button>
+						<button type="button" id="return_menu" class="btn btn-success recipe_btn" >레시피 저장</button>
 		 		   </form>	
 	 		  
 			</sec:authorize>	
-				<button type="button" class="btn btn-outline-secondary recipe_btn mx-1 " onclick="location.href='./Custom1'">메뉴</button>
+				<button type="button" class="btn btn-success recipe_btn" onclick="location.href='./Custom1'">메뉴</button>
 			<sec:authorize access="isAnonymous()">
 	        	<div >
 	            	<p class="cmt_login_message mt-4 mb-5" >로그인 후 나만의 레시피를 저장하실 수 있습니다</p>

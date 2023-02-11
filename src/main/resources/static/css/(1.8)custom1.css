@@ -1,7 +1,7 @@
 .content_header{
   margin-bottom: 10px;
   font-size: 2.5rem;
-  font-family: 'Bareun_hipi';
+  font-family: 'BMJUA';
 }
 /* body{
 	margin-left: 10px;
@@ -9,20 +9,22 @@
 	
 } */
 .content{
-	background-color: #F8F4EA;
     border-radius: 20px;
 }
 .content_header{
     margin-bottom: 10px;
-    font-size: 2.25rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    font-family: 'Bareun_hipi';
+    font-family: 'BMJUA';
     text-align: center;
  }
 .custom_subject_txt {
 	text-align: center;
+	font-family: 'BMJUA';
+	font-size: 1.5rem;
 }
 .custom_table{
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'BMJUA';
+  font-size: 1.3rem;
 }
 
