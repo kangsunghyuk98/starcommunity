@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,7 @@
  <div class="container col-lg-6 col-md-8 col-sm-10 mb-5">
     <div class="mypage_table">
         <div class="content_header">나만의 레시피</div>
+        <b><sec:authentication property="principal.to.nickname"/></b> 님께서 제작하신 나만의 레시피는 <b>${myCustomCount}</b>개 입니다.
         <hr>
         <table class="table table-hover table_margin">
             <thead>

@@ -24,7 +24,7 @@
 	String drinkInfo = to.getDrinkInfo();
 
     List<BeverageCmtTO> allCmtList = (List<BeverageCmtTO>) request.getAttribute("allCmtList");
-
+    
 %>
     
 <!DOCTYPE html>
@@ -51,9 +51,11 @@
     <script type="text/javascript" src="/js/(1)header.js"></script>
     
    <script>
+   
     	$(document).ready(function () {
-    		let text = document.getElementById("comment").innerText;
+            
     		$(".cmt_btn").on("click", function(){
+    			let text = document.getElementById("comment").innerText;
     			if( text != "" || text != null ){
     				alert("코멘트가 등록되었습니다");
     			} else {
@@ -68,7 +70,7 @@
                     const urlParams = new URLSearchParams(queryString);
 
                     let bevcseq = $(this).attr('value');
-                    let seq = urlParams.get("seq");
+                    let seq = urlParams.get("seq"); 
 
                     $.ajax({
                         type: 'POST',
@@ -92,8 +94,90 @@
                     return false;
                 }
             });
+            
+            let seq = '<%=seq%>';
+        	let addNum = 3;
+        	
+        	
+            $('.show_cmt_btn').on('click', function(){
 
-    	});    	 
+            	addCmt(seq, addNum);
+            	addNum = addNum + 3;
+            	//console.log(addNum);
+            	
+            	return addNum; 
+            });
+            
+            $('.close_cmt_btn').on('click', function(){
+            	$('#cmt_table').empty();
+            	addNum = 3
+            	
+            	return addNum;
+            });
+
+  		});
+    	
+    	function addCmt(seq, addNum){
+    	    $.ajax({
+    	        type: 'POST',
+    	        url: '/Beverage_add_cmt',
+    	        data: {
+    	            seq: seq,
+    	            addNum: addNum
+    	        },
+    	        success: function (result) {
+    	        	
+    	        	let memberKey = 0;
+    	        	let KeyResult = false;
+    	        
+    	        	<sec:authorize access="isAuthenticated()">
+    	        	<sec:authentication property="principal" var="principal"/>;
+    	    	    	memberKey = ${principal.to.memberKey};
+    	    	    	let memberKeyStr = memberKey.toString();
+    	    	    	KeyResult = (memberKeyStr == item.memberKey);
+    	        	</sec:authorize>
+    	        	
+   	            	// console.log(result);
+    	            let html = '';
+
+    	            $.each(result, function (index, item) {
+
+    	            	 html += '<tr class="clearfix border-top comment_tr">';
+   	                     html += '    <td class="coment_re_txt float-start">';
+   	                     html += '        <div class="mt-2 mb-2">';
+   	                     html += '            <strong>'+ item.nickname +'</strong>('+ item.cdate +')';
+    	                 html += '        </div>';
+   	                     html += '        <div class="coment_re_txt mb-2">';
+   	                     html += '            '+ item.comment +'';
+   	                     html += '        </div>';
+   	                     html += '    </td>';
+   	                     
+   	                     //console.log("memberKeyStr : " + memberKeyStr + " " + typeof memberKeyStr);
+	                     //console.log("item.memberkey : " + item.memberKey + " " + typeof item.memberKey);
+	                     
+	                   	 console.log(KeyResult);
+	                   	// if( memberKeyStr == item.memberKey ){ => 왜 이 조건문은 false로 나오는가?ㄴ
+   	                     if( KeyResult ){
+   	                    	console.log("true ");
+   	                    	html += '            <td class="coment_re_btn float-end">';
+       	                    html += '               <button type="button" value="'+ item.bevcseq +'" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>';
+       	                    html += '            </td>';
+       	                    
+   	                     } else {
+   	                    	console.log("false ");
+   	                     }
+    	                 html += '</tr>';
+    	            });
+    	            $("#cmt_table").append(html);
+    	            
+    	        },
+    	        error: function () {
+    	            alert('[error] 댓글추가 실패. ' + err.status)
+    	            return;
+    	        }
+    	    });
+
+    	}   
     </script>
 </head>
 
@@ -176,11 +260,9 @@
 
             <!-- 댓글 리스트 -->
             <div class="comment">
-                <table class="container-fluid">
+                <table class="container-fluid" >
                     <!-- 댓글이 들어가는 영역 -->
-
-                    <c:forEach var="bto" items="${allCmtList}">
-
+                    <c:forEach var="bto" items="${allCmtList}" begin="0" end="2">
    					<c:out value="${i}"/>
                         <tr class="clearfix border-top comment_tr">
                             <td class="coment_re_txt float-start">
@@ -193,29 +275,25 @@
                             </td>
 
                             <sec:authorize access="isAuthenticated()">
-
                                 <sec:authentication property="principal" var="principal"/>
-
                                 <c:if test="${principal.to.memberKey eq bto.memberKey}">
                                     <td class="coment_re_btn float-end">
                                         <button type="button" value="${bto.bevcseq}" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>
                                     </td>
                                 </c:if>
-
                             </sec:authorize>
-
                         </tr>
-
                     </c:forEach>
-
                 </table>
-	                <div class="coment_re_view">
-	                    <button type="button" class="btn btn-sm see_more_btn">코멘트 더보기</button>
-	                </div>
+                <table class="container-fluid" id="cmt_table">
+                </table>
+                <div class="coment_re_view">
+                    <button type="button" class="btn btn-sm show_cmt_btn">코멘트 더보기</button>
+                    <button type="button" class="btn btn-sm close_cmt_btn">코멘트 접기</button>
+                </div>
             </div>
         </div>
     </div>
-
 <!-- 풋터 영역 -->
 <jsp:include page="../include/footer.jsp"/>
 </body>

@@ -184,7 +184,7 @@ public interface MapperInter {
     @Select("select count(*) from custom_recipe where memberkey = #{memberKey}")
     int countAllMyCustom(String memberKey);
 
-    @Select("select * from custom_recipe where memberkey = #{memberKey} limit #{startNo},10")
+    @Select("select cusseq, date_format(wdate, '%Y-%m-%d') wdate, beverage, recipe from custom_recipe where memberkey = #{memberKey} limit #{startNo},10")
     List<MyCustomTO> selectMyCustomList(String memberKey, int startNo);
 
 }

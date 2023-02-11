@@ -89,7 +89,7 @@ AOS.init();
 
             <c:forEach var="to" items="${boardLists}">
 
-        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
           		<div class="service">
             		<div class="service-icon color-1 mb-4">
               			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03">
