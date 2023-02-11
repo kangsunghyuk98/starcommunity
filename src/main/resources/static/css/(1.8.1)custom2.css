@@ -7,25 +7,26 @@
 	
 } */
 .content{
-	background-color: #F8F4EA;
+	
     border-radius: 20px;
+    font-family: 'BMJUA';
 }
 .content_header{
     margin-bottom: 10px;
     font-size: 2.25rem;
     font-weight: bold;
-    font-family: 'Bareun_hipi';
+    font-family: 'BMJUA';
     text-align: center;
  }
 .list-group-item{
-	background-color: #F8F4EA;
+	
 }
 .Beverage_name{
-    font-family: Bareun_hipi; 
+    font-family: 'BMJUA'; 
     font-size: x-large;
     font-weight: bold;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 #beverage_img{
@@ -64,8 +65,12 @@
 } */
 
 .li_label{
-    font-size: 1rem;
+    font-size: 1.25rem;
     /* margin-right: 5px; */
+}
+
+.form-select{
+	font-size: 1.2rem;
 }
 
 .text_result{
@@ -77,11 +82,12 @@
     /* border-color: gray; */
     font-size: 2rem;
     text-align : center;
-    font-family : Bareun_hipi;
+    font-family: 'BMJUA';
 
 }
 
 .recipe_btn{
     float: right;
     margin-top: 10px;
+    margin-right: 1%;
 }

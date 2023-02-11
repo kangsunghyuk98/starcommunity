@@ -145,10 +145,11 @@
 	<br>
 	<div class="container content col-lg-6 col-md-8 col-sm-10 px-5 py-5 ">
 		<div class="content_header">My Custom Recipe</div>
+		<hr>
 		<dlv class="row mt-5 justify-content-center">
-			<div class="col-sm-6" >
-				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2">
-				<div class=" mt-2 mb-4 Beverage_name "><%=name %></div>
+			<div class="col-sm-6">
+				<img id="beverage_img" src="<%=image %>" class="img-fluid img-thumbnail mt-2" style="width: 100%;">
+				<div class="mt-2 mb-4 Beverage_name"><%=name %></div>
      		</div>
 			<div class="custom_text col-sm-6" >
 				<form id="custom_form">
@@ -393,18 +394,18 @@
 		<div class="mb-4">
 			<form>		
 			<!-- 카카오 공유 버튼 (임시) -->		 
-			    <input type="button" onClick="sendLinkDefault();" class="btn btn-outline-secondary recipe_btn" value="카카오톡 공유하기"/>
+			    <input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="카카오톡 공유하기"/>
 			    
 			
 			<sec:authorize var="" access="isAuthenticated()">
 				
 					<form action="/CustomInsert" method="post">		                              
 	                  
-						<button type="button" id="return_menu" class="btn btn-outline-secondary recipe_btn" >레시피 저장</button>
+						<button type="button" id="return_menu" class="btn btn-success recipe_btn" >레시피 저장</button>
 		 		   </form>	
 	 		  
 			</sec:authorize>	
-				<button type="button" class="btn btn-outline-secondary recipe_btn  " onclick="location.href='./Custom1'">메뉴</button>
+				<button type="button" class="btn btn-success recipe_btn" onclick="location.href='./Custom1'">메뉴</button>
 			<sec:authorize access="isAnonymous()">
 	        	<div >
 	            	<p class="cmt_login_message mt-4 mb-5" >로그인 후 나만의 레시피를 저장하실 수 있습니다</p>
