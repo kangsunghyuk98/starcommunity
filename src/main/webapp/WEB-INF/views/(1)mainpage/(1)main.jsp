@@ -99,7 +99,7 @@ AOS.init();
               			<p style="font-size: 1.2rem;"><span>${to.subject}</span></p>
               			<h3><span>${to.nickname}</span></h3>
             			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
-            			<a href="#" class="link-fancy">글 보러가기</a>
+            			<a href="/board/BoardView?category=${to.category}&boardname=${to.boardname}&currentPage=1&seq=${to.seq}" class="link-fancy">글 보러가기</a>
             		</div>
           		</div>
        		</div>
