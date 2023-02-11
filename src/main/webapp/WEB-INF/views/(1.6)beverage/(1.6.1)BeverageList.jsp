@@ -147,7 +147,7 @@
 <!-- 콘텐츠 영역 -->
 <br>
 <br>
-<div class="container col-lg-6 col-md-8 col-sm-10 contents">
+<div class="container col-lg-8 col-md-8 col-sm-10 contents">
     <div class="content_header mt-auto "><%=category %></div>
     <hr class="mt-4 mb-4">
     <!-- 검색, 정렬 -->
