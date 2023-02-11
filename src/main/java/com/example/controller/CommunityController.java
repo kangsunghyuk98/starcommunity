@@ -241,14 +241,14 @@ public class CommunityController {
     public int boardDelete(String boardname, int seq, String imgname) {
     	int flag = service.deleteBoardContent(boardname, seq);
     			
-    	String path = "C:/Users/zxzz9/Documents/files/";
+    	//String path = "C:/Users/zxzz9/Documents/files/";
     	//String path = "C:/Team Project/StarbucksCommunity/src/main/webapp/upload";
     	
     	//파일 삭제
     	if (flag == 0 && imgname != null) {
     		try {
-    			File file = new File(path + imgname);
-    			//File file = new File(multipartLocation + imgname);
+    			//File file = new File(path + imgname);
+    			File file = new File(multipartLocation + "/" + imgname);
     			
     			boolean result = file.delete();
     			
