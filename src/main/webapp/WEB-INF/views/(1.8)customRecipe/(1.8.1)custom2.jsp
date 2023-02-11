@@ -61,10 +61,10 @@
 					url: '/CustomInsert',
 						data:{
 						recipe: recipe,
-							memberKey: <sec:authentication property="principal.to.memberKey"/>
-							
+						memberKey: <sec:authentication property="principal.to.memberKey"/>,
+						beverage: beverage	
 						},
-						dataType:'json',
+						dataType:'text',
 						success: function(result){
 							
 					},
