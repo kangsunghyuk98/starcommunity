@@ -110,6 +110,9 @@ public interface MapperInter {
     @Delete("delete from likecheck where memberkey = #{memberKey}")
     int deleteMyLikecheck(String memberKey);
 
+    @Delete("delete from custom_recipe where memberkey = #{memberKey}")
+    int deleteMyCustom(String memberKey);
+
     @Delete("delete from member where id = #{id} and password = #{password}")
     int deleteMemberInfo(String id, String password);
 
