@@ -18,6 +18,52 @@
     <title>Recommend</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  	<script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+	        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    
+    <!--  카카오 공유하기 (임시) -->
+	<script type="text/javascript">
+	try {
+		  function sendLinkDefault() {
+			var urlNow = window.location.href;
+			var image =$('#recommend_img').val();
+			console.log(urlNow);
+		    Kakao.init('c8df747b7573e11f1ae3c257b67fa344')
+		    Kakao.Link.sendDefault({
+		      objectType: 'feed',
+		      content: {
+		        title: '나만의 레시피 공유',
+		        description: '스타벅스에서 즐기실 수 있는 나만의 레시피 공유',
+		        imageUrl:
+		          image,
+		        link: {
+		          mobileWebUrl: urlNow,
+		          webUrl: urlNow
+		        },
+		      },		      
+		      buttons: [
+		        {
+		          title: '웹으로 보기',
+		          link: {
+		            mobileWebUrl: urlNow,
+		            webUrl: urlNow
+		          },
+		        },
+		        {
+		          title: '앱으로 보기',
+		          link: {
+		            mobileWebUrl: urlNow,
+		            webUrl: urlNow
+		          },
+		        },
+		      ],
+		    })
+		  }
+		; window.kakaoDemoCallback && window.kakaoDemoCallback() }
+		catch(e) { window.kakaoDemoException && window.kakaoDemoException(e) }
+	</script>
+	
 </head>  
 
 <body>
@@ -31,7 +77,7 @@
     <section id="main" class="mx-auto mb-5 px-3 py-5">
         <div class="content_header">Can I recommend something to you?</div>
         <div class="col-lg-6 col-md-8 col-sm-10 mx-auto my-5">
-            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid" style="max-width: 90%;">
+            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid" id="recommend_img"  style="max-width: 90%;">
         </div>
         <p>
             오늘은 뭘 마실까 고민이 되시나요?<br />
@@ -66,6 +112,9 @@
 
         </div>
         <button type="button" class="btn btn-success mt-5" onclick="location.href='/home/recommend'" style="width: 20%">  Again?  </button>
+        <!-- 카카오 공유 버튼 (임시) -->		 
+    	<input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="카카오톡 공유하기"/>
+    	
         <!-- 결과 내용을 sns로 공유하는 기능으로 확장할 가능성을 대비해 주석처리 -->
         <!-- <button type="button" class="btn btn-primary kakao mt-3 py-2 px-3" onclick="">공유하기</button> -->
     </section>
