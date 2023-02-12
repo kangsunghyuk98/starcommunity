@@ -115,9 +115,9 @@
         <div>
         	<button type="button" class="btn btn-success mt-5" onclick="location.href='/home/recommend'" style="width: 20%">  Again?  </button>
         </div>
-        <div class="mt-2">
+        <div class="mt-4">
         	<!-- 카카오 공유 버튼 (임시) -->		 
-    		<input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="카카오톡으로 음료 추천 기능 공유하기"/>
+    		<input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="  카카오톡으로 음료 추천 기능 공유하기  "/>
     	</div>
         <!-- 결과 내용을 sns로 공유하는 기능으로 확장할 가능성을 대비해 주석처리 -->
         <!-- <button type="button" class="btn btn-primary kakao mt-3 py-2 px-3" onclick="">공유하기</button> -->
