@@ -27,14 +27,14 @@
 	try {
 		  function sendLinkDefault() {
 			var urlNow = window.location.href;
-			var image =$('#recommend_img').val();
+			var image =$('#Himage').val();
 			console.log(urlNow);
 		    Kakao.init('c8df747b7573e11f1ae3c257b67fa344')
 		    Kakao.Link.sendDefault({
 		      objectType: 'feed',
 		      content: {
-		        title: '나만의 레시피 공유',
-		        description: '스타벅스에서 즐기실 수 있는 나만의 레시피 공유',
+		        title: '음료 추천 공유',
+		        description: '오늘의 기분에 따라서 취향에 따라서 맞춤형 음료를 추천해드려요.',
 		        imageUrl:
 		          image,
 		        link: {
@@ -71,13 +71,14 @@
 <jsp:include page="../include/header.jsp"/>
 
 <!-- 콘텐츠 영역 -->
+<input type="hidden" id="Himage" class="Himage" value="https://i.ibb.co/QnkGzjH/1-7-main.jpg">
 <br>
 <br>
 <div class="container col-lg-8 col-md-8 col-sm-10">
     <section id="main" class="mx-auto mb-5 px-3 py-5">
         <div class="content_header">Can I recommend something to you?</div>
         <div class="col-lg-6 col-md-8 col-sm-10 mx-auto my-5">
-            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid" id="recommend_img"  style="max-width: 90%;">
+            <img src="/img/(1.7)_main.jpg" alt="mainImage" class="img-fluid" style="max-width: 90%;">
         </div>
         <p>
             오늘은 뭘 마실까 고민이 되시나요?<br />
@@ -111,10 +112,13 @@
         <div class="resultDesc">
 
         </div>
-        <button type="button" class="btn btn-success mt-5" onclick="location.href='/home/recommend'" style="width: 20%">  Again?  </button>
-        <!-- 카카오 공유 버튼 (임시) -->		 
-    	<input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="카카오톡 공유하기"/>
-    	
+        <div>
+        	<button type="button" class="btn btn-success mt-5" onclick="location.href='/home/recommend'" style="width: 20%">  Again?  </button>
+        </div>
+        <div class="mt-2">
+        	<!-- 카카오 공유 버튼 (임시) -->		 
+    		<input type="button" onClick="sendLinkDefault();" class="btn btn-warning recipe_btn" value="카카오톡으로 음료 추천 기능 공유하기"/>
+    	</div>
         <!-- 결과 내용을 sns로 공유하는 기능으로 확장할 가능성을 대비해 주석처리 -->
         <!-- <button type="button" class="btn btn-primary kakao mt-3 py-2 px-3" onclick="">공유하기</button> -->
     </section>
