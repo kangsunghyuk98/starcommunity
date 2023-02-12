@@ -27,16 +27,6 @@
 				checkNickname();
 	        });
 			
-			$(document).on('click', '#password_check_btn', function (){
-        		if($("#txtpwchk").val() == $("#txtpw").val()){
-					$(".successPWChk").text("비밀번호가 일치합니다.");
-					$(".successPWChk").css("color", "green");
-
-				}else{
-					$(".successPWChk").text("비밀번호가 일치하지 않습니다.");
-					$(".successPWChk").css("color", "red");
-				}
-            });
 			 
 			$(document).on('click', '#password_modify_btn', function(){
 				
@@ -53,7 +43,6 @@
 				cfmHtml += '    <th>비밀번호 확인</th>';
 				cfmHtml += '    <td>';
 				cfmHtml += '        <input type="password" id="txtpwchk" required  />';
-				cfmHtml += '        <button id="password_check_btn" type="button" class="btn btn-secondary btn-sm">중복확인</button>';
 				cfmHtml += '		<label class="point successPWChk"></label>';
 				cfmHtml += '    </td>';
 			
@@ -61,7 +50,18 @@
 	            $(".password_table").append(html);
 	            $(".password_cfm_table").append(cfmHtml);
 	            
-	           
+	            
+	            $("#txtpwchk").blur(function(){
+	        		if($("#txtpwchk").val() == $("#txtpw").val()){
+						$(".successPWChk").text("비밀번호가 일치합니다.");
+						$(".successPWChk").css("color", "green");
+
+					}else{
+						$(".successPWChk").text("비밀번호가 일치하지 않습니다.");
+						$(".successPWChk").css("color", "red");
+					}
+	            });
+	            
 			});
 	    });
 	    
@@ -69,6 +69,9 @@
 	    	let fnResult;
 	    	let NnResult;
 	    	let nickname = '<sec:authentication property="principal.to.nickname" />';
+
+	    	/* let dNickname = encodeURIComponent(nickname);
+	    	console.log( dNickname ); */
 	    	
 	    	if ( $('#txtnick').val() != '' ) {
 	    		if( $('#txtnick').val() == nickname ){
@@ -111,9 +114,11 @@
 	    
 	    function confirmSubmit() {	    	 
 				if(  $('#result_nick_pass').text() == '사용 가능한 닉네임입니다.' || $('#result_nick_pass').text() == '현재 닉네임입니다.'){
-					if( $(".successPWChk").text() != "비밀번호가 일치합니다." ){
+					
+					if( $("#txtpw").val() == $("#txtpwchk").val() || document.querySelector('.successPWChk') == null  ){
+						
 					} else {
-						alert('비밀번호 중복확인을 해주세요.');
+						alert('비밀번호를 확인해 해주세요.');
 		    			return false;
 					}
 	    		} else {
@@ -121,7 +126,6 @@
 	    			return false;
 	    		}
 		}
-		
     </script>
 </head>
 
@@ -135,11 +139,10 @@
  <div class="container col-lg-8 col-md-8 col-sm-10 mb-5">
     <div class="container-sm mypage_table">
         <div class="content_header">내 정보</div>
-        <hr>
 
         <form action="/member/myinfo_modify_ok" method="post" onsubmit="return confirmSubmit();">
 	        <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
-	        <table class="table table-hover table_margin">
+	        <table class="table table-hover table_margin border-top">
 	            <thead id="modify_table">
 	                <tr>
 	                    <th width="20%;" >이름</th>

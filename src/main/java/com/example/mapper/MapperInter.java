@@ -73,6 +73,9 @@ public interface MapperInter {
     @Update("update member set nickname = #{nickname}, email = #{email}, password = #{password} where memberkey = #{memberKey}")
     int modifyMemberInfo(MemberTO to); // 내정보 수정 쿼리
 
+    @Update("update member set nickname = #{nickname}, email = #{email} where memberkey = #{memberKey}")
+    int modifyMemberInfoNoPW(MemberTO to); // 내정보 수정 쿼리
+    
     // 회원 탈퇴 전 모든 memberKey랑 연관된 부분 삭제 처리 시작
     @Delete("delete from dlife_board where memberkey = #{memberKey}")
     int deleteMyDlifeBoard(String memberKey);

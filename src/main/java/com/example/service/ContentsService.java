@@ -22,9 +22,18 @@ public class ContentsService {
 
 
     public int modifyMemberInfo(MemberTO to) {
-        to.setPassword(passwordEncoder.encode(to.getPassword()));
+    	
+        System.out.println(to.getPassword());
+        
+        int result = 0;
+        if ( to.getPassword() == null ) {
+        	result = mapperInter.modifyMemberInfoNoPW(to);
+        } else {
+        	to.setPassword(passwordEncoder.encode(to.getPassword()));
+        	result = mapperInter.modifyMemberInfo(to);
+        }
 
-        int result = mapperInter.modifyMemberInfo(to);
+        
         int flag = 1;
 
         if (result == 1) {
