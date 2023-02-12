@@ -16,6 +16,113 @@
     <title>마이페이지</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	    
+    <script type="text/javascript">
+	    $(document).ready(function(){
+		    
+			$('#nickcheck_btn').click(function(){
+				$('#result_nick_pass').empty();
+				$('#result_nick_false').empty();
+				checkNickname();
+	        });
+			
+			$(document).on('click', '#password_check_btn', function (){
+        		if($("#txtpwchk").val() == $("#txtpw").val()){
+					$(".successPWChk").text("비밀번호가 일치합니다.");
+					$(".successPWChk").css("color", "green");
+
+				}else{
+					$(".successPWChk").text("비밀번호가 일치하지 않습니다.");
+					$(".successPWChk").css("color", "red");
+				}
+            });
+			 
+			$(document).on('click', '#password_modify_btn', function(){
+				
+				$(".password_table").empty();
+				$(".password_cfm_table").empty();
+				
+				let html = '';
+				html += '    <th width="20%;" >비밀번호 변경</th>';
+				html += '    <td>';
+				html += '        <input type="password" id="txtpw" name="password" placeholder="수정할 비밀번호를 입력해주세요." required />';
+				html += '    </td>';
+				
+				let cfmHtml = '';			
+				cfmHtml += '    <th>비밀번호 확인</th>';
+				cfmHtml += '    <td>';
+				cfmHtml += '        <input type="password" id="txtpwchk" required  />';
+				cfmHtml += '        <button id="password_check_btn" type="button" class="btn btn-secondary btn-sm">중복확인</button>';
+				cfmHtml += '		<label class="point successPWChk"></label>';
+				cfmHtml += '    </td>';
+			
+				
+	            $(".password_table").append(html);
+	            $(".password_cfm_table").append(cfmHtml);
+	            
+	           
+			});
+	    });
+	    
+	    function checkNickname() {
+	    	let fnResult;
+	    	let NnResult;
+	    	let nickname = '<sec:authentication property="principal.to.nickname" />';
+	    	
+	    	if ( $('#txtnick').val() != '' ) {
+	    		if( $('#txtnick').val() == nickname ){
+	    			  $('#result_nick_pass').text('현재 닉네임입니다.');
+	    		} else {
+	                $.ajax({
+	                    type: 'POST',
+	                    url: '/guest/nickcheck',
+	                    data: 'nickname=' + $('#txtnick').val(),
+	                    dataType: 'text',
+	                    async: false,
+	                    success: function(result) {
+	                        if (result == 0) {
+	                        	console.log(result);
+	                            $('#result_nick_pass').text('사용 가능한 닉네임입니다.');
+	                            NnResult = $('#result_nick_pass').text();
+	                        } else {
+	                        	console.log(result);
+	                            $('#result_nick_false').text('이미 사용중인 닉네임입니다.');
+	                            NnResult = $('#result_nick_false').text();
+	                        }
+	                    },
+	                    error: function(err) {
+		                	alert('error : ' + err.status);
+		                }
+	                });
+	    		}
+            } else {
+            	let NnResult = 1;
+                alert('닉네임을 입력하세요.');
+                $('#txtnick').focus();
+                
+		    	return NnResult;
+            }
+	    	
+	    	fnResult = NnResult;
+	    	return fnResult;
+	    	
+	    } 	    
+	    
+	    function confirmSubmit() {	    	 
+				if(  $('#result_nick_pass').text() == '사용 가능한 닉네임입니다.' || $('#result_nick_pass').text() == '현재 닉네임입니다.'){
+					if( $(".successPWChk").text() != "비밀번호가 일치합니다." ){
+					} else {
+						alert('비밀번호 중복확인을 해주세요.');
+		    			return false;
+					}
+	    		} else {
+	    			alert('닉네임 중복확인을 해주세요.');
+	    			return false;
+	    		}
+		}
+		
+    </script>
 </head>
 
 <body>
@@ -30,10 +137,10 @@
         <div class="content_header">내 정보</div>
         <hr>
 
-        <form action="/member/myinfo_modify_ok" method="post">
+        <form action="/member/myinfo_modify_ok" method="post" onsubmit="return confirmSubmit();">
 	        <input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />" />
 	        <table class="table table-hover table_margin">
-	            <thead>
+	            <thead id="modify_table">
 	                <tr>
 	                    <th width="20%;" >이름</th>
 	                    <td><sec:authentication property="principal.to.name" /></td>
@@ -46,8 +153,10 @@
 	                    <th>닉네임</th>
 	                    <td>
 	                    	<div class="hstack gap-1">
-		                        <input type="text" name="nickname" value="<sec:authentication property="principal.to.nickname" />" />
-		                        <button id="check_btn" type="button" class="btn btn-secondary btn-sm">중복확인</button>
+		                        <input type="text" name="nickname" id="txtnick" value="<sec:authentication property="principal.to.nickname" />" />
+		                        <button id="nickcheck_btn" type="button" class="btn btn-secondary btn-sm" >중복확인</button>
+		                        <label id="result_nick_false" class="css_result" style="color: red"></label>
+		                        <label id="result_nick_pass" class="css_result" style="color: green"></label>
 	                        </div>
 	                    </td>
 	                </tr>
@@ -57,23 +166,19 @@
 	                        <input type="email"  name="email" value="<sec:authentication property="principal.to.email" />" />
 	                    </td>
 	                </tr>
-	                <tr>
-	                    <th>비밀번호 변경</th>
-	                    <td>
-	                        <input type="password"  name="password" placeholder="수정할 비밀번호를 입력해주세요." />
-	                    </td>
+	                
+	                <tr class="password_table">
 	                </tr>
-	                <tr>
-	                    <th>비밀번호 확인</th>
-	                    <td>
-	                        <input type="password"   />
-	                    </td>
+	                
+	                <tr class="password_cfm_table">
 	                </tr>
 	            </thead>
 	        </table>
 	        <div class="d-flex flex-row-reverse">
-	        	<button id="m_btn" type="submit" class="btn btn-outline-secondary btn-lg px-4 ">수정</button>
-	        	<button id="c_btn" type="button" class="btn btn-outline-secondary btn-lg px-4 mx-1" onclick="location.href='/member/myinfo'" >취소</button>
+	        	
+	        	<button id="m_btn" type="submit" class="btn btn-outline-secondary  px-4 ">수정</button>
+	        	<button id="c_btn" type="button" class="btn btn-outline-secondary  px-4 mx-1" onclick="location.href='/member/myinfo'" >취소</button>
+	        	<button id="password_modify_btn" type="button" class="btn btn-secondary btn" >비밀번호 변경하기</button>
 	        </div>
         </form>
 		
