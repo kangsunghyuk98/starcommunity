@@ -21,7 +21,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <title>Index</title>
-
+	    
     <script src="https://code.jquery.com/jquery-3.6.3.js"
             integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -29,27 +29,7 @@
             crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/js/(1)header.js"></script>
-    <!-- <style>
-        #main_contents {
-            position: absolute;
-            font-size: 5em;
-            width: 300px;
-            top: 200px;
-            left: 400px;
-            animation: slideContents 2s ease-out;
-        }
-        
-        @keyframes slideContents {
-            from {
-               left: -100px;
-                opacity: 0;
-            }
-            to {
-                left: 400px;
-                opacity: 1;
-            }
-        }
-    </style> -->
+
 </head>
 
 <body>
@@ -82,26 +62,30 @@ AOS.init();
 <div class="untree_co-section" id="page2">
     <div class="container">
     	<div class="row">
-        	<div class="col-12 mb-5" data-aos="fade-up">
+        	<div class="col col-12 mb-5" data-aos="fade-up">
           		<span class="caption">recommed</span>
           		<h2 class="heading">실시간 추천글</h2>
+          		<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
         	</div>
 
             <c:forEach var="to" items="${boardLists}">
-
-        	<div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
-          		<div class="service">
-            		<div class="service-icon color-1 mb-4">
-              			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03" id="recommed_img">
-                        <span class="count_num">${to.recommend}</span><span style="color: #006400; font-size: 0.75rem;">추천수</span>
-            		</div>
-            		<div class="service-contents">
-              			<p style="font-size: 1.2rem;"><span>${to.subject}</span></p>
-              			<h3><span>${to.nickname}</span></h3>
-            			<p style="color: gray">로그인하지 않은 경우 로그인창으로 이동합니다.</p>
-            			<a href="/board/BoardView?category=${to.category}&boardname=${to.boardname}&currentPage=1&seq=${to.seq}" class="link-fancy">글 보러가기</a>
-            		</div>
-          		</div>
+			
+        	<div class=" col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+	        	<div class="col">
+	          		<div class="service mb-5">
+	            		<div class="service-icon color-1 mb-4 d-flex">	           			
+	             			<img src="/img/feature-tile-icon-03.svg" alt="Feature tile icon 03" id="recommed_img" >
+	                        <span class="count_num p-1 mx-2">${to.recommend}</span>
+	            		</div>
+	            		
+	            		<div class="service-contents">
+	              			<p style="font-size: 1.2rem;"><span>${to.subject}</span></p>
+	              			<h3><span>${to.nickname}</span></h3>
+	            			
+	            			<a href="/board/BoardView?category=${to.category}&boardname=${to.boardname}&currentPage=1&seq=${to.seq}" class="link-fancy">글 보러가기</a>
+	            		</div>
+	          		</div>
+	        	</div>
        		</div>
 
             </c:forEach>
@@ -119,7 +103,7 @@ AOS.init();
 				<h2 class="display-6">일상을 나누는 것부터 프리퀀시 교환까지 모두 별다방 커뮤니티에서 가능합니다.</h2>
 			</div>
 		</div>
-		<div class="row d-flex align-items-center">
+		<div class="row d-flex ">
 			<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
   				<span class="h5 fw-lighter">01.</span>
   				<h3 class="py-5 border-top border-dark">일상게시판</h3>
@@ -129,7 +113,7 @@ AOS.init();
 			<div class="col-md-6 col-lg-4 py-vh-4 pb-0" data-aos="fade-up" data-aos-delay="400">
   				<span class="h5 fw-lighter">02.</span>
   				<h3 class="py-5 border-top border-dark">매장 방문 후기 게시판</h3>
-  				<p class="page2_text">오늘 내가 방문한 스타벅스 매장은 어땠나요? 나의 스타벅스 매장 방문후기를 남겨주세요. 내가 남긴 방문 후기는 다른사람들이 보고 댓글을 남길 수도 있어요. 또한 다른 사람들의 방문후기를 보고 다음 방문 예정 매장에 대한 정보도 알아보세요!</p>
+  				<p class="page2_text">오늘 내가 방문한 스타벅스 매장은 어땠나요? 나의 스타벅스 매장 방문후기를 남겨주세요.  또한 다른 사람들의 방문후기를 보고 다음 방문 예정 매장에 대한 정보도 알아보세요!</p>
   				<a href="/ReviewBoardList?boardname=review_board" class="link-fancy">매장방문 후기게시판 바로가기</a>
 			</div>
 			<div class="col-md-6 col-lg-4 py-vh-6 pb-0" data-aos="fade-up" data-aos-delay="600">

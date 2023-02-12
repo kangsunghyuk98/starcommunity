@@ -178,12 +178,13 @@ background: rgba(16, 123, 233, 0.07); }
 
 .service .service-icon {
 font-size: 24px;
-display: inline-block;
+display: inline-block; 
 width: 50px;
 height: 50px;
 border-radius: 30%;
 position: relative;
 color: #ffffff; }
+
 .service .service-icon.color-1 {
   background-color: #6fe7dd;
   -webkit-box-shadow: 0 2px 10px 0 rgba(111, 231, 221, 0.3);
