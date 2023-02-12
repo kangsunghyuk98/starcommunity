@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body stlye="bg-color: #fffefc;">
 <!-- 헤더 영역 -->
     <jsp:include page="../include/header.jsp"/>
 
@@ -46,7 +46,7 @@ AOS.init();
 <!-- 1페이지 -->
 <div class="w-100 overflow-hidden bg-gray-100" id="top">
 <div class="container position-relative">
-  <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main_img.webp); background-size: 80%, 60%; background-repeat: no-repeat; opacity: 0.5;"></div>
+  <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0" data-aos="fade-left" style="background-image: url(/img/main_img.webp); background-size: 90%; background-repeat: no-repeat; opacity: 0.5;"></div>
     <div class="row">
 		<div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
   			<h1 class="display-1 fw-bold mt-5">스타벅스의 모든것,</h1>
@@ -196,7 +196,7 @@ AOS.init();
             <div class="service-contents">
               <h2>음료 게시판</h2>
               <p style="font-size: 1.2rem;">가장 맛있는 커스텀 레시피는 뭘까요? 음료 게시판에서 내가 만든 커스텀 레시피를 공유하고 다른 커스텀 레시피를 확인해보세요.</p>  
-              <p><a href="#" class="read-more">음료게시판 바로가기</a></p>
+              <p><a href="/BeverageBoardList?boardname=beverage_board" class="read-more">음료게시판 바로가기</a></p>
             </div>
           </div>
         </div>
