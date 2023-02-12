@@ -29,9 +29,6 @@
 
 }
 
-.about-img{
-}
-
 /* 수정한 어바웃*/
 
 body {
@@ -68,3 +65,17 @@ font-size: 13px;
 text-transform: uppercase;
 font-weight: 700;
 display: inline-block; }
+
+.team{
+	font-size: 1.2rem;
+}
+
+.team_text{
+	margin-bottom: -0.5%;
+	font-size: 1.25rem;
+}
+
+.team_role{
+	font-size: 1.3rem;
+	color: darkgray;
+}

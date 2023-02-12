@@ -60,7 +60,7 @@ AOS.init();
         	<div class="col-lg-6">
           		<div class="mb-4">
             		<span class="caption">About</span>
-            		<h2 class="heading">팀 소개</h2>
+            		<h2 style="font-weight: bold;">소개</h2>
           		</div>
           		<div class="mb-4">
             		<p style="font-size: 1.35rem;">방문을 환영합니다. 저희는 별다섯팀입니다. 5명이 모여서 별점 5개를 목표로 사이트를 제작했습니다. 2023년 1월 13일부터 프로젝트를 진행했고 같은해 2023년 2월 16일에 프로젝트를 마무리했습니다.</p>
@@ -71,10 +71,27 @@ AOS.init();
           		<br>
           		<br>
         	</div>
-      	</div>
+      	</div> 
 	</div>
 </div>
-
+<div class="container col-lg-8 col-md-8 col-sm-10 About-contents vstack gap-2 mx-auto">
+	<div class="mb-4">
+		<span class="caption">words</span>
+    	<h2 style="font-weight: bold;">소감</h2>
+    </div>
+    <div class="col team-image mt-2 mb-5" >
+    	<image src="/img/(1.5)Member.PNG" class="img-fluid" width="400"; alt="별다섯 이미지"></image>
+    </div> 
+    <div class="team">
+     	
+      	<p class="team_text"><span style="color: #6EDCDC;">민트티</span>에 샷 추가 일명 '민샷추'를 즐길 줄 아는 진정한 민트 러버! 음료 추천에 진심인 전 바리스타, 현 개발자로서 별다섯팀의 팀장을 맡았습니다.</p>
+       	<p class="team_role">from. s팀장 이효원</p>
+       	
+       	<p class="team_text">팀 프로젝트를 하면서 비로소야 개발과 겨우 친해진 기분이었어요~ 최애 음료는 달달하지만 씁쓸한 티 많이 넣은 <span style="color: #FFAA28;">자몽허니블랙티</span>입니다.</p>
+		<p class="team_role">from. 프론트 김민수</p>
+	</div>
+</div>
+	
 <!-- 풋터 영역 -->
 <jsp:include page="../include/footer.jsp"/>
 	
