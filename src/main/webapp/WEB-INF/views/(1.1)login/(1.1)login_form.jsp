@@ -25,7 +25,7 @@
         <input type="password" name="password" placeholder="Password">
         
         <div class="row justify-content-center">
-        	<button type="submit" id="btn1" class="col-4 my-2" onclick="">로그인</button>
+        	<button type="submit" id="btn1" class="my-2" onclick="">로그인</button>
         	        
         	<div class="social_login row justify-content-center">
             	<div class="mb-2"><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
