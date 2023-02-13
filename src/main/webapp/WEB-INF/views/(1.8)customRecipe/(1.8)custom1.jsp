@@ -17,7 +17,7 @@
 		sbHtml.append("		<div class='row'>");
 		sbHtml.append("			<a href='./Custom2?name=" + name+"&seq="+seq +"'>"  );
 		sbHtml.append("				<img src='" + image + "'" + "class='img-thumbnail img-fluid' alt=''></a>" );
-		sbHtml.append("				<p class='beverage_name text-center'>" + name + "</p>");
+		sbHtml.append("				<p class='beverage_name text-center mt-3'>" + name + "</p>");
 		sbHtml.append("		</div>");
 		sbHtml.append("</div>");       
         	
@@ -58,7 +58,7 @@
 	    <div class="custom_table mb-5 content" >
 	        <div class="content_header mb-4">My Custom Recipe</div>
 	        <hr>
-	        <div class="mt-5 mb-4 custom_subject_txt" >음료의 이미지를 클릭하면 커스텀 페이지로 이동합니다</div>
+	        <div class="mt-5 mb-5 custom_subject_txt" >음료의 이미지를 클릭하면 커스텀 페이지로 이동합니다</div>
 	        <div class="container">
 	       		<div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
 	       		<%=sbHtml.toString() %>

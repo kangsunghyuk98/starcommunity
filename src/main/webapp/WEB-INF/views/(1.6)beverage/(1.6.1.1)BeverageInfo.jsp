@@ -236,7 +236,7 @@
 			<sec:authorize access="isAnonymous()">
 	        	<div >
 	            	<p class="cmt_login_message mt-4 mb-5" >로그인 후 댓글 서비스를 이용하실 수 있습니다</p>
-	            	<label class="mb-3 " for="comment" style="font-weight: bold;">Comments</label>
+	            	<label class="mb-3 " for="comment" style="font-weight: bold; font-family: 'BMJUA'; font-size: 1.5rem;">Comments</label>
 	            </div>
         	</sec:authorize>
             <sec:authorize access="isAuthenticated()">
@@ -246,7 +246,7 @@
 
                 <div class="write_comment">
                     <div class="mb-3 mt-3 ">
-                        <label for="comment">Comments:</label>
+                        <label for="comment" style="font-weight: bold; font-family: 'BMJUA'; font-size: 1.5rem;">Comments</label>
                         <textarea class="form-control mt-3" rows="2" id="comment" name="comment"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary float-end btn-sm mb-4 cmt_btn">코멘트 등록</button>
