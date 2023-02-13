@@ -55,7 +55,7 @@
 	<br>
 	<br>
 	<div class="container col-lg-8 col-md-8 col-sm-10">
-	    <div class="custom_table mb-5 content px-5 py-5" >
+	    <div class="custom_table mb-5 content" >
 	        <div class="content_header mb-4">My Custom Recipe</div>
 	        <hr>
 	        <div class="mt-5 mb-4 custom_subject_txt" >음료의 이미지를 클릭하면 커스텀 페이지로 이동합니다</div>
