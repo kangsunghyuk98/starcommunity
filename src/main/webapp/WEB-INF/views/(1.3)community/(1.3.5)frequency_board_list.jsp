@@ -124,13 +124,13 @@
 	    						let wdateSub = arr[i].wdate.slice(0, -5);
 	    						
 	    						html += '<tr>';
-	    						html += '    <td>'+ arr[i].seq +'</td>';
+	    						html += '    <td style="text-align: center;">'+ arr[i].seq +'</td>';
 	    						html += '    <td><a class="view_btn" href="/board/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
 	    						html += '    <td>'+ wdateSub +'</td>';
-	    						html += '    <td>'+ arr[i].hit +'</td>';
-	    						html += '    <td>'+ arr[i].recommend +'</td>';
-	    						html += '	 <td>';
+	    						html += '    <td style="text-align: center;">'+ arr[i].hit +'</td>';
+	    						html += '    <td style="text-align: center;">'+ arr[i].recommend +'</td>';
+	    						html += '	 <td style="text-align: center;">';
 	    						
 	    						if( arr[i].imgname != "" ){
 	    							html += '<img src="/img/icon/icon_file.gif">';	
