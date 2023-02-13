@@ -16,6 +16,9 @@
 		String subject = to.getSubject();
 		String content = to.getContent();
 		String wdate = to.getWdate();
+
+		String wdateSub = wdate.substring(0, wdate.length() - 5); 		
+		
 		int hit = to.getHit();
 		String imgname = to.getImgname();
 		String imgformat = to.getImgformat();
@@ -27,7 +30,7 @@
 		sbHtml.append("    <td style='text-align: center;'>"+ seq +"</td>");
 		sbHtml.append("    <td><a class='view_btn' href='/board/BoardView?category="+category+"&boardname="+boardname+"&currentPage="+currentPage+"&seq="+ seq +"'>"+ subject +"</a></td>");
 		sbHtml.append("    <td>"+ nickname +"</td>");
-		sbHtml.append("    <td>"+ wdate +"</td>");
+		sbHtml.append("    <td>"+ wdateSub +"</td>");
 		sbHtml.append("    <td style='text-align: center;'>"+ hit +"</td>");
 		sbHtml.append("    <td style='text-align: center;'>"+ recommend +"</td>");
 		sbHtml.append("    <td style='text-align: center;'>");
@@ -118,11 +121,13 @@
 	    					
 	    					for(let i=0; i <= index; i++){
 	    						
+	    						let wdateSub = arr[i].wdate.slice(0, -5);
+	    						
 	    						html += '<tr>';
 	    						html += '    <td>'+ arr[i].seq +'</td>';
 	    						html += '    <td><a class="view_btn" href="/board/BoardView?category='+category+'&boardname='+boardname+'&currentPage='+currentPage+'&seq='+ arr[i].seq +'">'+ arr[i].subject+'</a></td>';
 	    						html += '    <td>'+ arr[i].nickname +'</td>';
-	    						html += '    <td>'+ arr[i].wdate +'</td>';
+	    						html += '    <td>'+ wdateSub +'</td>';
 	    						html += '    <td>'+ arr[i].hit +'</td>';
 	    						html += '    <td>'+ arr[i].recommend +'</td>';
 	    						html += '	 <td>';
@@ -201,9 +206,9 @@
 	            <thead>
 	                <tr>
 	                    <th style="width: 5%; text-align: center;">번호</th>
-	                    <th style="width: 42%;">제목</th>
+	                    <th style="width: 46%;">제목</th>
                       	<th style="width: 13%;">닉네임</th>
-	                    <th style="width: 19%;">작성일자</th>
+	                    <th style="width: 15%;">작성일자</th>
 	                    <th style="width: 7%; text-align: center;" >조회수</th>
 	                    <th style="width: 7%; text-align: center;" >추천수</th>
 	                    <th style="width: 5%; text-align: center;">img</th>
