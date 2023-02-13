@@ -32,7 +32,7 @@ ul, li{
 
             <!-- 메뉴 -->
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10" style="background-color: #fffefc;" >
-    			<a href="/" class="d-flex Logo mb-4 " value="Logo"><img src="/img/img_files/starcommunity_logo.png" class="img-fluid"  width="150" height="75"></a>        	
+    			<a href="/" class="d-flex Logo mb-4 " value="Logo"><img src="/img/img_files/starcommunity_Logo.png" class="img-fluid"  width="150" height="75"></a>
                 <ul class="nav col-12 col-md-auto mb-3 mx-3" >
                     <li><a href="/home/about" class="nav-link px-4 link-dark btn">About</a></li>
                     <li class="nav-item dropdown"><a href="" class="nav-link dropdown-toggle px-4 link-dark btn"

@@ -17,7 +17,7 @@
     <div class="container col-lg-4 col-md-6 col-sm-8 col-12 my-auto c_div">
     <form action="/guest/login_ok" method="post" class="login">
         <div class="logo mb-3">
-            <a href="/home/index"><img src="/img/img_files/starcommunity_logo.png" class="img-fluid" width="200" height="100"></a>
+            <a href="/home/index"><img src="/img/img_files/starcommunity_Logo.png" class="img-fluid" width="200" height="100"></a>
         </div>
         <span>ID</span>
         <input type="text" name="username" placeholder="ID">
