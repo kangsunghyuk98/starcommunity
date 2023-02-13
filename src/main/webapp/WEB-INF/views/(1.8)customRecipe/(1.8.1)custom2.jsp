@@ -55,7 +55,7 @@
 			$("#return_menu").on("click", function(){
 				var recipe = recipe_txt_func();
 				const beverage = urlParams.get('name');
-				
+				var seq=$('#Hseq').val();
 				console.log(recipe);				
 				console.log(beverage);
 				
@@ -65,8 +65,9 @@
 				
 					$.ajax({
 						type: 'POST',
-					url: '/CustomInsert',
+						url: '/CustomInsert',						
 						data:{
+						seq:seq,
 						recipe: recipe,
 						memberKey: memberKey,
 						beverage: beverage	
@@ -101,8 +102,8 @@
 		    Kakao.Link.sendDefault({
 		      objectType: 'feed',
 		      content: {
-		        title: '나만의 레시피 공유',
-		        description: '스타벅스에서 즐기실 수 있는 나만의 레시피 공유',
+		        title: '나만의 레시피를 만들어보세요',
+		        description: '스타벅스에서 즐기실 수 있는 나만의 레시피를 만들어보세요',
 		        imageUrl:
 		          image,
 		        link: {
@@ -140,6 +141,8 @@
 	<!-- 헤더 영역 -->
 	<jsp:include page="../include/header.jsp" />
 <input type="hidden" id="Himage" class="Himage" value = "<%=image %>">
+<input type="hidden" id="Hseq" class="Hseq" value = "<%=seq %>">
+	
 	<!-- 콘텐츠 영역 -->
 	<br>
 	<br>
@@ -163,29 +166,62 @@
 							</select>
 						</li>
 						<li class="list-group-item" id="coffee1_li">
-								<label for="coffee1" class="li_label">커피 추가</label> 
+								<label for="coffee1" class="li_label">에스프레소 옵션 추가</label> 
 								<select class="form-select" id="coffee1" onchange="handleOnChange1(this)">
 									<option value="" disabled selected>---선택---</option>
-									<option value="1">에스프레소 샷 </option>
-									<option value="2">에스프레소 옵션 </option>
-									<option value="3">프라푸치노 로스트 </option>									
+									<option value="1">일반 </option>
+									<option value="2">블론드 </option>
+									<option value="3">디카페인 </option>
+									<option value="3">1/2 디카페인 </option>
+									<option value="4">프라푸치노 로스트 </option>									
 								</select>
 						</li>
 						<li class="list-group-item" id="coffee2_li">
-								<label for="coffee2" class="li_label">커피 추가</label> 
+								<label for="coffee2" class="li_label">샷 추가</label> 
 								<select class="form-select" id="coffee2" onchange="handleOnChange2(this)">
 									<option value="" disabled selected>---선택---</option>
-									<option value="1">블론드 </option>
-									<option value="2">디카페인 </option>
-									<option value="3">1/2 디카페인 </option>									
+									<option value="1">1 </option>
+									<option value="2">2 </option>
+									<option value="3">3 </option>
+									<option value="4">4 </option>	
+									<option value="5">5 </option>	
+									<option value="6">6 </option>	
+									<option value="7">7 </option>	
+									<option value="8">8 </option>	
+									<option value="9">9 </option>										
 								</select>
 						</li>
-						<li class="list-group-item" id="coffee3_li">
-								<label for="coffee3" class="li_label">샷추가</label> 
-								<select class="form-select" id="coffee3" onchange="handleOnChange3(this)">
+						
+						<li class="list-group-item" id="syrupF_li">
+								<label for="syrupF" class="li_label">프라푸치노 시럽 옵션</label> 
+								<select class="form-select" id="syrupF" onchange="handleOnChange3(this)">
 									<option value="" disabled selected>---선택---</option>
+									<option value="normal">일반 </option>
+									<option value="light">라이트</option>									
+								</select>
+						</li>
+						
+						<li class="list-group-item" id="syrupN_li">
+							<label for="syrupN" class="li_label">시럽 기본 옵션</label>
+							<select class="form-select" id="syrupN" onchange="handleOnChange4(this)">
+								<option value="" disabled selected>---선택---</option>
+								<option value="mocha">모카 시럽</option>
+								<option value="whiteMocha">화이트모카 시럽</option>
+								<option value="dolce">돌체 시럽</option>																
+								<option value="caramel">카라멜 시럽</option>
+								<option value="strawberry">딸기소스</option>
+								<option value=classic>클래식 시럽</option>
+								
+							</select>
+						</li>
+						
+						<li class="list-group-item" id="syrupN1_li">
+								<label for="syrupN1" class="li_label">시럽 기본 옵션 조절</label> 
+								<select class="form-select" id="syrupN1" onchange="handleOnChange5(this)">
+									<option value="" disabled selected>---선택---</option>
+									<option value="0">없이 </option>
 									<option value="1">1 </option>
-									<option value="2">2</option>
+									<option value="2">2 </option>
 									<option value="3">3 </option>
 									<option value="4">4 </option>
 									<option value="5">5 </option>
@@ -195,26 +231,20 @@
 									<option value="9">9 </option>
 								</select>
 						</li>
-						<li class="list-group-item" id="syrup_li">
-							<label for="syrup1" class="li_label">시럽</label>
-							<select class="form-select" id="syrup1" onchange="handleOnChange4(this)">
-								<option value="" disabled selected>---선택---</option>
-								<option value="mocha">모카 시럽</option>
-								<option value="whiteMocha">화이트모카 시럽</option>
-								<option value="dolce">돌체 시럽</option>														
+						
+						<li class="list-group-item" id="syrupA_li">
+							<label for="syrupA" class="li_label">시럽 추가 옵션</label>
+							<select class="form-select" id="syrupA" onchange="handleOnChange6(this)">
+								<option value="" disabled selected>---선택---</option>																			
 								<option value="vanilla">바닐라 시럽</option>
 								<option value="hazelnut">헤이즐넛 시럽</option>
-								<option value="caramel">카라멜 시럽</option>
-								<option value="strawberry">딸기소스</option>
-								<option value=frappuccino>프라푸치노용 시럽</option>
-								<option value=classic>클래식 시럽</option>
-								
+								<option value="caramel">카라멜 시럽</option>							
 							</select>
 						</li>
 						
-						<li class="list-group-item" id="syrup2_li">
-								<label for="syrup2" class="li_label">시럽 옵션</label> 
-								<select class="form-select" id="syrup2" onchange="handleOnChange5(this)">
+						<li class="list-group-item" id="syrupA1_li">
+								<label for="syrupA1" class="li_label">시럽 추가 옵션 조절</label> 
+								<select class="form-select" id="syrupA1" onchange="handleOnChange7(this)">
 									<option value="" disabled selected>---선택---</option>
 									<option value="1">1 </option>
 									<option value="2">2 </option>
@@ -227,17 +257,10 @@
 									<option value="9">9 </option>
 								</select>
 						</li>
-						<li class="list-group-item" id="syrup3_li">
-								<label for="syrup3" class="li_label">프라푸치노 시럽 옵션</label> 
-								<select class="form-select" id="syrup3" onchange="handleOnChange6(this)">
-									<option value="" disabled selected>---선택---</option>
-									<option value="normal">일반 </option>
-									<option value="light">라이트</option>									
-								</select>
-						</li>
+						
 						<li class="list-group-item" id="tea_li">
 							<label for="tea" class="li_label">티</label>
-							<select class="form-select" id="tea" onchange="handleOnChange7(this)">
+							<select class="form-select" id="tea" onchange="handleOnChange8(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option value="less">적게</option>
 								<option value="normal">보통</option>
@@ -246,7 +269,7 @@
 						</li>
 						<li class="list-group-item" id="milk_li">
 							<label for="milk" class="li_label">우유</label>
-							<select class="form-select" id="milk" onchange="handleOnChange8(this)">
+							<select class="form-select" id="milk" onchange="handleOnChange9(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option value="less">저지방우유</option>
 								<option value="none">무지방우유</option>
@@ -258,7 +281,7 @@
 						</li>
 						<li class="list-group-item" id="ice_li">
 							<label for="ice" class="li_label">얼음</label>
-							<select class="form-select" id="ice" onchange="handleOnChange9(this)">
+							<select class="form-select" id="ice" onchange="handleOnChange10(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="ice" value="less">적게</option>
 								<option id="ice" value="regular">보통</option>
@@ -267,7 +290,7 @@
 						</li>
 						<li class="list-group-item" id="java_chip1_li">
 							<label for="java_chip1" class="li_label">자바칩</label>
-							<select class="form-select" id="java_chip1"onchange="handleOnChange10(this)">
+							<select class="form-select" id="java_chip1"onchange="handleOnChange11(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option value="normal">통 자바칩 토핑</option>
 								<option value="frappuccino">프라푸치노 자바칩</option>
@@ -276,7 +299,7 @@
 						</li>
 						<li class="list-group-item" id="java_chip2_li">
 							<label for="java_chip2" class="li_label">자바칩 옵션</label>
-							<select class="form-select" id="java_chip2"onchange="handleOnChange11(this)">
+							<select class="form-select" id="java_chip2"onchange="handleOnChange12(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -291,7 +314,7 @@
 						</li>
 						<li class="list-group-item" id="whippedcream1_li">
 							<label for="whippedcream1" class="li_label">휘핑크림</label>
-							<select class="form-select" id="whippedcream1"onchange="handleOnChange12(this)">
+							<select class="form-select" id="whippedcream1"onchange="handleOnChange13(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="whippedcream1" value="none">일반 휘핑</option>
 								<option id="whippedcream1" value="less">에스프레소 휘핑</option>								
@@ -299,7 +322,7 @@
 						</li>
 						<li class="list-group-item" id="whippedcream2_li">
 							<label for="whippedcream2" class="li_label">휘핑크림 옵션</label>
-							<select class="form-select" id="whippedcream2"onchange="handleOnChange13(this)">
+							<select class="form-select" id="whippedcream2"onchange="handleOnChange14(this)">
 								<option value="" disabled selected>---선택---</option>								
 								<option id="whippedcream2" value="less">적게</option>
 								<option id="whippedcream2" value="normal">보통</option>
@@ -307,16 +330,17 @@
 							</select>
 						</li>
 						<li class="list-group-item" id="drizzle1_li">
-							<label for="drizzle1" class="li_label">드리즐</label>
-							<select class="form-select" id="drizzle1"onchange="handleOnChange14(this)">
+							<label for="drizzle1" class="li_label">카라멜 드리즐</label>
+							<select class="form-select" id="drizzle1"onchange="handleOnChange15(this)">
 								<option value="" disabled selected>---선택---</option>
-								<option id="drizzle1" value="caremel">카라멜 드리즐</option>
-								<option id="drizzle1" value="chocolate">초콜릿 드리즐</option>														
+								<option id="drizzle2" value="less">적게</option>
+								<option id="drizzle2" value="normal">보통</option>
+								<option id="drizzle2" value="more">많이</option>															
 							</select>
 						</li>
 						<li class="list-group-item" id="drizzle2_li">
-							<label for="drizzle2" class="li_label">드리즐 옵션</label>
-							<select class="form-select" id="drizzle1"onchange="handleOnChange15(this)">
+							<label for="drizzle2" class="li_label">초콜릿 드리즐</label>
+							<select class="form-select" id="drizzle1"onchange="handleOnChange16(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="drizzle2" value="less">적게</option>
 								<option id="drizzle2" value="normal">보통</option>
@@ -325,7 +349,7 @@
 						</li>
 						<li class="list-group-item" id="etc1_li">
 							<label for="etc1" class="li_label">기타:민트 초콜릿 칩 파우더 </label>
-							<select class="form-select" id="etc1"onchange="handleOnChange16(this)">
+							<select class="form-select" id="etc1"onchange="handleOnChange17(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="etc1" value="less">적게</option>
 								<option id="etc1" value="normal">보통</option>																					
@@ -333,7 +357,7 @@
 						</li>
 						<li class="list-group-item" id="etc2_li">
 							<label for="etc2" class="li_label">기타:망고 주스 </label>
-							<select class="form-select" id="etc2"onchange="handleOnChange17(this)">
+							<select class="form-select" id="etc2"onchange="handleOnChange18(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="etc2" value="less">적게</option>
 								<option id="etc2" value="normal">보통</option>	
@@ -342,7 +366,7 @@
 						</li>
 						<li class="list-group-item" id="etc3_li">
 							<label for="etc3" class="li_label">기타:유기농 말차 </label>
-							<select class="form-select" id="etc3"onchange="handleOnChange18(this)">
+							<select class="form-select" id="etc3"onchange="handleOnChange19(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option id="etc3" value="1">1</option>
 								<option id="etc3" value="2">2</option>
@@ -357,7 +381,7 @@
 						</li>
 						<li class="list-group-item" id="topping_li">
 							<label for="topping" class="li_label">에스프레소 칩 토핑 </label>
-							<select class="form-select" id="topping"onchange="handleOnChange19(this)">
+							<select class="form-select" id="topping"onchange="handleOnChange20(this)">
 								<option value="" disabled selected>---선택---</option>
 								<option value="less">적게</option>
 								<option value="normal">많이</option>																										
@@ -390,6 +414,7 @@
 			<div id="result17"></div>
 			<div id="result18"></div>
 			<div id="result19"></div>
+			<div id="result20"></div>
 		</div>
 		<div class="mb-4">
 			<form>		

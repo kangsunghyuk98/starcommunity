@@ -37,11 +37,12 @@ public class CustomController {
         System.out.println(name);
 
         BeverageTO to = new BeverageTO();
+        to.setSeq(request.getParameter("seq"));
         to.setName(request.getParameter("name") );
         to.setImage(request.getParameter("image") );
         to = cs.customInfo(to);
         
-        List<CustomRecipeTO> allCustom = cs.selectCustomList();
+        List<CustomRecipeTO> allCustom = cs.selectCustomList(to.getSeq());
         
         model.addAttribute("to",to);
         model.addAttribute("allCustom",allCustom);
@@ -54,7 +55,8 @@ public class CustomController {
     	
     	int flag = cs.insertCustom(cto);
     	model.addAttribute("flag",flag);
-    	
+		model.addAttribute("seq",cto.getSeq());
+
     
     	
     	return "okaction/custom_ok";

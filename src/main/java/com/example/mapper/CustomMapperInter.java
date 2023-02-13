@@ -20,10 +20,10 @@ public interface CustomMapperInter {
 	@Select("select seq, name, image from beverage where name =#{name}")
 	public BeverageTO customInfo(BeverageTO to);
 	
-	@Insert("insert into custom_recipe values ( 0, now(), #{recipe}, #{memberKey}, #{beverage}) ")
+	@Insert("insert into custom_recipe values ( 0, now(), #{recipe}, #{memberKey}, #{beverage}, #{seq}) ")
 	int insertCustmRecipe(CustomRecipeTO cto);
 	
 	@Select("select custom_recipe.cusseq, custom_recipe.wdate, custom_recipe.recipe, custom_recipe.memberkey, custom_recipe.beverage, member.name, member.nickname from custom_recipe inner join member " +
-	"on (custom_recipe.memberkey = member.memberkey)")
-	List<CustomRecipeTO> selectCustomList();
+	"on (custom_recipe.memberkey = member.memberkey) where custom_recipe.seq = #{seq} order by wdate desc")
+	List<CustomRecipeTO> selectCustomList(String seq);
 }

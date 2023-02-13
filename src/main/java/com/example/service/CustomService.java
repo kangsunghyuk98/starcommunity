@@ -24,8 +24,8 @@ public class CustomService {
 		return to;	
 	}
 	
-	public List<CustomRecipeTO> selectCustomList(){
-		List<CustomRecipeTO> allCustom = mapper.selectCustomList();
+	public List<CustomRecipeTO> selectCustomList(String seq){
+		List<CustomRecipeTO> allCustom = mapper.selectCustomList(seq);
 		return allCustom;
 	}
 	
