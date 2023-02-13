@@ -104,5 +104,7 @@ body {
     text-align: center;
     display: table-cell;
     margin: auto;
-    width: 40%;
+    width: 45%;
+	height: 42px;
+    border-radius: 2px;
 }

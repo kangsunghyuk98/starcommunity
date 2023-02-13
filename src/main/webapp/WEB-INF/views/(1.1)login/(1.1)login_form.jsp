@@ -27,14 +27,14 @@
         <div class="row justify-content-center">
         	<button type="submit" id="btn1" class="col-4 my-2" onclick="">로그인</button>
         	        
-        	<div class="social_login">
-            	<div class=""><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
-            	<div class="my-1"><a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div>
-            	<div class="my-1"><a href="/oauth2/authorization/naver"><img id="naver" src="/img/(1.1)naver.png"></a></div>
+        	<div class="social_login row justify-content-center">
+            	<div class="mb-2"><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
+            	<div class="mb-2"><a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div>
+            	<div class="mb-2"><a href="/oauth2/authorization/naver"><img id="naver" src="/img/(1.1)naver.png"></a></div>
         	</div>
         </div>
         	
-         	<div class="row justify-content-center mt-2">
+         	<div class="row justify-content-center mt-3">
                 <div id="d1" class="col-sm-4">
                     <a style="text-decoration: inherit; color: black;"href="/guest/findid">아이디 찾기</a>
                 </div>
