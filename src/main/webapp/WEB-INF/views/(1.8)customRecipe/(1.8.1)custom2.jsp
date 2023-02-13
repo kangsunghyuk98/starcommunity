@@ -146,7 +146,7 @@
 	<!-- 콘텐츠 영역 -->
 	<br>
 	<br>
-	<div class="container content col-lg-6 col-md-8 col-sm-10 px-5 py-5 ">
+	<div class="container content col-lg-8 col-md-8 col-sm-10 px-5 py-5 ">
 		<div class="content_header">My Custom Recipe</div>
 		<hr>
 		<dlv class="row mt-5 justify-content-center">
