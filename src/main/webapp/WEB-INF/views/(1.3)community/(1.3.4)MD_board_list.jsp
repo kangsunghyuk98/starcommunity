@@ -223,7 +223,7 @@
             <div>
                 <button id="w_btn" type="button" class="btn btn-outline-secondary px-4" onclick="location.href='/board/BoardWrite?category=${category}&boardname=${boardname}'">글쓰기</button>
             </div>
-    	</sec:authorize>>
+    	</sec:authorize>
     
     <div class="container-sm">
         <div class="container row" style="float: none; margin: 100 auto;">
