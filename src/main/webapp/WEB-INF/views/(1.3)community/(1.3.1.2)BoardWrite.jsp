@@ -27,7 +27,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/js/(1)header.js"></script>
-    <script type="text/javascript" src="/js/(1.3.1.2)boardWrite.js"></script>
+    <script type="text/javascript" src="/js/(1.3.1.2)boardwrite.js"></script>
     <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script type="text/javascript">
 			// 스마트 에디터 설정입니다.  

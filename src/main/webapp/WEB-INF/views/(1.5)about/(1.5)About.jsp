@@ -80,7 +80,7 @@ AOS.init();
     	<h2 style="font-weight: bold;">소감</h2>
     </div>
     <div class="col team-image mt-2 mb-5" >
-    	<image src="/img/(1.5)Member.PNG" class="img-fluid" width="400"; alt="별다섯 이미지"></image>
+    	<image src="/img/(1.5)Member.png" class="img-fluid" width="400"; alt="별다섯 이미지"></image>
     </div> 
     <div class="mb-5 team">
       	<p class="team_text"><span style="color: #5AC8C8;">민트티</span>에 샷 추가 일명 '민샷추'를 사랑하는 음료 추천에 진심인 전 바리스타, 현 개발자로서 별다섯팀의 팀장을 맡아 즐겁게 작업했습니다.</p>

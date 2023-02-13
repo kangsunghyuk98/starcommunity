@@ -28,7 +28,7 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js"
         integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/(1.3.1.3)boardModify.js"></script>
+    <script type="text/javascript" src="/js/(1.3.1.3)boardmodify.js"></script>
 	<script type="text/javascript" src="/js/(1)header.js"></script>
 	
     <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
