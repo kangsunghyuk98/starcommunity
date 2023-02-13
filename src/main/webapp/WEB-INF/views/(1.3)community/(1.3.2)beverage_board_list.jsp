@@ -203,9 +203,9 @@
 	            <thead>
 	                <tr>
 	                    <th style="width: 5%; text-align: center;">번호</th>
-	                    <th style="width: 43%;">제목</th>
+	                    <th style="width: 42%;">제목</th>
                       	<th style="width: 13%;">닉네임</th>
-	                    <th style="width: 18%;">작성일자</th>
+	                    <th style="width: 19%;">작성일자</th>
 	                    <th style="width: 7%; text-align: center;" >조회수</th>
 	                    <th style="width: 7%; text-align: center;" >추천수</th>
 	                    <th style="width: 5%; text-align: center;">img</th>

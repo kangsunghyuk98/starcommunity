@@ -85,7 +85,7 @@ AOS.init();
     <div class="mb-5 team">
       	<p class="team_text"><span style="color: #5AC8C8;">민트티</span>에 샷 추가 일명 '민샷추'를 사랑하는 음료 추천에 진심인 전 바리스타, 현 개발자로서 별다섯팀의 팀장을 맡아 즐겁게 작업했습니다.</p>
        	<p class="team_role">from. 팀장 이효원</p>		
-		<p class="team_text">집 앞에 스타벅스를 종종 이용합니다. 아침엔 <span style="color: #CDA27D;">카페 라떼</span>죠. 아이스 카페 라떼와 함께 코딩을 시작했습니다:)</p>
+		<p class="team_text">집 앞에 스타벅스를 종종 이용합니다. 아침엔 <span style="color: #CDA27D;">카페 라떼</span>죠. 프로젝트도 아이스 카페 라떼와 함께 잘 마쳤습니다:)</p>
 		<p class="team_role">from. 프론트엔드 리더 박은총</p>
 		<p class="team_text">팀 프로젝트를 하면서 비로소야 개발과 겨우 친해진 기분이었어요~ 최애 음료는 달달하지만 씁쓸한 티 많이 넣은 <span style="color: #FF8200;">자몽허니블랙티</span>입니다.</p>
 		<p class="team_role">from. 프론트엔드 김민수</p>

@@ -187,7 +187,7 @@
         <div class="content_header">일상 게시판</div>
         <div>
             <select class="form-select form-select-sm w_search" id="select_box" aria-label=".form-select-sm example">
-                <option value="subject_content">제목 + 내용</option>
+                <option value="subject_content">제목+내용</option>
                 <option value="nickname">닉네임</option>
             </select>
             <div class="input-group mb-3 w_search_text">
@@ -201,9 +201,9 @@
 	            <thead>
 	                <tr>
 	                    <th style="width: 5%; text-align: center;">번호</th>
-	                    <th style="width: 43%;">제목</th>
+	                    <th style="width: 42%;">제목</th>
                       	<th style="width: 13%;">닉네임</th>
-	                    <th style="width: 18%;">작성일자</th>
+	                    <th style="width: 19%;">작성일자</th>
 	                    <th style="width: 7%; text-align: center;" >조회수</th>
 	                    <th style="width: 7%; text-align: center;" >추천수</th>
 	                    <th style="width: 5%; text-align: center;">img</th>
