@@ -79,7 +79,7 @@
 							return;
 					},
 						error: function(){
-							alert('로그아웃 후 다시 시도해주세요');							
+							alert('로그아웃 후 다시 시도해주세요'); 							
 							let url = '/guest/logout';
 							location.replace(url);
 							return;
