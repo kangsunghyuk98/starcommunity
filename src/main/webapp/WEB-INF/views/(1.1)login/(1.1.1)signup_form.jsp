@@ -128,7 +128,7 @@
     <div class="container col-lg-4 col-md-6 col-sm-8 my-auto c_div">
 	    <form action="/guest/register_ok" method="post" class="signup" onsubmit="return confirmSubmit();">
 	        <div class="logo mb-3">
-	            <a href="/home/index"><img src="/img/img_files/starcommunity_logo.png" class="img-fluid" width="200" height="100"></a>
+	            <a href="/home/index"><img src="/img/img_files/starcommunity_Logo.png" class="img-fluid" width="200" height="100"></a>
 	        </div>
 	        <p>
 	        	<label for=userid>아이디</label>
