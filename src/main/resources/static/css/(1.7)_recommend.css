@@ -1,3 +1,6 @@
+body{
+	background-color: #fffefc;
+}
 #main, #qna, #result{
     font-family: 'BMJUA';
 }
