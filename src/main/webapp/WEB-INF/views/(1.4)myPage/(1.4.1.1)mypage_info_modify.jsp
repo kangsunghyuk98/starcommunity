@@ -19,8 +19,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	    
     <script type="text/javascript">
+  	 
 	    $(document).ready(function(){
-		    
+	        	 
 			$('#nickcheck_btn').click(function(){
 				$('#result_nick_pass').empty();
 				$('#result_nick_false').empty();
@@ -55,26 +56,38 @@
 	        		if($("#txtpwchk").val() == $("#txtpw").val()){
 						$(".successPWChk").text("비밀번호가 일치합니다.");
 						$(".successPWChk").css("color", "green");
+						$(".successPWChk").css("font-size", "0.9rem");
 
 					}else{
 						$(".successPWChk").text("비밀번호가 일치하지 않습니다.");
 						$(".successPWChk").css("color", "red");
+						$(".successPWChk").css("font-size", "0.9rem");
 					}
 	            });
 	            
 			});
 	    });
 	    
+	    // &#45796 -> 엔티티 문자열. 자바스크립트에서는 innerHTML로 문자열을 입력하면 변환되어 출력된다...
+	    
+		function decodeHtmlEntity( str ){ 
+      	  let textarea = document.createElement("textarea");  
+      	  textarea.innerHTML = str;
+
+      	  let result = textarea.value;
+      	  
+      	  return result;  
+      	 }
+	    
 	    function checkNickname() {
 	    	let fnResult;
 	    	let NnResult;
 	    	let nickname = '<sec:authentication property="principal.to.nickname" />';
-
-	    	/* let dNickname = encodeURIComponent(nickname);
-	    	console.log( dNickname ); */
 	    	
+	    	let dcdEntityNickname = decodeHtmlEntity(nickname);
+	    		    	
 	    	if ( $('#txtnick').val() != '' ) {
-	    		if( $('#txtnick').val() == nickname ){
+	    		if( $('#txtnick').val() == dcdEntityNickname ){
 	    			  $('#result_nick_pass').text('현재 닉네임입니다.');
 	    		} else {
 	                $.ajax({
@@ -158,8 +171,8 @@
 	                    	<div class="hstack gap-1">
 		                        <input type="text" name="nickname" id="txtnick" value="<sec:authentication property="principal.to.nickname" />" />
 		                        <button id="nickcheck_btn" type="button" class="btn btn-secondary btn-sm" >중복확인</button>
-		                        <label id="result_nick_false" class="css_result" style="color: red"></label>
-		                        <label id="result_nick_pass" class="css_result" style="color: green"></label>
+		                        <label id="result_nick_false" class="css_result" style="color: red; font-size: 0.9rem;"></label>
+		                        <label id="result_nick_pass" class="css_result" style="color: green; font-size: 0.9rem;"></label>
 	                        </div>
 	                    </td>
 	                </tr>
@@ -181,7 +194,7 @@
 	        	
 	        	<button id="m_btn" type="submit" class="btn btn-outline-secondary  px-4 ">수정</button>
 	        	<button id="c_btn" type="button" class="btn btn-outline-secondary  px-4 mx-1" onclick="location.href='/member/myinfo'" >취소</button>
-	        	<button id="password_modify_btn" type="button" class="btn btn-secondary btn" >비밀번호 변경하기</button>
+	        	<button id="password_modify_btn" type="button" class="btn btn-secondary btn" style="font-size: 0.9rem;" >비밀번호 변경하기</button>
 	        </div>
         </form>
 		
