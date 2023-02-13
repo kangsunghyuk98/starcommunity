@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/font/font.css">
     <link rel="stylesheet" href="/css/(1)header.css">
     <link rel="stylesheet" href="/css/(1)contents.css">
-    <link rel="stylesheet" href="/css/(1.3.1.2)boardWrite.css">
+    <link rel="stylesheet" href="/css/(1.3.1.2)boardwrite.css">
     <title>BoardWrite</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
