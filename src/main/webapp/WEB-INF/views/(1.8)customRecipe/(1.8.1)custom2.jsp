@@ -74,10 +74,14 @@
 						},
 						dataType:'text',
 						success: function(result){
-							
+							let url = '/Custom1';
+							location.replace(url);
+							return;
 					},
 						error: function(){
-							alert('오류')
+							alert('로그아웃 후 다시 시도해주세요');							
+							let url = '/guest/logout';
+							location.replace(url);
 							return;
 						}
 					})
