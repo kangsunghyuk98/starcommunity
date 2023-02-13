@@ -181,7 +181,7 @@ AOS.init();
             <div class="service-contents">
               <h2>나만의 레시피</h2>
               <p style="font-size: 1.2rem;">어려운 스타벅스 커스텀을 그만! 음료별로 손쉽게 커스텀 옵션을 확인하고 내가 원하는 커스텀을 만들어보세요.</p>  
-              <p><a href="/Custom1" class="read-more">coustom recipe 바로가기</a></p>
+              <p><a href="/Custom1" class="read-more">Custom recipe 바로가기</a></p>
             </div>
           </div>
         </div>
