@@ -71,11 +71,12 @@ display: inline-block; }
 }
 
 .team_text{
-	margin-bottom: -0.5%;
+	margin-bottom: -0.2%;
 	font-size: 1.25rem;
 }
 
 .team_role{
 	font-size: 1.3rem;
 	color: darkgray;
+	margin-bottom: 3%;
 }

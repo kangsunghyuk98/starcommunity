@@ -82,13 +82,17 @@ AOS.init();
     <div class="col team-image mt-2 mb-5" >
     	<image src="/img/(1.5)Member.PNG" class="img-fluid" width="400"; alt="별다섯 이미지"></image>
     </div> 
-    <div class="team">
-     	
-      	<p class="team_text"><span style="color: #6EDCDC;">민트티</span>에 샷 추가 일명 '민샷추'를 즐길 줄 아는 진정한 민트 러버! 음료 추천에 진심인 전 바리스타, 현 개발자로서 별다섯팀의 팀장을 맡았습니다.</p>
-       	<p class="team_role">from. s팀장 이효원</p>
-       	
-       	<p class="team_text">팀 프로젝트를 하면서 비로소야 개발과 겨우 친해진 기분이었어요~ 최애 음료는 달달하지만 씁쓸한 티 많이 넣은 <span style="color: #FFAA28;">자몽허니블랙티</span>입니다.</p>
-		<p class="team_role">from. 프론트 김민수</p>
+    <div class="mb-5 team">
+      	<p class="team_text"><span style="color: #5AC8C8;">민트티</span>에 샷 추가 일명 '민샷추'를 즐길 줄 아는 진정한 민트 러버! 음료 추천에 진심인 전 바리스타, 현 개발자로서 별다섯팀의 팀장을 맡았습니다.</p>
+       	<p class="team_role">from. 팀장 이효원</p>		
+		<p class="team_text">집 앞에 스타벅스를 종종 이용합니다. 아침엔 <span style="color: #CDA27D;">카페 라떼</span>죠. 아이스 카페 라떼와 함께 코딩을 시작했습니다:)</p>
+		<p class="team_role">from. 프론트엔드 리더 박은총</p>
+		<p class="team_text">팀 프로젝트를 하면서 비로소야 개발과 겨우 친해진 기분이었어요~ 최애 음료는 달달하지만 씁쓸한 티 많이 넣은 <span style="color: #FF8200;">자몽허니블랙티</span>입니다.</p>
+		<p class="team_role">from. 프론트엔드 김민수</p>
+		<p class="team_text">별다섯 팀의 백엔드 리더를 맡으면서 너무 재밌었습니다! 제일 좋아하는 음료는 <span style="color: #8B4513;">콜드브루</span>입니다.</p>
+		<p class="team_role">from. 백엔드 리더 강성혁</p>
+		<p class="team_text">회의 때마다 방문했던 스타벅스 교대법원점이 그리울 것 같습니다. 자주 먹었던 <span style="color: #FFD732;">아이스 바닐라빈 라떼</span> 앞으로도 개발할 때 종종 생각날 거 같습니다</p>
+		<p class="team_role">from. 백엔드 최용혁</p>
 	</div>
 </div>
 	
