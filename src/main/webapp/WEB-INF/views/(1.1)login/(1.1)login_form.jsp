@@ -29,7 +29,7 @@
         	        
         	<div class="social_login row justify-content-center">
             	<div class="mb-2"><a href="/oauth2/authorization/kakao"><img id="kakao" src="/img/(1.1)kakao.png"></a></div>
-            	<div class="mb-2"><a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div>
+            	<!-- <div class="mb-2"><a href="/oauth2/authorization/google"><img id="google" src="/img/(1.1)google.png"></a></div> -->
             	<div class="mb-2"><a href="/oauth2/authorization/naver"><img id="naver" src="/img/(1.1)naver.png"></a></div>
         	</div>
         </div>
