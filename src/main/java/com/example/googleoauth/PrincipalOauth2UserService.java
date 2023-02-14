@@ -51,7 +51,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String provideId = oAuth2UserInfo.getProviderId();
         String id = provider+"_"+provideId;
         String name = oAuth2UserInfo.getName();
-        String nickname = oAuth2UserInfo.getName();
+        String nickname = oAuth2UserInfo.getName() + "_" + provider;
         String password = passwordEncoder.encode("구글로그인");
         String email = oAuth2UserInfo.getEmail();
         String role = "ROLE_USER";
