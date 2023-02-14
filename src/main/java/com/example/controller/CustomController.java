@@ -61,4 +61,16 @@ public class CustomController {
     	
     	return "okaction/custom_ok";
     }
+    
+    @RequestMapping("/CustomDelete")
+    public String deleteCustomRecipe(CustomRecipeTO cto, Model model) {
+    	
+    	String memberkey = cto.getMemberKey();
+    	
+    	int flag = cs.deleteCustom(cto);
+    	model.addAttribute("flag", flag);
+    	model.addAttribute("memberkey", memberkey);
+    	
+    	return "okaction/custom_delete_ok";
+    }
 }

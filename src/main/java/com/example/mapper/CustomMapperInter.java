@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -26,4 +27,8 @@ public interface CustomMapperInter {
 	@Select("select custom_recipe.cusseq, custom_recipe.wdate, custom_recipe.recipe, custom_recipe.memberkey, custom_recipe.beverage, member.name, member.nickname from custom_recipe inner join member " +
 	"on (custom_recipe.memberkey = member.memberkey) where custom_recipe.seq = #{seq} order by wdate desc")
 	List<CustomRecipeTO> selectCustomList(String seq);
+	
+	@Delete("delete from custom_recipe where cusseq = ${cusseq} and memberkey = ${memberKey}")
+	int deleteCustomRecipe(CustomRecipeTO cto);
+	
 }

@@ -40,10 +40,11 @@
         <table class="table table-hover table_margin">
             <thead>
                 <tr>
-                    <th style="width: 5%;" >번호</th>
+                    <th style="width: 5%; text-align: center;" >번호</th>
                     <th style="width: 10%;">작성일자</th>
                     <th style="width: 20%;">음료명</th>
-                    <th style="width: 65%;">레시피 내용</th>
+                    <th style="width: 57%;">레시피 내용</th>
+                    <th style="width: 8%;"></th>                    
                 </tr>
             </thead>
             <tbody>
@@ -52,10 +53,17 @@
                 <c:forEach var="cto" items="${allMyCutomList}">
 
                 <tr>
-                    <td>${cto.cusseq}</td>
+                    <td class="text-center">${cto.cusseq}</td>
                     <td>${cto.wdate}</td>
                     <td>${cto.beverage}</td>
                     <td>${cto.recipe}</td>
+                    <td style="text-align: center; vertical-align: middle; ">
+                    	<form action="/CustomDelete" method="post" name="dfrm">
+                    		<input type="hidden" name="cusseq" value="${cto.cusseq}">
+                    		<input type="hidden" name="memberKey" value="<sec:authentication property="principal.to.memberKey" />">
+                    		<button type="submit" class="btn btn-outline-danger btn-sm">삭제</button>
+                    	</form>
+                    </td>
                 </tr>
 
                 </c:forEach>

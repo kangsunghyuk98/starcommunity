@@ -43,4 +43,21 @@ public class CustomService {
 
 		return flag;
 	}
+	
+	public int deleteCustom(CustomRecipeTO cto) {
+		
+		int result = mapper.deleteCustomRecipe(cto);
+		
+		int flag = 1;
+		
+		if(result == 1) {
+			flag = 0;
+		} else if( result == 0) {
+			flag = 1;
+		} else {
+			flag = 2;
+		}
+		
+		return flag;
+	}
 }
