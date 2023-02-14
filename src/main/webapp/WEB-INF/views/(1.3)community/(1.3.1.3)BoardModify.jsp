@@ -7,6 +7,16 @@
 	int currentPage = (Integer)request.getAttribute("currentPage");
 	int seq = (int)request.getAttribute("seq");
 	BoardTO to = (BoardTO)request.getAttribute("to");
+	
+	String preImgName = to.getImgname();
+	String preImgSize = to.getFilesize()/(1024*1024) + "MByte";
+	
+	String preImgInfo = "";
+	if( preImgName != null ){
+		preImgName = preImgName.substring( preImgName.indexOf("_") + 1 );
+		
+		preImgInfo = "<label for='formFileMultiple' class='form-label'>기존 첨부 파일 : " + preImgName + " (" + preImgSize + ")</label>";
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -93,8 +103,11 @@
 	            <input type="text" name="subject" class="form-control" value="<%= to.getSubject() %>">
 	        </div>
 	        <div class="mb-3">
+	        	<%= preImgInfo %>
+	            <!-- 
 	            <label for="formFileMultiple" class="form-label">파일 이름 : <%= to.getImgname() %></label>
-	            <label for="formFileMultiple" class="form-label">파일 크기 : <%= to.getFilesize()/(1024*1024) + "MByte" %></label>
+	            <label for="formFileMultiple" class="form-label">파일 크기 : <%= to.getFilesize() %></label>
+	             -->
 	            <input class="form-control" type="file" name="upload" value="" multiple>
 	        </div>
 	        <textarea name="content" id="editorTxt" rows="20" cols="10" placeholder="내용을 입력해주세요" style="width: 100%"><%= to.getContent() %></textarea>
