@@ -1,5 +1,6 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.example.dto.BeverageTO"%>
@@ -145,7 +146,7 @@
    	                     html += '            <strong>'+ item.nickname +'</strong>('+ item.cdate +')';
     	                 html += '        </div>';
    	                     html += '        <div class="coment_re_txt mb-2">';
-   	                     html += '            '+ item.comment +'';
+   	                     html += '            '+ item.comment.replaceAll('\n', '<br>') +'';
    	                     html += '        </div>';
    	                     html += '    </td>';
    	                     
@@ -265,8 +266,9 @@
                                 <div class="mt-2 mb-2">
                                     <strong>${bto.nickname}</strong>(${bto.cdate})
                                 </div>
+                                  <% pageContext.setAttribute("newLineChar", "\n"); %>
                                 <div class="coment_re_txt mb-2">
-                                    ${bto.comment}
+                                    ${fn:replace(bto.comment, newLineChar, "<br/>")}
                                 </div>
                             </td>
 
