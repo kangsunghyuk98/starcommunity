@@ -62,6 +62,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         if(to == null) {
             to = new MemberTO(id, role, password, nickname, name, email, provider, provideId);
             mapperInter.oauthSave(to);
+            to = mapperInter.oauthSelectMemberKeyById(id);
         }
 
         return new SecurityMember(to, oAuth2UserInfo);
