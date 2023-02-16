@@ -131,11 +131,13 @@
     	            $.each(result, function (index, item) {
 
     	            	let memberKey = 0;
+    	            	let role = '';
         	        	let KeyResult = false;
         	        
         	        	<sec:authorize access="isAuthenticated()">
         	        	<sec:authentication property="principal" var="principal"/>;
         	    	    	memberKey = ${principal.to.memberKey};
+        	    	    	role = '${principal.to.role}';
         	    	    	let memberKeyStr = memberKey.toString();
         	    	    	KeyResult = (memberKeyStr == item.memberKey);
         	        	</sec:authorize>
@@ -155,8 +157,7 @@
 	                     
 	                   	 //console.log(KeyResult);
 	                   	 // if( memberKeyStr == item.memberKey ){ => 왜 이 조건문은 false로 나오는가?ㄴ
-   	                     if( KeyResult ){
-   	                    	console.log("true ");
+   	                     if( KeyResult || role == 'ROLE_ADMIN' ){
    	                    	html += '            <td class="coment_re_btn float-end">';
        	                    html += '               <button type="button" value="'+ item.bevcseq +'" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>';
        	                    html += '            </td>';
@@ -274,7 +275,7 @@
 
                             <sec:authorize access="isAuthenticated()">
                                 <sec:authentication property="principal" var="principal"/>
-                                <c:if test="${principal.to.memberKey eq bto.memberKey}">
+                                <c:if test="${principal.to.memberKey eq bto.memberKey || principal.to.role eq 'ROLE_ADMIN'}">
                                     <td class="coment_re_btn float-end">
                                         <button type="button" value="${bto.bevcseq}" class="comment_d_btn btn btn-outline-secondary btn-sm mt-2 mb-2">삭제</button>
                                     </td>
