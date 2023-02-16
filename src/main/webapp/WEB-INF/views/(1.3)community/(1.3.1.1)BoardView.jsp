@@ -62,8 +62,6 @@
         $(document).ready(function () {
         	
         	
-       		
-        	
         	let queryString = location.search;
             const urlParams = new URLSearchParams(queryString);            		 
             
@@ -343,7 +341,7 @@
 			<button type="button" onclick="location.href='/${category}?boardname=${boardname}&currentPage=${currentPage}'" class="btn btn-sm btn-outline-secondary l_btn ms-auto">목록</button>           
 			<sec:authorize var="" access="isAuthenticated()">
 				<sec:authentication property="principal" var="principal"/>
-				<c:if test="${principal.to.memberKey eq to.memberkey}">
+				<c:if test="${principal.to.memberKey eq to.memberkey || principal.to.role eq 'ROLE_ADMIN'}">
 					 <button type="button" onclick="location.href='/board/BoardModify?category=${category}&boardname=${boardname}&currentPage=${currentPage}&seq=${seq}'"
 	                class="btn btn-sm btn-outline-secondary m_btn">수정</button>
 					<button type="button" id="d_btn" class="btn btn-sm btn-outline-secondary ">삭제</button>
